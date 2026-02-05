@@ -1,0 +1,252 @@
+/* ===================================
+   Services Page Specific Styles
+   =================================== */
+
+/* Main Section Background */
+.pooja-services {
+    background-image:url('https://tse2.mm.bing.net/th/id/OIP.5GOEg26BpTvs35iVvuay-gHaEK?pid=Api&P=0&h=180') !important;
+    /* Light Golden Cream */
+    padding: 80px 0;
+
+    /* Buddha Background Image */
+    background-image: url("/static/images/budha.jpg");
+    background-position: right center;
+    /* Position on the right side */
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* Ensure full image is visible */
+    background-attachment: fixed;
+    /* Optional: Creates a nice parallax-like effect */
+}
+
+/* Section Headings */
+.pooja-services .section-header h2 {
+    color: #b30000 !important;
+    /* Deep Red */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.pooja-services .section-subtitle {
+    color: #8b0000 !important;
+    font-weight: 500;
+}
+
+/* Search Bar Structure */
+.search-container-wrapper {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-input-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #b30000 !important;
+    z-index: 2;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 20px 12px 45px;
+    border-radius: 30px;
+    border: 2px solid #b30000 !important;
+    background-color: #fff !important;
+    color: #333 !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    outline: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    box-shadow: 0 0 10px rgba(179, 0, 0, 0.2) !important;
+    border-color: #f5b700 !important;
+}
+
+
+/* Service Cards */
+.pooja-card {
+    background-color: #b30000 !important;
+    /* Deep Red Background */
+    border: 2px solid #f5b700;
+    /* Golden Yellow Border */
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(179, 0, 0, 0.15);
+}
+
+.pooja-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(179, 0, 0, 0.3);
+    border-color: #ffcc00;
+}
+
+/* Image Container */
+.pooja-image-container {
+    border-bottom: 4px solid #f5b700;
+}
+
+/* Card Content Area */
+.pooja-content {
+    background-color: #b30000 !important;
+    padding: 25px;
+    text-align: left;
+}
+
+/* Typography in Cards */
+.pooja-content h3 {
+    color: #f5b700 !important;
+    /* Golden Yellow Title */
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(245, 183, 0, 0.3);
+    padding-bottom: 10px;
+}
+
+.pooja-content p {
+    color: #ffebcd !important;
+    /* Blanched Almond/Cream for readability */
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    background-color: transparent !important;
+    /* Override any previous inline styles */
+}
+
+/* Text Warning Star */
+.text-warning {
+    color: #f5b700 !important;
+}
+
+/* Action Button */
+.pooja-content .btn-book {
+    background-color: #f5b700 !important;
+    color: #b30000 !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 50px;
+    padding: 12px 25px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.pooja-content .btn-book:hover {
+    background-color: #fff !important;
+    color: #b30000 !important;
+    border-color: #f5b700;
+    box-shadow: 0 0 15px rgba(245, 183, 0, 0.4);
+}
+
+.pooja-content .btn-book i {
+    margin-left: 5px;
+    transition: margin-left 0.3s ease;
+}
+
+.pooja-content .btn-book:hover i {
+    margin-left: 10px;
+}
+
+/* Badges Overrides */
+.badge-popular {
+    background-color: #f5b700 !important;
+    color: #b30000 !important;
+}
+
+.badge-price i {
+    color: #b30000 !important;
+}
+
+/* Override Grid Gap for Services Page */
+/* Override Grid Gap for Services Page */
+.pooja-services .pooja-grid,
+.pooja-grid {
+    gap: 60px !important;
+    /* Increased gap as requested */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+    justify-content: center;
+}
+
+/* Internal Card Alignment & Animation Initial State */
+.pooja-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 480px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-out;
+}
+
+/* Scroll Reveal Class */
+.pooja-card.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pooja-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.pooja-content p {
+    flex: 1;
+    margin-bottom: 25px;
+}
+
+.pooja-content .btn-book {
+    margin-top: auto;
+    width: 100%;
+}
+
+/* Divider between Service Lists */
+.page-divider {
+    width: 100%;
+    height: 8px;
+    /* Thicker line */
+    background: linear-gradient(90deg, transparent, #b30000, transparent);
+    margin: 100px 0;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(179, 0, 0, 0.2);
+}
+
+.page-divider::after {
+    content: '۞';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff6d8;
+    padding: 0 30px;
+    color: #b30000;
+    font-size: 42px;
+    border-radius: 50%;
+    /* Optional: rounded background */
+}
+
+
+@media (max-width: 768px) {
+    .pooja-services .pooja-grid {
+        grid-template-columns: 1fr !important;
+        gap: 50px !important;
+    }
+
+    .page-divider {
+        margin: 60px 0;
+    }
+}

@@ -1,0 +1,68 @@
+{% load static %}
+<!-- Contact Us Section -->
+<section class="contact-us" id="contact" style="background-image: 'static/images/sec1.png';">
+  <div class="container">
+    <div class="section-header">
+      <h2>Contact Us</h2>
+      <p class="section-subtitle">Get in Touch with Divine Blessings</p>
+    </div>
+  </section>
+  <section class="contact-us" id="contact">
+  <div class="container">
+
+    <div class="contact-cards">
+      <div class="card">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Our Location</h3>
+        <p>Nellore, Andhra Pradesh, India</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-phone-alt"></i>
+        <h3>Phone Number</h3>
+        <p>+91 94909 47920</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-envelope"></i>
+        <h3>Email Address</h3>
+        <p>contact@vedicpoojaservices.com</p>
+      </div>
+    </div>
+    <section class="contact-section">
+      <div class="contact-container">
+
+        <!-- Left: Form Card -->
+        <div class="contact-card">
+          <h2>Get in Touch</h2>
+          <p>We would love to hear from you. Please fill out the form below.</p>
+
+          <form class="contact-form">
+            <input type="text" id="contactName" placeholder="Your Name" required>
+            <input type="email" id="contactEmail" placeholder="Your Email" required>
+            <input type="tel" id="contactPhone" placeholder="Your Phone Number" required>
+            <textarea id="contactMessage" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit" class="btn-primary">Send Message</button>
+          </form>
+        </div>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const service = urlParams.get('service');
+            if (service) {
+              const messageBox = document.getElementById('contactMessage');
+              if (messageBox) {
+                messageBox.value = "I am interested in booking: " + service;
+              }
+            }
+          });
+        </script>
+
+        <!-- Right: Image -->
+        <div class="contact-image">
+          <img src="/static/images/conatct.png" alt="Contact Illustration">
+        </div>
+
+      </div>
+    </section>

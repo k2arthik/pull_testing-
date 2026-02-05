@@ -1,0 +1,88 @@
+{% load static %}
+<!-- Categories & Statistics Section -->
+{% load static %}
+<section class="categories-stats" 
+    style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{% static 'images/sec1.png' %}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div class="container">
+        <!-- Statistics Bar -->
+        <div class="stats-grid" style="background-image: url('{% static 'images/sec1.png' %}');">
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-history"></i>
+                </div>
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Years of Tradition</div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Verified Purohits</div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="stat-number">50,000+</div>
+                <div class="stat-label">Happy Families</div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-temple"></i>
+                </div>
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Sacred Temples</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="categories-stats" style="background-color: #FFF8DC;">
+    <div class="container">
+
+        <!-- Categories Grid -->
+        <div class="categories-header section-header">
+            <h2 style="color:#E24028">Pooja Categories</h2>
+            <p class="section-subtitle" style="color:#E24028">Find the Perfect Pooja for Your Needs</p>
+        </div>
+
+        <div class="categories-grid">
+            <!-- Category 1: By God -->
+            <div class="category-card" style="background-color: #f5b700;">
+                <div class="category-icon">
+                    <img src="https://as2.ftcdn.net/v2/jpg/06/56/34/83/1000_F_656348311_IoroWLwAFBEMKx1ECN6pcznii6Xq4GZ6.jpg"
+                        alt="By God">
+                </div>
+                <h3>Explore by God</h3>
+                <p>Find pujas dedicated to Shiva, Vishnu, Ganesha, and more.</p>
+                <a href="{% url 'services' %}" class="category-link">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Category 2: By Purpose -->
+            <div class="category-card" style="background-color: #f5b700;">
+                <div class="category-icon">
+                    <img src="https://as2.ftcdn.net/v2/jpg/06/56/34/83/1000_F_656348338_aivUvgLiLBal2c8LGjagH9qN3XF0lUuM.jpg"
+                        alt="By Purpose">
+                </div>
+                <h3>By Purpose</h3>
+                <p>Special rituals for Health, Wealth, Marriage, and Success.</p>
+                <a href="{% url 'services' %}" class="category-link">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Category 3: Special Days -->
+            <div class="category-card" style="background-color: #f5b700;">
+                <div class="category-icon">
+                    <img src="https://www.india.com/wp-content/uploads/2024/10/Patna-The-Heart-of-Chhath-Puja-Celebrations-1.jpg"
+                        alt="Special Days">
+                </div>
+                <h3>Special Days</h3>
+                <p>Book for Purnima, Amavasya, Pradosham, and Festivals.</p>
+                <a href="{% url 'services' %}" class="category-link">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>

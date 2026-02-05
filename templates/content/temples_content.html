@@ -1,0 +1,54 @@
+{% load static %}
+<!-- Temples Section -->
+<section class="temples-section" id="Temples" style="background-color: #fff8dc;">
+    <div class="container">
+        <div class="section-header">
+            <h2 style="color: var(--accent-yellow);">Our Temples</h2>
+            <p class="section-subtitle" style="color: var(--white); opacity: 0.9;">Sacred Places of Worship We Serve</p>
+        </div>
+
+        <div class="temple-grid">
+            <div class="temple-card" data-gallery="kashi">
+                <img src="https://tse2.mm.bing.net/th/id/OIP.fvSE50CuPqMmC0i8wvP4JAHaDp?pid=Api&P=0&h=180"
+                    alt="Temple 1">
+                <div class="temple-overlay">
+                    <h3>Kashi Vishwanath</h3>
+                    <p>Varanasi, UP</p>
+                </div>
+            </div>
+            <div class="temple-card" data-gallery="tirupati">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.tYxNXsdm22tbR5Usv4UAvgHaFj?pid=Api&P=0&h=180"
+                    alt="Temple 2">
+                <div class="temple-overlay">
+                    <h3>Tirupati Balaji</h3>
+                    <p>Tirumala, AP</p>
+                </div>
+            </div>
+            <div class="temple-card" data-gallery="meenakshi">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.zGFQVBENhgNj-dllfVYVHwHaEE?pid=Api&P=0&h=180"
+                    alt="Temple 3">
+                <div class="temple-overlay">
+                    <h3>Meenakshi Temple</h3>
+                    <p>Madurai, TN</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="service-button">
+        <a href="{% url 'temples' %}" class="btn btn-primary">view all temples</a>
+    </div>
+
+    <!-- Temple Lightbox Modal -->
+    <div id="templeLightbox" class="temple-modal">
+        <span class="modal-close">&times;</span>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTempleName">Temple Name</h2>
+                <p id="modalTempleLocation">Location</p>
+            </div>
+            <div class="gallery-container" id="galleryContainer">
+                <!-- Images will be injected here via JS -->
+            </div>
+        </div>
+    </div>
+</section>

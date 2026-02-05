@@ -1,0 +1,52 @@
+/* ===================================
+   Temples Section
+   =================================== */
+.temples-section {
+    background: #FFF8F0;
+    padding: var(--section-padding);
+}
+
+.temple-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.temple-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 250px;
+}
+
+/* ===================================
+   Temple Lightbox Modal
+   =================================== */
+.temple-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.temple-modal.active {
+    display: block;
+}
+
+/* ===================================
+   Rangoli & Decorations
+   =================================== */
+.temple-rangoli {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    opacity: 0.4;
+    mix-blend-mode: screen;
+    z-index: 1;
+    background-image: url('../images/rangoli_decoration.png');
+}

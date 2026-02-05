@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/videos.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'content/home_content.html' %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/lightbox.js' %}"></script>
+{% endblock %}

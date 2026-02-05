@@ -1,0 +1,85 @@
+{% load static %}
+<section class="hero">
+    <!-- Animated Divine Background -->
+    <div class="divine-rays-bg">
+        <div class="rays-layer" style="background-image: url('{% static 'videos/sec4.png' %}');"></div>
+        <div class="inner-pulse"></div>
+        <div class="divine-particles" id="divine-particles"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.getElementById('divine-particles');
+            const particleCount = 20;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+
+                // Random trajectory from center
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 300 + Math.random() * 500;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+
+                particle.style.setProperty('--tx', `${tx}px`);
+                particle.style.setProperty('--ty', `${ty}px`);
+                particle.style.animationDelay = `${Math.random() * 4}s`;
+
+                container.appendChild(particle);
+            }
+        });
+    </script>
+    <div class="video-overlay"></div>
+    <!-- Corner Decorations -->
+    <img src="https://as2.ftcdn.net/v2/jpg/06/56/34/83/1000_F_656348338_aivUvgLiLBal2c8LGjagH9qN3XF0lUuM.jpg"
+        class="corner-decoration corner-left" alt="Decoration Left">
+    <img src="https://as2.ftcdn.net/v2/jpg/06/56/34/83/1000_F_656348311_IoroWLwAFBEMKx1ECN6pcznii6Xq4GZ6.jpg"
+        class="corner-decoration corner-right" alt="Decoration Right">
+
+    <!-- Divine Entrance Animation -->
+    <div class="divine-entrance">
+        <div class="kalash-wrapper">
+            <img src="https://as2.ftcdn.net/v2/jpg/06/56/34/83/1000_F_656348311_IoroWLwAFBEMKx1ECN6pcznii6Xq4GZ6.jpg"
+                class="kalash-main" alt="Divine Kalash">
+            <div class="coin-rain">
+                <div class="coin"></div>
+                <div class="coin"></div>
+                <div class="coin"></div>
+                <div class="coin"></div>
+                <div class="coin"></div>
+                <div class="coin"></div>
+                <div class="coin"></div>
+                <div class="coin"></div>
+                <div class="coin"></div>
+                <div class="coin"></div>
+                <div class="coin"></div>
+                <div class="coin"></div>
+            </div>
+        </div>
+        <div class="entrance-name">
+            <span style="--i:1">D</span><span style="--i:2">i</span><span style="--i:3">v</span><span
+                style="--i:4">i</span><span style="--i:5">n</span><span style="--i:6">e</span>
+            <span class="space"></span>
+            <span style="--i:7">B</span><span style="--i:8">l</span><span style="--i:9">e</span><span
+                style="--i:10">s</span><span style="--i:11">s</span><span style="--i:12">i</span><span
+                style="--i:13">n</span><span style="--i:14">g</span><span style="--i:15">s</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+
+                <h1>Online Pooja<br>Booking Platform</h1>
+                <p class="hero-subtitle">Easily schedule special pujas at renowed temples.<br>
+                    Experience divine blessings without any hassel.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#get-started" class="btn btn-primary">Explore More</a>
+                    <a href="#learn-more" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

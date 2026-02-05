@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="cart-page">
+    <div class="container">
+        <form id="checkout-form" class="cart-container">
+            <!-- Left: Checkout Details -->
+            <div class="checkout-details">
+                <div class="checkout-section">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h2>Contact</h2>
+                        <a href="{% url 'login' %}" style="color: #0066cc; font-size: 14px; text-decoration: none;">Sign
+                            in</a>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email or mobile phone number" required>
+                    </div>
+                    <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+                        <input type="checkbox" id="whatsapp-updates">
+                        <label for="whatsapp-updates" style="margin: 0; font-size: 14px;">Get order updates on
+                            WhatsApp</label>
+                    </div>
+                </div>
+
+                <div class="checkout-section" style="margin-top: 30px;">
+                    <h2>Payment</h2>
+                    <p style="color: #666; font-size: 14px; margin-bottom: 15px;">All transactions are secure and
+                        encrypted.</p>
+
+                    <div class="payment-box">
+                        <div class="payment-header">
+                            <span class="payment-info">Razorpay Secure (UPI, Cards, Int'l Cards, Wallets)</span>
+                            <div class="payment-icons">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo.png" alt="UPI">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
+                                    alt="Visa">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+                                    alt="Mastercard">
+                                <span style="font-size: 12px; color: #888; margin-left: 5px;">+18</span>
+                            </div>
+                        </div>
+                        <div class="payment-msg">
+                            You'll be redirected to Razorpay Secure (UPI, Cards, Int'l Cards, Wallets) to complete your
+                            purchase.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkout-section" style="margin-top: 30px;">
+                    <h2>Billing address</h2>
+                    <div class="form-group">
+                        <label>Country/Region</label>
+                        <select class="form-control">
+                            <option>India</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="First name (optional)">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Last name" required>
+                        </div>
+                    </div>
+                    <div class="form-group" style="position: relative;">
+                        <input type="text" class="form-control" placeholder="Address" required>
+                        <i class="fas fa-search" style="position: absolute; right: 15px; top: 15px; color: #888;"></i>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Apartment, suite, etc. (optional)">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="City" required>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>Telangana</option>
+                                <option>Andhra Pradesh</option>
+                                <option>Karnataka</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="PIN code" required>
+                        </div>
+                    </div>
+                    <div class="form-group" style="position: relative;">
+                        <input type="text" class="form-control" placeholder="Phone number for order updates" required>
+                        <i class="far fa-question-circle"
+                            style="position: absolute; right: 15px; top: 15px; color: #888;"></i>
+                    </div>
+
+                    <button type="submit" class="btn-pay">Pay now</button>
+                </div>
+            </div>
+
+            <!-- Right: Order Summary -->
+            <div class="order-summary">
+                <h2>Summary</h2>
+                <div id="cart-items" class="cart-items-list">
+                    <!-- Cart items will be injected here via JS -->
+                </div>
+
+                <div class="summary-details">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">₹0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span>Free</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="total-amount">₹0.00</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/cart.js' %}"></script>
+{% endblock %}

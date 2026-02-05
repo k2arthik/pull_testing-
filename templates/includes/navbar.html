@@ -1,0 +1,51 @@
+{% load static %}
+<nav class="navbar"
+    style="background-image: linear-gradient(rgba(196, 30, 58, 0.9), rgba(196, 30, 58, 0.9)), url('{% static 'images/sec3.png' %}'); background-size: cover; background-position: center;">
+    <div class="container">
+        <div class="nav-wrapper">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <span>Logo</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="{% url 'home' %}"
+                        class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a></li>
+                <li><a href="{% url 'about' %}"
+                        class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a></li>
+                <li><a href="{% url 'services' %}"
+                        class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">Services</a>
+                </li>
+                <li><a href="{% url 'temples' %}"
+                        class="{% if request.resolver_match.url_name == 'temples' %}active{% endif %}">Temples</a></li>
+                <li><a href="{% url 'blogs' %}"
+                        class="{% if request.resolver_match.url_name == 'blogs' %}active{% endif %}">Blogs</a>
+                </li>
+                <li><a href="{% url 'contact' %}"
+                        class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="{% url 'login' %}" class="btn btn-primary">Sign In</a>
+                <a href="{% url 'signup' %}" class="btn btn-primary">Sign Up</a>
+
+                <!-- Cart Icon -->
+                <div class="cart-nav" style="position: relative; margin-right: 15px;">
+                    <a href="{% url 'cart' %}" style="color: white; font-size: 20px; text-decoration: none;">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+
+                <!-- Language Selector -->
+                <div class="lang-selector">
+                    <button type="button" class="btn btn-primary lang-btn" id="lang-toggle-btn">
+                        English <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="lang-dropdown" id="lang-dropdown">
+                        <a href="javascript:void(0)" onclick="changeLanguage('en')">English</a>
+                        <a href="javascript:void(0)" onclick="changeLanguage('te')">Telugu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

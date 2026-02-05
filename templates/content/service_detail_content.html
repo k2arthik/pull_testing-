@@ -1,0 +1,125 @@
+<div class="service-detail-header" style="background-image: url('{{ service.image }}');">
+    <div class="container">
+        <h1>{{ service.title }}</h1>
+        <p class="lead text-white">{{ service.short_description }}</p>
+    </div>
+</div>
+
+<div class="container service-detail-content">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="service-info-card">
+                <h2>About the Puja</h2>
+                <div class="service-description">
+                    <p>{{ service.full_description }}</p>
+
+                    <h3>Benefits</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle text-success"></i> Divine blessings and protection.</li>
+                        <li><i class="fas fa-check-circle text-success"></i> Peace of mind and spiritual growth.</li>
+                        <li><i class="fas fa-check-circle text-success"></i> Removal of negative energies.</li>
+                    </ul>
+
+                    <h3>What is included?</h3>
+                    <ul>
+                        <li><i class="fas fa-om text-primary"></i> Complete Puja Samagri.</li>
+                        <li><i class="fas fa-user-tie text-primary"></i> Experienced Panditji.</li>
+                        <li><i class="fas fa-gift text-primary"></i> Prasad distribution.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-info-card">
+                <h3>Gallery</h3>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <img src="{{ service.image }}" alt="{{ service.title }}" class="img-fluid rounded shadow-sm">
+                    </div>
+                    <!-- Placeholder for more images if available, reusing the main one for now -->
+                    <div class="col-md-6 mb-3">
+                        <div
+                            style="width:100%; height:100%; background: #eee; display:flex; align-items:center; justify-content:center; border-radius:8px;">
+                            <span class="text-muted">More images coming soon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="service-sidebar">
+                <div class="service-info-card">
+                    <h3 class="mb-4">Puja Details</h3>
+
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <i class="far fa-clock"></i>
+                            <span>{{ service.duration }}</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-user-friends"></i>
+                            <span>{{ service.pandits|default:"Vedic Pandits" }}</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>{{ service.location|default:"Temple/Home" }}</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-om"></i>
+                            <span>{{ service.deity|default:"Main Deity" }}</span>
+                        </div>
+                    </div>
+
+                    <div class="price-box mb-4">
+                        <span class="text-muted small text-uppercase" style="letter-spacing:1px;">Offering Price</span>
+                        <div class="h2 text-primary mb-0 mt-1">{{ service.price }}</div>
+                    </div>
+
+                    <div class="pooja-options" style="border-top: 1px solid #eee; padding-top: 20px;">
+                        <h4 class="mb-3" style="font-size: 16px; color: var(--primary-red);">Devotee Details</h4>
+
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Devotee Name</label>
+                            <input type="text" id="devotee_name" class="form-control" placeholder="Enter Name"
+                                style="background: #f8f9fa;">
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label class="form-label font-weight-bold">Gothram</label>
+                                <input type="text" id="devotee_gothram" class="form-control" placeholder="Optional"
+                                    style="background: #f8f9fa;">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label font-weight-bold">Nakshatram</label>
+                                <input type="text" id="devotee_nakshatram" class="form-control" placeholder="Optional"
+                                    style="background: #f8f9fa;">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Select Date</label>
+                            <input type="date" id="pooja_date" class="form-control"
+                                style="background: #f8f9fa; border: 2px solid #eee;">
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-primary btn-book book-btn-large shadow"
+                        onclick="addToCart('{{ request.resolver_match.kwargs.service_slug }}', '{{ service.title }}', '{{ service.price }}', '{{ service.image }}')">
+                        Add to Cart <i class="fas fa-cart-plus ml-2"></i>
+                    </button>
+
+                    <p class="text-muted mt-3 small text-center">
+                        <i class="fas fa-check-circle text-success"></i> 100% Secure Booking
+                    </p>
+                </div>
+
+                <div class="service-info-card text-center" style="background: #fff3cd; border: 1px solid #ffeeba;">
+                    <h4><i class="fas fa-phone-alt"></i> Call to Book</h4>
+                    <p class="mb-0">Speak to our Panditji directly</p>
+                    <h3 class="mt-2 text-dark">+91 98765 43210</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
