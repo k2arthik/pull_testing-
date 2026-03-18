@@ -1,0 +1,3 @@
+Contains string: 1
+Contains list: 1
+icontains: 1

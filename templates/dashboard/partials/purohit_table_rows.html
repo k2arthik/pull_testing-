@@ -1,0 +1,32 @@
+{% for priest in purohits %}
+<tr>
+    <td style="display: flex; align-items: center; gap: 10px;">
+        <div class="user-avatar" style="width: 30px; height: 30px; font-size: 0.7rem;">
+            {{ priest.fullname|first|upper }}
+        </div>
+        <span>{{ priest.fullname }}</span>
+    </td>
+    <td>{{ priest.specialization }}</td>
+    <td>{{ priest.experience }} Years</td>
+    <td>{{ priest.mobile }}</td>
+    <td>
+        <div style="color: var(--gold); font-weight: bold;">
+            <i class="fas fa-star"></i> {{ priest.performance.rating|floatformat:1 }}
+        </div>
+        <small style="font-size: 0.7rem; color: #888;">{{ priest.performance.completed_successful }} completed</small>
+    </td>
+    <td>
+        <div style="display: flex; gap: 5px;">
+            <a href="{% url 'admin_purohit_edit' priest.user.id %}" class="btn-icon" title="Edit Profile"><i
+                    class="fas fa-edit"></i></a>
+            <button class="btn-icon" title="Stats" style="color: #1e88e5;"><i class="fas fa-chart-line"></i></button>
+            <a href="{% url 'admin_purohit_delete' priest.user.id %}" class="btn-icon" title="Delete"
+                style="color: #c62828;"><i class="fas fa-trash-alt"></i></a>
+        </div>
+    </td>
+</tr>
+{% empty %}
+<tr>
+    <td colspan="6" style="text-align: center; padding: 30px; color: #999;">No purohits matching your search found.</td>
+</tr>
+{% endfor %}

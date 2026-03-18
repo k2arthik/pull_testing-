@@ -1,0 +1,1527 @@
+{% load static %}
+{% load auth_extras %}
+<nav class="navbar temple-navbar" id="temple-navbar">
+        <div class="container navbar-container">
+
+                <!-- 1. Logo Box -->
+                <a href="{% url 'home' %}" class="logo-box">
+                        <div class="logo-circle glow-pulse">
+                                <img src="{% static 'images/logo.png' %}">
+                        </div>
+                </a>
+
+                <!-- 2. Heading Box -->
+                <!-- <div class="heading-box">
+                        <a href="{% url 'home' %}" class="logo-text-link">
+                                <div class="logo-text"> -->
+                <!---<span class="brand-name">PUROHIT</span>
+                                        <span class="brand-tagline">Portal</span>-->
+                <!-- </div>
+                        </a>
+                </div> -->
+
+                <!-- 3. Right Side Container (Menu + Actions) -->
+                <div class="right-container">
+                        <!-- Desktop Navigation -->
+                        <div class="nav-links-wrapper" id="nav-content">
+                                <ul class="nav-menu">
+                                        {% if user|is_purohit and request|is_on_purohit_mgmt %}
+                                        <!-- Purohit Professional Management Links -->
+                                        <li><a href="{% url 'purohit_dashboard' %}"
+                                                        class="nav-link {% if request.resolver_match.url_name == 'purohit_dashboard' %}active{% endif %}">Dashboard</a>
+                                        </li>
+                                        <li><a href="{% url 'priest_availability' %}"
+                                                        class="nav-link {% if request.resolver_match.url_name == 'priest_availability' %}active{% endif %}">Availability</a>
+                                        </li>
+                                        <li><a href="{% url 'priest_bookings' %}"
+                                                        class="nav-link {% if request.resolver_match.url_name == 'priest_bookings' %}active{% endif %}">Bookings</a>
+                                        </li>
+
+                                        {% elif user.is_superuser %}
+                                        <!-- Admin Portal Management Links -->
+                                        <li><a href="{% url 'admin_dashboard' %}"
+                                                        class="nav-link {% if request.resolver_match.url_name == 'admin_dashboard' %}active{% endif %}">Admin Portal</a>
+                                        </li>
+                                        <li><a href="{% url 'admin_bookings_manage' %}"
+                                                        class="nav-link {% if request.resolver_match.url_name == 'admin_bookings_manage' or request.resolver_match.url_name == 'admin_reassign_booking' %}active{% endif %}">Admin Bookings</a>
+                                        </li>
+
+                                        {% elif user|is_devotee and request|is_on_devotee_mgmt %}
+                                        <!-- Devotee Internal Management Links -->
+                                        <li><a href="{% url 'devotee_dashboard' %}"
+                                                        class="nav-link {% if request.resolver_match.url_name == 'devotee_dashboard' %}active{% endif %}">Dashboard</a>
+                                        </li>
+                                        <li><a href="{% url 'my_bookings' %}"
+                                                        class="nav-link {% if request.resolver_match.url_name == 'my_bookings' %}active{% endif %}">My
+                                                        Bookings</a></li>
+
+                                        {% else %}
+                                        <!-- Public / Guest Links (Default) -->
+                                        <li><a href="{% url 'home' %}"
+                                                        class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a>
+                                        </li>
+                                        <li><a href="{% url 'about' %}"
+                                                        class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}">Our
+                                                        Story</a></li>
+                                        <li><a href="{% url 'services' %}"
+                                                        class="nav-link {% if request.resolver_match.url_name == 'services' %}active{% endif %}">Pooja
+                                                        Services</a></li>
+                                        <li class="desktop-only"><a href="{% url 'blogs' %}"
+                                                        class="nav-link {% if request.resolver_match.url_name == 'blogs' %}active{% endif %}">Blogs</a>
+                                        </li>
+                                        <li class="nav-dropdown-wrapper desktop-only">
+                                                <a href="#"
+                                                        class="nav-link {% if request.resolver_match.url_name == 'photos' or request.resolver_match.url_name == 'videos' %}active{% endif %}">
+                                                        Others <i class="fas fa-chevron-down ms-1"
+                                                                style="font-size: 0.7rem;"></i>
+                                                </a>
+                                                <div class="nav-dropdown-content">
+                                                        <a href="{% url 'photos' %}" class="dropdown-item">
+                                                                <i class="fas fa-camera"></i> Photos
+                                                        </a>
+                                                        <a href="{% url 'videos' %}" class="dropdown-item">
+                                                                <i class="fas fa-video"></i> Videos
+                                                        </a>
+                                                </div>
+                                        </li>
+                                        <li class="mobile-only"><a href="{% url 'blogs' %}"
+                                                        class="nav-link {% if request.resolver_match.url_name == 'blogs' %}active{% endif %}">Blogs</a>
+                                        </li>
+                                        <li class="mobile-only"><a href="{% url 'photos' %}"
+                                                        class="nav-link {% if request.resolver_match.url_name == 'photos' %}active{% endif %}">Photos</a>
+                                        </li>
+                                        <li class="mobile-only"><a href="{% url 'videos' %}"
+                                                        class="nav-link {% if request.resolver_match.url_name == 'videos' %}active{% endif %}">Videos</a>
+                                        </li>
+                                        <li><a href="{% url 'contact' %}"
+                                                        class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a>
+                                        </li>
+                                        {% endif %}
+                                </ul>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="nav-actions">
+
+                                {% if user|is_purohit %}
+                                <!-- Priest Profile Dropdown -->
+                                <div class="priest-profile-wrapper auth-profile-wrapper">
+                                        <button class="profile-btn" id="profileDropdownBtn">
+                                                {% if user.priest_profile.photo %}
+                                                <img src="{{ user.priest_profile.photo.url }}"
+                                                        alt="{{ user.priest_profile.fullname }}"
+                                                        class="nav-profile-img">
+                                                {% else %}
+                                                <div class="nav-profile-placeholder">
+                                                        {{ user.priest_profile.fullname|slice:":1" }}
+                                                </div>
+                                                {% endif %}
+                                                <span class="nav-profile-name">{{ user.priest_profile.fullname }}</span>
+                                                <i class="fas fa-chevron-down profile-chevron"></i>
+                                        </button>
+
+                                        <div class="profile-dropdown" id="profileDropdown">
+                                                <a href="{% url 'purohit_dashboard' %}" class="dropdown-item">
+                                                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                                                </a>
+                                                <a href="{% url 'priest_availability' %}" class="dropdown-item">
+                                                        <i class="fas fa-calendar-alt"></i> Availability
+                                                </a>
+                                                <a href="{% url 'priest_bookings' %}" class="dropdown-item">
+                                                        <i class="fas fa-book"></i> Bookings
+                                                </a>
+                                                <a href="{% url 'purohit_edit_profile' %}" class="dropdown-item">
+                                                        <i class="fas fa-user-edit"></i> Edit Profile
+                                                </a>
+                                                <div class="dropdown-divider"></div>
+                                                <a href="{% url 'logout' %}" class="dropdown-item logout-item">
+                                                        <i class="fas fa-sign-out-alt"></i> Logout
+                                                </a>
+                                        </div>
+                                </div>
+                                {% elif user.is_authenticated %}
+                                <!-- Devotee Profile Dropdown -->
+                                <div class="devotee-profile-wrapper auth-profile-wrapper">
+                                        <button class="profile-btn" id="devoteeDropdownBtn">
+                                                <div class="nav-profile-placeholder">
+
+                                                        <span class="nav-profile-name">
+                                                                {{ user.devotee_profile.fullname|slice:":1" }}
+
+
+                                                        </span>
+                                                        <i class="fas fa-chevron-down profile-chevron"></i>
+                                        </button>
+
+                                        <div class="profile-dropdown" id="devoteeDropdown">
+                                                <a href="{% url 'devotee_dashboard' %}" class="dropdown-item">
+                                                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                                                </a>
+                                                <a href="{% url 'my_bookings' %}" class="dropdown-item">
+                                                        <i class="fas fa-calendar-check"></i> My Bookings
+                                                </a>
+                                                <div class="dropdown-divider"></div>
+                                                <a href="{% url 'logout' %}" class="dropdown-item logout-item">
+                                                        <i class="fas fa-sign-out-alt"></i> Logout
+                                                </a>
+                                        </div>
+                                </div>
+                                {% else %}
+                                <!-- Guest Actions -->
+                                <a href="{% url 'signup_selector' %}" class="btn-book-puja">
+                                        <span class="btn-text">Sign In/Up</span>
+                                        <span class="btn-shine"></span>
+                                </a>
+                                {% endif %}
+
+                                {% if user.is_authenticated %}
+                                <!-- Notification Bell -->
+                                <div class="notifications-wrapper" id="notifications-wrapper">
+                                        <button class="circle-btn bell-btn bell-hover" id="notificationToggleBtn"
+                                                hx-get="{% url 'get_notifications' %}" hx-target="#notifications-list"
+                                                hx-trigger="click">
+                                                <i class="fas fa-bell"></i>
+                                                <span class="notification-badge" id="notification-count"
+                                                        style="display: none;">0</span>
+                                        </button>
+                                        <div class="notifications-dropdown" id="notificationsDropdown">
+                                                <div class="notifications-header">
+                                                        <span>Notifications</span>
+                                                        <button hx-post="{% url 'mark_all_notifications_read' %}"
+                                                                hx-target="#notifications-wrapper" hx-swap="outerHTML"
+                                                                class="mark-all-btn">Mark all read</button>
+                                                </div>
+                                                <div class="notifications-list" id="notifications-list">
+                                                        <div class="notifications-loading">Loading...</div>
+                                                </div>
+                                                <div class="notifications-footer">
+                                                        <a href="#">View all notifications</a>
+                                                </div>
+                                        </div>
+                                </div>
+                                {% endif %}
+
+                                <!-- Language Switch Container (Preventing Translation) -->
+                                <div class="lang-switch-container notranslate">
+                                        <div class="lang-switch">
+                                                <div class="lang-btn active" onclick="setLang('en')" id="eng-btn">EN
+                                                </div>
+                                                <div class="lang-btn" onclick="setLang('te')" id="tel-btn">తె</div>
+                                                <div class="lang-slider"></div>
+                                        </div>
+                                </div>
+
+                                <!-- Mobile Toggle -->
+                                <div id="mobile-toggle" class="mobile-toggle-btn">
+                                        <i class="fas fa-bars"></i>
+                                </div>
+                                <!-- {% if not user|is_purohit %} -->
+                                <!-- Cart Button -->
+                                <!-- {% if user.is_authenticated %}
+                                <button class="circle-btn cart-btn bell-hover" id="cartToggleBtn"
+                                        aria-label="Open Cart">
+                                        <i class="fas fa-shopping-cart"></i>
+                                </button>
+                                {% else %}
+                                <a href="{% url 'login' %}" class="circle-btn cart-btn bell-hover"
+                                        aria-label="Open Cart">
+                                        <i class="fas fa-shopping-cart"></i>
+                                </a>
+                                {% endif %}
+                                {% endif %} -->
+                        </div>
+                </div>
+        </div>
+</nav>
+
+<!-- ===== Cart Sidebar ===== -->
+<!-- <div class="cart-sidebar-overlay" id="cartSidebarOverlay"></div>
+<aside class="cart-sidebar" id="cartSidebar" aria-label="Shopping Cart">
+        <div class="cart-sidebar-header">
+                <div class="cart-sidebar-title">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Your Cart</span>
+                </div>
+                <button class="cart-sidebar-close" id="cartSidebarClose" aria-label="Close Cart">
+                        <i class="fas fa-times"></i>
+                </button>
+        </div>
+
+        <div class="cart-sidebar-body" id="cartSidebarBody">
+                <div class="cart-sidebar-empty" id="cartSidebarEmpty">
+                        <i class="fas fa-shopping-basket cart-empty-icon"></i>
+                        <p>Your cart is empty</p>
+                        <a href="{% url 'services' %}" class="cart-sidebar-browse-btn">Browse Puja Services</a>
+                </div>
+                <ul class="cart-sidebar-items" id="cartSidebarItems">
+                        Dynamically populated by JS -->
+<!-- </ul>
+        </div>
+
+        <div class="cart-sidebar-footer" id="cartSidebarFooter" style="display:none;">
+                <div class="cart-sidebar-total">
+                        <span>Total</span>
+                        <span id="cartSidebarTotal">₹0.00</span>
+                </div>
+                <a href="{% url 'cart' %}" class="cart-sidebar-checkout-btn">
+                        <i class="fas fa-lock"></i> Proceed to Checkout
+                </a>
+        </div> 
+</aside> -->
+<!-- ===== /Cart Sidebar ===== -->
+
+<style>
+        /* --- Navbar Container --- */
+        .temple-navbar {
+                background: linear-gradient(135deg, #840606 0%, #840606 50%, #840606 100%);
+                border-bottom: 4px solid #D4AF37;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+                position: fixed;
+                z-index: 1100;
+                padding: 0;
+                height: 80px;
+                /* Reduced from 90px */
+                display: flex;
+                align-items: center;
+        }
+
+        .navbar-container {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                width: 100%;
+                max-width: 1400px;
+                /* Increased width for 3 sections */
+                margin: 0 auto;
+                padding: 0 20px;
+                gap: 20px;
+        }
+
+        /* --- 1. Logo Box --- */
+        .logo-box {
+                flex-shrink: 0;
+                text-decoration: none;
+        }
+
+        .logo-circle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                /* background: radial-gradient(circle, #D4AF37 0%, #B8860B 100%);  Removed Gold Background */
+                /* border: 2px solid #fff; Removed Border */
+                /* box-shadow: 0 0 15px rgba(212, 175, 55, 0.6); Removed Shadow */
+                position: relative;
+                max-height: 100px;
+                /* Constrain height */
+                padding: 5px;
+        }
+
+        .logo-circle img {
+                max-height: 70px;
+                /* Adjusted to fit in 80px navbar */
+                width: auto;
+                mix-blend-mode: screen;
+                filter: brightness(1.2);
+        }
+
+        .om-symbol {
+                font-size: 36px;
+                color: #800000;
+                font-weight: bold;
+                padding-top: 4px;
+        }
+
+        /* --- 2. Heading Box --- */
+        .heading-box {
+                flex-grow: 1;
+                /* Takes up available space to push right container? No, we want gaps. */
+                display: flex;
+                justify-content: flex-start;
+                /* Align left near logo or center? User said "make a gap". */
+                padding-left: 20px;
+        }
+
+        .logo-text-link {
+                text-decoration: none;
+        }
+
+        .logo-text {
+                display: flex;
+                flex-direction: column;
+        }
+
+        .brand-name {
+                font-size: 1.8rem;
+                font-weight: 800;
+                color: #fff;
+                font-family: 'Cinzel', serif;
+                letter-spacing: 1.5px;
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+                line-height: 1;
+        }
+
+        .brand-tagline {
+                font-size: 0.9rem;
+                color: #FFD700;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                font-weight: 600;
+        }
+
+        /* --- 3. Right Container --- */
+        .right-container {
+                display: flex;
+                align-items: center;
+                gap: 30px;
+        }
+
+        /* --- Navigation Links --- */
+        /* .nav-links-wrapper styles are handled in media queries or default layout */
+
+        .nav-menu {
+                display: flex;
+                list-style: none;
+                gap: 15px;
+                margin: 0;
+                padding: 0;
+        }
+
+        .nav-link {
+                color: #F5E8BF;
+                /* Pale Gold/Cream */
+                text-decoration: none;
+                font-weight: 500;
+                font-family: 'Inter', sans-serif;
+                font-size: 0.95rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                transition: all 0.3s ease;
+                position: relative;
+                padding-bottom: 5px;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+                color: #fff;
+                text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+        }
+
+        .nav-link::after {
+                content: '❖';
+                /* Decorative symbol instead of line */
+                position: absolute;
+                bottom: -15px;
+                left: 50%;
+                transform: translateX(-50%) scale(0);
+                color: #D4AF37;
+                font-size: 12px;
+                transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+                transform: translateX(-50%) scale(1);
+        }
+
+        /* --- Others Dropdown --- */
+        .nav-dropdown-wrapper {
+                position: relative;
+        }
+
+        .nav-dropdown-content {
+                position: absolute;
+                top: calc(100% + 15px);
+                left: 50%;
+                transform: translateX(-50%) translateY(-10px);
+                background: #fff;
+                min-width: 180px;
+                border-radius: 12px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                z-index: 1100;
+                border: 2px solid #D4AF37;
+                overflow: hidden;
+        }
+
+        .nav-dropdown-wrapper:hover .nav-dropdown-content {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(-50%) translateY(0);
+        }
+
+        .nav-dropdown-content::before {
+                content: '';
+                position: absolute;
+                top: -8px;
+                left: 50%;
+                transform: translateX(-50%);
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                border-bottom: 8px solid #D4AF37;
+        }
+
+        .nav-dropdown-content .dropdown-item {
+                padding: 12px 20px;
+                color: #333;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                transition: background 0.2s;
+                font-family: 'Inter', sans-serif;
+                font-size: 0.9rem;
+                font-weight: 500;
+        }
+
+        .nav-dropdown-content .dropdown-item:hover {
+                background: #fdf5e6;
+                color: #800000;
+        }
+
+        .nav-dropdown-content .dropdown-item i {
+                color: #D4AF37;
+                width: 16px;
+                text-align: center;
+        }
+
+        /* --- Action Buttons --- */
+        .nav-actions {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+        }
+
+        /* --- Priest Profile Dropdown Styles --- */
+        .priest-profile-wrapper {
+                position: relative;
+        }
+
+        .profile-btn {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(212, 175, 55, 0.5);
+                padding: 5px 15px 5px 5px;
+                border-radius: 30px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                color: #fff;
+        }
+
+        .profile-btn:hover {
+                background: rgba(255, 255, 255, 0.2);
+                border-color: #D4AF37;
+        }
+
+        .nav-profile-img {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 2px solid #D4AF37;
+        }
+
+        .nav-profile-placeholder {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                background: #D4AF37;
+                color: #800000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                font-size: 1.2rem;
+                text-transform: uppercase;
+        }
+
+        .nav-profile-name {
+                font-family: 'Cinzel', serif;
+                font-size: 0.9rem;
+                font-weight: 600;
+        }
+
+        .profile-chevron {
+                font-size: 0.8rem;
+                color: #D4AF37;
+        }
+
+        .profile-dropdown {
+                position: absolute;
+                top: calc(100% + 15px);
+                right: 0;
+                background: #fff;
+                border-radius: 12px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                min-width: 200px;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s ease;
+                z-index: 1100;
+                border: 2px solid #D4AF37;
+                overflow: hidden;
+        }
+
+        .profile-dropdown.show {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+        }
+
+        .profile-dropdown::before {
+                content: '';
+                position: absolute;
+                top: -8px;
+                right: 20px;
+                width: 0;
+                height: 0;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                border-bottom: 8px solid #D4AF37;
+        }
+
+        .dropdown-item {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 12px 20px;
+                color: #333;
+                text-decoration: none;
+                transition: background 0.2s;
+                font-size: 0.95rem;
+                font-weight: 500;
+        }
+
+        .dropdown-item:hover {
+                background: #fdf5e6;
+                color: #8b4513;
+        }
+
+        .dropdown-item i {
+                width: 20px;
+                text-align: center;
+                color: #d4af37;
+        }
+
+        .dropdown-divider {
+                height: 1px;
+                background: #eee;
+                margin: 5px 0;
+        }
+
+        .logout-item {
+                color: #d9534f;
+        }
+
+        .logout-item:hover {
+                background: #fff5f5;
+                color: #c9302c;
+        }
+
+        .logout-item i {
+                color: #d9534f;
+        }
+
+        /* Reusable Circle Button Style */
+        .circle-btn {
+                width: 45px;
+                height: 45px;
+                background: #fff;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                color: #800000;
+                /* Default Icon Color */
+                font-size: 1.2rem;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                transition: transform 0.3s, background 0.3s, color 0.3s;
+                border: none;
+                cursor: pointer;
+        }
+
+        .circle-btn:hover {
+                transform: scale(1.1);
+                background: #FFD700;
+                color: #5a0000;
+        }
+
+        /* Specific Icon Colors if needed */
+        .cart-btn {
+                color: #800000;
+        }
+
+        .lang-btn {
+                color: #004d4f;
+                /* Peacock Blueish */
+        }
+
+        /* Language Switch Premium Sliding Styles */
+        .lang-switch-container {
+                display: flex;
+                align-items: center;
+        }
+
+        .lang-switch {
+                position: relative;
+                display: inline-flex;
+                background: rgba(0, 0, 0, 0.2);
+                border: 1.5px solid #D4AF37;
+                border-radius: 50px;
+                padding: 3px;
+                gap: 0.1px;
+                box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+                min-width: 100px;
+        }
+
+        .lang-btn {
+                position: relative;
+                z-index: 2;
+                padding: 6px;
+                font-family: 'Cinzel', serif;
+                font-size: 0.8rem;
+                font-weight: 800;
+                cursor: pointer;
+                color: #F5E8BF;
+                border-radius: 50%;
+                text-align: center;
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: color 0.4s ease;
+                min-width: 45px;
+        }
+
+        .lang-btn.active {
+                color: #840606;
+        }
+
+        .lang-slider {
+                position: absolute;
+                top: 3px;
+                left: 3px;
+                width: calc(50% - 4px);
+                height: calc(100% - 6px);
+                background: linear-gradient(to bottom, #D4AF37, #B8860B);
+                border-radius: 50%;
+                z-index: 1;
+                transition: transform 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Shift slider for Telugu */
+        .tel-active .lang-slider {
+                transform: translateX(100%);
+        }
+
+        @media (max-width: 480px) {
+                .lang-switch {
+                        min-width: 90px;
+                }
+
+                .lang-btn {
+                        padding: 4px 10px;
+                        font-size: 0.75rem;
+                }
+        }
+
+        @media (max-width: 480px) {
+                .lang-btn {
+                        padding: 4px 10px;
+                        font-size: 0.7rem;
+                        min-width: 50px;
+                }
+        }
+
+
+        .btn-book-puja {
+                background: linear-gradient(to right, #FFD700, #FDB913, #FFD700);
+                background-size: 200% auto;
+                color: #800000;
+                padding: 10px 25px;
+                border-radius: 50px;
+                text-decoration: none;
+                font-weight: 800;
+                font-family: 'Cinzel', serif;
+                border: 2px solid rgba(255, 255, 255, 0.8);
+                box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+                position: relative;
+                overflow: hidden;
+                transition: all 0.4s ease;
+                text-transform: uppercase;
+                font-size: 0.9rem;
+        }
+
+        .btn-book-puja:hover {
+                background-position: right center;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+                color: #5a0000;
+        }
+
+        /* Shine effect */
+        .btn-shine {
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 50%;
+                height: 100%;
+                background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0) 100%);
+                transform: skewX(-25deg);
+                animation: shine-anim 3s infinite;
+        }
+
+        @keyframes shine-anim {
+                0% {
+                        left: -100%;
+                }
+
+                20% {
+                        left: 200%;
+                }
+
+                100% {
+                        left: 200%;
+                }
+        }
+
+        /* Glow Pulse Animation */
+        .glow-pulse {
+                animation: pulse-gold 3s infinite;
+        }
+
+        @keyframes pulse-gold {
+                0% {
+                        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+                }
+
+                70% {
+                        box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+                }
+
+                100% {
+                        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+                }
+        }
+
+        /* --- Mobile Responsive --- */
+        .mobile-toggle-btn {
+                display: none;
+                color: #fff;
+                font-size: 1.8rem;
+                cursor: pointer;
+                margin-left: 10px;
+        }
+
+        @media (max-width: 1100px) {
+
+                /* Compact Tablet View */
+                .navbar-container {
+                        gap: 10px;
+                        padding: 0 10px;
+                }
+
+                .brand-name {
+                        font-size: 1.2rem;
+                }
+
+                .nav-menu {
+                        gap: 10px;
+                }
+
+                .btn-book-puja {
+                        padding: 6px 12px;
+                        font-size: 0.75rem;
+                }
+
+                .logo-circle img {
+                        max-height: 50px;
+                }
+        }
+
+        @media (max-width: 900px) {
+                .navbar-container {
+                        justify-content: space-between;
+                }
+
+                /* Show Toggle */
+                .mobile-toggle-btn {
+                        display: block;
+                }
+
+                /* Hide Desktop Nav but keep actions */
+                .nav-links-wrapper {
+                        position: absolute;
+                        top: 80px;
+                        /* Matched to new header height */
+                        left: 0;
+                        width: 100%;
+                        background: #800000;
+                        border-bottom: 2px solid #D4AF37;
+                        padding: 30px;
+                        display: none;
+                        flex-direction: column;
+                        align-items: center;
+                        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                }
+
+                .nav-links-wrapper.active {
+                        display: flex;
+                }
+
+                .right-container {
+                        /* Right container still holds actions + menu(hidden) */
+                        gap: 10px;
+                }
+
+                .nav-menu {
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 10px;
+                        width: 100%;
+                        justify-content: space-evenly;
+                        height: 100%;
+                }
+
+                .nav-link {
+                        font-size: 1.1rem;
+                }
+
+                .nav-link::after {
+                        display: none;
+                }
+
+                .mobile-only {
+                        display: block !important;
+                }
+
+                .desktop-only {
+                        display: none !important;
+                }
+        }
+
+        /* Support for desktop-only and mobile-only outside @media */
+        .mobile-only {
+                display: none;
+        }
+
+        .desktop-only {
+                display: block;
+        }
+
+        /* ===== Cart Sidebar ===== */
+        .cart-sidebar-overlay {
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 1998;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.35s ease, visibility 0.35s ease;
+                backdrop-filter: blur(2px);
+        }
+
+        .cart-sidebar-overlay.open {
+                opacity: 1;
+                visibility: visible;
+        }
+
+        .cart-sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 360px;
+                max-width: 92vw;
+                height: 100vh;
+                background: #fff;
+                z-index: 1999;
+                display: flex;
+                flex-direction: column;
+                box-shadow: 4px 0 30px rgba(128, 0, 0, 0.25);
+                transform: translateX(-100%);
+                transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                border-right: 3px solid #D4AF37;
+        }
+
+        .cart-sidebar.open {
+                transform: translateX(0);
+        }
+
+        .cart-sidebar-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px 22px;
+                background: linear-gradient(135deg, #800000 0%, #a00000 100%);
+                border-bottom: 3px solid #D4AF37;
+                flex-shrink: 0;
+        }
+
+        .cart-sidebar-title {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                color: #FFD700;
+                font-family: 'Cinzel', serif;
+                font-size: 1.1rem;
+                font-weight: 700;
+                letter-spacing: 1px;
+        }
+
+        .cart-sidebar-title i {
+                font-size: 1.2rem;
+        }
+
+        .cart-sidebar-close {
+                background: rgba(255, 255, 255, 0.15);
+                border: 1px solid rgba(212, 175, 55, 0.5);
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                color: #FFD700;
+                font-size: 1rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background 0.25s, transform 0.25s;
+        }
+
+        .cart-sidebar-close:hover {
+                background: rgba(255, 255, 255, 0.3);
+                transform: rotate(90deg);
+        }
+
+        .cart-sidebar-body {
+                flex: 1;
+                overflow-y: auto;
+                padding: 20px;
+                scrollbar-width: thin;
+                scrollbar-color: #D4AF37 #f9f9f9;
+        }
+
+        .cart-sidebar-body::-webkit-scrollbar {
+                width: 5px;
+        }
+
+        .cart-sidebar-body::-webkit-scrollbar-track {
+                background: #f9f9f9;
+        }
+
+        .cart-sidebar-body::-webkit-scrollbar-thumb {
+                background: #D4AF37;
+                border-radius: 4px;
+        }
+
+        .cart-sidebar-empty {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 14px;
+                height: 100%;
+                min-height: 300px;
+                text-align: center;
+                color: #888;
+        }
+
+        .cart-empty-icon {
+                font-size: 3.5rem;
+                color: #D4AF37;
+                opacity: 0.6;
+        }
+
+        .cart-sidebar-empty p {
+                font-size: 1rem;
+                font-family: 'Inter', sans-serif;
+                color: #666;
+        }
+
+        .cart-sidebar-browse-btn {
+                display: inline-block;
+                padding: 10px 22px;
+                background: linear-gradient(135deg, #800000, #a00000);
+                color: #FFD700;
+                border-radius: 50px;
+                font-family: 'Cinzel', serif;
+                font-size: 0.85rem;
+                font-weight: 700;
+                text-decoration: none;
+                letter-spacing: 0.5px;
+                transition: opacity 0.25s, transform 0.25s;
+        }
+
+        .cart-sidebar-browse-btn:hover {
+                opacity: 0.88;
+                transform: translateY(-2px);
+        }
+
+        .cart-sidebar-items {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+        }
+
+        .cart-sidebar-item {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                background: #fffaf0;
+                border: 1px solid #f0e0a0;
+                border-radius: 10px;
+                padding: 12px 14px;
+        }
+
+        .cart-item-icon {
+                width: 42px;
+                height: 42px;
+                background: linear-gradient(135deg, #800000, #a00000);
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #FFD700;
+                font-size: 1.1rem;
+                flex-shrink: 0;
+        }
+
+        .cart-item-info {
+                flex: 1;
+                min-width: 0;
+        }
+
+        .cart-item-name {
+                font-family: 'Cinzel', serif;
+                font-size: 0.88rem;
+                font-weight: 600;
+                color: #4a0000;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+        }
+
+        .cart-item-price {
+                font-size: 0.85rem;
+                color: #800000;
+                font-weight: 700;
+                margin-top: 2px;
+        }
+
+        .cart-item-remove {
+                background: none;
+                border: none;
+                color: #ccc;
+                cursor: pointer;
+                font-size: 0.95rem;
+                padding: 4px;
+                transition: color 0.2s;
+                flex-shrink: 0;
+        }
+
+        .cart-item-remove:hover {
+                color: #d9534f;
+        }
+
+        .cart-sidebar-footer {
+                padding: 18px 22px;
+                border-top: 2px solid #f0e0a0;
+                background: #fffdf5;
+                flex-shrink: 0;
+        }
+
+        .cart-sidebar-total {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-family: 'Cinzel', serif;
+                font-size: 1.05rem;
+                font-weight: 700;
+                color: #4a0000;
+                margin-bottom: 14px;
+        }
+
+        .cart-sidebar-checkout-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                width: 100%;
+                padding: 14px;
+                background: linear-gradient(135deg, #800000, #a00000);
+                color: #FFD700;
+                border-radius: 10px;
+                font-family: 'Cinzel', serif;
+                font-size: 0.95rem;
+                font-weight: 700;
+                text-decoration: none;
+                letter-spacing: 0.5px;
+                transition: opacity 0.25s, transform 0.25s;
+                box-shadow: 0 4px 15px rgba(128, 0, 0, 0.25);
+        }
+
+        .cart-sidebar-checkout-btn:hover {
+                opacity: 0.9;
+                transform: translateY(-2px);
+                color: #fff;
+        }
+
+        @media (max-width: 480px) {
+                .cart-sidebar {
+                        width: 100vw;
+                }
+        }
+
+        /* ===== /Cart Sidebar ===== */
+        /* --- Notifications Bell & Dropdown --- */
+        .notifications-wrapper {
+                position: relative;
+        }
+
+        .notification-badge {
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                background: #ff4757;
+                color: white;
+                font-size: 0.7rem;
+                padding: 2px 6px;
+                border-radius: 10px;
+                font-weight: bold;
+                border: 2px solid #840606;
+                animation: pulse-red 2s infinite;
+        }
+
+        @keyframes pulse-red {
+                0% {
+                        box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.4);
+                }
+
+                70% {
+                        box-shadow: 0 0 0 10px rgba(255, 71, 87, 0);
+                }
+
+                100% {
+                        box-shadow: 0 0 0 0 rgba(255, 71, 87, 0);
+                }
+        }
+
+        .notifications-dropdown {
+                position: absolute;
+                top: calc(100% + 15px);
+                right: 0;
+                background: #fff;
+                min-width: 320px;
+                border-radius: 12px;
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+                border: 2px solid #D4AF37;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-15px);
+                transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+                z-index: 1200;
+                overflow: hidden;
+        }
+
+        .notifications-dropdown.show {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+        }
+
+        .notifications-header {
+                padding: 15px 20px;
+                background: #840606;
+                color: #fff;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-family: 'Cinzel', serif;
+                font-size: 0.9rem;
+        }
+
+        .mark-all-btn {
+                background: rgba(255, 255, 255, 0.2);
+                border: none;
+                color: #fff;
+                font-size: 0.75rem;
+                padding: 4px 10px;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background 0.3s;
+        }
+
+        .mark-all-btn:hover {
+                background: rgba(255, 255, 255, 0.3);
+        }
+
+        .notifications-list {
+                max-height: 400px;
+                overflow-y: auto;
+        }
+
+        .notification-item {
+                padding: 15px 20px;
+                display: flex;
+                gap: 15px;
+                border-bottom: 1px solid #f0f0f0;
+                transition: background 0.3s;
+                cursor: pointer;
+                text-decoration: none;
+        }
+
+        .notification-item.unread {
+                background: #fff9eb;
+        }
+
+        .notification-item:hover {
+                background: #fdf5e6;
+        }
+
+        .notification-icon {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                font-size: 1.1rem;
+        }
+
+        .notification-icon.booking_new {
+                background: #e3f2fd;
+                color: #1e88e5;
+        }
+
+        .notification-icon.booking_confirmed {
+                background: #e8f5e9;
+                color: #43a047;
+        }
+
+        .notification-icon.booking_cancelled {
+                background: #ffebee;
+                color: #e53935;
+        }
+
+        .notification-icon.enquiry_new {
+                background: #fff3e0;
+                color: #fb8c00;
+        }
+
+        .notification-icon.system_alert {
+                background: #f3e5f5;
+                color: #8e24aa;
+        }
+
+        .notification-title {
+                font-family: 'Cinzel', serif;
+                font-size: 0.85rem;
+                font-weight: bold;
+                color: #840606;
+                margin-bottom: 3px;
+        }
+
+        .notification-message {
+                font-family: 'Inter', sans-serif !important;
+                font-size: 0.8rem;
+                color: #555;
+                line-height: 1.4;
+        }
+
+        .notification-time {
+                font-size: 0.7rem;
+                color: #999;
+                margin-top: 5px;
+        }
+
+        .no-notifications {
+                padding: 40px 20px;
+                text-align: center;
+                color: #999;
+        }
+
+        .no-notifications i {
+                font-size: 2rem;
+                margin-bottom: 10px;
+                opacity: 0.3;
+        }
+</style>
+
+
+
+<script>
+        // Language Translator & Profile Dropdown Functionality
+        document.addEventListener('DOMContentLoaded', function () {
+                // --- Profile Dropdown Logic (Combined for Priest and Devotee) ---
+                const profileBtn = document.getElementById('profileDropdownBtn') || document.getElementById('devoteeDropdownBtn');
+                const profileDropdown = document.getElementById('profileDropdown') || document.getElementById('devoteeDropdown');
+                const langToggleBtn = document.getElementById('langToggleBtn');
+                const langDropdown = document.getElementById('langDropdown');
+                const langOptions = document.querySelectorAll('.lang-option');
+
+                if (profileBtn && profileDropdown) {
+                        profileBtn.addEventListener('click', function (e) {
+                                e.stopPropagation();
+                                profileDropdown.classList.toggle('show');
+                                // Close language dropdown if open
+                                if (langDropdown) langDropdown.classList.remove('show');
+                        });
+
+                        document.addEventListener('click', function (e) {
+                                if (!e.target.closest('.auth-profile-wrapper')) {
+                                        profileDropdown.classList.remove('show');
+                                }
+                        });
+                }
+
+                // --- Language Switch Logic ---
+                window.setLang = function (lang) {
+                        const engBtn = document.getElementById('eng-btn');
+                        const telBtn = document.getElementById('tel-btn');
+                        const langContainer = document.querySelector('.lang-switch');
+
+                        if (!engBtn || !telBtn || !langContainer) return;
+
+                        // UI Update
+                        engBtn.classList.remove('active');
+                        telBtn.classList.remove('active');
+                        langContainer.classList.remove('tel-active');
+
+                        if (lang === 'en') {
+                                engBtn.classList.add('active');
+                        } else {
+                                telBtn.classList.add('active');
+                                langContainer.classList.add('tel-active');
+                        }
+
+                        // Persistence
+                        localStorage.setItem('selectedLanguage', lang);
+                        localStorage.setItem('preferredLang', lang);
+
+                        // Actual Language Change Logic
+                        if (typeof changeLanguage === 'function') {
+                                changeLanguage(lang);
+                        } else {
+                                console.log('Google Translate not ready. Reloading for lang:', lang);
+                                location.reload();
+                        }
+                };
+
+                // Initialize saved language state
+                const savedLang = localStorage.getItem('selectedLanguage') || localStorage.getItem('preferredLang') || 'en';
+                const engBtn = document.getElementById('eng-btn');
+                const telBtn = document.getElementById('tel-btn');
+                const langContainer = document.querySelector('.lang-switch');
+
+                if (engBtn && telBtn && langContainer) {
+                        if (savedLang === 'te') {
+                                engBtn.classList.remove('active');
+                                telBtn.classList.add('active');
+                                langContainer.classList.add('tel-active');
+                        } else {
+                                engBtn.classList.add('active');
+                                telBtn.classList.remove('active');
+                                langContainer.classList.remove('tel-active');
+                        }
+                }
+        });
+
+        // ===== Cart Sidebar Logic =====
+        const cartToggleBtn = document.getElementById('cartToggleBtn');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const cartSidebarOverlay = document.getElementById('cartSidebarOverlay');
+        const cartSidebarClose = document.getElementById('cartSidebarClose');
+        const cartSidebarItems = document.getElementById('cartSidebarItems');
+        const cartSidebarEmpty = document.getElementById('cartSidebarEmpty');
+        const cartSidebarFooter = document.getElementById('cartSidebarFooter');
+        const cartSidebarTotal = document.getElementById('cartSidebarTotal');
+
+        function openCartSidebar() {
+                cartSidebar.classList.add('open');
+                cartSidebarOverlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                renderCartSidebar();
+        }
+
+        function closeCartSidebar() {
+                cartSidebar.classList.remove('open');
+                cartSidebarOverlay.classList.remove('open');
+                document.body.style.overflow = '';
+        }
+
+        function renderCartSidebar() {
+                if (!cartSidebarItems) return;
+                let cart = [];
+                try { cart = JSON.parse(localStorage.getItem('cart') || '[]'); } catch (e) { cart = []; }
+
+                cartSidebarItems.innerHTML = '';
+
+                if (!cart.length) {
+                        cartSidebarEmpty.style.display = 'flex';
+                        cartSidebarItems.style.display = 'none';
+                        cartSidebarFooter.style.display = 'none';
+                        return;
+                }
+
+                cartSidebarEmpty.style.display = 'none';
+                cartSidebarItems.style.display = 'flex';
+                cartSidebarFooter.style.display = 'block';
+
+                let total = 0;
+                cart.forEach(function (item, idx) {
+                        const price = parseFloat(item.price) || 0;
+                        total += price;
+                        const li = document.createElement('li');
+                        li.className = 'cart-sidebar-item';
+                        li.innerHTML = `
+                                <div class="cart-item-icon"><i class="fas fa-om"></i></div>
+                                <div class="cart-item-info">
+                                        <div class="cart-item-name">${item.name || 'Puja Service'}</div>
+                                        <div class="cart-item-price">₹${price.toFixed(2)}</div>
+                                </div>
+                                <button class="cart-item-remove" data-idx="${idx}" title="Remove"><i class="fas fa-trash-alt"></i></button>
+                        `;
+                        cartSidebarItems.appendChild(li);
+                });
+
+                cartSidebarTotal.textContent = '₹' + total.toFixed(2);
+
+                cartSidebarItems.querySelectorAll('.cart-item-remove').forEach(function (btn) {
+                        btn.addEventListener('click', function () {
+                                const idx = parseInt(this.getAttribute('data-idx'));
+                                cart.splice(idx, 1);
+                                localStorage.setItem('cart', JSON.stringify(cart));
+                                renderCartSidebar();
+                        });
+                });
+        }
+
+        if (cartToggleBtn) {
+                cartToggleBtn.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        openCartSidebar();
+                });
+        }
+
+        if (cartSidebarClose) {
+                cartSidebarClose.addEventListener('click', closeCartSidebar);
+        }
+
+        if (cartSidebarOverlay) {
+                cartSidebarOverlay.addEventListener('click', closeCartSidebar);
+        }
+
+        document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeCartSidebar();
+        });
+        // ===== /Cart Sidebar Logic =====
+</script>

@@ -1,0 +1,4 @@
+Priest: Nani
+No avail found
+API Response: 200
+{"morning_count": 0, "afternoon_count": 0, "evening_count": 0, "custom_slots": {}, "has_any": false, "available_priests": []}

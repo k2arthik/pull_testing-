@@ -1,0 +1,116 @@
+{% load static %}
+<section class="auth-section" style=" background: linear-gradient(rgba(255, 252, 245, 0.92), rgba(255, 252, 245, 0.92)), url('/static/images/bgdesign2.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h2>Join Us</h2>
+            <p>Create your spiritual journey account</p>
+        </div>
+
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            <ul style="margin-bottom: 0; padding-left: 20px;">
+                {% for field in form %}
+                {% for error in field.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <form class="auth-form" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="text" id="mobile" name="mobile" placeholder="Enter your mobile number" maxlength="10"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address (Hyderabad only)</label>
+                <textarea id="address" name="address" placeholder="Enter your full address in Hyderabad" rows="3"
+                    required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Create Password</label>
+                <input type="password" id="password" name="password" placeholder="Create a password"
+                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                    title="Password must be at least 8 characters long and include 1 uppercase, 1 lowercase, 1 number, and 1 special character"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password"
+                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                    title="Password must be at least 8 characters long and include 1 uppercase, 1 lowercase, 1 number, and 1 special character"
+                    required>
+
+
+            </div>
+
+            <button type="submit" class="btn-auth">Sign Up</button>
+        </form>
+
+        <div class="auth-footer">
+            Already have an account? <a href="{% url 'login' %}">Sign In</a>
+        </div>
+    </div>
+</section>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        // Phone number digits only
+        const phoneInput = document.getElementById("mobile"); // make sure id="mobile" in HTML
+        if (phoneInput) {
+            phoneInput.addEventListener("input", function () {
+                this.value = this.value.replace(/\D/g, '');
+            });
+        }
+
+        // Password match validation
+        const password = document.getElementById("password");
+        const confirmPassword = document.getElementById("confirm_password");
+
+        function validatePasswordMatch() {
+            if (confirmPassword.value && password.value !== confirmPassword.value) {
+                confirmPassword.setCustomValidity("Passwords do not match");
+            } else {
+                confirmPassword.setCustomValidity("");
+            }
+        }
+
+        if (password && confirmPassword) {
+            password.addEventListener("input", validatePasswordMatch);
+            confirmPassword.addEventListener("input", validatePasswordMatch);
+        }
+
+    });
+</script>

@@ -1,0 +1,454 @@
+<!-- ===================================== -->
+<!-- TEMPLE FOUNDATION (FOOTER) -->
+<!-- ===================================== -->
+{% load static %}
+<footer class="temple-footer">
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <!-- Column 1: Brand & About -->
+            <div class="footer-col brand-col">
+                <div class="footer-logo">
+                    <div class="logo-circle glow-pulse">
+                        <img src="{% static 'images/WhatsApp Image 2026-03-13 at 2.44.05 PM.jpeg' %}">
+                    </div>
+                </div>
+                <p class="about-text">
+                    Bridging the physical and spiritual worlds. We bring authentic Vedic rituals, performed by certified
+                    Pandits, directly to your home.
+                </p>
+                <div class="social-icons">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links (Pillars) -->
+            <div class="footer-col links-col">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="{% url 'services' %}"><i class="fas fa-caret-right"></i> Book a Puja</a></li>
+                    <li><a href="{% url 'blogs' %}"><i class="fas fa-caret-right"></i> Blogs</a></li>
+                    <li><a href="{% url 'services' %}"><i class="fas fa-caret-right"></i> Puja Services</a></li>
+
+                </ul>
+            </div>
+            <!-- Column 3: Quick Links (Pillars) -->
+            <div class="footer-col links-col">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="{% url 'about' %}"><i class="fas fa-caret-right"></i> Our Story</a></li>
+                    <li><a href="{% url 'contact' %}"><i class="fas fa-caret-right"></i> Contact Us</a></li>
+                    <li><a href="{% url 'photos' %}"><i class="fas fa-caret-right"></i> Photos</a></li>
+                    <li><a href="{% url 'videos' %}"><i class="fas fa-caret-right"></i> Videos</a></li>
+                </ul>
+            </div>
+
+
+
+            <!-- Column 4: Newsletter (Dharmic Updates) -->
+            <div class="footer-col newsletter-col">
+                <h3 class="footer-heading">Dharmic Updates</h3>
+                <p class="newsletter-text">Join our spiritual community for daily panchang and ritual updates.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    {% csrf_token %}
+                    <div class="input-wrapper">
+                        <input type="email" name="email" id="newsletterEmail" placeholder="Your Email Address" required>
+                        <button type="submit" id="newsletterBtn"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </form>
+                <div id="newsletterStatus" style="margin-top: 10px; font-size: 0.85rem; display: none;"></div>
+                <div class="secure-badge">
+                    <i class="fas fa-shield-alt"></i> 100% Secure & Private
+                </div>
+            </div>
+
+            <script>
+                document.getElementById('newsletterForm')?.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const emailInput = document.getElementById('newsletterEmail');
+                    const statusDiv = document.getElementById('newsletterStatus');
+                    const btn = document.getElementById('newsletterBtn');
+                    const email = emailInput.value;
+
+                    if (!email) return;
+
+                    // Reset status and disable button
+                    statusDiv.style.display = 'block';
+                    statusDiv.style.color = '#e0d0b0';
+                    statusDiv.textContent = 'Subscribing...';
+                    btn.disabled = true;
+
+                    const formData = new FormData();
+                    formData.append('email', email);
+                    formData.append('csrfmiddlewaretoken', document.querySelector('[name=csrfmiddlewaretoken]').value);
+
+                    fetch('{% url "subscribe_newsletter" %}', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success' || data.status === 'exists') {
+                            statusDiv.style.color = '#2ecc71';
+                            statusDiv.textContent = data.message || 'Successfully subscribed!';
+                            emailInput.value = '';
+                        } else {
+                            statusDiv.style.color = '#ff6b35';
+                            statusDiv.textContent = data.message || 'An error occurred. Please try again.';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        statusDiv.style.color = '#ff6b35';
+                        statusDiv.textContent = 'Connection error. Please try again.';
+                    })
+                    .finally(() => {
+                        btn.disabled = false;
+                    });
+                });
+            </script>
+
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="bottom-divider"></div>
+            <div class="copyright-row">
+                <p>&copy; 2026 KaryaSiddhi. All Rights Reserved.</p>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <span class="separator">•</span>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+            <p class="mantra-footer">|| ॐ शांति शांति शांति ||</p>
+        </div>
+
+    </div>
+</footer>
+
+<style>
+    .temple-footer {
+        position: relative;
+        color: #e0d0b0;
+        /* Sandalwood text */
+        padding: 40px 0 20px;
+        overflow: hidden;
+        border-top: 5px solid #D4AF37;
+    }
+
+    .temple-footer::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url('/static/images/footer2.jpeg') top center / cover no-repeat;
+        z-index: -1;
+    }
+
+    .temple-footer::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(132, 6, 6, 0.95), rgba(132, 6, 15, 0.9));
+        z-index: 0;
+        transition: background 0.8s ease;
+    }
+
+    .temple-footer:hover::before {
+        background: linear-gradient(to bottom, rgba(132, 6, 6, 0.95), rgba(132, 6, 6, 0.9));
+    }
+
+    .temple-footer .container {
+        position: relative;
+        z-index: 2;
+    }
+
+
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 20px;
+    }
+
+    .footer-col {
+        transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .footer-col:hover {
+        transform: translateY(-5px);
+    }
+
+    /* Column 1: Brand */
+    .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .om-icon {
+        font-size: 2.5rem;
+        color: #D4AF37;
+        text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    }
+
+    .brand-text {
+        font-family: 'Cinzel', serif;
+        font-size: 1.8rem;
+        color: #fff;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .brand-highlight {
+        color: #D4AF37;
+    }
+
+    .about-text {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+        color: #aaa;
+        margin-bottom: 25px;
+        font-size: 0.95rem;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 15px;
+    }
+
+    .social-link {
+        width: 40px;
+        height: 40px;
+        border: 1px solid #D32F2F;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: #D4AF37;
+        transition: all 0.3s;
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .social-link:hover {
+        background: #D4AF37;
+        color: #1a0505;
+        transform: translateY(-3px);
+    }
+
+    /* Column Headers */
+    .footer-heading {
+        font-family: 'Rozha One', serif;
+        color: #F5E8BF;
+        /* Light Gold */
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #D32F2F;
+        padding-bottom: 10px;
+        display: inline-block;
+    }
+
+    /* Links */
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links a {
+        color: #e0d0b0;
+        text-decoration: none;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .footer-links a i {
+        color: #D32F2F;
+        font-size: 0.8rem;
+        transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+        color: #D4AF37;
+        padding-left: 5px;
+    }
+
+    .footer-links a:hover i {
+        color: #D4AF37;
+    }
+
+    /* Seva Items */
+    .seva-item {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.03);
+        padding: 10px;
+        border-radius: 8px;
+        transition: background 0.3s;
+    }
+
+    .seva-item:hover {
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .seva-date {
+        background: #B71C1C;
+        border: 1px solid #D4AF37;
+        padding: 5px 10px;
+        text-align: center;
+        border-radius: 5px;
+        min-width: 60px;
+    }
+
+    .seva-date .day {
+        display: block;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .seva-date .month {
+        display: block;
+        font-size: 0.7rem;
+        color: #D4AF37;
+        text-transform: uppercase;
+    }
+
+    .seva-details h4 {
+        margin: 0 0 5px;
+        font-family: 'Cinzel', serif;
+        color: #fff;
+        font-size: 1rem;
+    }
+
+    .seva-details p {
+        margin: 0;
+        font-size: 0.85rem;
+        color: #aaa;
+    }
+
+    /* Newsletter */
+    .newsletter-text {
+        color: #aaa;
+        margin-bottom: 20px;
+        font-size: 0.95rem;
+    }
+
+    .newsletter-form .input-wrapper {
+        display: flex;
+        background: rgba(255, 255, 255, 0.1);
+        /* Glass effect */
+        border: 1px solid #D32F2F;
+        border-radius: 50px;
+        padding: 5px;
+    }
+
+    .newsletter-form input {
+        background: transparent;
+        border: none;
+        padding: 10px 15px;
+        color: #fff;
+        width: 100%;
+        outline: none;
+    }
+
+    .newsletter-form button {
+        background: #D4AF37;
+        color: #1a0505;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    .newsletter-form button:hover {
+        transform: scale(1.1);
+    }
+
+    .secure-badge {
+        margin-top: 15px;
+        font-size: 0.8rem;
+        color: #666;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .secure-badge i {
+        color: #2ecc71;
+    }
+
+    /* Bottom Bar */
+    .footer-bottom {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .bottom-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #D32F2F, transparent);
+        margin-bottom: 20px;
+    }
+
+    .copyright-row {
+        display: flex;
+        justify-content: space-between;
+        /* Layout: left copyright, right links */
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        font-size: 0.9rem;
+        color: #888;
+        max-width: 800px;
+        margin: 0 auto 15px;
+    }
+
+    .legal-links a {
+        color: #aaa;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .legal-links a:hover {
+        color: #D4AF37;
+    }
+
+    .separator {
+        margin: 0 10px;
+        color: #555;
+    }
+
+    .mantra-footer {
+        font-family: 'Noto Sans Devanagari', serif;
+        color: #D32F2F;
+        /* Very subtle text */
+        font-size: 1.5rem;
+        margin-top: 10px;
+        letter-spacing: 2px;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+        /* Engraved look */
+    }
+
+    @media (max-width: 768px) {
+        .copyright-row {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+</style>

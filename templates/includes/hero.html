@@ -1,0 +1,16 @@
+{% comment %}
+===========================================
+HERO WRAPPER - Django Template Logic Only
+Developer Zone - Do Not Edit Content Here
+===========================================
+This file loads stylesheets and includes the
+admin-editable hero content from cms/home/
+{% endcomment %}
+
+{% load static %}
+
+{% comment %}
+Admin editable content is in:
+templates/cms/home/hero_content.html
+{% endcomment %}
+{% include 'cms/home/hero_content.html' %}

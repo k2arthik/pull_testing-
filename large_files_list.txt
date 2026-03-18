@@ -1,0 +1,87 @@
+﻿
+
+FullName : C:\Users\prash\D
+           ownloads\xj 
+           (3)\xj (2)\xj\ka
+           rya_siddhi-updat
+           ed\static\videos
+           \om-[hindugodson
+           gs.in].mp3.mpeg
+Length   : 22332681
+
+FullName : C:\Users\prash\D
+           ownloads\xj 
+           (3)\xj (2)\xj\ka
+           rya_siddhi-updat
+           ed\static\videos
+           \karyasiddhi-log
+           o-animation.mp4
+Length   : 18899795
+
+FullName : C:\Users\prash\D
+           ownloads\xj 
+           (3)\xj (2)\xj\ka
+           rya_siddhi-updat
+           ed\media\photos\
+           karyasiddhi_logo
+           .png
+Length   : 11526413
+
+FullName : C:\Users\prash\D
+           ownloads\xj 
+           (3)\xj (2)\xj\ka
+           rya_siddhi-updat
+           ed\static\videos
+           \video.mp4
+Length   : 7631027
+
+FullName : C:\Users\prash\D
+           ownloads\xj 
+           (3)\xj (2)\xj\ka
+           rya_siddhi-updat
+           ed\static\videos
+           \snipping.mp4
+Length   : 6959532
+
+FullName : C:\Users\prash\D
+           ownloads\xj 
+           (3)\xj (2)\xj\ka
+           rya_siddhi-updat
+           ed\static\videos
+           \video1.mp4
+Length   : 3404798
+
+FullName : C:\Users\prash\D
+           ownloads\xj 
+           (3)\xj (2)\xj\ka
+           rya_siddhi-updat
+           ed\static\images
+           \sec1.png
+Length   : 2902565
+
+FullName : C:\Users\prash\D
+           ownloads\xj 
+           (3)\xj (2)\xj\ka
+           rya_siddhi-updat
+           ed\static\images
+           \rangoli.png
+Length   : 2839505
+
+FullName : C:\Users\prash\D
+           ownloads\xj 
+           (3)\xj (2)\xj\ka
+           rya_siddhi-updat
+           ed\static\images
+           \blogtemple.png
+Length   : 2721654
+
+FullName : C:\Users\prash\D
+           ownloads\xj 
+           (3)\xj (2)\xj\ka
+           rya_siddhi-updat
+           ed\media\blogs\b
+           logtemple.png
+Length   : 2721654
+
+
+

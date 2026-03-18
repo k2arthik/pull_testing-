@@ -1,0 +1,247 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load auth_extras %}
+
+{% block extra_css %}
+<style>
+    .admin-reassign-container {
+        background: #fdfaf3;
+        min-height: 90vh;
+        padding: 60px 0;
+    }
+
+    .reassign-card {
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 15px 45px rgba(139, 69, 19, 0.1);
+        overflow: hidden;
+    }
+
+    .reassign-header {
+        background: linear-gradient(135deg, #8b4513 0%, #d4af37 100%);
+        color: white;
+        padding: 40px;
+        text-align: center;
+    }
+
+    .reassign-header h2 {
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        margin-bottom: 5px;
+        letter-spacing: 1px;
+    }
+
+    .priest-card {
+        border: 2px solid #eee;
+        border-radius: 15px;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        background: white;
+        position: relative;
+    }
+
+    .priest-card:hover {
+        border-color: #d4af37;
+        transform: translateY(-8px);
+        box-shadow: 0 12px 25px rgba(139, 69, 19, 0.12);
+    }
+
+    .priest-avatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 3px solid #f9f4e6;
+        background: #8b4513;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        font-weight: bold;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .priest-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .btn-assign {
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 12px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        transition: all 0.2s;
+    }
+
+    .btn-assign:hover {
+        background: #218838;
+        transform: scale(1.02);
+        box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+    }
+
+    .booking-summary-box {
+        background: #fdfaf3;
+        border: 1px solid #e9dfc4;
+        border-radius: 15px;
+        padding: 20px;
+    }
+
+    .section-title {
+        font-family: 'Cinzel', serif;
+        color: #8b4513;
+        font-size: 1.4rem;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+    }
+
+    .section-title::after {
+        content: '';
+        flex: 1;
+        height: 2px;
+        background: linear-gradient(to right, #d4af37, transparent);
+        margin-left: 15px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="admin-reassign-container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="reassign-card">
+                    <div class="reassign-header">
+                        <h2>Re-assign {{ role_label }}</h2>
+                        <div class="mt-2 opacity-75">Booking Request #{{ booking.id }}</div>
+                    </div>
+
+                    <div class="card-body p-4 p-md-5 bg-white">
+                        <!-- Quick Details -->
+                        <div class="row mb-5">
+                            <div class="col-md-7">
+                                <div class="booking-summary-box h-100">
+                                    <h5 class="mb-3" style="color: #8b4513; font-weight: 700;">Service Details</h5>
+                                    <div class="mb-2"><i class="fas fa-om mr-2 text-warning"></i>
+                                        <strong>Ritual:</strong> {{ booking.service|get_service_name }}
+                                    </div>
+                                    <div class="mb-2"><i class="far fa-calendar-alt mr-2 text-warning"></i>
+                                        <strong>Date:</strong> {{ booking.booking_date }}
+                                    </div>
+                                    <div class="mb-2"><i class="far fa-clock mr-2 text-warning"></i>
+                                        <strong>Slot:</strong> {{ booking.get_slot_type_display }} ({{
+                                        booking.start_time|time:"f a" }} - {{ booking.end_time|time:"f a" }})
+
+
+                                    </div>
+                                    <div class="mb-0"><i class="fas fa-user-circle mr-2 text-warning"></i>
+                                        <strong>Devotee:</strong> {{ booking.devotee_name }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="alert h-100 d-flex flex-column justify-content-center m-0"
+                                    style="background: #fff5f5; border: 1px dashed #feb2b2; border-radius: 15px;">
+                                    <div class="text-danger small font-weight-bold mb-2 uppercase">Reason for
+                                        Reassignment</div>
+                                    <div class="d-flex align-items-start">
+                                        <i class="fas fa-user-slash fa-2x text-danger opacity-25 mr-3"></i>
+                                        <div>
+                                            {% if target_role == 'lead' %}
+                                            <p class="mb-0 text-dark"><strong>{{ booking.priest.fullname }}</strong>
+                                                (Lead) cancelled.</p>
+                                            {% elif target_role == 'extra' %}
+                                            <p class="mb-0 text-dark"><strong>{{ old_priest_obj.fullname|default:"A
+                                                    Purohit" }}</strong>
+                                                (Additional) cancelled.</p>
+                                            {% endif %}
+                                            <p class="small text-muted mb-0">Replacement required for this slot.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Candidate List -->
+                        <div class="section-title">
+                            {% if target_role == 'lead' %}
+                            Eligible Lead Purohits
+                            {% else %}
+                            Eligible Replacement Purohits
+                            {% endif %}
+                        </div>
+
+                        {% if priests %}
+                        <div class="row">
+                            {% for priest in priests %}
+                            <div class="col-md-6 mb-4">
+                                <div class="priest-card h-100 p-4">
+                                    <div class="d-flex align-items-center mb-4">
+                                        <div class="priest-avatar mr-3">
+                                            {% if priest.photo %}
+                                            <img src="{{ priest.photo.url }}" alt="{{ priest.fullname }}">
+                                            {% else %}
+                                            {{ priest.fullname|slice:":1" }}
+                                            {% endif %}
+                                        </div>
+                                        <div style="flex: 1;">
+                                            <h5 class="mb-1 font-weight-bold" style="color: #5d4037;">{{ priest.fullname
+                                                }}</h5>
+                                            <div class="badge badge-warning text-white"
+                                                style="font-size: 0.7rem; background: #d4af37;">
+                                                <i class="fas fa-medal mr-1"></i>{{ priest.experience }} Years Exp
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 small text-muted">
+                                        <div class="mb-2"><i class="fas fa-map-marker-alt mr-2 text-danger"
+                                                style="width: 15px;"></i> {{ priest.location }}</div>
+                                        <div class="mb-0"><i class="fas fa-language mr-2 text-primary"
+                                                style="width: 15px;"></i> {{ priest.language|join:", " }}</div>
+                                    </div>
+
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="priest_id" value="{{ priest.id }}">
+                                        <input type="hidden" name="role" value="{{ target_role }}">
+                                        <button type="submit" class="btn btn-block btn-assign"
+                                            onclick="return confirm('Confirm reassigning this booking to {{ priest.fullname }}?')">
+                                            <i class="fas fa-user-plus mr-2"></i> Confirm Assignment
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        <div class="text-center py-5"
+                            style="background: #fafafa; border-radius: 20px; border: 2px dashed #eee;">
+                            <img src="{% static 'images/empty-priest.svg' %}" alt="No Priests"
+                                style="width: 120px; opacity: 0.3;" class="mb-4">
+                            <h4 class="text-muted">No Available Purohits Found</h4>
+                            <p class="text-muted px-4">There are currently no other priests available for this specific
+                                date and time slot. Consider checking other dates or manually coordinating with a
+                                priest.</p>
+                        </div>
+                        {% endif %}
+
+                        <div class="mt-5 text-center">
+                            <hr class="mb-4 opacity-50">
+                            <a href="{% url 'admin_bookings_manage' %}" class="btn btn-outline-secondary px-4 py-2"
+                                style="border-radius: 30px;">
+                                <i class="fas fa-arrow-left mr-2"></i> Return to Management
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

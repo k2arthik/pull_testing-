@@ -1,0 +1,297 @@
+{% load static %}
+<!-- Popular Pooja Services Section -->
+<section class="pooja-services" id="pooja-services"
+    style="background-image: url('https://img.freepik.com/premium-photo/hindu-background-copy-space_953680-22422.jpg?w=2000'); overflow-x: hidden;">
+    <div class="container">
+        <div class="section-header">
+            <h2 style="color: #E24028;">Our Pooja Services</h2>
+            <p class="section-subtitle" style="color:#E24028">Book Divine Blessings for You and Your Family</p>
+        </div>
+
+        <div class="services-slider swiper">
+            <div class="swiper-wrapper">
+                <!-- Service Card 1 -->
+                <div class="swiper-slide">
+                    <div class="pooja-card" style="background-color: #f5b700;">
+                        <div class="pooja-image-container"style="background-color: #f5b700;">
+                            <a href="{% url 'service_detail' service_slug='pradosha-kala-abhishekam' %}">
+                                <img src="https://www.india.com/wp-content/uploads/2024/10/Patna-The-Heart-of-Chhath-Puja-Celebrations-1.jpg"
+                                    alt="Pradosha Kala Abhishekam" class="pooja-image">
+                            </a>
+                            <span class="badge-popular"><i class="fas fa-star"></i> Popular</span>
+                            <div class="badge-duration">
+                                <i class="far fa-clock"></i>
+                                <div><strong>120 min</strong><span>Duration</span></div>
+                            </div>
+                            <div class="badge-price">
+                                <i class="fas fa-rupee-sign"></i>
+                                <div><strong>₹3,000 - ₹10,000</strong><span>Price</span></div>
+                            </div>
+                        </div>
+                        <div class="pooja-content" style="background-color: #f5b700;">
+                            <a href="{% url 'service_detail' service_slug='pradosha-kala-abhishekam' %}"
+                                style="text-decoration: none; color: inherit;">
+                                <h3>Pradosha Kala Abhishekam <i class="fas fa-star text-warning"></i></h3>
+                            </a>
+                            <div class="card-actions" style="justify-content: center;">
+                                <a href="{% url 'service_detail' service_slug='pradosha-kala-abhishekam' %}"
+                                    class="btn btn-view" style="width: 100%; max-width: 200px;">
+                                    Book Pooja <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="swiper-slide">
+                    <div class="pooja-card">
+                        <div class="pooja-image-container">
+                            <a href="{% url 'service_detail' service_slug='ganesh-homa' %}">
+                                <img src="https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180"
+                                    alt="Ganesh Homa" class="pooja-image">
+                            </a>
+                            <div class="badge-duration">
+                                <i class="far fa-clock"></i>
+                                <div><strong>90 min</strong><span>Duration</span></div>
+                            </div>
+                            <div class="badge-price">
+                                <i class="fas fa-rupee-sign"></i>
+                                <div><strong>₹5,000 - ₹15,000</strong><span>Price</span></div>
+                            </div>
+                        </div>
+                        <div class="pooja-content">
+                            <a href="{% url 'service_detail' service_slug='ganesh-homa' %}"
+                                style="text-decoration: none; color: inherit;">
+                                <h3>Ganesh Homa <i class="fas fa-star text-warning"></i></h3>
+                            </a>
+                            <div class="card-actions" style="justify-content: center;">
+                                <a href="{% url 'service_detail' service_slug='ganesh-homa' %}" class="btn btn-view"
+                                    style="width: 100%; max-width: 200px;">
+                                    Book Pooja <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="swiper-slide">
+                    <div class="pooja-card">
+                        <div class="pooja-image-container">
+                            <a href="{% url 'service_detail' service_slug='navagraha-shanti-pooja' %}">
+                                <img src="https://tse2.mm.bing.net/th/id/OIP.fvSE50CuPqMmC0i8wvP4JAHaDp?pid=Api&P=0&h=180"
+                                    alt="Navagraha Shanti" class="pooja-image">
+                            </a>
+                            <div class="badge-duration">
+                                <i class="far fa-clock"></i>
+                                <div><strong>180 min</strong><span>Duration</span></div>
+                            </div>
+                            <div class="badge-price">
+                                <i class="fas fa-rupee-sign"></i>
+                                <div><strong>₹7,000 - ₹21,000</strong><span>Price</span></div>
+                            </div>
+                        </div>
+                        <div class="pooja-content">
+                            <a href="{% url 'service_detail' service_slug='navagraha-shanti-pooja' %}"
+                                style="text-decoration: none; color: inherit;">
+                                <h3>Navagraha Shanti Pooja <i class="fas fa-star text-warning"></i></h3>
+                            </a>
+                            <div class="card-actions" style="justify-content: center;">
+                                <a href="{% url 'service_detail' service_slug='navagraha-shanti-pooja' %}"
+                                    class="btn btn-view" style="width: 100%; max-width: 200px;">
+                                    Book Pooja <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="swiper-slide">
+                    <div class="pooja-card">
+                        <div class="pooja-image-container">
+                            <a href="{% url 'service_detail' service_slug='satyanarayan-pooja' %}">
+                                <img src="https://tse1.mm.bing.net/th/id/OIP.tYxNXsdm22tbR5Usv4UAvgHaFj?pid=Api&P=0&h=180"
+                                    alt="Satyanarayan Pooja" class="pooja-image">
+                            </a>
+                            <span class="badge-popular"><i class="fas fa-star"></i> Popular</span>
+                            <div class="badge-duration">
+                                <i class="far fa-clock"></i>
+                                <div><strong>150 min</strong><span>Duration</span></div>
+                            </div>
+                            <div class="badge-price">
+                                <i class="fas fa-rupee-sign"></i>
+                                <div><strong>₹4,000 - ₹12,000</strong><span>Price</span></div>
+                            </div>
+                        </div>
+                        <div class="pooja-content">
+                            <a href="{% url 'service_detail' service_slug='satyanarayan-pooja' %}"
+                                style="text-decoration: none; color: inherit;">
+                                <h3>Satyanarayan Pooja <i class="fas fa-star text-warning"></i></h3>
+                            </a>
+                            <div class="card-actions" style="justify-content: center;">
+                                <a href="{% url 'service_detail' service_slug='satyanarayan-pooja' %}"
+                                    class="btn btn-view" style="width: 100%; max-width: 200px;">
+                                    Book Pooja <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="swiper-slide">
+                    <div class="pooja-card">
+                        <div class="pooja-image-container">
+                            <a href="{% url 'service_detail' service_slug='maha-lakshmi-pooja' %}">
+                                <img src="https://tse3.mm.bing.net/th/id/OIP.zGFQVBENhgNj-dllfVYVHwHaEE?pid=Api&P=0&h=180"
+                                    alt="Maha Lakshmi Pooja" class="pooja-image">
+                            </a>
+                            <div class="badge-duration">
+                                <i class="far fa-clock"></i>
+                                <div><strong>60 min</strong><span>Duration</span></div>
+                            </div>
+                            <div class="badge-price">
+                                <i class="fas fa-rupee-sign"></i>
+                                <div><strong>₹2,500 - ₹8,000</strong><span>Price</span></div>
+                            </div>
+                        </div>
+                        <div class="pooja-content">
+                            <a href="{% url 'service_detail' service_slug='maha-lakshmi-pooja' %}"
+                                style="text-decoration: none; color: inherit;">
+                                <h3>Maha Lakshmi Pooja <i class="fas fa-star text-warning"></i></h3>
+                            </a>
+                            <div class="card-actions" style="justify-content: center;">
+                                <a href="{% url 'service_detail' service_slug='maha-lakshmi-pooja' %}"
+                                    class="btn btn-view" style="width: 100%; max-width: 200px;">
+                                    Book Pooja <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="swiper-slide">
+                    <div class="pooja-card">
+                        <div class="pooja-image-container">
+                            <a href="{% url 'service_detail' service_slug='rudrabhishekam-pooja' %}">
+                                <img src="https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180"
+                                    alt="Rudrabhishekam" class="pooja-image">
+                            </a>
+                            <div class="badge-duration">
+                                <i class="far fa-clock"></i>
+                                <div><strong>150 min</strong><span>Duration</span></div>
+                            </div>
+                            <div class="badge-price">
+                                <i class="fas fa-rupee-sign"></i>
+                                <div><strong>₹6,000 - ₹18,000</strong><span>Price</span></div>
+                            </div>
+                        </div>
+                        <div class="pooja-content">
+                            <a href="{% url 'service_detail' service_slug='rudrabhishekam-pooja' %}"
+                                style="text-decoration: none; color: inherit;">
+                                <h3>Rudrabhishekam Pooja <i class="fas fa-star text-warning"></i></h3>
+                            </a>
+                            <div class="card-actions" style="justify-content: center;">
+                                <a href="{% url 'service_detail' service_slug='rudrabhishekam-pooja' %}"
+                                    class="btn btn-view" style="width: 100%; max-width: 200px;">
+                                    Book Pooja <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Pagination & Navigation -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+
+        <div class="service-button" style="margin-top: 40px; text-align: center;">
+            <a href="{% url 'services' %}" class="btn btn-primary">View All Services</a>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Swiper Override for Services */
+    .services-slider {
+        padding: 20px 0 50px;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
+    .services-slider .swiper-slide {
+        padding: 15px;
+        height: auto;
+    }
+
+    .services-slider .swiper-button-next,
+    .services-slider .swiper-button-prev {
+        color: #E24028;
+        background: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .services-slider .swiper-button-next:after,
+    .services-slider .swiper-button-prev:after {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .services-slider .swiper-pagination-bullet-active {
+        background: #E24028;
+    }
+
+    .btn-view {
+        background-color: #f5b700 !important;
+        color: #b30000 !important;
+        font-weight: 800;
+        text-transform: uppercase;
+        border-radius: 50px;
+        padding: 12px 20px;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        text-align: center;
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof Swiper !== 'undefined') {
+            new Swiper('.services-slider', {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                    },
+                },
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+            });
+        }
+    });
+</script>

@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Payment Failed — Karya Siddhi{% endblock %}
+
+{% block extra_css %}
+<style>
+    .failed-container {
+        max-width: 600px;
+        margin: 120px auto 60px;
+        padding: 0 20px;
+    }
+
+    .failed-card {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        border-radius: 20px;
+        padding: 40px 35px;
+        color: #fff;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .failed-icon {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 24px;
+        background: linear-gradient(135deg, #f44336, #c62828);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: shake 0.5s ease-in-out;
+        box-shadow: 0 8px 30px rgba(244, 67, 54, 0.3);
+    }
+
+    .failed-icon i {
+        font-size: 48px;
+        color: #fff;
+    }
+
+    @keyframes shake {
+
+        0%,
+        100% {
+            transform: translateX(0);
+        }
+
+        25% {
+            transform: translateX(-8px);
+        }
+
+        75% {
+            transform: translateX(8px);
+        }
+    }
+
+    .failed-title {
+        font-family: 'Cinzel', serif;
+        font-size: 1.7rem;
+        color: #f44336;
+        margin-bottom: 8px;
+    }
+
+    .failed-subtitle {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+        line-height: 1.5;
+    }
+
+    .retry-btn {
+        display: inline-block;
+        padding: 16px 40px;
+        background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+        color: #1a1a2e;
+        border: none;
+        border-radius: 12px;
+        font-size: 1.05rem;
+        font-weight: 700;
+        font-family: 'Inter', sans-serif;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+        box-shadow: 0 6px 25px rgba(255, 215, 0, 0.3);
+    }
+
+    .retry-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 35px rgba(255, 215, 0, 0.5);
+        color: #1a1a2e;
+        text-decoration: none;
+    }
+
+    .help-text {
+        margin-top: 24px;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.82rem;
+        line-height: 1.5;
+    }
+
+    .help-text a {
+        color: #ffd700;
+        text-decoration: none;
+    }
+
+    .secondary-actions {
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    .secondary-btn {
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .secondary-btn:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        text-decoration: none;
+    }
+
+    @media (max-width: 480px) {
+        .failed-container {
+            margin-top: 100px;
+            padding: 0 12px;
+        }
+
+        .failed-card {
+            padding: 28px 20px;
+        }
+
+        .failed-title {
+            font-size: 1.4rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="failed-container">
+    <div class="failed-card">
+        <div class="failed-icon">
+            <i class="fas fa-times"></i>
+        </div>
+
+        <h2 class="failed-title">Payment Failed</h2>
+        <p class="failed-subtitle">
+            Your payment could not be completed. No amount has been charged.
+            <br>Please try again or use a different UPI app.
+        </p>
+
+        <a href="{% url 'initiate_payment' booking.pk %}" class="retry-btn">
+            <i class="fas fa-redo"></i> &nbsp; Retry Payment
+        </a>
+
+        <div class="secondary-actions">
+            <a href="{% url 'my_bookings' %}" class="secondary-btn">
+                <i class="fas fa-list"></i> &nbsp; My Bookings
+            </a>
+            <a href="{% url 'home' %}" class="secondary-btn">
+                <i class="fas fa-home"></i> &nbsp; Home
+            </a>
+        </div>
+
+        <div class="help-text">
+            If the amount was debited, it will be automatically refunded within 5–7 business days.
+            <br>Need help? <a href="{% url 'contact' %}">Contact us</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

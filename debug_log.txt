@@ -1,0 +1,267 @@
+[2026-03-04 06:36:07] login_view called with method GET
+[2026-03-04 06:40:48] login_view called with method POST
+[2026-03-04 06:40:48] Login attempt for email: dev_v4
+[2026-03-04 06:40:49] Found user object: dev_v4
+[2026-03-04 06:40:53] Authentication successful for dev_v4
+[2026-03-04 06:57:24] login_view called with method GET
+[2026-03-04 06:57:44] login_view called with method POST
+[2026-03-04 06:57:44] Login attempt for email: manojpython2002@gmail.com
+[2026-03-04 06:57:44] Found user object: manojpython2002_8
+[2026-03-04 06:57:46] Authentication successful for manojpython2002_8
+[2026-03-04 06:59:15] Attempting to send booking confirmation emails for Booking #42...
+[2026-03-04 07:00:21] login_view called with method GET
+[2026-03-04 07:00:48] login_view called with method POST
+[2026-03-04 07:00:48] Login attempt for email: manojpinnika@gmail.com
+[2026-03-04 07:00:48] Found user object: manojpinnika_1
+[2026-03-04 07:00:55] Authentication successful for manojpinnika_1
+[2026-03-04 07:01:41] login_view called with method GET
+[2026-03-04 07:02:02] login_view called with method POST
+[2026-03-04 07:02:02] Login attempt for email: dwarak33@gmail.com
+[2026-03-04 07:02:02] Found user object: dwarak33_2
+[2026-03-04 07:02:06] Authentication successful for dwarak33_2
+[2026-03-04 07:02:40] login_view called with method GET
+[2026-03-04 07:06:04] login_view called with method GET
+[2026-03-04 07:06:16] login_view called with method GET
+[2026-03-04 07:06:42] login_view called with method POST
+[2026-03-04 07:06:42] Login attempt for email: manojpython2002@gmail.com
+[2026-03-04 07:06:43] Found user object: manojpython2002_8
+[2026-03-04 07:06:45] Authentication successful for manojpython2002_8
+[2026-03-04 07:17:02] login_view called with method GET
+[2026-03-04 07:29:41] login_view called with method GET
+[2026-03-04 07:29:58] login_view called with method GET
+[2026-03-04 07:30:25] login_view called with method POST
+[2026-03-04 07:30:25] Login attempt for email: manojpython2002@gmail.com
+[2026-03-04 07:30:26] Found user object: manojpython2002_8
+[2026-03-04 07:30:30] Authentication successful for manojpython2002_8
+[2026-03-04 07:32:58] Attempting to send booking confirmation emails for Booking #44...
+[2026-03-04 07:33:38] login_view called with method GET
+[2026-03-04 07:35:06] login_view called with method GET
+[2026-03-04 07:35:22] login_view called with method POST
+[2026-03-04 07:35:22] Login attempt for email: dwarak33@gmail.com
+[2026-03-04 07:35:22] Found user object: dwarak33_2
+[2026-03-04 07:35:24] Authentication successful for dwarak33_2
+[2026-03-04 07:36:03] login_view called with method GET
+[2026-03-04 07:36:18] login_view called with method GET
+[2026-03-04 07:36:59] login_view called with method POST
+[2026-03-04 07:36:59] Login attempt for email: manojpython2002@gmail.com
+[2026-03-04 07:37:00] Found user object: manojpython2002_8
+[2026-03-04 07:37:04] Authentication successful for manojpython2002_8
+[2026-03-04 09:05:21] login_view called with method GET
+[2026-03-04 09:06:06] Contact form submitted by Pinnika Manoj (manojpinnika@gmail.com)
+[2026-03-04 10:05:30] signup_view called with method GET
+[2026-03-04 10:05:47] purohit_signup called with method GET
+[2026-03-04 10:12:14] purohit_signup called with method GET
+[2026-03-04 10:13:36] signup_view called with method GET
+[2026-03-04 10:13:54] signup_view called with method GET
+[2026-03-04 10:43:24] Contact form submitted by dwarakesh (dwarak33@gmail.com)
+[2026-03-04 10:48:42] signup_view called with method GET
+[2026-03-04 11:01:02] Newsletter subscription request for: test_new@example.com
+[2026-03-04 12:20:58] signup_view called with method GET
+[2026-03-04 12:21:57] login_view called with method GET
+[2026-03-04 12:22:20] login_view called with method POST
+[2026-03-04 12:22:21] Login attempt for email: manojpinnika2002@gmail.com
+[2026-03-04 12:22:22] Found user object: manojpinnika2002_3
+[2026-03-04 12:22:25] Authentication successful for manojpinnika2002_3
+[2026-03-05 04:13:41] Contact form submitted by karthikaya (karthikeyandandyala@gmail.com)
+[2026-03-05 04:14:44] Newsletter subscription request for: karthikeyandandyala@gmail.com
+[2026-03-05 04:24:49] login_view called with method GET
+[2026-03-05 04:24:54] purohit_signup called with method GET
+[2026-03-05 04:34:34] login_view called with method GET
+[2026-03-05 05:30:12] login_view called with method GET
+[2026-03-05 05:30:21] purohit_signup called with method GET
+[2026-03-05 05:30:24] purohit_signup called with method GET
+[2026-03-05 05:31:35] purohit_signup called with method GET
+[2026-03-05 05:35:06] purohit_signup called with method GET
+[2026-03-05 06:50:07] login_view called with method GET
+[2026-03-05 06:50:15] login_view called with method GET
+[2026-03-05 06:50:28] login_view called with method POST
+[2026-03-05 06:50:28] Login attempt for email: manojpinnika2002@gmail.com
+[2026-03-05 06:50:28] Found user object: manojpinnika2002_3
+[2026-03-05 06:50:29] Authentication successful for manojpinnika2002_3
+[2026-03-05 06:54:28] Attempting to send booking confirmation emails for Booking #50...
+[2026-03-05 06:56:52] login_view called with method GET
+[2026-03-05 10:19:46] login_view called with method GET
+[2026-03-05 10:19:54] login_view called with method GET
+[2026-03-05 10:20:25] login_view called with method POST
+[2026-03-05 10:20:25] Login attempt for email: manojpinnika@gmail.com
+[2026-03-05 10:20:25] Found user object: manojpinnika_1
+[2026-03-05 10:20:27] Authentication successful for manojpinnika_1
+[2026-03-05 10:20:40] login_view called with method GET
+[2026-03-05 10:22:25] login_view called with method POST
+[2026-03-05 10:22:25] Login attempt for email: manojpinnika2002@gmail.com
+[2026-03-05 10:22:25] Found user object: manojpinnika2002_3
+[2026-03-05 10:22:27] Authentication successful for manojpinnika2002_3
+[2026-03-05 12:06:24] login_view called with method GET
+[2026-03-05 12:15:58] login_view called with method GET
+[2026-03-05 12:16:14] login_view called with method POST
+[2026-03-05 12:16:14] Login attempt for email: manojpinnika2002@gmail.com
+[2026-03-05 12:16:14] Found user object: manojpinnika2002_3
+[2026-03-05 12:16:17] Authentication successful for manojpinnika2002_3
+[2026-03-05 12:17:04] login_view called with method GET
+[2026-03-05 12:20:09] login_view called with method GET
+[2026-03-05 12:20:39] login_view called with method POST
+[2026-03-05 12:20:39] Login attempt for email: manojpinnika2002@gmail.com
+[2026-03-05 12:20:39] Found user object: manojpinnika2002_3
+[2026-03-05 12:20:41] Authentication successful for manojpinnika2002_3
+[2026-03-05 12:22:23] Attempting to send booking confirmation emails for Booking #51...
+[2026-03-05 12:22:26] Attempting to send booking confirmation emails for Booking #52...
+[2026-03-05 12:31:14] login_view called with method GET
+[2026-03-05 12:43:33] login_view called with method GET
+[2026-03-05 12:43:41] login_view called with method GET
+[2026-03-05 12:44:04] login_view called with method POST
+[2026-03-05 12:44:04] Login attempt for email: manojpinnika2002@gmail.com
+[2026-03-05 12:44:04] Found user object: manojpinnika2002_3
+[2026-03-05 12:44:05] Authentication successful for manojpinnika2002_3
+[2026-03-05 13:26:28] Attempting to send booking confirmation emails for Booking #53...
+[2026-03-05 13:28:29] login_view called with method GET
+[2026-03-05 13:36:06] login_view called with method GET
+[2026-03-05 13:36:26] login_view called with method POST
+[2026-03-05 13:36:26] Login attempt for email: manojpinnika2002@gmail.com
+[2026-03-05 13:36:27] Found user object: manojpinnika2002_3
+[2026-03-05 13:36:29] Authentication successful for manojpinnika2002_3
+[2026-03-05 13:37:37] Attempting to send booking confirmation emails for Booking #54...
+[2026-03-05 13:39:27] login_view called with method GET
+[2026-03-05 13:44:45] login_view called with method GET
+[2026-03-05 13:44:50] login_view called with method GET
+[2026-03-05 13:45:11] login_view called with method POST
+[2026-03-05 13:45:11] Login attempt for email: manojpinnika2002@gmail.com
+[2026-03-05 13:45:11] Found user object: manojpinnika2002_3
+[2026-03-05 13:45:13] Authentication successful for manojpinnika2002_3
+[2026-03-05 13:46:22] Attempting to send booking confirmation emails for Booking #55...
+[2026-03-05 13:47:48] login_view called with method GET
+[2026-03-05 13:47:55] login_view called with method GET
+[2026-03-05 13:48:39] login_view called with method POST
+[2026-03-05 13:48:39] Login attempt for email: manojpinnika@gmail.com
+[2026-03-05 13:48:39] Found user object: manojpinnika_1
+[2026-03-05 13:48:41] Authentication successful for manojpinnika_1
+[2026-03-05 14:06:28] login_view called with method GET
+[2026-03-05 14:06:41] login_view called with method GET
+[2026-03-05 14:06:56] login_view called with method POST
+[2026-03-05 14:06:56] Login attempt for email: manojpinnika2002@gmail.com
+[2026-03-05 14:06:56] Found user object: manojpinnika2002_3
+[2026-03-05 14:06:59] Authentication successful for manojpinnika2002_3
+[2026-03-05 14:08:12] Attempting to send booking confirmation emails for Booking #56...
+[2026-03-05 14:08:46] login_view called with method GET
+[2026-03-05 14:12:07] login_view called with method GET
+[2026-03-05 14:12:18] login_view called with method GET
+[2026-03-05 14:12:34] login_view called with method POST
+[2026-03-05 14:12:34] Login attempt for email: manojpinnika2002@gmail.com
+[2026-03-05 14:12:34] Found user object: manojpinnika2002_3
+[2026-03-05 14:12:37] Authentication successful for manojpinnika2002_3
+[2026-03-05 14:13:37] Attempting to send booking confirmation emails for Booking #57...
+[2026-03-05 14:32:44] Attempting to send booking confirmation emails for Booking #58...
+[2026-03-05 14:35:22] Attempting to send booking confirmation emails for Booking #59...
+[2026-03-05 14:37:37] Attempting to send booking confirmation emails for Booking #60...
+[2026-03-05 14:42:37] login_view called with method GET
+[2026-03-05 14:42:45] login_view called with method GET
+[2026-03-05 14:43:01] login_view called with method POST
+[2026-03-05 14:43:01] Login attempt for email: manojpinnika2002@gmail.com
+[2026-03-05 14:43:01] Found user object: manojpinnika2002_3
+[2026-03-05 14:43:02] Authentication successful for manojpinnika2002_3
+[2026-03-05 14:43:50] Attempting to send booking confirmation emails for Booking #61...
+[2026-03-05 14:49:44] Attempting to send booking confirmation emails for Booking #62...
+[2026-03-05 14:59:12] Attempting to send booking confirmation emails for Booking #63...
+[2026-03-05 15:03:30] Attempting to send booking confirmation emails for Booking #64...
+[2026-03-05 15:05:45] Attempting to send booking confirmation emails for Booking #65...
+[2026-03-05 15:07:22] Attempting to send booking confirmation emails for Booking #66...
+[2026-03-05 15:18:18] Attempting to send booking confirmation emails for Booking #67...
+[2026-03-05 15:19:10] login_view called with method GET
+[2026-03-05 16:19:04] login_view called with method GET
+[2026-03-05 16:19:12] login_view called with method GET
+[2026-03-05 16:19:26] login_view called with method POST
+[2026-03-05 16:19:26] Login attempt for email: manojpinnika2002@gmail.com
+[2026-03-05 16:19:26] Found user object: manojpinnika2002_3
+[2026-03-05 16:19:27] Authentication successful for manojpinnika2002_3
+[2026-03-05 16:20:47] Attempting to send booking confirmation emails for Booking #68...
+[2026-03-05 16:23:04] login_view called with method GET
+[2026-03-05 16:43:17] login_view called with method GET
+[2026-03-05 16:43:28] login_view called with method GET
+[2026-03-05 16:43:41] login_view called with method POST
+[2026-03-05 16:43:41] Login attempt for email: manojpinnika2002@gmail.com
+[2026-03-05 16:43:41] Found user object: manojpinnika2002_3
+[2026-03-05 16:43:42] Authentication successful for manojpinnika2002_3
+[2026-03-05 16:46:30] Attempting to send booking confirmation emails for Booking #69...
+[2026-03-05 16:48:09] login_view called with method GET
+[2026-03-05 17:05:48] login_view called with method GET
+[2026-03-05 17:05:55] login_view called with method GET
+[2026-03-05 17:06:08] login_view called with method POST
+[2026-03-05 17:06:08] Login attempt for email: manojpinnika@gmail.com
+[2026-03-05 17:06:08] Found user object: manojpinnika_1
+[2026-03-05 17:06:10] Authentication successful for manojpinnika_1
+[2026-03-05 17:07:19] login_view called with method GET
+[2026-03-05 17:07:27] login_view called with method GET
+[2026-03-05 17:07:37] login_view called with method POST
+[2026-03-05 17:07:37] Login attempt for email: manojpinnika2002@gmail.com
+[2026-03-05 17:07:37] Found user object: manojpinnika2002_3
+[2026-03-05 17:07:39] Authentication successful for manojpinnika2002_3
+[2026-03-05 17:08:59] Attempting to send booking confirmation emails for Booking #70...
+[2026-03-05 17:12:32] login_view called with method GET
+[2026-03-05 17:23:46] Attempting to send booking confirmation emails for Booking #71...
+[2026-03-05 17:42:04] login_view called with method GET
+[2026-03-05 17:43:28] login_view called with method POST
+[2026-03-05 17:43:28] Login attempt for email: manojpinnika_1
+[2026-03-05 17:43:28] Found user object: manojpinnika_1
+[2026-03-05 17:43:34] Authentication successful for manojpinnika_1
+[2026-03-05 17:47:11] login_view called with method GET
+[2026-03-05 18:44:26] Attempting to send OTP email to manojpinnika@gmail.com...
+[2026-03-05 18:44:31] OTP email sent successfully to manojpinnika@gmail.com
+[2026-03-05 18:44:31] purohit_verify_otp called with method GET
+[2026-03-05 18:45:23] purohit_verify_otp called with method POST
+[2026-03-05 18:45:23] Entered OTP: 246174, Session OTP: 246174
+[2026-03-05 18:45:23] OTP matches! Setting otp_verified = True
+[2026-03-05 19:08:32] login_view called with method GET
+[2026-03-05 19:10:25] login_view called with method POST
+[2026-03-05 19:10:25] Login attempt for email: manojpinnika_1
+[2026-03-05 19:10:26] Found user object: manojpinnika_1
+[2026-03-05 19:10:29] Authentication failed
+[2026-03-05 19:11:24] login_view called with method POST
+[2026-03-05 19:11:24] Login attempt for email: manojpinnika_1
+[2026-03-05 19:11:24] Found user object: manojpinnika_1
+[2026-03-05 19:11:27] Authentication failed
+[2026-03-05 19:12:22] login_view called with method POST
+[2026-03-05 19:12:22] Login attempt for email: manojpinnika_1@gmail.com
+[2026-03-05 19:12:23] User object not found
+[2026-03-05 19:12:57] login_view called with method GET
+[2026-03-05 19:14:22] login_view called with method POST
+[2026-03-05 19:14:22] Login attempt for email: manojpinnika_1
+[2026-03-05 19:14:22] Found user object: manojpinnika_1
+[2026-03-05 19:14:24] Authentication failed
+[2026-03-05 19:15:41] login_view called with method POST
+[2026-03-05 19:15:41] Login attempt for email: manojpinnika2002@gmail.com
+[2026-03-05 19:15:41] Found user object: manojpinnika2002_3
+[2026-03-05 19:15:44] Authentication failed
+[2026-03-05 19:16:40] login_view called with method POST
+[2026-03-05 19:16:40] Login attempt for email: manojpinnika_1@gmail.com
+[2026-03-05 19:16:40] User object not found
+[2026-03-05 19:20:15] login_view called with method GET
+[2026-03-06 04:27:41] login_view called with method GET
+[2026-03-06 04:27:51] login_view called with method GET
+[2026-03-06 04:28:07] login_view called with method POST
+[2026-03-06 04:28:07] Login attempt for email: manojpinnika2002@gmail.com
+[2026-03-06 04:28:07] Found user object: manojpinnika2002_3
+[2026-03-06 04:28:08] Authentication successful for manojpinnika2002_3
+[2026-03-06 04:29:50] Attempting to send booking confirmation emails for Booking #72...
+[2026-03-06 04:34:21] login_view called with method GET
+[2026-03-06 04:34:42] login_view called with method POST
+[2026-03-06 04:34:42] Login attempt for email: manojpinnika2002@gmail.com
+[2026-03-06 04:34:42] Found user object: manojpinnika2002_3
+[2026-03-06 04:34:44] Authentication successful for manojpinnika2002_3
+[2026-03-06 04:35:02] login_view called with method GET
+[2026-03-06 05:16:45] login_view called with method GET
+[2026-03-06 05:16:56] login_view called with method POST
+[2026-03-06 05:16:56] Login attempt for email: manojpinnika2002@gmail.com
+[2026-03-06 05:16:57] Found user object: manojpinnika2002_3
+[2026-03-06 05:17:01] Authentication successful for manojpinnika2002_3
+[2026-03-06 05:18:22] login_view called with method GET
+[2026-03-12 05:29:01] login_view called with method GET
+[2026-03-12 05:30:05] signup_view called with method GET
+[2026-03-12 05:31:00] login_view called with method GET
+[2026-03-12 05:31:21] login_view called with method POST
+[2026-03-12 05:31:21] Login attempt for email: chinna@gmail.com
+[2026-03-12 05:31:47] login_view called with method GET
+[2026-03-12 05:31:54] login_view called with method GET
+[2026-03-12 05:32:10] purohit_signup called with method GET
+[2026-03-12 05:33:47] login_view called with method GET
+[2026-03-12 05:33:56] login_view called with method GET
+[2026-03-12 05:34:09] login_view called with method POST
+[2026-03-12 05:34:09] Login attempt for email: chinna@gmail.com

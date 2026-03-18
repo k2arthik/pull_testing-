@@ -1,0 +1,25 @@
+<!-- ===================================== -->
+<!-- AUTHENTIC & DIVINE - ADMIN EDITABLE -->
+<!-- Pure HTML Only - No Django Tags -->
+<!-- ===================================== -->
+
+<!-- Authentic & Divine Section (Why Choose Us) -->
+<section class="authentic-divine">
+    <div class="container">
+        <div class="section-header-centered" style="color:black">
+            <div class="section-badge" style="color:rgb(202, 23, 23)">
+                <i class="fas fa-om"></i> {{ about.badge_text|default:"Why Choose Us" }}
+            </div>
+            <h2 style="color:rgb(202, 23, 23)">{{ about.title|default:"Authentic & Divine" }}</h2>
+            <p style="color:#b30000">{{ about.subtitle|default:"We bring traditional Vedic rituals to your doorstep with utmost devotion and authenticity." }}</p>
+        </div>
+
+        <div class="dds">
+            {% if about.main_image %}
+            <img src="{{ about.main_image.url }}" alt="{{ about.title }}">
+            {% else %}
+            <img src="/static/images/story.png" alt="Story Image">
+            {% endif %}
+        </div>
+    </div>
+</section>

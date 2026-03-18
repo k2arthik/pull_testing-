@@ -1,0 +1,139 @@
+<style>
+    /* ===== SACRED SANKALP SECTION ===== */
+
+    body.page-home .sankalp-section {
+        background: linear-gradient(rgba(120, 0, 0, 0.85), rgba(120, 0, 0, 0.85)),
+            url("../images/rangoli2.jpg.jpeg") center/cover no-repeat;
+        padding: 80px 0;
+        text-align: center;
+    }
+
+    /* HEADER */
+
+    .sankalp-header h2 {
+        color: #f8e6c8;
+        font-size: 48px;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+    }
+
+    .sankalp-header p {
+        color: #d9a95b;
+        font-size: 18px;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+    }
+
+    /* GOLD DOT DIVIDER */
+
+    .divider-gold-dots {
+        width: 70%;
+        margin: 25px auto 60px;
+        height: 6px;
+        background: radial-gradient(circle, #d4a24a 2px, transparent 3px);
+        background-size: 18px 6px;
+    }
+
+    /* GRID */
+
+    .sankalp-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 35px;
+        max-width: 1200px;
+        margin: auto;
+        margin-bottom: 40px;
+    }
+
+    /* CARD */
+
+    .vow-card {
+        background: linear-gradient(#dfb539, #f7be15);
+        border-radius: 14px;
+        padding: 40px 30px;
+        position: relative;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        transition: 0.35s;
+    }
+
+    .vow-card:hover {
+        transform: translateY(-10px);
+    }
+
+    /* TITLE */
+
+    .vow-title {
+        color: #6d2619;
+        font-size: 28px;
+        margin-bottom: 5px;
+    }
+
+    /* SUBTITLE */
+
+    .vow-subtitle {
+        color: #840606;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 14px;
+        margin-bottom: 18px;
+    }
+
+    /* TEXT */
+
+    .vow-text {
+        color: #3b2c24;
+        line-height: 1.6;
+        font-size: 15px;
+    }
+
+    h2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* SEAL BADGE */
+
+    .vow-seal {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(145deg, #7a2e19, #4e120c);
+        border: 2px dashed #d4a24a;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #f8e6c8;
+        font-size: 12px;
+        font-weight: 600;
+        transform: rotate(-15deg);
+    }
+</style>
+<section class="sankalp-section" id="sankalp-pillars">
+    <div class="container">
+        <div class="sankalp-header" style="margin-top:40px ; font-family: 'Cinzel', serif;">
+            <h2 style="color: #c19145;">Our Sacred Sankalp</h2>
+            <p style="justify-content: center; display: flex; align-items: center;">"Three Pillars of Purity"</p>
+            <div class="divider-gold-dots"></div>
+        </div>
+
+        <div class="sankalp-grid" style="margin-bottom:40px;">
+
+            {% for pillar in pillars %}
+            <article class="vow-card">
+                <h3 class="vow-title" style="font-family: 'Cinzel', serif;">{{ pillar.title }}</h3>
+                <h4 class="vow-subtitle">{{ pillar.subtitle }}</h4>
+                <p class="vow-text">
+                    {{ pillar.description }}
+                </p>
+            </article>
+            {% empty %}
+            <p>Sankalp pillars are being prepared...</p>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>

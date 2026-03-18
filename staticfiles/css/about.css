@@ -1,0 +1,207 @@
+/* ===================================
+   About Page Styles - Simplified to Match Home
+   =================================== */
+
+:root {
+    /* Core Palette matching Home Page */
+    --temple-maroon: #2A0A0A;
+    --temple-red: #600000;
+    --temple-gold: #D4AF37;
+    --temple-gold-bright: #FFD700;
+    --temple-ivory: #F5E8BF;
+    --temple-saffron: #FF9933;
+}
+
+body {
+    background-color: #fff8e1;
+    /* Light background like Home sections */
+    color: #333;
+}
+
+/* Typography Overrides */
+h1,
+h2,
+h3,
+h4,
+.cinzel-font {
+    font-family: 'Cinzel', serif;
+}
+
+p,
+.inter-font {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Footer Fix for Dark Theme */
+.footer-top-border {
+    margin-bottom: 0px;
+    border-color: var(--temple-gold);
+}
+
+/* Text Selection Color */
+::selection {
+    background: var(--temple-gold);
+    color: #2a0a0a;
+}
+
+/* Simple Animation for Hero Card */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.float-animation {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Button Hover Style (General) */
+.btn-temple {
+    transition: all 0.3s ease;
+}
+
+.btn-temple:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ===================================
+   New Sections: Purohits & Karya Siddhi
+   =================================== */
+
+.purohit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.purohit-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(128, 0, 0, 0.05);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.purohit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 45px rgba(128, 0, 0, 0.12);
+    border-color: var(--temple-gold);
+}
+
+.purohit-img-container {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.purohit-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.purohit-card:hover .purohit-img-container img {
+    transform: scale(1.1);
+}
+
+.purohit-info {
+    padding: 20px;
+}
+
+.purohit-name {
+    font-size: 1.4rem;
+    color: var(--temple-maroon);
+    margin-bottom: 5px;
+}
+
+.purohit-spec {
+    color: var(--temple-gold);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.purohit-exp {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* Karya Siddhi Story Section */
+.karya-siddhi-section {
+    background: linear-gradient(rgba(132, 6, 6, 0.9), rgba(132, 10, 10, 0.9)), url('/static/images/bgdesign2.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 100px 0;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.karya-siddhi-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.story-box {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 50px;
+    border-radius: 30px;
+    position: relative;
+}
+
+.story-box::before {
+    content: 'ॐ';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--temple-gold);
+    color: var(--temple-maroon);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 0 20px var(--temple-gold);
+}
+
+.story-title {
+    font-size: 2.8rem;
+    color: var(--temple-gold);
+    margin-bottom: 25px;
+}
+
+.story-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--temple-ivory);
+    margin-bottom: 30px;
+}
+
+.story-highlight {
+    color: var(--temple-gold-bright);
+    font-weight: bold;
+    font-style: italic;
+}

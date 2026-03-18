@@ -1,0 +1,171 @@
+﻿Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, core, sessions
+Running migrations:
+python : Traceback 
+(most recent call 
+last):
+At line:1 char:1
++ python manage.py 
+migrate 2>&1 | 
+Out-File -Encoding 
+utf8 migrate_debug 
+...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (Traceba   
+ ck (most recent     
+call last)::Stri    
+ng) [], RemoteEx    
+ception
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+  File "C:\Users\9170
+3\OneDrive\Desktop\ka
+ryasiddhi\manage.py",
+ line 22, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\9170
+3\OneDrive\Desktop\ka
+ryasiddhi\manage.py",
+ line 18, in main
+    execute_from_comm
+and_line(sys.argv)
+    ~~~~~~~~~~~~~~~~~
+~~~~~~~~^^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\management\_
+_init__.py", line 
+442, in execute_from_
+command_line
+    utility.execute()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\management\_
+_init__.py", line 
+436, in execute
+    self.fetch_comman
+d(subcommand).run_fro
+m_argv(self.argv)
+    ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~^^^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\management\b
+ase.py", line 413, 
+in run_from_argv
+    
+self.execute(*args, 
+**cmd_options)
+    ~~~~~~~~~~~~^^^^^
+^^^^^^^^^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\management\b
+ase.py", line 459, 
+in execute
+    output = 
+self.handle(*args, 
+**options)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\management\b
+ase.py", line 107, 
+in wrapper
+    res = 
+handle_func(*args, 
+**kwargs)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\management\c
+ommands\migrate.py", 
+line 357, in handle
+    
+post_migrate_state = 
+executor.migrate(
+        targets,
+    ...<3 lines>...
+        fake_initial=
+fake_initial,
+    )
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\db\migrations\exe
+cutor.py", line 135, 
+in migrate
+    state = self._mig
+rate_all_forwards(
+        state, plan, 
+full_plan, 
+fake=fake, fake_initi
+al=fake_initial
+    )
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\db\migrations\exe
+cutor.py", line 167, 
+in 
+_migrate_all_forwards
+    state = 
+self.apply_migration(
+        state, 
+migration, 
+fake=fake, fake_initi
+al=fake_initial
+    )
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\db\migrations\exe
+cutor.py", line 252, 
+in apply_migration
+    with self.connect
+ion.schema_editor(
+         ~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~^
+        atomic=migrat
+ion.atomic
+        ^^^^^^^^^^^^^
+^^^^^^^^^^
+    ) as 
+schema_editor:
+    ^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\db\backends\sqlit
+e3\schema.py", line 
+39, in __exit__
+    self.connection.c
+heck_constraints()
+    ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\db\backends\sqlit
+e3\base.py", line 
+298, in 
+check_constraints
+    raise 
+IntegrityError(
+    ...<12 lines>...
+    )
+django.db.utils.Integ
+rityError: The row 
+in table 
+'core_booking' with 
+primary key '1' has 
+an invalid foreign 
+key: core_booking.pri
+est_id contains a 
+value '4' that does 
+not have a 
+corresponding value 
+in _core_priestprofil
+e_old.id.
+  Applying core.0003_alter_priestprofile_language...

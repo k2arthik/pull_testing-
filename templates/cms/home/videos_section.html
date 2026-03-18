@@ -1,0 +1,285 @@
+<!-- ===================================== -->
+<!-- SACRED DARSHAN GALLERY (IMAGES) -->
+<!-- ===================================== -->
+{% load static %}
+<section class="darshan-gallery">
+
+    <div class="container">
+
+        <div class="gallery-header">
+            <h2 class="gallery-title" style="font-family: 'Cinzel', serif;">Sacred <span
+                    class="text-gold">Darshan</span></h2>
+            <div class="divider-gold-dots"></div>
+            <p class="gallery-subtitle">Glimpses of Divine Rituals & Auspicious Moments</p>
+        </div>
+
+        <div class="gallery-grid">
+
+            {% for photo in photos %}
+            <div class="gallery-frame">
+                <div class="frame-inner">
+                    {% if photo.image %}
+                    <img src="{{ photo.image.url }}" alt="{{ photo.title }}" class="gallery-img">
+                    {% else %}
+                    <img src="{% static 'images/placeholder.png' %}" alt="{{ photo.title }}" class="gallery-img">
+                    {% endif %}
+                    <div class="gallery-overlay">
+                        <div class="overlay-content">
+                            <span class="img-category">Darshan</span>
+                            <h3>{{ photo.title }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <!-- Fallback Static Items if no photos in DB -->
+            <div class="gallery-frame">
+                <div class="frame-inner">
+                    <img src="{% static 'images/gallery1.jpeg' %}" alt="Aarti Light" class="gallery-img">
+                </div>
+            </div>
+            <div class="gallery-frame">
+                <div class="frame-inner">
+                    <img src="{% static 'images/gallery2.jpeg' %}" alt="Ganesha" class="gallery-img">
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <!-- View All Button -->
+        <div class="gallery-view-all">
+            <a href="{% url 'photos' %}" class="gallery-view-all-btn" id="gallery-view-all-btn">
+                View All
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                </svg>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    .darshan-gallery {
+        padding: 80px 0;
+        background: #840606;
+        /* Deep Red-Black */
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* --- Header --- */
+    .gallery-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .gallery-title {
+        font-family: 'Rozha One', serif;
+        font-size: 2.5rem;
+        color: #F5E8BF;
+        margin-bottom: 15px;
+    }
+
+    .text-gold {
+        color: #D4AF37;
+        text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+    }
+
+    .gallery-subtitle {
+        font-family: 'Cinzel', serif;
+        color: #ddd;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        margin-top: 15px;
+    }
+
+    /* --- Grid --- */
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        padding: 0 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* --- Gallery Frames --- */
+    .gallery-frame {
+        background: linear-gradient(145deg, #B71C1C, #1a0505);
+        padding: 10px;
+        /* The Frame */
+        border-radius: 10px;
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.5),
+            inset 0 0 20px rgba(0, 0, 0, 0.8);
+        border: 1px solid #D32F2F;
+        transition: transform 0.4s ease;
+    }
+
+    .gallery-frame:hover {
+        transform: translateY(-10px);
+        border-color: #D4AF37;
+        box-shadow:
+            0 20px 50px rgba(0, 0, 0, 0.6),
+            0 0 15px rgba(212, 175, 55, 0.2);
+    }
+
+    .frame-inner {
+        position: relative;
+        width: 100%;
+        height: 350px;
+        overflow: hidden;
+        border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .gallery-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease;
+    }
+
+    .gallery-frame:hover .gallery-img {
+        transform: scale(1.15);
+    }
+
+    /* --- Overlay Content --- */
+    .gallery-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
+        display: flex;
+        align-items: flex-end;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .gallery-frame:hover .gallery-overlay {
+        opacity: 1;
+    }
+
+    .overlay-content {
+        transform: translateY(20px);
+        transition: transform 0.4s ease;
+        text-align: left;
+    }
+
+    .gallery-frame:hover .overlay-content {
+        transform: translateY(0);
+    }
+
+    .img-category {
+        display: inline-block;
+        font-family: 'Cinzel', serif;
+        font-size: 0.75rem;
+        color: #D4AF37;
+        border: 1px solid #D4AF37;
+        padding: 4px 10px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .overlay-content h3 {
+        font-family: 'Rozha One', serif;
+        color: #fff;
+        font-size: 1.4rem;
+        margin-bottom: 5px;
+    }
+
+    .overlay-content p {
+        font-family: 'Inter', sans-serif;
+        color: #ddd;
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    /* --- View All Button --- */
+    .gallery-view-all {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .gallery-view-all-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: 'Cinzel', serif;
+        font-size: 1rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #D4AF37;
+        border: 2px solid #D4AF37;
+        padding: 14px 36px;
+        border-radius: 50px;
+        text-decoration: none;
+        background: transparent;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .gallery-view-all-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        border-radius: 50px;
+        z-index: 0;
+    }
+
+    .gallery-view-all-btn:hover::before {
+        opacity: 1;
+    }
+
+    .gallery-view-all-btn:hover {
+        color: #D4AF37;
+        box-shadow: 0 0 25px rgba(212, 175, 55, 0.4), 0 0 60px rgba(212, 175, 55, 0.15);
+        transform: translateY(-3px);
+    }
+
+    .gallery-view-all-btn svg,
+    .gallery-view-all-btn span {
+        position: relative;
+        z-index: 1;
+    }
+
+    .gallery-view-all-btn svg {
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-view-all-btn:hover svg {
+        transform: translateX(5px);
+    }
+
+    /* Make text appear above the ::before pseudo-element */
+    .gallery-view-all-btn {
+        z-index: 1;
+    }
+
+    .gallery-view-all-btn>* {
+        position: relative;
+        z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+        .gallery-view-all {
+            margin-top: 35px;
+        }
+
+        .gallery-view-all-btn {
+            font-size: 0.85rem;
+            padding: 12px 28px;
+            letter-spacing: 1.5px;
+        }
+    }
+</style>

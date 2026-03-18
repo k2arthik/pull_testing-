@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<!-- You can create a specific CSS file for service details if needed, 
+     but services.css might cover a lot or we can add inline/new file -->
+<link rel="stylesheet" href="{% static 'css/services.css' %}">
+<style>
+    /* Add specific styles for the detail page here if not in services.css */
+    .service-detail-header {
+        background-color: #f9f9f9;
+        padding: 4rem 0;
+        text-align: center;
+        background-size: cover;
+        background-position: center;
+        color: white;
+        position: relative;
+    }
+
+    .service-detail-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .service-detail-header .container {
+        position: relative;
+        z-index: 1;
+    }
+
+    .service-detail-content {
+        padding: 4rem 0;
+    }
+
+    .service-info-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .service-sidebar {
+        position: sticky;
+        top: 100px;
+    }
+
+    .book-btn-large {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.2rem;
+        margin-top: 1rem;
+    }
+
+    /* New Grid Styles for Sidebar */
+    .details-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 576px) {
+        .details-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .service-detail-header {
+            padding: 3rem 1rem;
+        }
+
+        .service-detail-header h1 {
+            font-size: 24px;
+        }
+    }
+
+    .detail-item {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid #eee;
+        transition: all 0.3s;
+    }
+
+    .detail-item:hover {
+        background: #fff6d8;
+        border-color: #f5b700;
+        transform: translateY(-2px);
+    }
+
+    .detail-item i {
+        display: block;
+        font-size: 1.5rem;
+        color: #b30000;
+        margin-bottom: 5px;
+    }
+
+    .detail-item span {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .price-box {
+        text-align: center;
+        background: #fdf2f2;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px dashed #b30000;
+        margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 991px) {
+        .service-sidebar {
+            position: static;
+            margin-top: 2rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+{% include 'content/service_detail_content.html' %}
+{% endblock %}

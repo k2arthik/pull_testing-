@@ -1,0 +1,227 @@
+﻿python : Creating test 
+database for alias 
+'default'...
+At line:1 char:1
++ python manage.py 
+test core.tests_auth co
+re.tests_devotee_auth 
+2>&1 |  ...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (Creating test   
+  d...as 'default'.    
+..:String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+
+Found 14 test(s).
+System check 
+identified some issues:
+
+WARNINGS:
+?: (ckeditor.W001) 
+django-ckeditor 
+bundles CKEditor 
+4.22.1 which isn't 
+supported anymore and 
+which does have 
+unfixed security 
+issues, see for 
+example https://ckedito
+r.com/cke4/release/CKEd
+itor-4.24.0-LTS . You 
+should consider 
+strongly switching to 
+a different editor 
+(maybe CKEditor 5 
+respectively 
+django-ckeditor-5 
+after checking whether 
+the CKEditor 5 license 
+terms work for you) or 
+switch to the non-free 
+CKEditor 4 LTS 
+package. See https://ck
+editor.com/ckeditor-4-s
+upport/ for more on 
+this. (Note! This 
+notice has been added 
+by the django-ckeditor 
+developers and we are 
+not affiliated with 
+CKSource and were not 
+involved in the 
+licensing change, so 
+please refrain from 
+complaining to us. 
+Thanks.)
+
+System check 
+identified 1 issue (0 
+silenced).
+F....F....FF.F
+=======================
+=======================
+=======================
+=
+FAIL: test_priest_edit_
+profile_success (core.t
+ests_auth.PriestAuthTes
+t.test_priest_edit_prof
+ile_success)
+-----------------------
+-----------------------
+-----------------------
+-
+Traceback (most recent 
+call last):
+  File "C:\Users\91703\
+Downloads\karya13\core\
+tests_auth.py", line 
+116, in test_priest_edi
+t_profile_success
+    self.assertEqual(re
+sponse.status_code, 
+302)
+    ~~~~~~~~~~~~~~~~^^^
+^^^^^^^^^^^^^^^^^^^^^^^
+^
+AssertionError: 200 != 
+302
+
+=======================
+=======================
+=======================
+=
+FAIL: test_priest_regis
+tration_success (core.t
+ests_auth.PriestAuthTes
+t.test_priest_registrat
+ion_success)
+-----------------------
+-----------------------
+-----------------------
+-
+Traceback (most recent 
+call last):
+  File "C:\Users\91703\
+Downloads\karya13\core\
+tests_auth.py", line 
+32, in test_priest_regi
+stration_success
+    self.assertEqual(re
+sponse.status_code, 
+302)
+    ~~~~~~~~~~~~~~~~^^^
+^^^^^^^^^^^^^^^^^^^^^^^
+^
+AssertionError: 200 != 
+302
+
+=======================
+=======================
+=======================
+=
+FAIL: test_devotee_forg
+ot_password_flow (core.
+tests_devotee_auth.Devo
+teeAuthTest.test_devote
+e_forgot_password_flow)
+-----------------------
+-----------------------
+-----------------------
+-
+Traceback (most recent 
+call last):
+  File "C:\Users\91703\
+Downloads\karya13\core\
+tests_devotee_auth.py",
+ line 59, in test_devot
+ee_forgot_password_flow
+    self.assertEqual(re
+sponse.status_code, 
+302)
+    ~~~~~~~~~~~~~~~~^^^
+^^^^^^^^^^^^^^^^^^^^^^^
+^
+AssertionError: 200 != 
+302
+
+=======================
+=======================
+=======================
+=
+FAIL: test_devotee_logi
+n_success (core.tests_d
+evotee_auth.DevoteeAuth
+Test.test_devotee_login
+_success)
+-----------------------
+-----------------------
+-----------------------
+-
+Traceback (most recent 
+call last):
+  File "C:\Users\91703\
+Downloads\karya13\core\
+tests_devotee_auth.py",
+ line 49, in test_devot
+ee_login_success
+    self.assertEqual(re
+sponse.status_code, 
+302)
+    ~~~~~~~~~~~~~~~~^^^
+^^^^^^^^^^^^^^^^^^^^^^^
+^
+AssertionError: 200 != 
+302
+
+=======================
+=======================
+=======================
+=
+FAIL: test_devotee_regi
+stration_success (core.
+tests_devotee_auth.Devo
+teeAuthTest.test_devote
+e_registration_success)
+-----------------------
+-----------------------
+-----------------------
+-
+Traceback (most recent 
+call last):
+  File "C:\Users\91703\
+Downloads\karya13\core\
+tests_devotee_auth.py",
+ line 25, in test_devot
+ee_registration_success
+    self.assertEqual(re
+sponse.status_code, 
+302)
+    ~~~~~~~~~~~~~~~~^^^
+^^^^^^^^^^^^^^^^^^^^^^^
+^
+AssertionError: 200 != 
+302
+
+-----------------------
+-----------------------
+-----------------------
+-
+Ran 14 tests in 19.193s
+
+FAILED (failures=5)
+Destroying test 
+database for alias 
+'default'...
+
+============================================
+DEBUG OTP for priest@example.com: 769715
+============================================

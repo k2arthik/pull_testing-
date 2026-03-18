@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load auth_extras %}
+
+{% block content %}
+<style>
+    :root {
+        --primary-maroon: #800000;
+        --accent-gold: #D4AF37;
+        --bright-gold: #FFD700;
+        --soft-gold: #FFF8E7;
+        --text-muted: #6c757d;
+    }
+
+    .feedback-container {
+        max-width: 600px;
+        margin: 60px auto;
+        padding: 40px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .ritual-header {
+        margin-bottom: 30px;
+    }
+
+    .ritual-header h1 {
+        color: var(--primary-maroon);
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .ritual-header p {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+    }
+
+    .star-rating {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        gap: 15px;
+        margin: 30px 0;
+    }
+
+    .star-rating input {
+        display: none;
+    }
+
+    .star-rating label {
+        font-size: 40px;
+        color: #ddd;
+        cursor: pointer;
+        transition: color 0.2s ease-in-out;
+    }
+
+    /* Active stars (selected or hovered) */
+    .star-rating input:checked~label,
+    .star-rating label:hover,
+    .star-rating label:hover~label {
+        color: var(--bright-gold);
+    }
+
+    /* Read-only stars */
+    .star-rating.read-only label {
+        cursor: default !important;
+    }
+
+    .star-rating.read-only input:checked~label {
+        color: var(--bright-gold) !important;
+    }
+
+    .star-rating.read-only label:hover,
+    .star-rating.read-only label:hover~label {
+        color: #ddd !important;
+    }
+
+    .comment-box {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #eee;
+        border-radius: 12px;
+        font-family: inherit;
+        font-size: 1rem;
+        margin-bottom: 30px;
+        transition: border-color 0.3s;
+    }
+
+    .comment-box:focus {
+        outline: none;
+        border-color: var(--accent-gold);
+    }
+
+    .submit-btn {
+        background: linear-gradient(135deg, var(--primary-maroon), #a00000);
+        color: white;
+        border: none;
+        padding: 14px 40px;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(128, 0, 0, 0.3);
+    }
+
+    .submitted-msg {
+        background: #f0fff4;
+        border: 1px solid #c6f6d5;
+        padding: 20px;
+        border-radius: 12px;
+        color: #2f855a;
+        margin-bottom: 30px;
+    }
+
+    .read-only-comments {
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 12px;
+        font-style: italic;
+        color: #444;
+        text-align: left;
+    }
+</style>
+
+<div class="container">
+    <div class="feedback-container animate__animated animate__fadeIn">
+        <div class="ritual-header">
+            <h1>Spiritual Feedback</h1>
+            <p>Your experience with <strong>{{ booking.service|get_service_name }}</strong></p>
+            <div
+                style="margin: 15px 0; padding: 10px; background: var(--soft-gold); border-radius: 12px; border: 1px solid var(--accent-gold);">
+                <p style="margin-bottom: 5px; color: var(--primary-maroon); font-weight: bold;">Assigned Purohits:</p>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                    <span class="badge badge-pill"
+                        style="background: var(--primary-maroon); color: white; padding: 8px 15px;">
+                        <i class="fas fa-user-check mr-1"></i> {{ booking.priest.fullname }} (Lead)
+                    </span>
+                    {% for ap in booking.get_active_additional_priests %}
+                    <span class="badge badge-pill" style="background: #a00000; color: white; padding: 8px 15px;">
+                        <i class="fas fa-user mr-1"></i> {{ ap.priest.fullname }}
+                    </span>
+                    {% endfor %}
+                </div>
+            </div>
+            <small class="text-muted">Booking Reference: #{{ booking.id }} | Date: {{ booking.booking_date }}</small>
+        </div>
+
+        {% if is_read_only %}
+        <div class="submitted-msg">
+            <i class="fas fa-check-circle mr-2"></i> Feedback already submitted. Thank you!
+        </div>
+
+        <div class="star-rating read-only">
+            <input type="radio" id="star5" {% if feedback.rating==5 %}checked{% endif %} disabled /><label
+                for="star5">★</label>
+            <input type="radio" id="star4" {% if feedback.rating==4 %}checked{% endif %} disabled /><label
+                for="star4">★</label>
+            <input type="radio" id="star3" {% if feedback.rating==3 %}checked{% endif %} disabled /><label
+                for="star3">★</label>
+            <input type="radio" id="star2" {% if feedback.rating==2 %}checked{% endif %} disabled /><label
+                for="star2">★</label>
+            <input type="radio" id="star1" {% if feedback.rating==1 %}checked{% endif %} disabled /><label
+                for="star1">★</label>
+        </div>
+
+        <div class="read-only-comments">
+            <strong>Your Comments:</strong><br>
+            {{ feedback.comments|default:"No comments shared." }}
+        </div>
+
+        <div class="mt-4">
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary rounded-pill">Back to Home</a>
+        </div>
+        {% else %}
+        <form method="POST">
+            {% csrf_token %}
+            <div class="star-rating">
+                <input type="radio" name="rating" id="star5" value="5" required /><label for="star5"
+                    title="Excellent">★</label>
+                <input type="radio" name="rating" id="star4" value="4" /><label for="star4" title="Very Good">★</label>
+                <input type="radio" name="rating" id="star3" value="3" /><label for="star3" title="Good">★</label>
+                <input type="radio" name="rating" id="star2" value="2" /><label for="star2" title="Fair">★</label>
+                <input type="radio" name="rating" id="star1" value="1" /><label for="star1" title="Poor">★</label>
+            </div>
+
+            <textarea name="comments" class="comment-box" rows="4"
+                placeholder="Share your experience or any suggestions..."></textarea>
+
+            <button type="submit" class="submit-btn">Submit Feedback</button>
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

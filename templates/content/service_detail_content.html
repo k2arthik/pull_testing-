@@ -1,0 +1,738 @@
+{% load static %}
+{% load string_filters %}
+
+<!-- --- SERVICE DETAIL REDESIGN: DIVINE MANDAP THEME --- -->
+
+<style>
+    /* --- Base Variables & Layout --- */
+    .sacred-service-wrapper {
+        background: linear-gradient(135deg, rgba(255, 248, 220, 0.95), rgba(255, 248, 220, 0.95)),
+        url('{% static "images/sec3.png" %}');
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        padding-bottom: 80px;
+    }
+
+    /* Hero Section */
+    .service-hero {
+        position: relative;
+        height: 480px;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: -20px;
+        border-bottom: 5px solid #D4AF37;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .service-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(26, 5, 5, 0.9) 0%, rgba(26, 5, 5, 0.5) 50%, rgba(26, 5, 5, 0.9) 100%);
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+
+        max-width: 900px;
+        margin: 0 auto;
+        animation: fadeInDown 1s ease-out;
+    }
+
+    .hero-content h1 {
+        font-family: 'Rozha One', serif;
+        font-size: 4.5rem;
+        color: #F5E8BF;
+        text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
+        margin-bottom: 15px;
+        line-height: 1.2;
+    }
+
+    .hero-content p {
+        font-family: 'Cinzel', serif;
+        font-size: 1.4rem;
+        color: #D4AF37;
+        letter-spacing: 2px;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* --- Main Container Layout --- */
+    .sacred-main-container {
+        margin-top: 70px;
+        position: relative;
+        z-index: 10;
+    }
+
+    /* --- Left Column: Mandap Content --- */
+    .mandap-info-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+        border: 2px solid #D4AF37;
+        margin-bottom: 40px;
+        overflow: hidden;
+    }
+
+    .mandap-card-header {
+        background: linear-gradient(90deg, #fdfaf3, #FFF8DC);
+        padding: 30px 40px;
+        border-bottom: 2px dashed #D4AF37;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .mandap-card-header h2 {
+        font-family: 'Cinzel', serif;
+        color: #800000;
+        font-size: 1.8rem;
+        margin: 0;
+        text-shadow: 1px 1px 2px rgba(212, 175, 55, 0.3);
+    }
+
+    .mandap-card-body {
+        padding: 40px;
+    }
+
+    .rituals-desc {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        color: #333;
+        margin-bottom: 40px;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .sacred-feature-unified {
+        background: #fff;
+        border-radius: 20px;
+        border: 2px solid #D4AF37;
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+        overflow: hidden;
+        margin-top: 40px;
+        position: relative;
+    }
+
+    .feature-box-inner {
+        padding: 35px;
+        height: 100%;
+        transition: background 0.3s ease;
+    }
+
+    .feature-box-inner:hover {
+        background: #FFFCF2;
+    }
+
+    .border-divider-sacred {
+        border-right: 1.5px dashed #D4AF37;
+    }
+
+    @media (max-width: 767px) {
+        .border-divider-sacred {
+            border-right: none;
+            border-bottom: 1.5px dashed #D4AF37;
+        }
+    }
+
+    .feature-box-inner h3 {
+        font-family: 'Cinzel', serif;
+        color: #800000;
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .feature-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .feature-list li {
+        margin-bottom: 15px;
+        font-size: 1.05rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        color: #444;
+        line-height: 1.5;
+    }
+
+    .feature-list li i {
+        color: #D4AF37;
+        margin-top: 5px;
+        font-size: 0.95rem;
+    }
+
+    /* --- Gallery Section --- */
+    .sacred-gallery-section {
+        margin-top: 50px;
+    }
+
+    .gallery-frame-detail {
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        border: 3px solid #D4AF37;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        height: 280px;
+    }
+
+    .gallery-frame-detail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease;
+    }
+
+    .gallery-frame-detail:hover img {
+        transform: scale(1.15);
+    }
+
+    /* --- Sidebar: Sacred Invitation --- */
+    .invitation-sidebar {
+        position: sticky;
+        top: 120px;
+    }
+
+    .invocation-card {
+        background: linear-gradient(145deg, rgba(253, 248, 230, 0.95), rgba(255, 255, 255, 0.95));
+        border: 2px solid #D4AF37;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+        position: relative;
+    }
+
+    .invocation-card::after {
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        border: 1px dashed rgba(212, 175, 55, 0.5);
+        border-radius: 15px;
+        pointer-events: none;
+    }
+
+    .puja-specs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .spec-item {
+        background: #fff;
+        padding: 15px 10px;
+        border-radius: 12px;
+        text-align: center;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+        transition: transform 0.3s ease;
+    }
+
+    .spec-item:hover {
+        transform: translateY(-3px);
+        border-color: #D4AF37;
+    }
+
+    .spec-item i {
+        display: block;
+        color: #800000;
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+    }
+
+    .spec-item label {
+        display: block;
+        font-size: 0.75rem;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 2px;
+    }
+
+    .spec-item span {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #222;
+    }
+
+    .price-invocation {
+        text-align: center;
+        padding: 20px;
+        background: linear-gradient(135deg, rgba(128, 0, 0, 0.05), rgba(212, 175, 55, 0.05));
+        border: 2px solid #800000;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.1);
+    }
+
+    .price-invocation label {
+        font-family: 'Cinzel', serif;
+        color: #800000;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+    }
+
+    .price-tag-sacred {
+        font-family: 'Rozha One', serif;
+        font-size: 2.5rem;
+        color: #800000;
+        margin-top: 5px;
+        text-shadow: 1px 1px 5px rgba(212, 175, 55, 0.3);
+    }
+
+    /* --- Form Styling --- */
+    .sacred-form-group {
+        margin-bottom: 18px;
+        position: relative;
+        z-index: 5;
+    }
+
+    .sacred-form-group label {
+        font-family: 'Cinzel', serif;
+        font-size: 0.8rem;
+        color: #4a332d;
+        margin-bottom: 8px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        display: block;
+    }
+
+    .sacred-input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95rem;
+        transition: all 0.3s;
+        background: #fff;
+    }
+
+    .sacred-input:focus {
+        border-color: #D4AF37;
+        background: #fff;
+        outline: none;
+        box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+    }
+
+    .btn-sacred-proceed {
+        background: linear-gradient(135deg, #800000 0%, #5a0000 100%);
+        color: #D4AF37;
+        font-family: 'Cinzel', serif;
+        width: 100%;
+        padding: 15px;
+        font-size: 1.15rem;
+        border-radius: 30px;
+        border: 2px solid #D4AF37;
+        letter-spacing: 2px;
+        font-weight: 800;
+        cursor: pointer;
+        transition: all 0.4s;
+        margin-top: 15px;
+        position: relative;
+        z-index: 5;
+    }
+
+    .btn-sacred-proceed:hover {
+        background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+        color: #800000;
+        border-color: #800000;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(128, 0, 0, 0.3);
+    }
+
+    .call-shrine-card {
+        margin-top: 30px;
+        background: linear-gradient(135deg, #800000, #5a0000);
+        color: #D4AF37;
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        border: 2px solid #D4AF37;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .call-shrine-card h4 {
+        margin: 0;
+        font-family: 'Cinzel', serif;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
+
+    @media (max-width: 991px) {
+        .service-hero {
+            height: 350px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+        }
+
+        .sacred-main-container {
+            margin-top: -40px;
+        }
+
+        .sacred-feature-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .invitation-sidebar {
+            position: static;
+            margin-top: 40px;
+        }
+    }
+
+    /* Hero Section */
+    .service-hero {
+        position: relative;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        margin-top: -20px;
+        /* Adjust for navbar */
+        border-bottom: 5px solid var(--divine-gold);
+    }
+
+    .service-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 100%);
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        color: white;
+        max-width: 800px;
+        animation: fadeInLeft 1s ease-out;
+    }
+
+    .hero-content h1 {
+        font-family: 'Cinzel', serif;
+        font-size: 4rem;
+        font-weight: 800;
+        color: var(--divine-yellow);
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        margin-bottom: 20px;
+        overflow-wrap: break-word;
+    }
+
+    .hero-content .breadcrumb {
+        background: transparent;
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    .hero-content .breadcrumb-item a {
+        color: var(--divine-gold);
+        text-decoration: none;
+    }
+
+    .hero-content .breadcrumb-item.active {
+        color: #eee;
+    }
+</style>
+
+<div class="sacred-service-wrapper">
+    <!-- --- Dynamic Hero Banner --- -->
+    <!-- Hero Section -->
+    <div class="service-hero" style="background-color: #f1b708;">
+        <div class="container">
+            <div class="hero-content"
+                style="text-align: center; margin: 0 auto; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;">
+                <h1 style="text-align: center; width: 100%; margin: 0;">{{ service.title }}</h1>
+                {% if service.page_description %}
+                <p
+                    style="font-family: 'Cinzel', serif; font-size: 1.2rem; color: #D4AF37; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8); max-width: 800px; margin: 0 auto;">
+                    {{ service.page_description }}
+                </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+    <!-- --- Main Content Grid --- -->
+    <div class="container sacred-main-container">
+        <div class="row">
+            <!-- Left Side: Detail Area -->
+            <div class="col-lg-8">
+                <div class="mandap-info-card animate__animated animate__fadeInLeft">
+                    <div class="mandap-card-header">
+                        <i class="fas fa-om fa-2x" style="color: #D4AF37;"></i>
+                        <h2>Ritual Significance</h2>
+                    </div>
+                    <div class="mandap-card-body">
+                        <div class="rituals-desc">
+                            {{ service.full_description|safe }}
+                        </div>
+
+                        <div class="sacred-feature-unified animate__animated animate__fadeInUp">
+                            <div class="row g-0">
+                                <!-- Benefits -->
+                                <div class="col-md-6 border-divider-sacred">
+                                    <div class="feature-box-inner">
+                                        <h3><i class="fas fa-praying-hands"></i> Spiritual Benefits</h3>
+                                        <ul class="feature-list">
+                                            {% with benefit_list=service.benefits|split_lines %}
+                                            {% if benefit_list %}
+                                            {% for benefit in benefit_list %}
+                                            <li><i class="fas fa-sun"></i> {{ benefit }}</li>
+                                            {% endfor %}
+                                            {% else %}
+                                            <li><i class="fas fa-sun"></i> Divine blessings and cosmic protection.</li>
+                                            <li><i class="fas fa-sun"></i> Restoration of peace and spiritual harmony.
+                                            </li>
+                                            <li><i class="fas fa-sun"></i> Neutralization of negative karmic effects.
+                                            </li>
+                                            {% endif %}
+                                            {% endwith %}
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Included -->
+                                <div class="col-md-6">
+                                    <div class="feature-box-inner">
+                                        <h3><i class="fas fa-scroll"></i> Seva Inclusion</h3>
+                                        <ul class="feature-list">
+                                            {% with inclusion_list=service.inclusions|split_lines %}
+                                            {% if inclusion_list %}
+                                            {% for inclusion in inclusion_list %}
+                                            <li><i class="fas fa-dharmachakra"></i> {{ inclusion }}</li>
+                                            {% endfor %}
+                                            {% else %}
+                                            <li><i class="fas fa-dharmachakra"></i> All Required Sacred Samagri.</li>
+                                            <li><i class="fas fa-dharmachakra"></i> Service by Certified Vedic Pandits.
+                                            </li>
+                                            <li><i class="fas fa-dharmachakra"></i> Holy Prasad & Divine Blessings.</li>
+                                            {% endif %}
+                                            {% endwith %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gallery Section -->
+                        <div class="sacred-gallery-section">
+                            <h3 class="font-weight-bold mb-4"
+                                style="font-family: 'Cinzel', serif; color: #800000; border-bottom: 1.5px solid #eee; padding-bottom: 10px;">
+                                Visual Glimpses</h3>
+                            <div class="row">
+                                {% if service.gallery_images.all %}
+                                {% for gallery_item in service.gallery_images.all %}
+                                <div class="col-md-6 mb-3">
+                                    <div class="gallery-frame-detail">
+                                        <img src="{{ gallery_item.image.url }}"
+                                            alt="{{ gallery_item.alt_text|default:service.title }}">
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                {% elif service.image %}
+                                <div class="col-md-6 mb-3">
+                                    <div class="gallery-frame-detail">
+                                        <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="col-md-6 mb-3">
+                                    <div class="gallery-frame-detail">
+                                        <img src="{% static 'images/poojaser.png' %}" alt="{{ service.title }}">
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Booking Invitation -->
+            <div class="col-lg-4">
+                <div class="invitation-sidebar"
+                    style="position: sticky; top: 120px; z-index: 100; height: max-content; margin-bottom: 2rem;">
+                    <div class="invocation-card animate__animated animate__fadeInRight">
+                        <h3 class="text-center mb-4" style="font-family: 'Rozha One', serif; color: #800000;">Seek
+                            Blessings</h3>
+
+                        <!-- Quick Specs -->
+                        <div class="puja-specs">
+                            <div class="spec-item">
+                                <i class="far fa-clock"></i>
+                                <label>Duration</label>
+                                <span>{{ service.duration }}</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-user-friends"></i>
+                                <label>Pandits</label>
+                                <span>{{ service.pandits|default:"Vedic Acharyas" }}</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <label>Place</label>
+                                <span>{{ service.location|default:"Anywhere" }}</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-atom"></i>
+                                <label>Deity</label>
+                                <span>{{ service.deity|default:"Iswara" }}</span>
+                            </div>
+                        </div>
+
+                        <!-- Price Section
+                        <div class="price-invocation">
+                            <label>Dakshina Offering</label>
+                            <div class="price-tag-sacred">{{ service.price }}</div>
+                        </div>-->
+
+                        <!-- Formal Booking Form -->
+                        <form action="{% url 'book_service' service_slug %}" method="GET">
+                            <div class="sacred-form-group">
+                                <label>User Name</label>
+                                <input type="text" name="user_name" class="sacred-input" placeholder="Full legal name"
+                                    required>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6 pr-1">
+                                    <div class="sacred-form-group">
+                                        <label>Gotram</label>
+                                        <input type="text" name="gotram" class="sacred-input" placeholder="Gothram">
+                                    </div>
+                                </div>
+                                <div class="col-6 pl-1">
+                                    <div class="sacred-form-group">
+                                        <label>Nakshatra</label>
+                                        <input type="text" name="nakshatram" class="sacred-input"
+                                            placeholder="Nakshatra ">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sacred-form-group">
+                                <label>Language</label>
+                                <select name="language" class="sacred-input">
+                                    <option value="">Select Language</option>
+                                    <option value="Telugu">Telugu</option>
+                                    <option value="Hindi">Hindi</option>
+                                    <option value="English">English</option>
+                                </select>
+                            </div>
+
+                            <div class="sacred-form-group">
+                                <label>Sankalpa Date</label>
+                                <input type="date" name="date" id="serviceDate" class="sacred-input" required
+                                    min="{{ today_date }}">
+                            </div>
+
+                            <div class="sacred-form-group">
+                                <label>Select Time</label>
+                                <select name="slot" id="serviceSlot" class="sacred-input" required>
+                                    <option value="">-- Choose Time --</option>
+                                    <option value="morning" id="slot-morning">Morning (6 AM - 12 PM)</option>
+                                    <option value="afternoon" id="slot-afternoon">Afternoon (12 PM - 4 PM)</option>
+                                    <option value="evening" id="slot-evening">Evening (4 PM - 9 PM)</option>
+                                </select>
+                                <div id="slotLoading" class="small mt-1" style="display:none; color: #800000;">
+                                    <i class="fas fa-dharmachakra fa-spin mr-1"></i> Syncing with Panchang...
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-sacred-proceed">
+                                INVOKE BOOKING <i class="fas fa-chevron-right ml-2" style="font-size: 0.8rem;"></i>
+                            </button>
+                        </form>
+
+                        <p class="text-center mt-3 small" style="opacity: 0.6; color: #4a332d;">
+                            <i class="fas fa-shield-alt mr-1"></i> Vedic Secure Protocol
+                        </p>
+                    </div>
+
+                    <!-- Call Support -->
+                    <div class="call-shrine-card animate__animated animate__pulse animate__infinite">
+                        <h4><i class="fas fa-phone-alt"></i> Direct Blessings</h4>
+                        <p class="mb-1 small">Speak to our Dharma Sahayaks</p>
+                        <div class="font-weight-bold h4 mb-0">+91 98765 43210</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const dateInput = document.getElementById('serviceDate');
+        const slotSelect = document.getElementById('serviceSlot');
+        const slotLoading = document.getElementById('slotLoading');
+
+        async function updateSlots() {
+            const selectedDate = dateInput.value;
+            if (!selectedDate) return;
+
+            slotLoading.style.display = 'block';
+            slotSelect.disabled = true;
+
+            try {
+                const response = await fetch(`/api/availability/service/{{ service_slug }}/?date=${selectedDate}`);
+                const availability = await response.json();
+
+                const slots = [
+                    { id: 'morning', label: 'Morning (6 AM - 12 PM)' },
+                    { id: 'afternoon', label: 'Afternoon (12 PM - 4 PM)' },
+                    { id: 'evening', label: 'Evening (4 PM - 9 PM)' }
+                ];
+
+                slots.forEach(slot => {
+                    const option = document.getElementById(`slot-${slot.id}`);
+                    if (option) {
+                        const isAvailable = availability[slot.id];
+                        option.disabled = !isAvailable;
+                        if (!isAvailable) {
+                            option.textContent = `${slot.label} - Unavailable`;
+                        } else {
+                            option.textContent = slot.label;
+                        }
+                    }
+                });
+
+                if (slotSelect.value && document.getElementById(`slot-${slotSelect.value}`).disabled) {
+                    slotSelect.value = '';
+                }
+
+            } catch (error) {
+                console.error('Error fetching availability:', error);
+            } finally {
+                slotLoading.style.display = 'none';
+                slotSelect.disabled = false;
+            }
+        }
+
+        dateInput.addEventListener('change', updateSlots);
+        if (dateInput.value) updateSlots();
+    });
+</script>

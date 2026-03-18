@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% comment %}
+=========================================
+HOME PAGE - Django Template Wrapper
+Developer Zone Only
+=========================================
+This file contains ONLY Django logic and includes.
+All editable content is in templates/cms/home/
+
+Admin-editable files:
+- cms/home/hero_content.html
+- cms/home/services_grid.html
+- cms/home/stats_section.html
+- cms/home/how_it_works.html
+- cms/home/authentic_divine.html
+- cms/home/videos_section.html
+- cms/home/testimonials.html
+{% endcomment %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/videos.css' %}">
+<link rel="stylesheet" href="{% static 'css/separators.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+{% include 'includes/hero.html' %}
+
+<!-- Categories & Stats Section -->
+{% include 'cms/home/stats_section.html' %}
+
+<!-- Separator 1 -->
+<hr class="gold-dotted-divider">
+
+<!-- Featured Pooja Preview -->
+{% include 'cms/home/services_grid.html' %}
+
+<!-- Separator 2 -->
+<hr class="gold-dotted-divider">
+
+<!-- About Us Section -->
+{% include 'cms/home/how_it_works.html' %}
+
+<!-- Separator 3 -->
+<hr class="gold-dotted-divider">
+
+<!-- Temples Section -->
+{% include 'cms/home/videos_section.html' %}
+
+<!-- Separator 4 -->
+<hr class="gold-dotted-divider">
+
+<!-- Testimonials Section -->
+{% include 'cms/home/testimonials.html' %}
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="{% static 'js/lightbox.js' %}"></script>
+{% endblock %}

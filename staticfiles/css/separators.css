@@ -1,0 +1,29 @@
+/* Separator Styles */
+.section-separator {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    position: relative;
+    z-index: 9;
+    background: transparent;
+    pointer-events: none;
+}
+
+.section-separator img {
+    width: 80%;
+    max-width: 800px;
+    height: auto;
+    max-height: 35px;
+    /* Very small and effective */
+    object-fit: contain;
+    filter: drop-shadow(0 2px 2px rgba(179, 0, 0, 0.1));
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .section-separator img {
+        width: 95%;
+    }
+}

@@ -1,0 +1,120 @@
+{% extends 'dashboard/base_dash.html' %}
+{% load static %}
+
+{% block dash_title %}Puja Services{% endblock %}
+{% block page_title %}Puja Services Management{% endblock %}
+
+{% block dash_content %}
+<div class="card">
+    <div class="card-header">
+        <h3>All Puja Services</h3>
+        <div class="header-actions">
+            <a href="{% url 'admin_puja_add' %}" class="btn-gold">
+                <i class="fas fa-plus"></i> Add New Puja
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="dash-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Price (₹)</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for puja in pujas %}
+                    <tr>
+                        <td>
+                            <div style="font-weight: 600;">{{ puja.title }}</div>
+                            <small style="color: #888;">{{ puja.slug }}</small>
+                        </td>
+                        <td>
+                            <span class="badge badge-info">{{ puja.category.name|default:"Uncategorized" }}</span>
+                        </td>
+                        <td>
+                            <span style="font-family: 'Inter', sans-serif;">{{ puja.price }}</span>
+                        </td>
+                        <td>
+                            {% if puja.is_active %}
+                            <span class="badge badge-success">Active</span>
+                            {% else %}
+                            <span class="badge badge-secondary">Inactive</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <a href="{% url 'service_detail' puja.slug %}" class="action-link" title="View on Site"
+                                    target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="{% url 'admin_puja_edit' puja.slug %}" class="action-link" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="{% url 'admin_puja_delete' puja.slug %}" class="action-link" title="Delete"
+                                    style="color: #e53935;">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" style="text-align: center; padding: 40px;">
+                            <i class="fas fa-folder-open"
+                                style="font-size: 2rem; color: #ddd; display: block; margin-bottom: 10px;"></i>
+                            No Puja services found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .header-actions {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn-gold {
+        background: var(--gold);
+        color: var(--maroon);
+        padding: 8px 15px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.85rem;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .btn-gold:hover {
+        background: #b8952d;
+        transform: translateY(-2px);
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 15px;
+    }
+
+    .action-link {
+        color: var(--maroon);
+        font-size: 1rem;
+        transition: color 0.3s;
+    }
+
+    .action-link:hover {
+        color: var(--gold);
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,335 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+<style>
+    .auth-card {
+        max-width: 800px;
+        border-top: 5px solid #d4af37;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    @media (max-width: 600px) {
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .checkbox-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 12px;
+        margin-top: 5px;
+    }
+
+    .check-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        background: #FFFDF7;
+        border: 1.5px solid transparent;
+        border-radius: 10px;
+        cursor: pointer;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        color: #2c1810;
+        transition: all 0.25s;
+    }
+
+    .check-item:hover {
+        border-color: #D4AF37;
+        background: #FFFBF0;
+    }
+
+    .check-item input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        accent-color: #800000;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    .full-width {
+        grid-column: 1 / -1;
+    }
+
+    .file-input-wrapper {
+        background: #fff;
+        border: 1px dashed #d4af37;
+        padding: 10px;
+        border-radius: 4px;
+    }
+
+    .field-error {
+        background: #ff4d4d;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        margin-top: 5px;
+    }
+
+    .radio-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .radio-question:last-child {
+        border-bottom: none;
+    }
+
+    .radio-group {
+        display: flex;
+        gap: 20px;
+    }
+
+    .radio-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+    }
+
+    .radio-item input[type="radio"] {
+        cursor: pointer;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="auth-section" style=" background: linear-gradient(rgba(255, 252, 245, 0.92), rgba(255, 252, 245, 0.92)), url('/static/images/bgdesign2.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h2>Purohit Registration</h2>
+            <p>Join our divine network of experienced priests</p>
+        </div>
+
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            Please correct the errors below.
+        </div>
+        {% endif %}
+
+        <form class="auth-form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-grid">
+                <div class="form-group full-width">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Enter Full Name with Sur Name"
+                        value="{{ form.fullname.value|default:'' }}" required>
+                    {% if form.fullname.errors %}
+                    {% for error in form.fullname.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="@gmail.com"
+                        value="{{ form.email.value|default:'' }}" required>
+                    {% if form.email.errors %}
+                    {% for error in form.email.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="text" id="mobile" name="mobile" maxlength="10"
+                        value="{{ form.mobile.value|default:'' }}" required>
+                    {% if form.mobile.errors %}
+                    {% for error in form.mobile.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="experience">Experience (Years)</label>
+                    <input type="number" id="experience" name="experience" placeholder="Years of Experience" min="0"
+                        step="1" value="{{ form.experience.value|default:'' }}" required>
+                    {% if form.experience.errors %}
+                    {% for error in form.experience.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                  <select id="language" name="language" multiple required>
+    <option value="Telugu">Telugu</option>
+    <option value="Hindi">Hindi</option>
+    <option value="English">English</option>
+</select>
+                    {% if form.language.errors %}
+                    {% for error in form.language.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="gothram">Gothram</label>
+                    <input type="text" id="gothram" name="gothram" placeholder="Enter your Gothram"
+                        value="{{ form.gothram.value|default:'' }}" required>
+                    {% if form.gothram.errors %}
+                    {% for error in form.gothram.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="qualification">Highest Educational Qualification</label>
+                    <input type="text" id="qualification" name="qualification" placeholder="Enter your degree/diploma"
+                        value="{{ form.qualification.value|default:'' }}" required>
+                    {% if form.qualification.errors %}
+                    {% for error in form.qualification.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="qualification_place">Gurukulam / Vedic Institution</label>
+                    <input type="text" id="qualification_place" name="qualification_place"
+                        placeholder="Name of institution" value="{{ form.qualification_place.value|default:'' }}"
+                        required>
+                    {% if form.qualification_place.errors %}
+                    {% for error in form.qualification_place.errors %}<div class="field-error">{{ error }}</div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group full-width"
+                    style="background: #fffcf5; padding: 20px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2); margin-top: 10px;">
+                    <div class="radio-question">
+                        <label>Have you studied Vedic education thoroughly?</label>
+                        <div class="radio-group">
+                            <label class="radio-item"><input type="radio" name="formal_vedic_training" value="True"
+                                    required> Yes</label>
+                            <label class="radio-item"><input type="radio" name="formal_vedic_training" value="False">
+                                No</label>
+                        </div>
+                    </div>
+
+                    <div class="radio-question">
+                        <label>Do you know the Vedam called Smartam?</label>
+                        <div class="radio-group">
+                            <label class="radio-item"><input type="radio" name="knows_smaardham" value="True" required>
+                                Yes</label>
+                            <label class="radio-item"><input type="radio" name="knows_smaardham" value="False">
+                                No</label>
+                        </div>
+                    </div>
+
+                    <div class="radio-question">
+                        <label>Can the rituals of worship be performed strictly according to the scriptures?</label>
+                        <div class="radio-group">
+                            <label class="radio-item"><input type="radio" name="organize_scientifically" value="True"
+                                    required> Yes</label>
+                            <label class="radio-item"><input type="radio" name="organize_scientifically" value="False">
+                                No</label>
+                        </div>
+                    </div>
+
+                    <div class="radio-question">
+                        <label>Can the program be conducted in a scientific and ritual manner?</label>
+                        <div class="radio-group">
+                            <label class="radio-item"><input type="radio" name="can_perform_rituals" value="True"
+                                    checked> Yes</label>
+                            <label class="radio-item"><input type="radio" name="can_perform_rituals" value="False">
+                                No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="location">Location / Address(Hyderabad only)</label>
+                    <input type="text" id="location" name="location" placeholder="Full Address"
+                        value="{{ form.location.value|default:'' }}" required>
+                    {% if form.location.errors %}
+                    {% for error in form.location.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="specialization">Specialization</label>
+                    <input type="text" id="specialization" name="specialization"
+                        placeholder="e.g. Vedic Rituals, Astrology" value="{{ form.specialization.value|default:'' }}">
+                    {% if form.specialization.errors %}
+                    {% for error in form.specialization.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="photo">Photo</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="photo" name="photo" accept="image/*" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="certificate">Vedic Certificate</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="certificate" name="certificate" accept=".pdf,image/*">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_proof">ID Proof</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="id_proof" name="id_proof" accept=".pdf,image/*" required>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Services Offered</label>
+
+                    <div class="checkbox-grid">
+                        {% for service in services %}
+                        <label class="check-item">
+                            <input type="checkbox" id="service_{{ service.slug }}" name="services"
+                                value="{{ service.slug }}">
+                            {{ service.title }}
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="password">Create Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password"
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                        title="Password must be at least 8 characters long and include 1 uppercase, 1 lowercase, 1 number, and 1 special character"
+                        required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-auth" style="margin-top: 20px;">Register as Purohit</button>
+        </form>
+
+        <div class="auth-footer">
+            Already registered? <a href="{% url 'purohit_login' %}">Sign In</a>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById("mobile").addEventListener("input", function () {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+</script>
+{% endblock %}

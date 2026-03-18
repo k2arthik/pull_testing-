@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #800000;
+            margin: 0;
+            font-size: 28px;
+            text-transform: uppercase;
+        }
+
+        .header p {
+            margin: 5px 0 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            background-color: #f9f4e6;
+            color: #800000;
+            padding: 8px 15px;
+            font-weight: bold;
+            font-size: 16px;
+            border-left: 4px solid #d4af37;
+            margin-bottom: 12px;
+        }
+
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .details-table td {
+            padding: 8px 0;
+            vertical-align: top;
+        }
+
+        .label {
+            width: 35%;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .value {
+            width: 65%;
+            color: #000;
+        }
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .watermark {
+            position: absolute;
+            top: 40%;
+            left: 20%;
+            font-size: 80px;
+            color: rgba(212, 175, 55, 0.1);
+            transform: rotate(-45deg);
+            z-index: -1;
+        }
+    </style>
+</head>`
+
+<body>
+    <div class="watermark">KARYA SIDDHI</div>
+
+    <div class="header">
+        <h1>Booking Confirmation</h1>
+        <p>Karya Siddhi - Spiritual Services Platform</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Booking Information</div>
+        <table class="details-table">
+            <tr>
+                <td class="label">Booking ID:</td>
+                <td class="value">#{{ booking.id }}</td>
+            </tr>
+            <tr>
+                <td class="label">Pooja Service:</td>
+                <td class="value">{{ service_name }}</td>
+            </tr>
+            <tr>
+                <td class="label">Status:</td>
+                <td class="value" style="color: green; text-transform: uppercase; font-weight: bold;">{{ booking.get_status_display }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Schedule & Location</div>
+        <table class="details-table">
+            <tr>
+                <td class="label">Date:</td>
+                <td class="value">{{ booking.booking_date|date:"F d, Y" }}</td>
+            </tr>
+            <tr>
+                <td class="label">Time Slot:</td>
+                <td class="value">{{ booking.start_time|time:"h:i A" }} - {{ booking.end_time|time:"h:i A" }} ({{ booking.slot_type|capfirst }})
+                    </td>
+            </tr>
+            <tr>
+                <td class="label">Location:</td>
+                <td class="value">{{ booking.devotee_address }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Participant Details</div>
+        <table class="details-table">
+            <tr>
+                <td class="label">Devotee Name:</td>
+                <td class="value">{{ booking.devotee_name }}</td>
+            </tr>
+            {% if is_priest_view %}
+            <tr>
+                <td class="label">Devotee Phone:</td>
+                <td class="value">{{ booking.devotee_phone }}</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <td class="label">Purohit (Priest):</td>
+                <td class="value">{{ booking.priest.fullname }}</td>
+            </tr>
+            {% if not is_priest_view %}
+            <tr>
+                <td class="label">Purohit Phone:</td>
+                <td class="value">{{ booking.priest.mobile }}</td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+
+    {% if booking.gothram or booking.nakshatram or booking.special_requests %}
+    <div class="section">
+        <div class="section-title">Ritual Details</div>
+        <table class="details-table">
+            {% if booking.gothram %}
+            <tr>
+                <td class="label">Gothram:</td>
+                <td class="value">{{ booking.gothram }}</td>
+            </tr>
+            {% endif %}
+            {% if booking.nakshatram %}
+            <tr>
+                <td class="label">Nakshatram:</td>
+                <td class="value">{{ booking.nakshatram }}</td>
+            </tr>
+            {% endif %}
+            {% if booking.special_requests %}
+            <tr>
+                <td class="label">Special Instructions:</td>
+                <td class="value">{{ booking.special_requests }}</td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+    {% endif %}
+
+    <div class="footer">
+        <p>This is a computer-generated confirmation document from Karya Siddhi.</p>
+        <p>|| ॐ शांति शांति शांति ||</p>
+    </div>
+</body>
+
+</html>

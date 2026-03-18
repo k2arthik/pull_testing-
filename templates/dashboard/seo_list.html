@@ -1,0 +1,126 @@
+{% extends 'dashboard/base_dash.html' %}
+{% load static %}
+
+{% block dash_title %}SEO Config{% endblock %}
+{% block page_title %}SEO Metadata Management{% endblock %}
+
+{% block dash_content %}
+<div class="card">
+    <div class="card-header">
+        <h3>SEO Config for URL Paths</h3>
+        <a href="{% url 'admin_seo_add' %}" class="btn-gold-small">
+            <i class="fas fa-plus"></i> Add New Path
+        </a>
+    </div>
+    <div class="card-body" style="padding: 0;">
+        <div class="table-responsive">
+            <table class="dash-table">
+                <thead>
+                    <tr>
+                        <th>URL Path</th>
+                        <th>Meta Title</th>
+                        <th>Description (Snippet)</th>
+                        <th>Keywords</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for meta in metadata %}
+                    <tr>
+                        <td style="font-family: monospace; font-weight: bold; color: var(--maroon);">{{ meta.path }}
+                        </td>
+                        <td>{{ meta.title_tag }}</td>
+                        <td style="font-size: 0.8rem; color: #666;">{{ meta.meta_description|truncatechars:60 }}</td>
+                        <td>
+                            <small>{{ meta.keywords|truncatechars:30 }}</small>
+                        </td>
+                        <td>
+                            <div style="display: flex; gap: 10px;">
+                                <a href="{% url 'admin_seo_edit' meta.id %}" class="btn-icon" title="Edit"><i
+                                        class="fas fa-edit"></i></a>
+                                <a href="{% url 'admin_seo_delete' meta.id %}" class="btn-icon" title="Delete"
+                                    style="color: #e53935;"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" style="text-align: center; padding: 30px; color: #999;">No custom SEO metadata
+                            defined yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>SEO Tips</h3>
+    </div>
+    <div class="card-body">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+            <div style="background: #fdfaf0; padding: 15px; border-radius: 8px;">
+                <h5 style="color: var(--maroon); margin-top: 0;">Title Length</h5>
+                <p style="font-size: 0.8rem; margin: 0;">Keep titles between 50-60 characters for best Google
+                    visibility.</p>
+            </div>
+            <div style="background: #fdfaf0; padding: 15px; border-radius: 8px;">
+                <h5 style="color: var(--maroon); margin-top: 0;">Meta Description</h5>
+                <p style="font-size: 0.8rem; margin: 0;">Aim for 150-160 characters. Include your primary keywords
+                    naturally.</p>
+            </div>
+            <div style="background: #fdfaf0; padding: 15px; border-radius: 8px;">
+                <h5 style="color: var(--maroon); margin-top: 0;">Keywords</h5>
+                <p style="font-size: 0.8rem; margin: 0;">Use comma-separated keywords relevant to that specific page
+                    content.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .btn-gold-small {
+        background: var(--gold);
+        color: var(--maroon);
+        padding: 6px 15px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.8rem;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--gold);
+    }
+
+    .btn-gold-small:hover {
+        background: #b8952d;
+        transform: translateY(-1px);
+    }
+
+    .btn-icon {
+        background: #fdfaf0;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        color: var(--maroon);
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+
+    .btn-icon:hover {
+        background: var(--gold-light);
+        border-color: var(--gold);
+    }
+</style>
+{% endblock %}

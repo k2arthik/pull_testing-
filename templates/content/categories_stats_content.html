@@ -1,0 +1,129 @@
+{% load static %}
+<!-- Categories & Statistics Section -->
+{% load static %}
+<section class="categories-stats"
+    style="background-color: #eddeb1; linear-gradient(rgba(92, 90, 90, 0.7), rgba(18, 18, 17, 0.7))  center/cover no-repeat; min-height:250px;">
+    <!--
+    <div class="divine-symbol-top">
+        <img src="https://png.pngtree.com/png-vector/20240314/ourmid/pngtree-3d-rendering-gold-om-symbol-hinduism-sign-divine-blessings-png-image_11943612.png"
+            alt="Om Symbol" class="om-float">
+    </div>-->
+    <div class="container">
+        <!-- New Chakra Mantra Visualization -->
+        <div class="chakra-mantra-wrapper" style="min-height:250px;">
+            <div class="chakra-mantra-container">
+                <!-- Rotating SVG Mantras -->
+                <div class="rotating-mantras">
+                    <svg viewBox="0 0 500 500" class="mantra-svg">
+                        <defs>
+                            <path id="mantraCircle"
+                                d="M 250, 250 m -200, 0 a 200, 200 0 1, 1 400, 0 a 200, 200 0 1, 1 -400, 0" />
+                            <path id="mantraCircleInner"
+                                d="M 250, 250 m -150, 0 a 150, 150 0 1, 1 300, 0 a 150, 150 0 1, 1 -300, 0" />
+                        </defs>
+                        <text class="mantra-text">
+                            <textPath href="#mantraCircle" startOffset="0">
+                                ॥ ఓం భూర్భువః స్వః ।
+                                తత్సవితుర్వరేణ్యం । భర్గో దేవస్య ధీమహి ।
+                                ధియో యో నః ప్రచోదయాత్ ॥
+                            </textPath>
+                        </text>
+                        <text class="mantra-text inner" opacity="0.6">
+                            <textPath href="#mantraCircleInner" startOffset="50%">
+                                ఓం శ్రీరామ జయరామ • ఓం నమః భైరవాయ • ఓం నమః శివాయ • ఓం నమో నారాయణాయ •
+                            </textPath>
+                        </text>
+                    </svg>
+                </div>
+                <!-- Central Image (Sri Ramanujacharya or similar) -->
+                <div class="central-deity">
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.Ux-WHwYlfsSXRctJplcuZAHaEo?pid=Api&P=0&h=180"
+                        alt="Sri Ramanujacharya">
+                </div>
+                <!-- Decorative Mandala Background -->
+                <div class="mandala-decoration"></div>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="swiper-button-next stat-nav"></div>
+        <div class="swiper-button-prev stat-nav"></div>
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    </div>
+
+    <!-- Swiper Initialization Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const statsSwiper = new Swiper('.stats-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    640: { slidesPerView: 2 },
+                    992: { slidesPerView: 3 },
+                    1200: { slidesPerView: 4 }
+                }
+            });
+        });
+    </script>
+</section>
+
+<section class="categories-stats" style="background-image:url('{% static 'images/rangoli2.jpg.jpeg' %}');">
+    <div class="container">
+
+        <!-- Categories Grid -->
+        <div class="categories-header section-header">
+            <h2 style="color:#E24028">Pooja Categories</h2>
+            <p class="section-subtitle" style="color:#E24028">Find the Perfect Pooja for Your Needs</p>
+        </div>
+
+        <div class="categories-grid">
+            <!-- Category 1: By God -->
+            <div class="category-card" style="background-color: #edddab;">
+                <div class="category-icon">
+                    <img src="https://png.pngtree.com/png-vector/20240314/ourmid/pngtree-decorative-golden-kalash-with-coconut-and-mango-leaves-for-hindu-rituals-png-image_11943610.png"
+                        alt="By God" style="width: 120px; height: 120px; object-fit: contain;">
+                </div>
+                <h3>Explore by God</h3>
+                <p>Find pujas dedicated to Shiva, Vishnu, Ganesha, and more.</p>
+                <a href="{% url 'services' %}" class="category-link">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Category 2: By Purpose -->
+            <div class="category-card" style="background-color: #f3e0a9;">
+                <div class="category-icon">
+                    <img src="https://png.pngtree.com/png-vector/20240314/ourmid/pngtree-hindu-sacred-object-shankha-shell-for-puja-and-rituals-png-image_11943567.png"
+                        alt="By Purpose" style="width: 120px; height: 120px; object-fit: contain;">
+                </div>
+                <h3>By Purpose</h3>
+                <p>Special rituals for Health, Wealth, Marriage, and Success.</p>
+                <a href="{% url 'services' %}" class="category-link">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Category 3: Special Days -->
+            <div class="category-card" style="background-color: #eddeb1;">
+                <div class="category-icon">
+                    <img src="https://png.pngtree.com/png-vector/20240314/ourmid/pngtree-3d-rendering-brilliant-gold-diya-oil-lamp-lit-for-diwali-celebration-png-image_11943568.png"
+                        alt="Special Days" style="width: 120px; height: 120px; object-fit: contain;">
+                </div>
+                <h3>Special Days</h3>
+                <p>Book for Purnima, Amavasya, Pradosham, and Festivals.</p>
+                <a href="{% url 'services' %}" class="category-link">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>

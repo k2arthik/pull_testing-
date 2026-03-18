@@ -1,0 +1,16 @@
+﻿Checking templates/pages/purohit_edit_profile.html...
+  IFs: 11, ENDIFs: 11
+  FORs: 6, ENDFORs: 6
+  BLOCKs: 2, ENDBLOCKs: 2
+Checking templates/content/signup_content.html...
+  IFs: 7, ENDIFs: 7
+  FORs: 6, ENDFORs: 6
+  BLOCKs: 0, ENDBLOCKs: 0
+Checking templates/pages/purohit_signup.html...
+  IFs: 11, ENDIFs: 11
+  FORs: 10, ENDFORs: 10
+  BLOCKs: 2, ENDBLOCKs: 2
+Checking templates/pages/signup.html...
+  IFs: 0, ENDIFs: 0
+  FORs: 0, ENDFORs: 0
+  BLOCKs: 2, ENDBLOCKs: 2

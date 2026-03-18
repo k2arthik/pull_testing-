@@ -1,0 +1,2 @@
+2026-03-13 M:True A:True E:False
+  Starts: 06:00:00 12:00:00 None

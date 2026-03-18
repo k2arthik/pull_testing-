@@ -1,0 +1,40 @@
+{% extends 'dashboard/base_dash.html' %}
+{% load static %}
+
+{% block dash_title %}Delete {{ user_type }}{% endblock %}
+{% block page_title %}Delete {{ user_type }}{% endblock %}
+
+{% block dash_content %}
+<div class="card" style="max-width: 600px; margin: 40px auto; border: 1px solid #ffcdd2;">
+    <div class="card-header" style="background-color: #ffebee; color: #c62828; border-bottom: 2px solid #ef5350;">
+        <h3><i class="fas fa-exclamation-triangle mr-2"></i> Confirm Deletion</h3>
+    </div>
+    <div class="card-body" style="text-align: center; padding: 40px 20px;">
+        <i class="fas fa-trash-alt" style="font-size: 4rem; color: #ef5350; margin-bottom: 20px;"></i>
+        <h4 style="color: #333; margin-bottom: 15px;">Are you absolutely sure?</h4>
+        <p style="color: #666; font-size: 1.1rem; margin-bottom: 30px;">
+            You are about to permanently delete the <strong>{{ user_type }}</strong>: <br>
+            <span
+                style="font-size: 1.3rem; font-weight: bold; color: #800000; display: inline-block; margin-top: 10px;">{{ user_obj.fullname }}</span>
+        </p>
+        <div class="alert alert-warning" style="text-align: left; margin-bottom: 30px;">
+            <strong>Warning:</strong> This action cannot be undone. All data associated with this user, including their
+            account and all records, will be permanently removed from the system.
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <button type="submit" class="btn btn-danger"
+                    style="padding: 10px 25px; font-weight: bold; background-color: #c62828;">
+                    <i class="fas fa-trash"></i> Yes, Delete User
+                </button>
+                <a href="{% if user_type == 'Devotee' %}{% url 'admin_devotee_list' %}{% else %}{% url 'admin_purohit_list' %}{% endif %}"
+                    class="btn btn-secondary" style="padding: 10px 25px; font-weight: bold;">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
