@@ -1,0 +1,54 @@
+name: Full CI (Django + React)
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+
+  backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run migrations
+        run: python manage.py migrate
+
+      - name: Run Django tests
+        run: python manage.py test
+
+  frontend:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: cms-dashboard
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      # Comment this if you don't have tests yet
+      - name: Run frontend tests
+        run: npm test
+
+      - name: Build frontend
+        run: npm run build
