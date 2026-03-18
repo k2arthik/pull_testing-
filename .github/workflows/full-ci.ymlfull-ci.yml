@@ -1,0 +1,25 @@
+  frontend:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: cms-dashboard
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      # Optional: run tests (if you add them)
+      - name: Run frontend tests
+        run: npm test
+
+      - name: Build frontend
+        run: npm run build
