@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Business Consulting - Empower Your Success{% endblock %}</title>
+    <meta name="description"
+        content="Innovative business solutions for your growth. Strategy, digital marketing, and business consulting services.">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    {% include 'includes/navbar.html' %}
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        {% include 'includes/footer.html' %}
+    </footer>
+
+    <!-- Hidden Google Translate Widget -->
+    <div id="google_translate_element" style="display:none"></div>
+
+    <script type="text/javascript">
+        // Standard Google Translate Init from Reference
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,te',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+
+        // Bridge function to connect custom navbar buttons to Google Translate
+        function changeLanguage(langCode) {
+            // 1. Set the cookie which Google Translate uses to remember language
+            // For English, we want to clear the translation (reset to original)
+            if (langCode === 'en') {
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + location.hostname;
+                // Also handle the legacy/alternate format
+                document.cookie = "googtrans=/en/en; path=/";
+            } else {
+                document.cookie = "googtrans=/en/" + langCode + "; path=/";
+                document.cookie = "googtrans=/en/" + langCode + "; path=/; domain=" + location.hostname;
+            }
+
+            // 2. Save to local storage for our UI consistency
+            localStorage.setItem('preferredLang', langCode);
+
+            // 3. Reload page to ensure the whole website changes instantly (most reliable)
+            location.reload();
+        }
+
+        // Maintain UI state on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedLang = localStorage.getItem('preferredLang') || 'en';
+            const langBtn = document.getElementById('lang-toggle-btn');
+            const langSelector = document.querySelector('.lang-selector');
+
+            // Update button text to show what's currently selected
+            if (langBtn) {
+                langBtn.innerHTML = (savedLang === 'te' ? 'Telugu' : 'English') + ' <i class="fas fa-chevron-down"></i>';
+            }
+
+            // Click Handler for the Dropdown Toggle
+            if (langBtn && langSelector) {
+                langBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    langSelector.classList.toggle('active');
+                });
+
+                document.addEventListener('click', function (e) {
+                    if (!langSelector.contains(e.target)) {
+                        langSelector.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    {% block scripts %}
+    {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+{% load static %}
+<section class="video-reels-section">
+    <div class="container">
+        <div class="reels-grid">
+            <!-- Video Card 1 -->
+            <div class="reel-item">
+                <div class="video-wrapper">
+                    <video class="hover-video" muted loop playsinline poster="{% static 'images/budha.jpg' %}">
+                        <source src="{% static 'videos/snipping.mp4' %}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+
+                    <div class="play-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="view-count-badge">
+                        <i class="far fa-eye"></i>
+                    </div>
+                </div>
+
+                <!-- Product Overlay (Bottom) -->
+                <div class="reel-product-overlay">
+                    <div class="prod-thumb">
+                        <img src="{% static 'images/budha.jpg' %}" alt="Product">
+                    </div>
+                    <div class="prod-details">
+                        <h4></h4>
+                        <span class="price"></span>
+                    </div>
+                    <a href="#" class="reel-action-btn">
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video Card 2 -->
+            <div class="reel-item">
+                <div class="video-wrapper">
+                    <video class="hover-video" muted loop playsinline
+                        poster="{% static 'images/testimonial_side.jpg' %}">
+                        <source src="https://videos.pexels.com/video-files/7219803/7219803-hd_1080_1920_30fps.mp4"
+                            type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="play-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="view-count-badge">
+                        <i class="far fa-eye"></i> 12k
+                    </div>
+                </div>
+
+                <div class="reel-product-overlay">
+                    <div class="prod-thumb">
+                        <img src="{% static 'images/target.png' %}" alt="Product">
+                    </div>
+                    <div class="prod-details">
+                        <h4>Special Abhishekam</h4>
+                        <span class="price">Rs. 2,500</span>
+                    </div>
+                    <a href="#" class="reel-action-btn">
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video Card 3 -->
+            <div class="reel-item">
+                <div class="video-wrapper">
+                    <video class="hover-video" muted loop playsinline poster="{% static 'images/temple_sketch.png' %}">
+                        <source src="https://videos.pexels.com/video-files/8161730/8161730-hd_1080_1920_30fps.mp4"
+                            type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="play-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="view-count-badge">
+                        <i class="far fa-eye"></i> 5.2k
+                    </div>
+                </div>
+
+                <div class="reel-product-overlay">
+                    <div class="prod-thumb">
+                        <img src="{% static 'images/hero_graphic.png' %}" alt="Product">
+                    </div>
+                    <div class="prod-details">
+                        <h4>Vedic Chanting</h4>
+                        <span class="price">Rs. 501</span>
+                    </div>
+                    <a href="#" class="reel-action-btn">
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video Card 4 -->
+            <div class="reel-item">
+                <div class="video-wrapper">
+                    <video class="hover-video" muted loop playsinline poster="{% static 'images/about_hero.png' %}">
+                        <source src="https://videos.pexels.com/video-files/5724278/5724278-hd_1080_1920_30fps.mp4"
+                            type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="play-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="view-count-badge">
+                        <i class="far fa-eye"></i> 8.9k
+                    </div>
+                </div>
+
+                <div class="reel-product-overlay">
+                    <div class="prod-thumb">
+                        <img src="{% static 'images/lightbulb.png' %}" alt="Product">
+                    </div>
+                    <div class="prod-details">
+                        <h4>Festival Special</h4>
+                        <span class="price">Rs. 999</span>
+                    </div>
+                    <div class="whatsapp-float">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const items = document.querySelectorAll('.reel-item');
+
+        items.forEach(item => {
+            const video = item.querySelector('video');
+            const playOverlay = item.querySelector('.play-overlay');
+
+            item.addEventListener('click', () => {
+                // Pause all other videos
+                items.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        const otherVideo = otherItem.querySelector('video');
+                        if (otherVideo) {
+                            otherVideo.pause();
+                            otherItem.classList.remove('playing');
+                        }
+                    }
+                });
+
+                if (video) {
+                    if (video.paused) {
+                        const playPromise = video.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(error => {
+                                console.log("Play interrupted:", error);
+                            });
+                        }
+                        item.classList.add('playing');
+                    } else {
+                        video.pause();
+                        item.classList.remove('playing');
+                    }
+                }
+            });
+        });
+    });
+</script>
