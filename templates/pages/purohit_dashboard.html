@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base.html' %}
 {% load static %}
 
@@ -57,12 +58,335 @@
         margin-bottom: 15px;
     }
 
+=======
+﻿{% extends 'base.html' %}
+{% load static %}
+{% load auth_extras %}
+
+{% block extra_css %}
+<link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Rozha+One&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<style>
+    :root {
+        --maroon: #800000;
+        --maroon-dark: #600000;
+        --gold: #D4AF37;
+        --ivory: #FDF9F0;
+        --white: #FFFFFF;
+        --text: #2c1810;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    body {
+        background: var(--ivory);
+        margin: 0;
+        padding: 0;
+        font-family: "Times New Roman", Times, serif !important;
+    }
+
+    /* Hero */
+    .dash-hero {
+        background: var(--maroon);
+        background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 15L15 60l45 45 45-45z' fill='%23600000' fill-opacity='0.4'/%3E%3C/svg%3E");
+        padding: 180px 20px 160px;
+        text-align: center;
+        color: var(--white);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-om {
+        font-family: "Times New Roman", Times, serif !important;
+        font-size: 2.5rem;
+        color: var(--gold);
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .dash-hero h1 {
+        font-family: "Times New Roman", Times, serif !important;
+        font-size: 3rem;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        margin: 0 0 15px;
+    }
+
+    @media (max-width: 768px) {
+        .dash-hero {
+            padding: 100px 20px 80px;
+        }
+
+        .dash-hero h1 {
+            font-size: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .hero-om {
+            font-size: 2rem;
+        }
+    }
+
+    .dash-hero p {
+        font-family: "Times New Roman", Times, serif !important;
+        font-size: 1.1rem;
+        font-style: italic;
+        opacity: 0.85;
+        margin: 0;
+    }
+
+    .hero-wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        line-height: 0;
+    }
+
+    .hero-wave svg {
+        display: block;
+        width: 130%;
+        height: 80px;
+        fill: var(--ivory);
+    }
+
+    /* Divider */
+    .section-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin: 40px auto 50px;
+        max-width: 400px;
+    }
+
+    .divider-line {
+        height: 1px;
+        flex: 1;
+        background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.5), transparent);
+    }
+
+    .divider-symbol {
+        color: var(--maroon);
+        font-size: 1.1rem;
+        font-family: "Times New Roman", Times, serif !important;
+        background: var(--ivory);
+        padding: 4px 12px;
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        border-radius: 20px;
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+
+    /* Main layout */
+    .dash-content {
+        max-width: 1200px;
+        margin: 0 auto 40px;
+        padding: 0 30px;
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 50px;
+    }
+
+    .dash-bottom {
+        max-width: 1200px;
+        margin: 0 auto 80px;
+        padding: 0 30px;
+    }
+
+    @media (max-width: 992px) {
+
+        .dash-content,
+        .dash-bottom {
+            grid-template-columns: 1fr;
+            padding: 0 15px;
+        }
+    }
+
+    /* Sidebar */
+    .dash-sidebar {
+        position: sticky;
+        top: 100px;
+    }
+
+    .profile-card-sidebar {
+        background: var(--white);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        margin-bottom: 25px;
+    }
+
+    .profile-header-band {
+        background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+        padding: 30px 20px;
+        text-align: center;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile-header-band::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15), transparent 70%);
+        pointer-events: none;
+    }
+
+    .profile-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid var(--gold);
+        object-fit: cover;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        margin-bottom: 12px;
+        display: block;
+    }
+
+    .profile-name {
+        font-family: "Times New Roman", Times, serif !important;
+        color: var(--white);
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
+    .profile-id {
+        font-family: "Times New Roman", Times, serif !important;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.8rem;
+        margin-top: 5px;
+    }
+
+    .badge-verified {
+        display: inline-block;
+        background: var(--gold);
+        color: var(--maroon-dark);
+        padding: 2px 10px;
+        border-radius: 4px;
+        font-family: "Times New Roman", Times, serif !important;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+    }
+
+    .sidebar-nav {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .nav-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 15px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-family: "Times New Roman", Times, serif !important;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        transition: all 0.3s;
+        border: 1.5px solid transparent;
+    }
+
+    .nav-btn-edit {
+        background: var(--gold);
+        color: var(--maroon-dark);
+    }
+
+    .nav-btn-edit:hover {
+        background: #c8a032;
+        transform: translateY(-2px);
+    }
+
+    .nav-btn-avail {
+        background: transparent;
+        color: var(--maroon);
+        border-color: var(--gold);
+    }
+
+    .nav-btn-avail:hover {
+        background: #FFF9EC;
+        transform: translateY(-2px);
+    }
+
+    .nav-btn-bookings {
+        background: transparent;
+        color: #1a7a43;
+        border-color: #a9dfbf;
+    }
+
+    .nav-btn-bookings:hover {
+        background: #EDF8F2;
+        transform: translateY(-2px);
+    }
+
+    .nav-btn-logout {
+        background: transparent;
+        color: #c0392b;
+        border-color: #f5b7b1;
+    }
+
+    .nav-btn-logout:hover {
+        background: #FFF0EF;
+        transform: translateY(-2px);
+    }
+
+    /* Main Content */
+    .detail-card {
+        background: var(--white);
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        margin-bottom: 25px;
+        overflow: hidden;
+    }
+
+    .card-head {
+        background: #f8f9fa;
+        padding: 15px 25px;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .card-head-icon {
+        color: var(--maroon);
+        font-size: 1.1rem;
+    }
+
+    .card-head h3 {
+        font-family: "Times New Roman", Times, serif !important;
+        color: var(--maroon);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin: 0;
+    }
+
+    .card-body {
+        padding: 25px;
+    }
+
+    /* Info Grid */
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
     .info-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
 
+<<<<<<< HEAD
     .info-item label {
         display: block;
         font-size: 0.85rem;
@@ -110,11 +434,239 @@
     .btn-logout {
         background: #f44336;
         color: #fff;
+=======
+    @media (max-width: 600px) {
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .info-item label {
+        display: block;
+        font-size: 0.7rem;
+        color: #999;
+        text-transform: uppercase;
+        margin-bottom: 3px;
+    }
+
+    .info-item span {
+        font-family: "Times New Roman", Times, serif !important;
+        font-weight: 600;
+        color: var(--text);
+        font-size: 0.95rem;
+    }
+
+    /* Analytics Section at Bottom */
+    .analytics-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        margin-bottom: 30px;
+    }
+
+    @media (max-width: 768px) {
+        .analytics-row {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .analytics-card {
+        background: var(--white);
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        padding: 20px;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .analytics-card h4 {
+        font-family: "Times New Roman", Times, serif !important;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        color: var(--maroon);
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    /* Table Styles */
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .booking-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .booking-table th {
+        background: #f8f9fa;
+        padding: 12px;
+        text-align: left;
+        font-family: "Times New Roman", Times, serif !important;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--maroon);
+        border-bottom: 1px solid #eee;
+    }
+
+    .booking-table td {
+        padding: 12px;
+        border-bottom: 1px solid #eee;
+        font-size: 0.85rem;
+        color: var(--text);
+        vertical-align: middle;
+    }
+
+    .booking-table tr:hover {
+        background-color: #fdf9f0;
+    }
+
+    .btn-dash-action {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-decoration: none !important;
+        transition: 0.3s;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-dash-accept {
+        background: #28a745;
+        color: white;
+    }
+
+    .btn-dash-reject {
+        background: #dc3545;
+        color: white;
+    }
+
+    .btn-dash-pdf {
+        background: #6c757d;
+        color: white;
+    }
+
+    .btn-dash-cancel {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    .chart-container {
+        height: 180px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .completion-value {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--maroon);
+        font-family: 'Inter', sans-serif;
+    }
+
+    .service-tag {
+        display: inline-block;
+        background: var(--ivory);
+        border: 1px solid var(--gold);
+        color: var(--maroon);
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .avail-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 15px;
+    }
+
+    .avail-card {
+        background: #fdfaf0;
+        border: 1px solid #eee;
+        padding: 12px;
+        border-radius: 8px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .slot-pill {
+        display: inline-block;
+        font-size: 0.7rem;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin: 2px;
+    }
+
+    .slot-morning {
+        background: #fff3e0;
+        color: #e65100;
+    }
+
+    .slot-afternoon {
+        background: #e3f2fd;
+        color: #1565c0;
+    }
+
+    .slot-evening {
+        background: #ede7f6;
+        color: #4527a0;
+    }
+
+    .bstatus {
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+
+    .bstatus-confirmed {
+        background: #e8f5e9;
+        color: #2e7d32;
+    }
+
+    .bstatus-pending {
+        background: #fff8e1;
+        color: #f57f17;
+    }
+
+    .bstatus-other {
+        background: #f0f0f0;
+        color: #555;
+    }
+
+    @media (max-width: 768px) {
+        .dash-content {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .dash-sidebar {
+            position: static;
+        }
+
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
     }
 </style>
 {% endblock %}
 
 {% block content %}
+<<<<<<< HEAD
 <div class="dashboard-container">
     <div class="container">
         <div class="profile-card">
@@ -186,8 +738,449 @@
                     <a href="#" class="btn-dash btn-edit">Edit Profile</a>
                     <a href="{% url 'home' %}" class="btn-dash btn-logout">Logout</a>
                 </div>
+=======
+
+<!-- Hero -->
+<div class="dash-hero">
+    <span class="hero-om">Om</span>
+    <h1 style="color:white">Purohit Dashboard</h1>
+    <p>Welcome back, {{ profile.fullname }} may your sacred services bring peace and prosperity.</p>
+    <div class="hero-wave">
+        <svg viewBox="0 0 500 150" preserveAspectRatio="none">
+            <path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"></path>
+        </svg>
+    </div>
+</div>
+
+<!-- Divider -->
+<div class="section-divider">
+    <div class="divider-line"></div>
+    <span class="divider-symbol">Om</span>
+    <div class="divider-line"></div>
+</div>
+
+<div class="dash-content">
+    <!-- Sidebar -->
+    <aside class="dash-sidebar">
+        <div class="profile-card-sidebar">
+            <div class="profile-header-band">
+                {% if profile.photo %}
+                <img src="{{ profile.photo.url }}" class="profile-img" alt="{{ profile.fullname }}">
+                {% else %}
+                <img src="https://static.vecteezy.com/system/resources/previews/021/548/095/original/default-profile-picture-avatar-user-avatar-icon-person-icon-head-icon-profile-picture-icons-default-anonymous-user-male-and-female-avatar-profile-picture-outline-icons-free-vector.jpg"
+                    class="profile-img" alt="Default">
+                {% endif %}
+                <div class="badge-verified">VERIFIED PUROHIT</div>
+                <p class="profile-name">{{ profile.fullname }}</p>
+                <p class="profile-id">ID: PR-{{ profile.id|stringformat:"06d" }}</p>
+            </div>
+            <div class="sidebar-nav">
+                <a href="{% url 'purohit_edit_profile' %}" class="nav-btn nav-btn-edit"><i class="fas fa-user-edit"></i>
+                    Edit Profile</a>
+                <a href="{% url 'priest_availability' %}" class="nav-btn nav-btn-avail"><i
+                        class="far fa-calendar-check"></i> Availability</a>
+                <a href="{% url 'priest_bookings' %}" class="nav-btn nav-btn-bookings"><i class="fas fa-book-open"></i>
+                    Bookings</a>
+                <a href="{% url 'purohit_logout' %}" class="nav-btn nav-btn-logout"><i class="fas fa-sign-out-alt"></i>
+                    Logout</a>
+            </div>
+        </div>
+
+        <!-- Analytics Cards In Sidebar -->
+        <!-- Next Upcoming Booking Countdown -->
+        <div class="analytics-card"
+            style="padding:18px 20px; background: linear-gradient(135deg, #FFF8DC, #FFF0B3); border-color: #D4AF37; margin-bottom: 25px;">
+            <h4
+                style="font-family:'Times New Roman',serif;font-size:0.75rem;text-transform:uppercase;color:var(--maroon);margin-bottom:10px;text-align:center;">
+                <i class="fas fa-hourglass-half" style="color:#D4AF37;"></i> Next Booking Starts In
+            </h4>
+            <div id="nextBookingCountdown"
+                style="text-align:center; font-weight:bold; font-size:1.4rem; color:var(--maroon); letter-spacing: 1px; font-family:'Inter', sans-serif;">
+                -- : -- : --
+            </div>
+            <div id="nextBookingLabel" style="text-align:center; font-size:0.75rem; color:#666; margin-top:5px;">
+                Checking upcoming schedule...
+            </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const upcomingDateStr = "{% if upcoming_bookings %}{{ upcoming_bookings.first.booking_date|date:'Y-m-d' }}T{{ upcoming_bookings.first.start_time|time:'H:i:s' }}{% else %}None{% endif %}";
+                    const countdownDiv = document.getElementById("nextBookingCountdown");
+                    const labelDiv = document.getElementById("nextBookingLabel");
+
+                    if (upcomingDateStr === "None" || !upcomingDateStr) {
+                        countdownDiv.innerHTML = "No upcoming<br>slots booked";
+                        countdownDiv.style.fontSize = "1rem";
+                        labelDiv.style.display = "none";
+                        return;
+                    }
+
+                    const targetDate = new Date(upcomingDateStr).getTime();
+
+                    const updateCountdown = setInterval(function () {
+                        const now = new Date().getTime();
+                        const distance = targetDate - now;
+
+                        if (distance < 0) {
+                            clearInterval(updateCountdown);
+                            countdownDiv.innerHTML = "IN PROGRESS";
+                            countdownDiv.style.color = "#28a745";
+                            labelDiv.innerHTML = "Booking has started";
+                            return;
+                        }
+
+                        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                        let display = "";
+                        if (days > 0) display += days + "d ";
+                        display += (hours < 10 ? "0" : "") + hours + "h ";
+                        display += (minutes < 10 ? "0" : "") + minutes + "m ";
+                        display += (seconds < 10 ? "0" : "") + seconds + "s";
+
+                        countdownDiv.innerHTML = display;
+                        labelDiv.innerHTML = "Prepare for upcoming ritual";
+                    }, 1000);
+                });
+            </script>
+        </div>
+
+        <!-- Analytics Cards In Sidebar -->
+        <div class="analytics-card" style="padding:20px; border-radius:15px;">
+            <h4
+                style="font-family:'Times New Roman',serif;font-size:0.85rem;text-transform:uppercase;color:var(--maroon);margin-bottom:20px;text-align:center;border-bottom:1px solid #f0f0f0;padding-bottom:10px;">
+                <i class="fas fa-chart-line mr-2"></i> Performance Metrics
+            </h4>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;">
+                <div
+                    style="background:linear-gradient(135deg,#fffbea,#fff8d6);border:1px solid rgba(212,175,55,0.3);border-radius:12px;padding:15px;text-align:center;display:flex;flex-direction:column;justify-content:center;min-height:90px;">
+                    <i class="fas fa-rupee-sign" style="color:#d4af37;font-size:1.3rem;margin-bottom:5px;"></i>
+                    <div style="font-weight:700;font-size:1.1rem;color:var(--maroon);">₹{{ total_revenue|floatformat:0}}
+                    </div>
+                    <div style="font-size:0.65rem;color:#666;text-transform:uppercase;letter-spacing:1px;">Revenue</div>
+                </div>
+                <div
+                    style="background:linear-gradient(135deg,#f0fff4,#e6ffed);border:1px solid rgba(40,167,69,0.2);border-radius:12px;padding:15px;text-align:center;display:flex;flex-direction:column;justify-content:center;min-height:90px;">
+                    <i class="fas fa-star" style="color:#28a745;font-size:1.3rem;margin-bottom:5px;"></i>
+                    <div style="font-weight:700;font-size:1.1rem;color:var(--maroon);">{{ avg_rating }}/5</div>
+                    <div style="font-size:0.65rem;color:#666;text-transform:uppercase;letter-spacing:1px;">Rating</div>
+                </div>
+                <div
+                    style="background:linear-gradient(135deg,#eef2ff,#e8edff);border:1px solid rgba(90,120,250,0.2);border-radius:12px;padding:15px;text-align:center;display:flex;flex-direction:column;justify-content:center;min-height:90px;">
+                    <i class="fas fa-calendar-check" style="color:#5a78fa;font-size:1.3rem;margin-bottom:5px;"></i>
+                    <div style="font-weight:700;font-size:1.1rem;color:var(--maroon);">{{ total_upcoming_slots }}</div>
+                    <div style="font-size:0.65rem;color:#666;text-transform:uppercase;letter-spacing:1px;">Upcoming
+                    </div>
+                </div>
+                <div
+                    style="background:linear-gradient(135deg,#fff0f0,#ffe8e8);border:1px solid rgba(220,53,69,0.2);border-radius:12px;padding:15px;text-align:center;display:flex;flex-direction:column;justify-content:center;min-height:90px;">
+                    <i class="fas fa-check-circle" style="color:#dc3545;font-size:1.3rem;margin-bottom:5px;"></i>
+                    <div style="font-weight:700;font-size:1.1rem;color:var(--maroon);">{{ completion_rate }}%</div>
+                    <div style="font-size:0.65rem;color:#666;text-transform:uppercase;letter-spacing:1px;">Completion
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="analytics-card">
+            <h4>Service Performance</h4>
+            <div class="chart-container">
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </div>
+        <br>
+        <div class="analytics-card">
+            <h4>Completion Rate</h4>
+            <div class="chart-container">
+                <canvas id="completionChart"></canvas>
+                <div class="completion-value">{{ completion_rate }}%</div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main -->
+    <main>
+        <!-- Personal Info -->
+        <div class="detail-card">
+            <div class="card-head">
+                <div class="card-head-icon"><i class="fas fa-user"></i></div>
+                <h3>Personal Information</h3>
+            </div>
+            <div class="card-body">
+                <div class="info-grid">
+                    <div class="info-item"><label>Full Name</label><span>{{ profile.fullname }}</span></div>
+                    <div class="info-item"><label>Email Address</label><span>{{ profile.user.email }}</span></div>
+                    <div class="info-item"><label>Mobile Number</label><span>{{ profile.mobile }}</span></div>
+                    <div class="info-item">
+                        <label>Gothram</label>
+                        <span>{{ profile.gothram|default:"Not specified"}}</span>
+                    </div>
+                    <div class="info-item"><label>Languages</label><span>{{ display_languages }}</span></div>
+                    <div class="info-item"><label>Base Location</label><span>{{ profile.location }}</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Details -->
+        <div class="detail-card">
+            <div class="card-head">
+                <div class="card-head-icon"><i class="fas fa-scroll"></i></div>
+                <h3>Professional Details</h3>
+            </div>
+            <div class="card-body">
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Specialization</label>
+                        <span>{{ profile.specialization|default:"Not specified" }}</span>
+                    </div>
+                    <div class="info-item"><label>Experience</label><span>{{ profile.experience }} Years</span></div>
+                    <div class="info-item">
+                        <label>Highest Qualification</label>
+                        <span>{{profile.qualification|default:"Not specified" }}</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Vedic Institution</label>
+                        <span>{{ profile.qualification_place|default:"Not specified" }}</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Can the program be conducted in a scientific and ritual manner?</label>
+                        <span>{{ profile.formal_vedic_training|yesno:"Yes,No" }}</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Can the rituals of worship be performed strictly according to the scriptures?</label>
+                        <span>{{ profile.knows_smaardham|yesno:"Yes,No" }}</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Do you know the Vedam called Smartam?</label>
+                        <span>{{ profile.organize_scientifically|yesno:"Yes,No" }}</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Have you studied Vedic education thoroughly?</label>
+                        <span>{{ profile.can_perform_rituals|yesno:"Yes,No" }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Services -->
+        <div class="detail-card">
+            <div class="card-head">
+                <div class="card-head-icon"><i class="fas fa-hands-praying"></i></div>
+                <h3>Offering Services ({{ pretty_services|length }})</h3>
+            </div>
+            <div class="card-body">
+                <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                    {% for service in pretty_services %}
+                    <span class="service-tag">{{ service }}</span>
+                    {% empty %}
+                    <span style="color:#999; font-family:'Inter',sans-serif;">No services listed</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+</div>
+
+<!-- Bottom Section: Bookings -->
+<div class="dash-bottom">
+    <!-- Availability -->
+    <div class="detail-card">
+        <div class="card-head">
+            <div class="card-head-icon"><i class="far fa-calendar-alt"></i></div>
+            <h3>Saved Availability Slots</h3>
+        </div>
+        <div class="card-body">
+            <div class="avail-grid">
+                {% for avail in upcoming_availabilities %}
+                {% if avail.has_visible_slots %}
+                <div class="avail-card">
+                    {% if avail.is_morning_visible %}
+                    <span class="slot-pill slot-morning">Morning</span>
+                    {% endif %}
+                    {% if avail.is_afternoon_visible %}
+                    <span class="slot-pill slot-afternoon">Afternoon</span>
+                    {% endif %}
+                    {% if avail.is_evening_visible %}
+                    <span class="slot-pill slot-evening">Evening</span>
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% empty %}
+                <p style="color:#999; font-family:'Inter',sans-serif; grid-column:1/-1;">No availability set for
+                    upcoming dates.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Upcoming Bookings Section -->
+    <div class="detail-card">
+        <div class="card-head">
+            <div class="card-head-icon"><i class="fas fa-book"></i></div>
+            <h3>Upcoming Bookings</h3>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="booking-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Ritual</th>
+                            <th>Devotee</th>
+                            <th>Mobile</th>
+                            <th>Address</th>
+                            <th>Date</th>
+                            <th>Duration (Time)</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for booking in upcoming_bookings %}
+                        <tr>
+                            <td>#{{ booking.id|stringformat:"05d" }}</td>
+                            <td>
+                                {{ booking.service|get_service_name }}
+                                <br>
+                                {% if booking.is_lead %}
+                                <span
+                                    style="font-size: 0.65rem; background: #800000; color: #fff; padding: 1px 5px; border-radius: 3px;">LEAD</span>
+                                {% else %}
+                                <span
+                                    style="font-size: 0.65rem; background: #d4af37; color: #000; padding: 1px 5px; border-radius: 3px;">ASSISTANT</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ booking.devotee_name }}</td>
+                            <td>{{ booking.devotee_phone }}</td>
+                            <td>{{ booking.devotee_address|truncatechars:30 }}</td>
+                            <td>{{ booking.booking_date }}</td>
+                            <td>{{ booking.start_time|time:"gA" }} to {{ booking.end_time|time:"gA" }}</td>
+                            <td>
+                                <span
+                                    class="bstatus {% if booking.assigned_status == 'confirmed' %}bstatus-confirmed{% elif booking.assigned_status == 'pending' %}bstatus-pending{% else %}bstatus-other{% endif %}">
+                                    {{ booking.assigned_status|title }}
+                                </span>
+                            </td>
+                            <td>
+                                <div style="display:flex; gap:8px;">
+                                    {% if booking.assigned_status == 'pending' %}
+                                    <form method="POST" style="display: inline;">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="booking_id" value="{{ booking.id }}">
+                                        <input type="hidden" name="status" value="confirmed">
+                                        <button type="submit" class="btn-dash-action btn-dash-accept">
+                                            <i class="fas fa-check"></i> Accept
+                                        </button>
+                                    </form>
+                                    <form method="POST" style="display: inline;">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="booking_id" value="{{ booking.id }}">
+                                        <input type="hidden" name="status" value="cancelled">
+                                        <button type="submit" class="btn-dash-action btn-dash-reject"
+                                            onclick="return confirm('Confirm rejection?')">
+                                            <i class="fas fa-times"></i> Reject
+                                        </button>
+                                    </form>
+                                    {% elif booking.assigned_status == 'confirmed' %}
+                                    <a href="{% url 'generate_booking_pdf' booking.id %}"
+                                        class="btn-dash-action btn-dash-pdf" target="_blank">
+                                        <i class="fas fa-file-pdf"></i> Download Receipt
+                                    </a>
+                                    {% if booking.can_cancel_self %}
+                                    <form method="POST" style="display: inline;">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="booking_id" value="{{ booking.id }}">
+                                        <input type="hidden" name="action" value="purohit_cancel">
+                                        <button type="submit" class="btn-dash-action btn-dash-cancel"
+                                            onclick="return confirm('Are you sure you want to cancel this booking? This action is permanent.')">
+                                            <i class="fas fa-ban"></i> Cancel Puja
+                                        </button>
+                                    </form>
+                                    {% endif %}
+
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="9" style="text-align:center; color:#999; padding:20px;">No upcoming bookings
+                                found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
             </div>
         </div>
     </div>
 </div>
+<<<<<<< HEAD
+=======
+
+<!-- Chart Implementation Scripts -->
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // 1. Service Performance (Donut Chart)
+        const ctxPerformance = document.getElementById('performanceChart').getContext('2d');
+        new Chart(ctxPerformance, {
+            type: 'doughnut',
+            data: {
+                labels: ['Completed', 'Accepted', 'Rejected'],
+                datasets: [{
+                    data: [{{ completed_bookings }}, {{ accepted_bookings }}, {{ rejected_bookings }}],
+        backgroundColor: ['#28a745', '#D4AF37', '#dc3545'],
+        borderWidth: 0,
+        hoverOffset: 4
+                }]
+            },
+        options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+                    font: { family: "'Times New Roman', serif", size: 11 },
+                    usePointStyle: true,
+                    padding: 15
+                }
+            }
+        },
+        cutout: '70%'
+    }
+        });
+
+    // 2. Completion Rate (Circular Progress Chart)
+    const ctxCompletion = document.getElementById('completionChart').getContext('2d');
+    const completionVal = {{ completion_rate }};
+    new Chart(ctxCompletion, {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [completionVal, 100 - completionVal],
+                backgroundColor: ['#800000', '#f1f1f1'],
+                borderWidth: 0,
+                circumference: 360,
+                rotation: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '85%',
+            plugins: {
+                legend: { display: false },
+                tooltip: { enabled: false }
+            }
+        }
+    });
+    });
+</script>
+{% endblock %}
+
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
 {% endblock %}

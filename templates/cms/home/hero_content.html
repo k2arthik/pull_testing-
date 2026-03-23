@@ -1,4 +1,5 @@
 <!-- ===================================== -->
+<<<<<<< HEAD
 <!-- HERO SECTION - ADMIN EDITABLE -->
 <!-- Pure HTML Only - No Django Tags -->
 <!-- ===================================== -->
@@ -25,10 +26,87 @@
             <div class="swiper-slide hero-slide" style="background-image: url('/static/images/temple4.jpeg');">
             </div>
             <div class="swiper-slide hero-slide" style="background-image: url('/static/images/temple5.jpeg');">
+=======
+<!-- HERO SECTION - DIVINE TEMPLE THEME -->
+<!-- ===================================== -->
+
+<section class="hero-section" style="position: relative; height: 95vh; overflow: hidden; background-color: #840606; ">
+    <div id="chariot-3d-scene" style="position:absolute; inset:0; z-index:1;"></div>
+
+
+    {% if hero %}
+    <!-- Dynamic Background Slider -->
+    <div class="hero-slider swiper" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
+        <div class="swiper-wrapper">
+            {% if hero.hero_bg_1 %}
+            <div class="swiper-slide">
+                <div class="slide-bg" style="background-image: url('{{ hero.hero_bg_1.url }}');"></div>
+            </div>
+            {% endif %}
+            {% if hero.hero_bg_2 %}
+            <div class="swiper-slide">
+                <div class="slide-bg" style="background-image: url('{{ hero.hero_bg_2.url }}');"></div>
+            </div>
+            {% endif %}
+            {% if hero.hero_bg_3 %}
+            <div class="swiper-slide">
+                <div class="slide-bg" style="background-image: url('{{ hero.hero_bg_3.url }}');"></div>
+            </div>
+            {% endif %}
+
+            {% if not hero.hero_bg_1 and not hero.hero_bg_2 and not hero.hero_bg_3 %}
+            <!-- Fallback images if none uploaded -->
+            <div class="swiper-slide">
+                <div class="slide-bg" style="background-image: url('/static/images/temple3.jpeg');"></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="slide-bg" style="background-image: url('/static/images/temple4.jpeg');"></div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    <!-- Main Hero Content -->
+    <div class="hero-container" style="width:100%;">
+        <div class="hero-card float-animation">
+
+            <!-- Om Symbol Icon -->
+            <div class="hero-icon-wrapper">
+                <div class="hero-om">ॐ</div>
+                <div class="om-glow"></div>
+            </div>
+
+            <h1 class="hero-title">
+                <span class="d-block text-gold-shiny">{{ hero.title_gold|default:"BRINGING SACRED" }}</span>
+                <span class="d-block text-ivory">{{ hero.title_ivory|default:"RITUALS TO YOUR HOME" }}</span>
+            </h1>
+
+            <div class="divider-ornate">
+                <span class="gem"></span>
+            </div>
+
+            <p class="hero-subtitle">
+                {{ hero.subtitle|default:"Experience the sanctity of Authentic Vedic Rituals performed by verified Pandits. Bring the temple's spiritual vibration to your home." }}
+            </p>
+
+            <div class="hero-actions">
+                <a href="{% url 'services' %}" class="btn-hero-primary">
+                    <span class="btn-content">Book a Puja</span>
+                    <span class="btn-shimmer"></span>
+                </a>
+                <a href="{% url 'contact' %}" class="btn-hero-secondary">
+                    Talk to Expert
+                </a>
+            </div>
+
+            <div class="vedic-quote">
+                " {{ hero.quote_text|default:"Dharmo Rakshati Rakshitah" }} "
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
             </div>
         </div>
     </div>
 
+<<<<<<< HEAD
     <div class="container hero-main-container">
         <div class="hero-content" style="margin-bottom: 200px;">
 
@@ -85,3 +163,382 @@
         });
     </script>
 </section>
+=======
+    </div>
+
+    <!-- Gradient Overlay (Placed over slides) -->
+    <div class="hero-overlay"
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(80,0,0,0.4) 0%, rgba(60,0,0,0.7) 60%, #800000 100%); z-index: 2; pointer-events: none;">
+    </div>
+
+    <!-- Large Background Mantra (Watermark) -->
+    <div class="mantra-watermark">
+        {{ hero.watermark_text|default:"ॐ नमः शिवाय" }}
+    </div>
+
+
+
+
+</section>
+
+<style>
+    /* --- Background & Slider --- */
+    .slide-bg {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        animation: zoom-effect 20s infinite alternate;
+    }
+
+    @keyframes zoom-effect {
+        0% {
+            transform: scale(1);
+        }
+
+        100% {
+            transform: scale(1.15);
+        }
+    }
+
+    /* --- Mantra Watermark --- */
+    .mantra-watermark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: 'Noto Sans Devanagari', serif;
+        font-size: 12vw;
+        /* Huge responsive size */
+        color: #D4AF37;
+        opacity: 0.08;
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 2;
+        text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        animation: pulse-mantra 8s infinite ease-in-out;
+    }
+
+    @keyframes pulse-mantra {
+
+        0%,
+        100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.08;
+        }
+
+        50% {
+            transform: translate(-50%, -50%) scale(1.05);
+            opacity: 0.12;
+        }
+    }
+
+    /* --- Hero Container --- */
+    .hero-container {
+        position: relative;
+        z-index: 10;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: right;
+        justify-content: center;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .hero-card {
+        background: #840606;
+        /* Dark Maroon Glass */
+        backdrop-filter: blur(8px);
+        padding: 60px 50px;
+        border-radius: 30px;
+        /*border: 2px solid rgba(212, 175, 55, 0.5);*/
+        /* Semi-transparent Gold */
+        max-width: 900px;
+        /* box-shadow:
+            0 0 0 5px rgba(0, 0, 0, 0.3),*/
+        /* Inner border shadow */
+        /*0 20px 50px rgba(0, 0, 0, 0.6),*/
+        /* Drop shadow */
+        /*0 0 80px rgba(128, 0, 0, 0.4); */
+        /* Glow */
+        position: relative;
+    }
+
+    .hero-card::before,
+    .hero-card::after {
+        content: '';
+        position: fixed;
+        width: 150px;
+        height: 150px;
+        /* border: 2px solid #D4AF37;*/
+        transition: all 0.5s;
+        pointer-events: none;
+    }
+
+    .hero-card::before {
+        top: -10px;
+        left: -10px;
+        border-right: none;
+        border-bottom: none;
+        border-radius: 20px 0 0 0;
+    }
+
+    .hero-card::after {
+        bottom: -10px;
+        right: -10px;
+        border-left: none;
+        border-top: none;
+        border-radius: 0 0 20px 0;
+    }
+
+    /* --- Typography & Icons --- */
+    .hero-icon-wrapper {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 25px;
+    }
+
+    .hero-om {
+        font-size: 5rem;
+        color: #FF9933;
+        /* Saffron */
+        font-weight: bold;
+        text-shadow: 0 0 20px rgba(255, 69, 0, 0.6);
+        position: relative;
+        z-index: 2;
+    }
+
+    .om-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+        animation: rotate-glow 10s linear infinite;
+    }
+
+    .hero-title {
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .text-gold-shiny {
+        font-size: 4rem;
+        background: linear-gradient(to right, #D4AF37, #FDB913, #FFF8E1, #D4AF37);
+        background-size: 200% auto;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: text-shimmer 5s linear infinite;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    }
+
+    .text-ivory {
+        font-size: 2.5rem;
+        color: #F5E8BF;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-subtitle {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.25rem;
+        color: #E6D2B5;
+        margin-bottom: 40px;
+        line-height: 1.6;
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .highlight-text {
+        color: #FFD700;
+        font-weight: 600;
+        font-style: italic;
+    }
+
+    /* --- Divider --- */
+    .divider-ornate {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px 0;
+    }
+
+    .divider-ornate::before,
+    .divider-ornate::after {
+        content: '';
+        height: 1px;
+        width: 100px;
+        background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+    }
+
+    .gem {
+        color: #D4AF37;
+        font-size: 1.5rem;
+        margin: 0 15px;
+        text-shadow: 0 0 10px #FF9933;
+    }
+
+    /* --- Buttons --- */
+    .hero-actions {
+        display: flex;
+        gap: 25px;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    .btn-hero-primary {
+        position: relative;
+        padding: 18px 45px;
+        background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+        border-radius: 50px;
+        text-decoration: none;
+        color: #600000;
+        font-family: 'Cinzel', serif;
+        font-weight: 800;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: 2px solid #FFF8E1;
+    }
+
+    .btn-hero-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6);
+        color: #400000;
+    }
+
+    .btn-shimmer {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.7), transparent);
+        transform: skewX(-25deg);
+        animation: shimmer 3s infinite;
+    }
+
+    .btn-hero-secondary {
+        padding: 18px 45px;
+        background: transparent;
+        border: 2px solid #D4AF37;
+        border-radius: 50px;
+        text-decoration: none;
+        color: #F5E8BF;
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+    }
+
+    .btn-hero-secondary:hover {
+        background: rgba(212, 175, 55, 0.15);
+        border-color: #FFD700;
+        color: #fff;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+
+    .vedic-quote {
+        font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+        color: #B8860B;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        margin-top: 10px;
+        opacity: 0.8;
+    }
+
+    /* --- Animations --- */
+    .float-animation {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    @keyframes text-shimmer {
+        0% {
+            background-position: 0% center;
+        }
+
+        100% {
+            background-position: 200% center;
+        }
+    }
+
+    @keyframes shimmer {
+        0% {
+            left: -100%;
+        }
+
+        20% {
+            left: 200%;
+        }
+
+        100% {
+            left: 200%;
+        }
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+        .hero-title .text-gold-shiny {
+            font-size: 2.5rem;
+        }
+
+        .hero-title .text-ivory {
+            font-size: 1.5rem;
+        }
+
+        .hero-card {
+            padding: 40px 20px;
+        }
+
+        .hero-actions {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn-hero-primary,
+        .btn-hero-secondary {
+            width: 100%;
+            text-align: center;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (window.Swiper && document.querySelector('.hero-slider')) {
+            new Swiper('.hero-slider', {
+                effect: 'fade',
+                fadeEffect: { crossFade: true },
+                autoplay: { delay: 4000, disableOnInteraction: false },
+                loop: true,
+                speed: 2500,
+            });
+        }
+    });
+</script>
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3

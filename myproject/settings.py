@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+<<<<<<< HEAD
+=======
+import os
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +27,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-f2m(*3_5mbkb)5g7bk+l8f@!q&v_5k0(xoiawze_tx3z3b7hcs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+<<<<<<< HEAD
 DEBUG = True
 
 ALLOWED_HOSTS = []
+=======
+DEBUG =True
+
+ALLOWED_HOSTS = ['*']
+SITE_URL = 'http://localhost:8001'
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:8001',
+    'http://127.0.0.1:8001',
+]
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
 
 
 # Application definition
@@ -38,16 +57,37 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+<<<<<<< HEAD
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+=======
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'payments',
+    'ckeditor',
+    'ckeditor_uploader',
+    # 'debug_toolbar',
+    # 'silk',
+]
+
+MIDDLEWARE = [
+    'django.middleware.gzip.GZipMiddleware',  # Compress responses for speed
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+<<<<<<< HEAD
+=======
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'silk.middleware.SilkyMiddleware',
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
 ]
 
 ROOT_URLCONF = 'myproject.urls'
@@ -62,6 +102,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+<<<<<<< HEAD
+=======
+                'core.context_processors.seo_metadata',
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
             ],
         },
     },
@@ -75,8 +119,17 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 DATABASES = {
     'default': {
+<<<<<<< HEAD
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+=======
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'karya',
+        'USER': 'postgres',
+        'PASSWORD': '7032',
+        'HOST': 'localhost',
+        'PORT': '5432',
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
     }
 }
 
@@ -105,7 +158,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
+<<<<<<< HEAD
 TIME_ZONE = 'UTC'
+=======
+TIME_ZONE = 'Asia/Kolkata'
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
 
 USE_I18N = True
 
@@ -117,3 +174,72 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+<<<<<<< HEAD
+=======
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'purohit_dashboard'
+
+# Email Configuration - Gmail SMTP
+EMAIL_BACKEND = 'core.email_backend.UnsafeEmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_SSL = False
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'manupinnika35@gmail.com'
+EMAIL_HOST_PASSWORD = 'erxx iraa efkf fcns'
+DEFAULT_FROM_EMAIL = 'manupinnika35@gmail.com'
+
+# CKEditor Configuration
+CKEDITOR_UPLOAD_PATH = "uploads/"
+X_FRAME_OPTIONS = 'SAMEORIGIN' # For file uploader iframes
+
+# ── PhonePe Payment Gateway Configuration ────────────────────────────────────
+# Get credentials from: https://developer.phonepe.com/v1/docs/production-access
+PHONEPE_MERCHANT_ID = 'PGTESTPAYUAT86'     # Replace with your Merchant ID
+PHONEPE_SALT_KEY    = '96434309-7796-489d-8924-ab56988a6076'  # Replace with your Salt Key
+PHONEPE_SALT_INDEX  = '1'                  # Replace with your Salt Index
+PHONEPE_ENV         = 'UAT'                # 'UAT' for testing | 'PROD' for production
+
+# ── Cache Configuration ────────────────────────────────────────────────────────
+# Use local memory cache in development; switch to Redis/Memcached in production
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'karya-siddhi-cache',
+        'TIMEOUT': 60,  # Default cache timeout: 60 seconds
+        'OPTIONS': {
+            'MAX_ENTRIES': 1000
+        }
+    }
+}
+
+# ── Booking Configuration ──────────────────────────────────────────────────────
+# Minimum hours in advance a devotee must book a priest's slot
+BOOKING_ADVANCE_HOURS = 48
+
+# ── Production Performance ────────────────────────────────────────────────────
+# SESSION_COOKIE_AGE: Keep sessions alive for 7 days (reduces login friction)
+SESSION_COOKIE_AGE = 604800  # 7 days in seconds
+# CSRF token rotation on each request (security vs performance trade-off, off for prod speed)
+CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SAMESITE = 'Lax'
+
+# Production Security Configuration
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True # Enable this when SSL is configured on the host server
+
+# profiling settings
+SILKY_PYTHON_PROFILER = False
+SILKY_INTERCEPT_PERCENT = 0
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3

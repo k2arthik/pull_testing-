@@ -1,0 +1,86 @@
+{% extends 'dashboard/base_dash.html' %}
+{% load static %}
+
+{% block dash_title %}Manage Devotees{% endblock %}
+{% block page_title %}Devotee Management{% endblock %}
+
+{% block extra_css %}
+<style>
+    .search-container {
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 12px 20px 12px 45px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        transition: border-color 0.3s;
+    }
+
+    .search-input:focus {
+        outline: none;
+        border-color: var(--gold);
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #888;
+    }
+
+    .btn-icon {
+        background: none;
+        border: none;
+        color: #888;
+        padding: 5px;
+        cursor: pointer;
+        transition: color 0.2s;
+        font-size: 1rem;
+    }
+
+    .btn-icon:hover {
+        color: var(--maroon);
+    }
+</style>
+{% endblock %}
+
+{% block dash_content %}
+<div class="card">
+    <div class="card-header">
+        <h3>Registered Devotees</h3>
+    </div>
+    <div class="card-body">
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" name="q" class="search-input" placeholder="Search by name, email, or phone..."
+                hx-get="{% url 'admin_devotee_list' %}" hx-trigger="keyup changed delay:300ms"
+                hx-target="#devotee-table-body" value="{{ query }}">
+        </div>
+
+        <div class="table-responsive">
+            <table class="dash-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Join Date</th>
+                        <th>Activity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="devotee-table-body">
+                    {% include 'dashboard/partials/devotee_table_rows.html' %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

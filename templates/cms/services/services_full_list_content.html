@@ -1,0 +1,671 @@
+﻿{% load static %}
+<!-- ===================================== -->
+<!-- SACRED SERVICES - ORGANIZED BY CATEGORIES -->
+<!-- Matching Homepage Dark Temple Theme -->
+<!-- ===================================== -->
+<section class="sacred-services-full" id="pooja-services"
+    style="background: linear-gradient(rgba(255, 250, 240, 0.92), rgba(255, 250, 240, 0.92)), url('/static/images/bgdesign2.jpeg'); background-size: cover; background-attachment: fixed;">
+
+    <!-- Dark Temple Wall Background -->
+    <div class="temple-wall-bg-full"></div>
+
+    <!-- Floating Diyas -->
+    <div class="hanging-diya-full left-diya-full">
+        <img src="https://png.pngtree.com/png-vector/20220916/ourmid/pngtree-hanging-diya-lamp-png-image_6176662.png"
+            alt="Diya">
+    </div>
+    <div class="hanging-diya-full right-diya-full">
+        <img src="https://png.pngtree.com/png-vector/20220916/ourmid/pngtree-hanging-diya-lamp-png-image_6176662.png"
+            alt="Diya">
+    </div>
+
+    <div class="container" style="position: relative; z-index: 5;">
+
+        <!-- Featured Pooja Video Section -->
+        <div class="featured-video-wrapper-full">
+            <div class="video-container-full">
+                <img src="{% static 'images/poojaser.png' %}" alt="Sacred Rituals" class="pooja-main-photo">
+                <div class="video-overlay-full">
+                    <div class="video-caption-full">
+                        <span class="video-tag-full">Experience the Divine</span>
+                        <h2>Sacred Rituals & Blessings</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Header -->
+        <div class="services-main-header-full">
+            <span class="sub-heading-full">Complete Sacred Offerings</span>
+            <h1 class="main-heading-full" style="color:gold;font-family: 'Cinzel', serif;"><span class="text-gold-full"
+                    style="font-family: 'Cinzel' serif;"> All Divine Pooja Services</span></h1>
+            <div class="header-ornament-full">
+                <span class="ornament-line-full"></span>
+                <span class="ornament-symbol-full">à¥</span>
+                <span class="ornament-line-full"></span>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-wrapper-full">
+                <div class="search-box-full">
+                    <i class="fas fa-search search-icon-full"></i>
+                    <input type="text" id="serviceSearch" placeholder="Search divine services..."
+                        class="search-input-full">
+                </div>
+            </div>
+        </div>
+
+        <!-- Dynamic Categories (DB-driven) -->
+        {% for category in service_categories %}
+        <div class="service-category-full">
+            <div class="category-header-full">
+                <div class="category-icon-full"></div>
+                <h2 class="category-title-full">{{ category.name }}</h2>
+                {% if category.description %}
+                <p class="category-desc-full">{{ category.description }}</p>
+                {% endif %}
+                <div class="category-divider-full">
+                    <span></span>
+                </div>
+            </div>
+
+            <div class="service-gallery-grid-full">
+                {% for service in category.pujas.all %}
+                <div class="service-frame-full"
+                    data-name="{{ service.title|lower }} {{ service.short_description|default:''|lower }} {{ category.name|lower }}">
+                    <div class="frame-inner-full">
+                        <img src="{% if service.image %}{{ service.image }}{% else %}{% static 'images/poojaser.png' %}{% endif %}"
+                            alt="{{ service.title }}" class="service-img-full">
+                        <div class="service-overlay-full">
+                            <div class="overlay-content-full">
+                                <h3>{{ service.title }}</h3>
+                                {% if service.short_description %}
+                                <p class="service-mini-desc-full">{{ service.short_description }}</p>
+                                {% endif %}
+                                <a href="{% url 'service_detail' service_slug=service.slug %}"
+                                    class="btn-service-full">Book Seva</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div style="grid-column: 1 / -1; text-align:center; color:#666;">
+                    No services available in this category yet.
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if not forloop.last %}
+        <div class="sacred-divider-full">
+            <span class="divider-symbol-full">ॐॐॐ ॐ ॐॐॐ</span>
+        </div>
+        {% endif %}
+        {% empty %}
+        <div class="service-category-full">
+            <div class="category-header-full">
+                <h2 class="category-title-full">Services Coming Soon</h2>
+                <p class="category-desc-full">Please check back after the initial setup.</p>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+
+<style>
+    /* Featured Video Section */
+    .featured-video-wrapper-full {
+        margin-bottom: 50px;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 2px solid #D4AF37;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        position: relative;
+    }
+
+    .video-container-full {
+        position: relative;
+        width: 100%;
+        background: #000;
+        height: auto;
+    }
+
+    .pooja-main-photo {
+        width: 100%;
+        height: auto;
+        display: block;
+        opacity: 0.9;
+    }
+
+    .video-overlay-full {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%);
+        display: flex;
+        align-items: flex-end;
+        padding: 40px;
+    }
+
+    .video-caption-full h2 {
+        font-family: 'Rozha One', serif;
+        color: #F5E8BF;
+        font-size: 2.2rem;
+        margin: 0;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .video-tag-full {
+        font-family: 'Cinzel', serif;
+        color: #D4AF37;
+        font-size: 0.9rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    /* ================================================= */
+    /* DARK TEMPLE THEME - Matching Homepage Exactly      */
+    /* ================================================= */
+
+    .sacred-services-full {
+        position: relative;
+        padding: 60px 0 20px;
+        background: linear-gradient(rgba(255, 250, 240, 0.92), rgba(255, 250, 240, 0.92));
+        overflow: hidden;
+    }
+
+    /* Temple Wall Texture (Same as Homepage) */
+    .temple-wall-bg-full {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('/static/images/bgdesign2.jpeg');
+        background-size: cover;
+        background-attachment: fixed;
+        z-index: 1;
+        opacity: 0.15;
+        mix-blend-mode: overlay;
+    }
+
+    /* --- Hanging Diyas (Same as Homepage) --- */
+    .hanging-diya-full {
+        position: absolute;
+        top: -20px;
+        z-index: 10;
+        width: 80px;
+        pointer-events: none;
+        animation: swing-full 4s ease-in-out infinite;
+        transform-origin: top center;
+    }
+
+    .left-diya-full {
+        left: 5%;
+        animation-delay: 0s;
+    }
+
+    .right-diya-full {
+        right: 5%;
+        animation-delay: 2s;
+    }
+
+    @keyframes swing-full {
+
+        0%,
+        100% {
+            transform: rotate(5deg);
+        }
+
+        50% {
+            transform: rotate(-5deg);
+        }
+    }
+
+    /* Main Header */
+    .services-main-header-full {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .main-heading-full {
+        font-family: 'Rozha One', serif;
+        color: #f8e6c8;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+
+    .sub-heading-full {
+        font-family: 'Cinzel', serif;
+        color: #D4AF37;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .text-gold-full {
+        color: #D4AF37;
+        text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .header-ornament-full {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 40px;
+    }
+
+    .ornament-line-full {
+        height: 1px;
+        width: 80px;
+        background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+    }
+
+    .ornament-symbol-full {
+        color: #FF9933;
+        font-size: 1.5rem;
+    }
+
+    /* Search Box - Dark Theme */
+    .search-wrapper-full {
+        margin-top: 30px;
+    }
+
+    .search-box-full {
+        position: relative;
+        max-width: 650px;
+        margin: 0 auto;
+    }
+
+    .search-icon-full {
+        position: absolute;
+        left: 25px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #D4AF37;
+        font-size: 1.3rem;
+        z-index: 2;
+    }
+
+    .search-input-full {
+        width: 100%;
+        padding: 14px 25px 14px 55px;
+        border-radius: 50px;
+        border: 2px solid #D4AF37;
+        background: rgba(132, 6, 6, 0.85);
+        color: #FFFDE7;
+        font-family: 'Cinzel', serif;
+        font-size: 0.95rem;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    .search-input-full::placeholder {
+        color: rgba(245, 232, 191, 0.5);
+    }
+
+    .search-input-full:focus {
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        border-color: #FFD700;
+        transform: scale(1.01);
+    }
+
+    /* Category Sections â€” Alternating 2-Color Theme */
+    .service-category-full {
+        margin: 40px 0;
+        padding: 40px 20px;
+        border-radius: 20px;
+        position: relative;
+        border: none;
+    }
+
+    /* Alternating backgrounds for dynamic categories */
+    .service-category-full:nth-of-type(odd) {
+        background: linear-gradient(rgba(255, 250, 240, 0.92), rgba(255, 250, 240, 0.92)),
+            url('/static/images/sec3.png') center/cover no-repeat;
+        border-left: 4px solid #D4AF37;
+        box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+    }
+
+    .service-category-full:nth-of-type(even) {
+        background: linear-gradient(rgba(183, 28, 28, 0.92), rgba(100, 10, 5, 0.94)),
+            url('/static/images/sec3.png') center/cover no-repeat;
+        border-left: 4px solid #D4AF37;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .service-category-full:nth-of-type(odd) .category-title-full {
+        color: #840606 !important;
+    }
+
+    .service-category-full:nth-of-type(even) .category-title-full {
+        color: #D4AF37 !important;
+    }
+
+    .service-category-full:nth-of-type(odd) .category-desc-full {
+        color: #6b3a0a !important;
+    }
+
+    .service-category-full:nth-of-type(even) .category-desc-full {
+        color: #f8e6c8 !important;
+    }
+
+    /* COLOR A â€” Warm Cream/Saffron with sec3.png (Sections 1, 3, 5, 7) */
+    .prosperity-section-full,
+    .protection-section-full,
+    .wisdom-section-full,
+    .others-section-full {
+        background: linear-gradient(rgba(255, 250, 240, 0.92), rgba(255, 250, 240, 0.92)),
+            url('/static/images/sec3.png') center/cover no-repeat;
+        border-left: 4px solid #D4AF37;
+        box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+    }
+
+    /* COLOR B â€” Deep Maroon with sec3.png (Sections 2, 4, 6) */
+    .health-section-full,
+    .peace-section-full,
+    .marriages-section-full {
+        background: linear-gradient(rgba(183, 28, 28, 0.92), rgba(100, 10, 5, 0.94)),
+            url('/static/images/sec3.png') center/cover no-repeat;
+        border-left: 4px solid #D4AF37;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Title colors per background */
+    .prosperity-section-full .category-title-full,
+    .protection-section-full .category-title-full,
+    .wisdom-section-full .category-title-full,
+    .others-section-full .category-title-full {
+        color: #840606 !important;
+    }
+
+    .health-section-full .category-title-full,
+    .peace-section-full .category-title-full,
+    .marriages-section-full .category-title-full {
+        color: #D4AF37 !important;
+    }
+
+    /* Description colors per background */
+    .prosperity-section-full .category-desc-full,
+    .protection-section-full .category-desc-full,
+    .wisdom-section-full .category-desc-full,
+    .others-section-full .category-desc-full {
+        color: #6b3a0a !important;
+    }
+
+    .health-section-full .category-desc-full,
+    .peace-section-full .category-desc-full,
+    .marriages-section-full .category-desc-full {
+        color: #f8e6c8 !important;
+    }
+
+    /* Category Headers */
+    .category-header-full {
+        text-align: center;
+        margin-bottom: 35px;
+    }
+
+    .category-icon-full {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        animation: float-full 3s ease-in-out infinite;
+    }
+
+    @keyframes float-full {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-15px);
+        }
+    }
+
+    .category-title-full {
+        font-family: 'Cinzel', serif;
+        color: #F5E8BF;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+
+    .category-desc-full {
+        font-family: 'poppins' sans-serif;
+        color: #D4AF37;
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+    }
+
+    .category-divider-full {
+        font-size: 2rem;
+        color: #FF9933;
+    }
+
+    /* Sacred Divider */
+    .sacred-divider-full {
+        text-align: center;
+        margin: 40px 0;
+        position: relative;
+    }
+
+    .sacred-divider-full::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+    }
+
+    .divider-symbol-full {
+        position: relative;
+        z-index: 2;
+        background: #D4AF37;
+        padding: 0 40px;
+        font-family: 'Noto Sans Devanagari', serif;
+        color: #b30000;
+        font-size: 1.4rem;
+        letter-spacing: 8px;
+    }
+
+    /* ================================================= */
+    /* NICHE CARDS - Gopuram Arch (Same as Homepage)      */
+    /* ================================================= */
+
+    .service-gallery-grid-full {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 0 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .service-frame-full {
+        background: linear-gradient(145deg, #B71C1C, #1a0505);
+        padding: 10px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.8);
+        border: 1px solid #D32F2F;
+        transition: all 0.4s ease;
+    }
+
+    .service-frame-full:hover {
+        transform: translateY(-8px);
+        border-color: #D4AF37;
+        box-shadow: 0 15px 40px rgba(183, 28, 28, 0.4);
+    }
+
+    .frame-inner-full {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: #000;
+    }
+
+    .service-img-full {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 1;
+        transition: transform 1s ease;
+    }
+
+    .service-frame-full:hover .service-img-full {
+        transform: scale(1.05);
+    }
+
+    .service-overlay-full {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 60%);
+        display: flex;
+        align-items: flex-end;
+        padding: 15px;
+        transition: opacity 0.4s ease;
+    }
+
+    .service-frame-full:hover .service-overlay-full {
+        background: linear-gradient(to top, rgba(183, 28, 28, 0.8) 0%, transparent 100%);
+    }
+
+    .overlay-content-full {
+        transform: translateY(10px);
+        transition: transform 0.4s ease;
+        text-align: center;
+        width: 100%;
+    }
+
+    .service-frame-full:hover .overlay-content-full {
+        transform: translateY(0);
+    }
+
+    .overlay-content-full h3 {
+        font-family: 'Cinzel', serif;
+        color: #fff;
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+        line-height: 1.2;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 2.6rem;
+    }
+
+    .service-mini-desc-full {
+        font-family: 'Playfair Display', serif;
+        color: #D4AF37;
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+        opacity: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 2.2rem;
+    }
+
+    .btn-service-full {
+        display: inline-block;
+        padding: 8px 20px;
+        background: transparent;
+        border: 1px solid #D4AF37;
+        color: #D4AF37;
+        font-family: 'Cinzel', serif;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        text-decoration: none;
+        transition: all 0.4s;
+        border-radius: 4px;
+    }
+
+    .btn-service-full:hover {
+        background: #D4AF37;
+        color: #2c0e0e;
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+        .service-gallery-grid-full {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .service-gallery-grid-full {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .main-heading-full {
+            font-size: 2.2rem;
+        }
+
+        .category-title-full {
+            font-size: 2rem;
+        }
+
+        .hanging-diya-full {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('serviceSearch');
+        const serviceCards = document.querySelectorAll('.service-frame-full');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function (e) {
+                const searchTerm = e.target.value.toLowerCase().trim();
+
+                serviceCards.forEach(card => {
+                    const cardName = card.getAttribute('data-name');
+                    const cardTitle = card.querySelector('h3').textContent.toLowerCase();
+
+                    if (cardName.includes(searchTerm) || cardTitle.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Hide category sections if no visible cards
+                document.querySelectorAll('.service-category-full').forEach(section => {
+                    const allCards = section.querySelectorAll('.service-frame-full');
+                    const hiddenCards = section.querySelectorAll('.service-frame-full[style*="display: none"]');
+
+                    if (searchTerm && allCards.length === hiddenCards.length) {
+                        section.style.display = 'none';
+                        const prevDivider = section.previousElementSibling;
+                        if (prevDivider && prevDivider.classList.contains('sacred-divider-full')) {
+                            prevDivider.style.display = 'none';
+                        }
+                    } else {
+                        section.style.display = 'block';
+                        const prevDivider = section.previousElementSibling;
+                        if (prevDivider && prevDivider.classList.contains('sacred-divider-full')) {
+                            prevDivider.style.display = 'block';
+                        }
+                    }
+                });
+            });
+        }
+    });
+</script>

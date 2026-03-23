@@ -1,0 +1,504 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+<style>
+    :root {
+        --maroon: #800000;
+        --maroon-dark: #600000;
+        --gold: #D4AF37;
+        --ivory: #FDF9F0;
+        --white: #FFFFFF;
+        --text: #2c1810;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    body {
+        background: var(--ivory);
+    }
+
+    .dashboard-container {
+        padding: 0;
+        background: var(--ivory);
+        min-height: 100vh;
+        font-family: "Times New Roman", Times, serif !important;
+    }
+
+    /* Hero Banner */
+    .dash-hero {
+        background: var(--maroon);
+        background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 15L15 60l45 45 45-45z' fill='%23600000' fill-opacity='0.4'/%3E%3C/svg%3E");
+        padding: 140px 20px 160px;
+        text-align: center;
+        color: var(--white);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-om {
+        font-size: 2.5rem;
+        color: var(--gold);
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .dash-hero h1 {
+        font-family: "Times New Roman", Times, serif !important;
+        font-size: 3rem;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        margin: 0 0 15px;
+        color: white;
+    }
+
+    .dash-hero p {
+        font-size: 1.1rem;
+        font-style: italic;
+        opacity: 0.85;
+        margin: 0;
+    }
+
+    .hero-wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        line-height: 0;
+    }
+
+    .hero-wave svg {
+        display: block;
+        width: 130%;
+        height: 80px;
+        fill: var(--ivory);
+    }
+
+    /* Divider */
+    .section-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin: -40px auto 50px;
+        max-width: 400px;
+        position: relative;
+        z-index: 10;
+    }
+
+    .divider-line {
+        height: 1px;
+        flex: 1;
+        background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.5), transparent);
+    }
+
+    .divider-symbol {
+        color: var(--maroon);
+        font-size: 1.1rem;
+        background: var(--ivory);
+        padding: 4px 12px;
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        border-radius: 20px;
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+
+    /* Dashboard Layout */
+    .dash-content {
+        max-width: 1200px;
+        margin: 0 auto 80px;
+        padding: 0 30px;
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 50px;
+    }
+
+    @media (max-width: 992px) {
+        .dash-content {
+            grid-template-columns: 1fr;
+            padding: 0 15px;
+            gap: 30px;
+        }
+    }
+
+    /* Sidebar Card */
+    .profile-card-sidebar {
+        background: var(--white);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        position: sticky;
+        top: 100px;
+    }
+
+    .profile-header-band {
+        background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+        padding: 40px 20px;
+        text-align: center;
+        color: white;
+    }
+
+    .profile-img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 3px solid var(--gold);
+        object-fit: cover;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .profile-name {
+        font-size: 1.4rem;
+        margin: 0;
+        font-family: "Times New Roman", Times, serif !important;
+    }
+
+    .profile-badge {
+        display: inline-block;
+        background: var(--gold);
+        color: var(--maroon-dark);
+        padding: 2px 12px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+
+    .sidebar-nav {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-btn {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        transition: all 0.3s;
+        font-family: "Times New Roman", Times, serif !important;
+    }
+
+    .nav-btn-gold {
+        background: var(--gold);
+        color: var(--maroon);
+    }
+
+    .nav-btn-gold:hover {
+        background: #c8a032;
+        transform: translateY(-2px);
+    }
+
+    .nav-btn-outline {
+        border: 1.5px solid var(--gold);
+        color: var(--maroon);
+    }
+
+    .nav-btn-outline:hover {
+        background: #FFF9EC;
+        transform: translateY(-2px);
+    }
+
+    /* Detail Cards */
+    .detail-card {
+        background: var(--white);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(212, 175, 55, 0.15);
+        margin-bottom: 30px;
+        overflow: hidden;
+    }
+
+    .card-head {
+        background: #fcfaf5;
+        padding: 18px 25px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .card-head i {
+        color: var(--maroon);
+        font-size: 1.2rem;
+    }
+
+    .card-head h3 {
+        color: var(--maroon);
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin: 0;
+        font-family: "Times New Roman", Times, serif !important;
+    }
+
+    .card-body {
+        padding: 30px;
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+    }
+
+    .info-item label {
+        display: block;
+        color: #888;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+
+    .info-item p {
+        color: var(--text);
+        font-weight: 600;
+        font-size: 1.05rem;
+        margin: 0;
+    }
+
+    /* Modal Style */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(8px);
+    }
+
+    .modal-content {
+        background: var(--ivory);
+        margin: 5% auto;
+        padding: 40px;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 700px;
+        border: 2px solid var(--gold);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        position: relative;
+    }
+
+    .form-group label {
+        color: var(--maroon);
+        font-family: "Times New Roman", Times, serif !important;
+        font-weight: 700;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        background: white;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        border-radius: 8px;
+    }
+
+    .btn-save {
+        background: var(--maroon);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    @media (max-width: 768px) {
+        .dash-hero h1 {
+            font-size: 2.2rem;
+        }
+
+        .dash-content {
+            padding: 0 15px;
+        }
+
+        .profile-card-sidebar {
+            position: static;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <!-- Hero Banner -->
+    <div class="dash-hero">
+        <span class="hero-om">ॐ</span>
+        <h1>Devotee Dashboard</h1>
+        <p>Welcome back, {{ fullname|default:"Devotee" }} — Your spiritual journey continues with Karya Siddhi.</p>
+        <div class="hero-wave">
+            <svg viewBox="0 0 500 150" preserveAspectRatio="none">
+                <path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"></path>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="section-divider">
+        <div class="divider-line"></div>
+        <span class="divider-symbol">ॐ</span>
+        <div class="divider-line"></div>
+    </div>
+
+    <div class="dash-content">
+        <!-- Sidebar -->
+        <aside class="dash-sidebar">
+            <div class="profile-card-sidebar">
+                <div class="profile-header-band">
+                    <img src="https://ui-avatars.com/api/?name={{ fullname|urlencode }}&background=d4af37&color=800000&size=200"
+                        alt="Profile" class="profile-img">
+                    <div class="profile-badge">Devout Member</div>
+                    <h2 class="profile-name">{{ fullname }}</h2>
+                </div>
+                <div class="sidebar-nav">
+                    <button class="nav-btn nav-btn-gold" onclick="openEditModal()">
+                        <i class="fas fa-user-edit"></i> Edit Profile
+                    </button>
+                    <a href="{% url 'my_bookings' %}" class="nav-btn nav-btn-outline">
+                        <i class="fas fa-calendar-check"></i> My Bookings
+                    </a>
+                    <a href="{% url 'logout' %}" class="nav-btn nav-btn-outline"
+                        style="color: #c0392b; border-color: #f5b7b1;">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dash-main">
+            <!-- Profile Details -->
+            <div class="detail-card">
+                <div class="card-head">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Personal Information</h3>
+                </div>
+                <div class="card-body">
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>Full Name</label>
+                            <p>{{ fullname }}</p>
+                        </div>
+                        <div class="info-item">
+                            <label>Email Address</label>
+                            <p>{{ email }}</p>
+                        </div>
+                        <div class="info-item">
+                            <label>Mobile Number</label>
+                            <p>{{ phone|default:"Not Provided" }}</p>
+                        </div>
+                        <div class="info-item">
+                            <label>Spiritual Gothram</label>
+                            <p>{{ gothram|default:"Not Provided" }}</p>
+                        </div>
+                        <div class="info-item">
+                            <label>Janma Nakshatram</label>
+                            <p>{{ nakshatram|default:"Not Provided" }}</p>
+                        </div>
+                        <div class="info-item">
+                            <label>Sacred City</label>
+                            <p>{{ city|default:"Not Provided" }}</p>
+                        </div>
+                        <div class="info-item" style="grid-column: 1 / -1;">
+                            <label>Permanent Address</label>
+                            <p>{{ address|default:"Not Provided" }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spiritual Journey Note -->
+            <div class="detail-card">
+                <div class="card-head">
+                    <i class="fas fa-om"></i>
+                    <h3>Spiritual Progress</h3>
+                </div>
+                <div class="card-body">
+                    <p style="color: #666; font-style: italic; line-height: 1.6;">
+                        "Regular services and dedication bring peace and prosperity. Keep track of your upcoming pujas
+                        and rituals to maintain your spiritual rhythm."
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Edit Profile Modal -->
+<div id="editProfileModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeEditModal()"
+            style="position: absolute; right: 25px; top: 25px; font-size: 24px; cursor: pointer;">&times;</span>
+        <h2 style="font-family: 'Cinzel', serif; color: var(--maroon); margin-bottom: 30px;">Update Sacred Profile</h2>
+
+        <form action="{% url 'update_profile' %}" method="POST">
+            {% csrf_token %}
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px;">Full Name</label>
+                    <input type="text" name="fullname" value="{{ fullname }}" required
+                        style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px;">Email Address</label>
+                    <input type="email" name="email" value="{{ email }}" required
+                        style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px;">Mobile Number</label>
+                    <input type="tel" name="phone" value="{{ phone|default:'' }}"
+                        style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px;">Sacred Gothram</label>
+                    <input type="text" name="gothram" value="{{ gothram|default:'' }}"
+                        style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px;">Janma Nakshatram</label>
+                    <input type="text" name="nakshatram" value="{{ nakshatram|default:'' }}"
+                        style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px;">City</label>
+                    <input type="text" name="city" value="{{ city|default:'' }}"
+                        style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                </div>
+                <div class="form-group" style="grid-column: span 2; margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px;">Permanent Address</label>
+                    <textarea name="address" rows="3"
+                        style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">{{ address|default:'' }}</textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn-save"
+                style="width: 100%; padding: 15px; background: var(--maroon); color: white; border: none; border-radius: 50px; cursor: pointer; font-family: 'Cinzel', serif;">Save
+                Sacred Changes</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openEditModal() {
+        document.getElementById('editProfileModal').style.display = 'block';
+    }
+
+    function closeEditModal() {
+        document.getElementById('editProfileModal').style.display = 'none';
+    }
+
+    window.onclick = function (event) {
+        let modal = document.getElementById('editProfileModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+{% endblock %}

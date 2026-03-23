@@ -1,0 +1,835 @@
+{% load static %}
+<!-- ===================================== -->
+<!-- CONTACT US - ELEGANT TWO-COLOR THEME -->
+<!-- ===================================== -->
+<section class="sacred-contact" id="contact">
+
+  <!-- Light Temple Background -->
+  <div class="temple-bg-contact"></div>
+
+  <!-- Floating Diyas
+  <div class="hanging-diya-contact left-diya-contact">
+    <img src="https://png.pngtree.com/png-vector/20220916/ourmid/pngtree-hanging-diya-lamp-png-image_6176662.png"
+      alt="Diya">
+  </div>
+  <div class="hanging-diya-contact right-diya-contact">
+    <img src="https://png.pngtree.com/png-vector/20220916/ourmid/pngtree-hanging-diya-lamp-png-image_6176662.png"
+      alt="Diya">
+  </div>-->
+
+  <div class="container" style="position: relative; z-index: 5;">
+
+    <!-- Header -->
+    <div class="contact-header">
+      <span class="sub-heading-contact">Connect With Divine</span>
+      <h1 class="main-heading-contact">Get In <span class="text-gold-contact">Touch</span></h1>
+      <div class="header-ornament-contact">
+        <span class="ornament-line-contact"></span>
+        <span class="ornament-symbol-contact">ॐ</span>
+        <span class="ornament-line-contact"></span>
+      </div>
+      <p class="contact-intro">We're here to assist you with your spiritual journey. Reach out to us for any queries or
+        bookings.</p>
+    </div>
+
+    <!-- Contact Info Cards -->
+    <div class="contact-info-grid">
+      <!-- Location Card -->
+      <div class="contact-info-card location-card">
+        <div class="card-icon-wrapper">
+          <i class="fas fa-map-marker-alt card-icon"></i>
+        </div>
+        <h3 class="card-title">Our Location</h3>
+        <p class="card-detail">Hyderabad, Telangana</p>
+        <p class="card-detail-sub">India</p>
+        <div class="card-ornament">🪷</div>
+      </div>
+
+      <!-- Phone Card -->
+      <div class="contact-info-card phone-card">
+        <div class="card-icon-wrapper">
+          <i class="fas fa-phone-alt card-icon"></i>
+        </div>
+        <h3 class="card-title">Call Us</h3>
+        <p class="card-detail">+91 94909 47920</p>
+        <p class="card-detail-sub">Mon - Sun: 6 AM - 9 PM</p>
+        <div class="card-ornament">🕉️</div>
+      </div>
+
+      <!-- Email Card -->
+      <div class="contact-info-card email-card">
+        <div class="card-icon-wrapper">
+          <i class="fas fa-envelope card-icon"></i>
+        </div>
+        <h3 class="card-title">Email Us</h3>
+        <p class="card-detail">contact@karyasiddhipoojaservices.com</p>
+        <p class="card-detail-sub">24/7 Support Available</p>
+        <div class="card-ornament">🔔</div>
+      </div>
+    </div>
+
+    <!-- Sacred Divider -->
+    <div class="sacred-divider-contact">
+      <span class="divider-symbol-contact">॰॰॰ ॐ ॰॰॰</span>
+    </div>
+
+    <!-- Main Contact Section -->
+    <div class="contact-main-wrapper">
+
+      <!-- Contact Form -->
+      <div class="contact-form-section">
+        <div class="form-header">
+          <h2 class="form-title" style="font-family: 'Cinzel', serif;">Send Us a Message</h2>
+          <p class="form-subtitle">Share your spiritual needs and we'll respond promptly</p>
+        </div>
+
+        <form class="contact-form-elegant" id="contactForm" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="contactName" class="form-label">
+              <i class="fas fa-user label-icon"></i> Your Name
+            </label>
+            <input type="text" id="contactName" name="name" class="form-input" placeholder="Enter your full name"
+              required>
+            <span id="nameError" class="error-msg" style="color: #800000; font-size: 0.8rem; margin-top: 5px;"></span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactEmail" class="form-label">
+                <i class="fas fa-envelope label-icon"></i> Email Address
+              </label>
+              <input type="email" id="contactEmail" name="email" class="form-input" placeholder="your.email@example.com"
+                required>
+              <span id="emailError" class="error-msg"
+                style="color: #800000; font-size: 0.8rem; margin-top: 5px;"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="contactPhone" class="form-label">
+                <i class="fas fa-phone label-icon"></i> Phone Number
+              </label>
+              <input class="form-input" id="contactPhone" type="tel" name="mobile" pattern="(\+91[\-\s]?)?[6-9][0-9]{9}"
+                required placeholder="+91 94909 47920">
+              <span id="phoneError" class="error-msg"
+                style="color: #800000; font-size: 0.8rem; margin-top: 5px;"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contactService" class="form-label">
+              <i class="fas fa-om label-icon"></i> Service Interested In
+            </label>
+            <select id="contactService" name="service" class="form-input form-select">
+              <option value="">Select a service (Optional)</option>
+              <option value="Pradosha Kala Abhishekam">Pradosha Kala Abhishekam</option>
+              <option value="Ganesh Homa">Ganesh Homa</option>
+              <option value="Navagraha Shanti">Navagraha Shanti Pooja</option>
+              <option value="Satyanarayan Pooja">Satyanarayan Pooja</option>
+              <option value="Maha Lakshmi Pooja">Maha Lakshmi Pooja</option>
+              <option value="Rudrabhishekam">Rudrabhishekam</option>
+              <option value="Other">Other Services</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="contactMessage" class="form-label">
+              <i class="fas fa-comments label-icon"></i> Your Message
+            </label>
+            <textarea id="contactMessage" name="message" class="form-input form-textarea" rows="5"
+              placeholder="Tell us how we can help you on your spiritual journey..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-contact-submit">
+            <span class="btn-text">Send Sacred Message</span>
+            <i class="fas fa-paper-plane btn-icon"></i>
+          </button>
+        </form>
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const form = document.getElementById("contactForm");
+          const nameInput = document.getElementById("contactName");
+          const emailInput = document.getElementById("contactEmail");
+          const phoneInput = document.getElementById("contactPhone");
+
+          const nameError = document.getElementById("nameError");
+          const emailError = document.getElementById("emailError");
+          const phoneError = document.getElementById("phoneError");
+
+          /* Name Validation - Letters Only as user types */
+          nameInput.addEventListener("input", function () {
+            // Just filtering input, not preventing submittal yet
+          });
+
+          /* Phone Validation - Numbers Only as user types */
+          phoneInput.addEventListener("input", function () {
+            this.value = this.value.replace(/[^0-9]/g, '');
+          });
+
+          /* Form Submit Validation */
+          form.addEventListener("submit", function (e) {
+            let isValid = true;
+
+            // Name check
+            if (!/^[A-Za-z ]+$/.test(nameInput.value.trim())) {
+              nameError.textContent = "Name should contain letters only.";
+              isValid = false;
+            } else {
+              nameError.textContent = "";
+            }
+
+            // Email check
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
+              emailError.textContent = "Enter a valid email address.";
+              isValid = false;
+            } else {
+              emailError.textContent = "";
+            }
+
+            // Phone check (exactly 10 digits)
+            if (!/^[0-9]{10}$/.test(phoneInput.value)) {
+              phoneError.textContent = "Phone number must be exactly 10 digits.";
+              isValid = false;
+            } else {
+              phoneError.textContent = "";
+            }
+
+            if (!isValid) {
+              e.preventDefault();
+            }
+          });
+
+          // Pre-fill service from URL parameter
+          const urlParams = new URLSearchParams(window.location.search);
+          const service = urlParams.get('service');
+          if (service) {
+            const serviceSelect = document.getElementById('contactService');
+            const messageBox = document.getElementById('contactMessage');
+
+            if (serviceSelect) {
+              serviceSelect.value = service;
+            }
+            if (messageBox) {
+              messageBox.value = `I am interested in booking: ${service}`;
+            }
+          }
+        });
+      </script>
+
+
+      <!-- Contact Image/Illustration -->
+      <div class="contact-visual-section">
+        <div class="visual-card">
+          <img src="/static/images/contact_us.jpeg" alt="Divine Support" class="contact-illustration">
+          <div class="visual-overlay">
+            <div class="visual-content">
+              <i class="fas fa-praying-hands visual-icon"></i>
+              <h3 class="visual-title">We're Here to Help</h3>
+              <p class="visual-desc">Our dedicated team is ready to assist you with personalized spiritual guidance</p>
+              <div class="trust-badges">
+                <div class="badge-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Instant Response</span>
+                </div>
+                <div class="badge-item">
+                  <i class="fas fa-star"></i>
+                  <span>Expert Purohits</span>
+                </div>
+                <div class="badge-item">
+                  <i class="fas fa-shield-alt"></i>
+                  <span>Confidential</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature Cards Stack -->
+        <div class="feature-cards-stack">
+          <!-- 24/7 Support -->
+          <div class="feature-item-card">
+            <div class="feature-icon-box support-bg">
+              <i class="fas fa-headset"></i>
+            </div>
+            <div class="feature-content">
+              <h4 class="feature-title">24/7 Support</h4>
+              <p class="feature-desc">Round-the-clock assistance for your puja needs</p>
+            </div>
+          </div>
+
+          <!-- Quick Response -->
+          <div class="feature-item-card">
+            <div class="feature-icon-box response-bg">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="feature-content">
+              <h4 class="feature-title">Quick Response</h4>
+              <p class="feature-desc">We respond to all queries within 24 hours</p>
+            </div>
+          </div>
+
+          <!-- Multiple Channels -->
+          <div class="feature-item-card">
+            <div class="feature-icon-box channels-bg">
+              <i class="fas fa-comments"></i>
+            </div>
+            <div class="feature-content">
+              <h4 class="feature-title">Multiple Channels</h4>
+              <p class="feature-desc">Reach us via email, phone, or contact form</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* ===================================== */
+  /* CONTACT PAGE - ELEGANT TWO-COLOR THEME */
+  /* ===================================== */
+
+  .sacred-contact {
+    position: relative;
+    padding: 100px 0;
+    background: linear-gradient(135deg, #FFF8DC 0%, #FFFFF0 50%, #FFF5E6 100%);
+    overflow: hidden;
+  }
+
+  .feature-cards-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 10px;
+  }
+
+  .feature-item-card {
+    background: #FFFFFF;
+    padding: 20px 25px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 15px rgba(128, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(128, 0, 0, 0.03);
+  }
+
+  .feature-item-card:hover {
+    transform: translateX(10px);
+    box-shadow: 0 6px 20px rgba(128, 0, 0, 0.1);
+    border-color: rgba(184, 134, 11, 0.2);
+  }
+
+  .feature-icon-box {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .feature-item-card:hover .feature-icon-box {
+    transform: scale(1.1);
+  }
+
+  .support-bg {
+    background: #FFF0E6;
+    color: #FF6B35;
+  }
+
+  .response-bg {
+    background: #FFF8E6;
+    color: #B8860B;
+  }
+
+  .channels-bg {
+    background: #F5E8DC;
+    color: #800000;
+  }
+
+  .feature-content {
+    flex: 1;
+  }
+
+  .feature-title {
+    font-family: 'Cinzel', serif;
+    color: #2c1810;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .feature-desc {
+    font-family: 'Inter', sans-serif;
+    color: #5D4E37;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .temple-bg-contact {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.transparenttextures.com/patterns/rice-paper.png');
+    opacity: 0.3;
+    z-index: 1;
+  }
+
+  /* Hanging Diyas */
+  .hanging-diya-contact {
+    position: absolute;
+    top: 50px;
+    z-index: 10;
+    width: 80px;
+    pointer-events: none;
+    animation: swing-contact 5s ease-in-out infinite;
+    transform-origin: top center;
+    filter: drop-shadow(0 0 12px rgba(255, 165, 0, 0.5));
+  }
+
+  .left-diya-contact {
+    left: 5%;
+    animation-delay: 0s;
+  }
+
+  .right-diya-contact {
+    right: 5%;
+    animation-delay: 2.5s;
+  }
+
+  @keyframes swing-contact {
+
+    0%,
+    100% {
+      transform: rotate(6deg);
+    }
+
+    50% {
+      transform: rotate(-6deg);
+    }
+  }
+
+  /* Header */
+  .contact-header {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+
+  .main-heading-contact {
+    font-family: 'Rozha One', serif;
+    color: #800000;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(128, 0, 0, 0.1);
+  }
+
+  .sub-heading-contact {
+    font-family: 'Cinzel', serif;
+    color: #B8860B;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .text-gold-contact {
+    color: #B8860B;
+    text-shadow: 0 1px 2px rgba(184, 134, 11, 0.2);
+  }
+
+  .header-ornament-contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .ornament-line-contact {
+    height: 2px;
+    width: 100px;
+    background: linear-gradient(90deg, transparent, #B8860B, transparent);
+  }
+
+  .ornament-symbol-contact {
+    color: #FF6B35;
+    font-size: 2rem;
+  }
+
+  .contact-intro {
+    font-family: 'Playfair Display', serif;
+    color: #5D4E37;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Contact Info Cards */
+  .contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin-bottom: 80px;
+  }
+
+  .contact-info-card {
+    background: #FFFFFF;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(128, 0, 0, 0.08);
+    border-top: 4px solid #800000;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent, rgba(184, 134, 11, 0.05));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .contact-info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(128, 0, 0, 0.15);
+  }
+
+  .contact-info-card:hover::before {
+    opacity: 1;
+  }
+
+  .card-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #800000, #A52A2A);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(128, 0, 0, 0.2);
+    transition: transform 0.4s ease;
+  }
+
+  .contact-info-card:hover .card-icon-wrapper {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .card-icon {
+    color: #FFFFFF;
+    font-size: 2rem;
+  }
+
+  .card-title {
+    font-family: 'Cinzel', serif;
+    color: #800000;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+
+  .card-detail {
+    font-family: 'Playfair Display', serif;
+    color: #2c1810;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .card-detail-sub {
+    font-family: 'Inter', sans-serif;
+    color: #5D4E37;
+    font-size: 0.9rem;
+  }
+
+  .card-ornament {
+    font-size: 1.5rem;
+    margin-top: 15px;
+  }
+
+  /* Sacred Divider */
+  .sacred-divider-contact {
+    text-align: center;
+    margin: 60px 0;
+    position: relative;
+  }
+
+  .sacred-divider-contact::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #B8860B, transparent);
+  }
+
+  .divider-symbol-contact {
+    position: relative;
+    z-index: 2;
+    background: #FFF8DC;
+    padding: 0 40px;
+    font-family: 'Noto Sans Devanagari', serif;
+    color: #800000;
+    font-size: 1.8rem;
+    letter-spacing: 8px;
+  }
+
+  /* Main Contact Wrapper */
+  .contact-main-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 60px;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .contact-main-wrapper {
+      gap: 30px;
+    }
+  }
+
+  /* Form Section */
+  .contact-form-section {
+    background: #FFFFFF;
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(128, 0, 0, 0.1);
+    border-left: 5px solid #B8860B;
+  }
+
+  .form-header {
+    margin-bottom: 40px;
+    border-bottom: 2px solid #F5E8DC;
+    padding-bottom: 20px;
+  }
+
+  .form-title {
+    font-family: 'Rozha One', serif;
+    color: #800000;
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .form-subtitle {
+    font-family: 'Cinzel', serif;
+    color: #5D4E37;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+  }
+
+  .contact-form-elegant {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-label {
+    font-family: 'Cinzel', serif;
+    color: #800000;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .label-icon {
+    color: #B8860B;
+    font-size: 0.9rem;
+  }
+
+  .form-input {
+    padding: 14px 18px;
+    border: 2px solid #E8D5C4;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #2c1810;
+    background: #FFFAF0;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+
+  .form-input:focus {
+    border-color: #800000;
+    box-shadow: 0 0 0 4px rgba(128, 0, 0, 0.1);
+    background: #FFFFFF;
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .form-select {
+    cursor: pointer;
+  }
+
+  .btn-contact-submit {
+    background: linear-gradient(135deg, #800000, #A52A2A);
+    color: #FFFFFF;
+    border: none;
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(128, 0, 0, 0.2);
+    margin-top: 10px;
+  }
+
+  .btn-contact-submit:hover {
+    background: linear-gradient(135deg, #A52A2A, #800000);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(128, 0, 0, 0.3);
+  }
+
+  .btn-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .btn-contact-submit:hover .btn-icon {
+    transform: translateX(5px);
+  }
+
+  /* Visual Section */
+  .contact-visual-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .visual-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(128, 0, 0, 0.12);
+  }
+
+  .contact-illustration {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .visual-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(255, 248, 220, 0.98), transparent);
+    padding: 30px 25px;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+  }
+
+  .visual-card:hover .visual-overlay {
+    transform: translateY(0);
+  }
+
+  .visual-icon {
+    color: #800000;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  .visual-title {
+    font-family: 'Rozha One', serif;
+    color: #800000;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .visual-desc {
+    font-family: 'Playfair Display', serif;
+    color: #5D4E37;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .trust-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .badge-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Cinzel', serif;
+    color: #2c1810;
+    font-size: 0.9rem;
+  }
+
+  .badge-item i {
+    color: #B8860B;
+    font-size: 1rem;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .contact-main-wrapper {
+      grid-template-columns: 1fr;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .main-heading-contact {
+      font-size: 2.5rem;
+    }
+
+    .contact-form-section {
+      padding: 35px 25px;
+    }
+  }
+</style>

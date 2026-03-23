@@ -1,0 +1,381 @@
+<!-- ===================================== -->
+<!-- ABOUT PAGE - SIMPLE DIVINE THEME (MATCHING HOME) -->
+<!-- ===================================== -->
+
+<!-- 1. Hero Section (Simplified) -->
+<section class="hero-section"
+  style="position: relative; height: 30vh; min-height: 200px; display: flex; align-items: center; justify-content: center; background: url('/static/images/blogtemple.png') center/cover no-repeat fixed; margin-top: 0;">
+
+  <!-- Overlays for readability -->
+  <div
+    style="position: absolute; inset: 0; background: linear-gradient(rgba(183, 28, 28, 0.7), rgba(15, 14, 14, 0.5)); z-index: 1;">
+  </div>
+
+
+  <div class="hero-container" style="position: relative; z-index: 10; text-align: center; padding: 10px;">
+
+    <div class="hero-icon-wrapper">
+      <div class="hero-om" style="font-size: 4rem; color: #D4AF37; text-shadow: 0 0 20px rgba(212,175,55,0.5);">
+      </div>
+    </div>
+    <style>
+      .hero-title span {
+        font-size: calc(2.2rem + 2vw) !important;
+        white-space: normal !important;
+        line-height: 1.2;
+      }
+
+      @media (max-width: 768px) {
+        .hero-title span {
+          font-size: 2.5rem !important;
+        }
+
+        .hero-subtitle {
+          font-size: 1.1rem !important;
+        }
+
+        .hero-section {
+          height: auto !important;
+          padding: 60px 20px !important;
+        }
+      }
+    </style>
+    <h1 class="hero-title" style="margin-top: 15px; margin-bottom: 15px;">
+      <span class="d-block text-gold-shiny" style="font-family: 'Rozha One', serif; color: #fff;">About
+        Us</span>
+    </h1>
+    <p class="hero-subtitle"
+      style="font-family: 'Inter', sans-serif; font-size: 1.25rem; color: #F5E8BF; margin-top: 5px; max-width: 600px; line-height: 1.6;">
+      Bridging the gap between ancient traditions and modern devotion.
+    </p>
+  </div>
+  </div>
+</section>
+
+<!-- 2. Our Mission (Clean Grid like 'How It Works') -->
+<style>
+  .spiritual-journey {
+    /* Flower design background */
+    background: url('https://previews.123rf.com/images/kitzze/kitzze1503/kitzze150300062/37521876-orange-marigold-flower-mandala-on-white-background.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .step-card {
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    /* Text directly on background image */
+    border: 2px solid rgba(212, 175, 55, 0.5);
+    transition: all 0.5s ease;
+    box-shadow: 0 10px 30px rgba(211, 47, 47, 0.08);
+    flex: 1;
+    min-width: 300px;
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+  }
+
+  .step-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(211, 47, 47, 0.15);
+    border-color: #D4AF37;
+  }
+
+  .card-bg-hover {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    z-index: 1;
+    transform: scale(1.1);
+  }
+
+  .card-bg-hover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+
+  }
+
+  .step-card:hover .card-bg-hover {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .step-card:hover .step-card-content h4,
+  .step-card:hover .step-card-content p {
+    color: #ffffff !important;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+  }
+
+  .step-card-content {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.4s ease;
+  }
+
+  .step-card:hover .step-card-content {
+    transform: scale(1.02);
+  }
+
+  /* Corner ornaments */
+  .step-card::before,
+  .step-card::after {
+    content: '❁';
+    position: absolute;
+    color: #D4AF37;
+    font-size: 1.8rem;
+    opacity: 0.3;
+    z-index: 2;
+    transition: all 0.4s ease;
+  }
+
+  .step-card::before {
+    top: 15px;
+    left: 15px;
+  }
+
+  .step-card::after {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .step-card:hover::before,
+  .step-card:hover::after {
+    transform: rotate(180deg) scale(1.2);
+    opacity: 1;
+    color: #D4AF37;
+  }
+</style>
+<section class="spiritual-journey">
+  <div class="pattern-layer mandala-bg" style="opacity: 0.05;"></div>
+  <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <style>
+      .mission-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+      }
+
+      @media (max-width: 768px) {
+        .mission-grid {
+          gap: 20px;
+        }
+      }
+    </style>
+
+    <div class="journey-header" style="text-align: center; margin-bottom: 40px; position: relative; z-index: 10;">
+      <h2
+        style="font-family: 'Cinzel', serif; font-size: 2.5rem; color: #D32F2F; margin-bottom: 10px; text-shadow: 1px 1px 0px rgba(212, 175, 55, 0.4);">
+        Our Sacred Mission</h2>
+      <div class="divider-ornate" style="justify-content: center; display: flex; gap: 15px; align-items: center;">
+        <span style="height: 2px; width: 60px; background: linear-gradient(90deg, transparent, #D4AF37);"></span>
+        <span><i class="fas fa-om"
+            style="color: #D4AF37; font-size: 1.8rem; filter: drop-shadow(0 0 5px rgba(212,175,55,0.5));"></i></span>
+        <span style="height: 2px; width: 60px; background: linear-gradient(-90deg, transparent, #D4AF37);"></span>
+      </div>
+      <p
+        style="font-family: 'Poppins', sans-serif; color: #D32F2F; margin-top: 15px; font-weight: 700; letter-spacing: 2px; opacity: 0.8;">
+        PRESERVING SANATANA DHARMA</p>
+    </div>
+
+    <div class="journey-path"
+      style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; position: relative; z-index: 10;">
+
+      <!-- Card 1 -->
+      <div class="step-card">
+        <div class="card-bg-hover" style="background-image: url('/static/images/authenticity.jpeg');"></div>
+        <div class="step-card-content">
+          <div class="step-icon-box"
+            style="width: 65px; height: 65px; margin: 0 auto 15px; background: #D32F2F; border: 2px solid #D4AF37; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: #D4AF37; box-shadow: 0 5px 15px rgba(183,28,28,0.3);">
+            <i class="fas fa-dharmachakra"></i>
+          </div>
+          <h4
+            style="font-family: 'Cinzel', serif; color: #D32F2F; font-size: 1.3rem; margin-bottom: 10px; font-weight: bold;">
+            Authenticity</h4>
+          <p style="font-family: 'Inter', sans-serif; color: #2c1810; line-height: 1.6; font-size: 0.95rem;">
+            We are dedicated to maintaining the purity of Vedic rituals. Every puja is performed strictly according to
+            the Shastras.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="step-card">
+        <div class="card-bg-hover" style="background-image: url('/static/images/community.jpeg');"></div>
+        <div class="step-card-content">
+          <div class="step-icon-box"
+            style="width: 65px; height: 65px; margin: 0 auto 15px; background: #D32F2F; border: 2px solid #D4AF37; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: #D4AF37; box-shadow: 0 5px 15px rgba(183,28,28,0.3);">
+            <i class="fas fa-users"></i>
+          </div>
+          <h4
+            style="font-family: 'Cinzel', serif; color: #D32F2F; font-size: 1.3rem; margin-bottom: 10px; font-weight: bold;">
+            Community</h4>
+          <p style="font-family: 'Inter', sans-serif; color: #2c1810; line-height: 1.6; font-size: 0.95rem;">
+            Connecting devotees with learned Purohits from Kashi, Haridwar, and Tirupati. Distance is no longer a
+            barrier.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="step-card">
+        <div class="card-bg-hover" style="background-image: url('/static/images/yours.jpeg');"></div>
+        <div class="step-card-content">
+          <div class="step-icon-box"
+            style="width: 65px; height: 65px; margin: 0 auto 15px; background: #D32F2F; border: 2px solid #D4AF37; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: #D4AF37; box-shadow: 0 5px 15px rgba(183,28,28,0.3);">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h4
+            style="font-family: 'Cinzel', serif; color: #D32F2F; font-size: 1.3rem; margin-bottom: 10px; font-weight: bold;">
+            Seva</h4>
+          <p style="font-family: 'Inter', sans-serif; color: #2c1810; line-height: 1.6; font-size: 0.95rem;">
+            Beyond rituals, we aim to serve the community through charity and steadfast support for Vedic Pathshalas.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- 2.2 Our Vision (Simple & Elegant) -->
+<section class="our-vision"
+  style="padding: 100px 0; background: linear-gradient(rgba(132, 6, 6, 0.95), rgba(132, 6, 6, 0.9)), url('/static/images/vision.jpg') center/cover no-repeat fixed; position: relative; overflow: hidden;">
+  <div class="pattern-layer mandala-bg" style="opacity: 0.1;"></div>
+  <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 20px; text-align: center;">
+    <div class="vision-content"
+      style="padding: 40px; border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 30px; position: relative;">
+      <!-- Decorative Quote Marks -->
+
+
+      <h2 style="font-family: ''Cinzel', serif', serif; font-size: 2.2rem; color: #D4AF37; margin-bottom: 25px;">Our
+        Sacred
+        Vision</h2>
+
+      <p
+        style="font-family: 'Inter', sans-serif; font-size: 1.2rem; color: #F5E8BF; line-height: 1.8; font-style: italic;">
+        To become the global bridge that reunites modern generations with their spiritual roots, ensuring that every
+        household, regardless of their location, can experience the divine grace of authentic Vedic rituals with
+        transparency, convenience, and absolute devotion.
+      </p>
+
+      <div style="margin-top: 25px; color: #D4AF37; font-size: 1.5rem;">
+        <i class="fas fa-om"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<style>
+  .btn-all-purohits:hover {
+    background: transparent;
+    color: #D32F2F;
+    border-color: #D32F2F;
+    transform: translateY(-5px);
+  }
+
+  .purohit-card:hover {
+    transform: translateY(-10px);
+    border-color: #D4AF37;
+    box-shadow: 0 15px 40px rgba(211, 47, 47, 0.15);
+  }
+</style>
+
+<!-- 3. Our Story (Simple Text + Image Split) -->
+<section class="sankalp-section" style="padding: 100px 0; background: #FFFFF0; position: relative; overflow: hidden;">
+  <div class="pattern-layer mandala-bg" style="opacity: 0.03;"></div>
+  <div class="container"
+    style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 50px;">
+
+    <!-- Image Left -->
+    <div class="story-img-col" style="flex: 1; min-width: 300px; position: relative;">
+      <div
+        style="border: 2px solid #D4AF37; padding: 15px; background: #fff; box-shadow: 0 20px 50px rgba(0,0,0,0.1); border-radius: 15px; overflow: hidden; position: relative; z-index: 2;">
+        <img src="/static/images/about.png" alt="Our Story" style="width: 100%; display: block; border-radius: 8px;">
+      </div>
+      <!-- Decorative circle behind image -->
+      <div
+        style="position: absolute; width: 300px; height: 300px; background: rgba(212, 175, 55, 0.1); border-radius: 50%; top: -50px; left: -50px; z-index: 1;">
+      </div>
+    </div>
+
+    <!-- Text Right -->
+    <div class="story-text-col" style="flex: 1; min-width: 300px;">
+      <h2 style="font-family: 'Cinzel', serif; font-size: 2.5rem; color: #D32F2F; margin-bottom: 20px;">Founded on
+        Faith</h2>
+      <p
+        style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: #2c1810; line-height: 1.8; margin-bottom: 20px;">
+        The Karya Siddhi Portal was born from a desire to make authentic spiritual services accessible to everyone. In
+        today's fast-paced world, finding a knowledgeable Priest and performing rituals with pure ingredients can be
+        challenging.
+      </p>
+      <p
+        style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: #2c1810; line-height: 1.8; margin-bottom: 30px;">
+        We built this platform to bring transparency, convenience, and authenticity to your religious practices. Whether
+        you are in New York or New Delhi, the divine is now just a click away.
+      </p>
+      <a href="{% url 'services' %}"
+        style="display: inline-block; padding: 15px 35px; background: #D32F2F; color: #F5E8BF; text-decoration: none; font-family: 'Cinzel', serif; font-weight: bold; border-radius: 50px; border: 2px solid #D4AF37; transition: all 0.3s;">
+        View Our Services
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- 4. Karya Siddhi Story Section -->
+<section class="karya-siddhi-section">
+  <div class="karya-siddhi-container">
+    <div class="story-box">
+      <h2 class="story-title" style="font-family: 'Cinzel', serif;">The Sacred Story of Karya Siddhi</h2>
+      <div class="divider-ornate" style="justify-content: center; display: flex; margin-bottom: 30px;">
+        <span style="color: #D4AF37; font-size: 1.5rem;">❦</span>
+      </div>
+
+      <p class="story-text">
+        Karya Siddhi means successfully completing the work that we begin. <span class="story-highlight"></span> In our
+        lives, every auspicious activity starts with divine blessings.
+        <span class="story-highlight"></span>Sacred poojas, homams, and vrathams bring peace, prosperity, and well-being
+        into our lives.
+
+      </p>
+
+      <p class="story-text">
+        With devotion, sincerity, and traditional methods, we perform pooja services and offer devotees the blessings of
+        the divine.
+        These rituals, performed according to sacred scriptures, help bring positive and successful results to our
+        endeavors.
+        <span class="story-highlight"></span>, no obstacle is too great.
+      </p>
+
+      <p class="story-text" style="font-style: italic; color: #F5E8BF;">
+        "Every good deed done with faith and devotion brings auspiciousness into life.
+        Work done wholeheartedly will certainly bear fruit.Therefore, Karya Siddhi is the journey from a sacred
+        intention to a successful outcome. ✨</p>
+      </p>
+
+      <div style="margin-top: 40px;">
+        <a href="{% url 'services' %}" class="btn-temple"
+          style="display: inline-block; padding: 12px 30px; border: 2px solid #D4AF37; color: #D4AF37; text-decoration: none; font-family: 'Cinzel', serif; font-weight: bold; border-radius: 50px; transition: all 0.3s; background: rgba(0,0,0,0.3);">
+          Seek Divine Success
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>

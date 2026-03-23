@@ -1,0 +1,3424 @@
+﻿python : Creating 
+test database for 
+alias 'default'...
+At line:1 char:1
++ python manage.py 
+test core.tests_auth 
+core.tests_devotee_au
+th > test_ ...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (Creatin   
+ g test d...as 'd    
+efault'...:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+
+Found 14 test(s).
+System check identified no issues (0 silenced).
+E....F......F.
+=====================
+=====================
+=====================
+=======
+ERROR: test_priest_ed
+it_profile_success (c
+ore.tests_auth.Priest
+AuthTest.test_priest_
+edit_profile_success)
+---------------------
+---------------------
+---------------------
+-------
+Traceback (most 
+recent call last):
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 510, in parse
+    compile_func = 
+self.tags[command]
+                   
+~~~~~~~~~^^^^^^^^^
+KeyError: 'endif'
+
+During handling of 
+the above exception, 
+another exception 
+occurred:
+
+Traceback (most 
+recent call last):
+  File "C:\Users\9170
+3\OneDrive\Desktop\ka
+ryasiddhi\core\tests_
+auth.py", line 107, 
+in test_priest_edit_p
+rofile_success
+    response = self.c
+lient.post(self.edit_
+url, {
+        'fullname': 
+'New Name',
+    ...<5 lines>...
+        'services': [
+'santana-gopala-homa'
+]
+    })
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\test\client.py", 
+line 1158, in post
+    response = 
+super().post(
+        path,
+    ...<5 lines>...
+        **extra,
+    )
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\test\client.py", 
+line 503, in post
+    return 
+self.generic(
+           
+~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+    ...<6 lines>...
+        **extra,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\test\client.py", 
+line 676, in generic
+    return 
+self.request(**r)
+           
+~~~~~~~~~~~~^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\test\client.py", 
+line 1092, in request
+    self.check_except
+ion(response)
+    ~~~~~~~~~~~~~~~~~
+~~~^^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\test\client.py", 
+line 805, in 
+check_exception
+    raise exc_value
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\handlers\exc
+eption.py", line 55, 
+in inner
+    response = 
+get_response(request)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\handlers\bas
+e.py", line 197, in 
+_get_response
+    response = wrappe
+d_callback(request, 
+*callback_args, 
+**callback_kwargs)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\contrib\auth\deco
+rators.py", line 60, 
+in _view_wrapper
+    return 
+view_func(request, 
+*args, **kwargs)
+  File "C:\Users\9170
+3\OneDrive\Desktop\ka
+ryasiddhi\core\views.
+py", line 574, in 
+purohit_edit_profile
+    return 
+render(request, 'page
+s/purohit_edit_profil
+e.html', {
+        'form': form,
+        'profile': 
+profile,
+        
+'services_data': 
+services_data
+    })
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\shortcuts.py", 
+line 25, in render
+    content = loader.
+render_to_string(temp
+late_name, context, 
+request, using=using)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\loader.p
+y", line 61, in 
+render_to_string
+    template = get_te
+mplate(template_name,
+ using=using)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\loader.p
+y", line 15, in 
+get_template
+    return engine.get
+_template(template_na
+me)
+           ~~~~~~~~~~
+~~~~~~~~~^^^^^^^^^^^^
+^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\backends
+\django.py", line 
+79, in get_template
+    return Template(s
+elf.engine.get_templa
+te(template_name), 
+self)
+                    ~
+~~~~~~~~~~~~~~~~~~~~~
+~~^^^^^^^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\engine.p
+y", line 177, in 
+get_template
+    template, origin 
+= self.find_template(
+template_name)
+                     
+  ~~~~~~~~~~~~~~~~~~^
+^^^^^^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\engine.p
+y", line 159, in 
+find_template
+    template = loader
+.get_template(name, 
+skip=skip)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\loaders\
+cached.py", line 57, 
+in get_template
+    template = super(
+).get_template(templa
+te_name, skip)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\loaders\
+base.py", line 28, 
+in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 154, in 
+__init__
+    self.nodelist = s
+elf.compile_nodelist(
+)
+                    ~
+~~~~~~~~~~~~~~~~~~~~^
+^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 196, in 
+compile_nodelist
+    nodelist = 
+parser.parse()
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 518, in parse
+    raise 
+self.error(token, e)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 516, in parse
+    compiled_result 
+= compile_func(self, 
+token)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\loader_t
+ags.py", line 295, 
+in do_extends
+    nodelist = 
+parser.parse()
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 518, in parse
+    raise 
+self.error(token, e)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 516, in parse
+    compiled_result 
+= compile_func(self, 
+token)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\loader_t
+ags.py", line 234, 
+in do_block
+    nodelist = parser
+.parse(("endblock",))
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 518, in parse
+    raise 
+self.error(token, e)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 516, in parse
+    compiled_result 
+= compile_func(self, 
+token)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\defaultt
+ags.py", line 862, 
+in do_for
+    nodelist_loop = 
+parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 512, in parse
+    self.invalid_bloc
+k_tag(token, 
+command, parse_until)
+    ~~~~~~~~~~~~~~~~~
+~~~~~^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 563, in 
+invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.excep
+tions.TemplateSyntaxE
+rror: Invalid block 
+tag on line 184: 
+'endif', expected 
+'empty' or 'endfor'. 
+Did you forget to 
+register or load 
+this tag?
+
+=====================
+=====================
+=====================
+=======
+FAIL: test_priest_reg
+istration_success (co
+re.tests_auth.PriestA
+uthTest.test_priest_r
+egistration_success)
+---------------------
+---------------------
+---------------------
+-------
+Traceback (most 
+recent call last):
+  File "C:\Users\9170
+3\OneDrive\Desktop\ka
+ryasiddhi\core\tests_
+auth.py", line 32, 
+in test_priest_regist
+ration_success
+    self.assertEqual(
+response.status_code,
+ 302)
+    ~~~~~~~~~~~~~~~~^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^
+AssertionError: 200 
+!= 302
+
+=====================
+=====================
+=====================
+=======
+FAIL: test_devotee_re
+gistration_invalid_mo
+bile (core.tests_devo
+tee_auth.DevoteeAuthT
+est.test_devotee_regi
+stration_invalid_mobi
+le)
+---------------------
+---------------------
+---------------------
+-------
+Traceback (most 
+recent call last):
+  File "C:\Users\9170
+3\OneDrive\Desktop\ka
+ryasiddhi\core\tests_
+devotee_auth.py", 
+line 37, in test_devo
+tee_registration_inva
+lid_mobile
+    self.assertContai
+ns(response, 
+"exactly 10 digits")
+    ~~~~~~~~~~~~~~~~~
+~~^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\test\testcases.py
+", line 623, in 
+assertContains
+    self.assertTrue(
+    ~~~~~~~~~~~~~~~^
+        real_count 
+!= 0,
+        
+^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        ),
+        ^^
+    )
+    ^
+AssertionError: 
+False is not true : 
+Couldn't find 
+'exactly 10 digits' 
+in the following 
+response
+b'\n<!DOCTYPE 
+html>\n<html lang="en
+">\n\n<head>\n    
+<meta 
+charset="UTF-8">\n   
+ <meta 
+name="viewport" conte
+nt="width=device-widt
+h, initial-scale=1.0"
+>\n    <title>KARYA 
+SIDDHI</title>\n    
+<meta 
+name="description"\n 
+       
+content="Innovative 
+business solutions 
+for your growth. 
+Strategy, digital 
+marketing, and 
+business consulting 
+services.">\n    \n  
+  <link 
+rel="stylesheet" href
+="/static/css/style.c
+ss">\n    <link 
+rel="preconnect" href
+="https://fonts.googl
+eapis.com">\n    
+<link 
+rel="preconnect" href
+="https://fonts.gstat
+ic.com" 
+crossorigin>\n    
+<link\n        href="
+https://fonts.googlea
+pis.com/css2?family=C
+inzel:wght@400;600;80
+0&family=Inter:wght@4
+00;500;600;700;800&fa
+mily=Noto+Sans+Devana
+gari:wght@400;500;600
+;700&family=Playfair+
+Display:ital,wght@0,4
+00;0,600;0,800;1,400&
+family=Rozha+One&disp
+lay=swap"\n        
+rel="stylesheet">\n  
+  <link 
+rel="stylesheet" href
+="https://cdnjs.cloud
+flare.com/ajax/libs/f
+ont-awesome/6.0.0/css
+/all.min.css">\n\n   
+ <!-- Hide Google 
+Translate UI 
+Elements -->\n    
+<style>\n        /* 
+Hide Google 
+Translate Top Bar 
+*/\n        body {\n 
+           top: 0 
+!important;\n        
+}\n\n        .goog-te
+-banner-frame,\n     
+   .goog-te-banner-fr
+ame.skiptranslate 
+{\n            
+display: none 
+!important;\n        
+}\n\n        
+body>.skiptranslate 
+{\n            
+display: none 
+!important;\n        
+}\n\n        iframe.s
+kiptranslate,\n      
+  .goog-te-gadget,\n 
+       .goog-te-gadge
+t-simple,\n        
+.goog-te-menu-value 
+span,\n        .goog-
+te-balloon-frame {\n 
+           display: 
+none !important;\n   
+     }\n\n        #go
+ogle_translate_elemen
+t {\n            
+display: none 
+!important;\n        
+}\n\n        /* 
+Remove padding added 
+by Google Translate 
+*/\n        body {\n 
+           position: 
+static !important;\n 
+       }\n\n        
+/* Hide the powered 
+by Google text */\n  
+      
+.goog-logo-link,\n   
+     .goog-te-gadget 
+span,\n        
+.goog-te-combo {\n   
+         display: 
+none !important;\n   
+     }\n\n        /* 
+Prevent layout shift 
+*/\n        html.tran
+slated-ltr,\n        
+html.translated-rtl 
+{\n            
+margin-top: 0 
+!important;\n        
+}\n\n        /* Hide 
+Google Translate 
+toolbar completely 
+*/\n        
+#goog-gt-tt,\n       
+ .goog-te-spinner-pos
+,\n        .goog-te-b
+alloon-frame div,\n  
+      div#goog-gt- 
+{\n            
+display: none 
+!important;\n        
+}\n    </style>\n\n  
+  \n    \n<link 
+rel="stylesheet" href
+="/static/css/auth.cs
+s">\n\n    <link 
+rel="stylesheet" href
+="/static/css/video_i
+ntro.css">\n</head>\n
+\n<body 
+class="">\n\n    
+\n\n    <!-- Video 
+Intro Splash Screen 
+-->\n    \n<div id="v
+ideo-intro-overlay" c
+lass="video-intro-ove
+rlay">\n    <div clas
+s="video-container">\
+n        <!-- 
+Unified 
+Audio/Interaction 
+Overlay -->\n        
+<div id="intro-intera
+ction-overlay" class=
+"sound-toggle-overlay
+">\n            <i 
+class="fas 
+fa-volume-up"></i>\n 
+           <span>TAP 
+FOR SOUND</span>\n   
+     </div>\n\n      
+  <div id="video-load
+ing-text"\n          
+  style="color: 
+#D4AF37; 
+font-family: 
+\'Cinzel\', serif; 
+position: absolute; 
+z-index: 10; 
+display: none;">\n   
+         
+Loading...\n        
+</div>\n\n        
+<video 
+id="intro-video" 
+playsinline autoplay 
+muted>\n            
+<source src="/static/
+videos/snipping.mp4" 
+type="video/mp4">\n  
+          Your 
+browser does not 
+support the video 
+tag.\n        
+</video>\n\n        
+<button 
+id="skip-intro" 
+class="skip-btn">\n  
+          Skip To 
+Site <i class="fas fa
+-chevron-right"></i>\
+n        </button>\n 
+   
+</div>\n</div>\n\n   
+ <!-- Navigation 
+-->\n    \n\n<nav 
+class="navbar 
+temple-navbar" id="te
+mple-navbar">\n      
+  <div 
+class="container navb
+ar-container">\n\n   
+             <!-- 1. 
+Logo Box -->\n       
+         <a href="/" 
+class="logo-box">\n  
+                     
+ <div 
+class="logo-circle 
+glow-pulse">\n       
+                     
+    <img src="/static
+/images/logo.png">\n 
+                     
+  </div>\n           
+     </a>\n\n        
+        <!-- 2. 
+Heading Box -->\n    
+            <div clas
+s="heading-box">\n   
+                     
+<a href="/" class="lo
+go-text-link">\n     
+                     
+      <div 
+class="logo-text">\n 
+                     
+                  
+<!---<span class="bra
+nd-name">PUROHIT</spa
+n>\n                 
+                     
+  <span class="brand-
+tagline">Portal</span
+>-->\n               
+                 
+</div>\n             
+           </a>\n    
+            
+</div>\n\n           
+     <!-- 3. Right 
+Side Container (Menu 
++ Actions) -->\n     
+           <div class
+="right-container">\n
+                     
+   <!-- Desktop 
+Navigation -->\n     
+                   
+<div class="nav-links
+-wrapper" 
+id="nav-content">\n  
+                     
+         <ul 
+class="nav-menu">\n  
+                     
+                 
+<li><a href="/"\n    
+                     
+                     
+          
+class="nav-link 
+">Home</a>\n         
+                     
+          </li>\n    
+                     
+               
+<li><a 
+href="/services/"\n  
+                     
+                     
+            
+class="nav-link 
+">Pooja\n            
+                     
+                     
+  
+Services</a></li>\n  
+                     
+                 
+<li><a 
+href="/temples/"\n   
+                     
+                     
+           
+class="nav-link 
+">Temples</a>\n      
+                     
+             </li>\n 
+                     
+                  
+<li><a 
+href="/about/"\n     
+                     
+                     
+         
+class="nav-link 
+">Our\n              
+                     
+                     
+Story</a></li>\n     
+                     
+              <li><a 
+href="/contact/"\n   
+                     
+                     
+           
+class="nav-link 
+">Contact</a>\n      
+                     
+             </li>\n 
+                     
+          </ul>\n    
+                    
+</div>\n\n           
+             <!-- 
+Action Buttons -->\n 
+                     
+  <div class="nav-act
+ions">\n\n           
+                     
+\n                   
+             <!-- 
+Sign Up Button -->\n 
+                     
+          <a href="/s
+ignup-selector/" clas
+s="btn-book-puja">\n 
+                     
+                  
+<span class="btn-text
+">Sign Up</span>\n   
+                     
+                
+<span class="btn-shin
+e"></span>\n         
+                     
+  </a>\n             
+                   
+\n\n                 
+               <!-- 
+Language Translator 
+Dropdown -->\n       
+                     
+    <div class="lang-
+translator-wrapper">\
+n                    
+                    
+<button 
+class="circle-btn 
+lang-btn bell-hover" 
+id="langToggleBtn">\n
+                     
+                     
+      <i class="fas 
+fa-globe"></i>\n     
+                     
+              
+</button>\n\n        
+                     
+           <!-- 
+Language Dropdown 
+-->\n                
+                     
+   <div class="lang-d
+ropdown" 
+id="langDropdown">\n 
+                     
+                     
+     <div 
+class="lang-option 
+active" 
+data-lang="en">\n    
+                     
+                     
+          <i 
+class="fas fa-check 
+lang-check"></i>\n   
+                     
+                     
+           <span clas
+s="lang-name">English
+</span>\n            
+                     
+                     
+  <span class="lang-c
+ode">EN</span>\n     
+                     
+                     
+ </div>\n            
+                     
+               <div c
+lass="lang-divider"><
+/div>\n              
+                     
+             <div 
+class="lang-option" 
+data-lang="te">\n    
+                     
+                     
+          <i 
+class="fas fa-check 
+lang-check"></i>\n   
+                     
+                     
+           <span clas
+s="lang-name">\xe0\xb
+0\xa4\xe0\xb1\x86\xe0
+\xb0\xb2\xe0\xb1\x81\
+xe0\xb0\x97\xe0\xb1\x
+81</span>\n          
+                     
+                     
+    <span class="lang
+-code">TE</span>\n   
+                     
+                     
+   </div>\n          
+                     
+         </div>\n    
+                     
+       </div>\n\n    
+                     
+       <!-- Mobile 
+Toggle -->\n         
+                     
+  <div 
+id="mobile-toggle" cl
+ass="mobile-toggle-bt
+n">\n                
+                     
+   <i class="fas 
+fa-bars"></i>\n      
+                     
+     </div>\n        
+                     
+   <!-- Cart Button 
+(Was WhatsApp) -->\n 
+                     
+          <a 
+href="/cart/" 
+class="circle-btn 
+cart-btn 
+bell-hover">\n       
+                     
+            <i 
+class="fas fa-shoppin
+g-cart"></i>\n       
+                     
+            <!-- 
+Optional: Cart Count 
+Badge could go here 
+-->\n                
+                
+</a>\n               
+         </div>\n    
+            </div>\n 
+       </div>\n</nav>
+\n\n<style>\n        
+/* --- Navbar 
+Container --- */\n   
+     .temple-navbar 
+{\n                
+background: linear-gr
+adient(135deg, 
+#800000 0%, #a00000 
+50%, #b30000 
+100%);\n             
+   border-bottom: 
+4px solid #D4AF37;\n 
+               
+box-shadow: 0 4px 
+20px rgba(0, 0, 0, 
+0.4);\n              
+  position: 
+relative;\n          
+      z-index: 
+1000;\n              
+  padding: 0;\n      
+          height: 
+90px;\n              
+  /* Increased 
+height slightly for 
+better spacing */\n  
+              
+display: flex;\n     
+           
+align-items: 
+center;\n        
+}\n\n        
+.navbar-container 
+{\n                
+display: flex;\n     
+           
+justify-content: 
+space-between;\n     
+           
+align-items: 
+center;\n            
+    width: 100%;\n   
+             
+max-width: 1400px;\n 
+               /* 
+Increased width for 
+3 sections */\n      
+          margin: 0 
+auto;\n              
+  padding: 0 20px;\n 
+               gap: 
+20px;\n        }\n\n 
+       /* --- 1. 
+Logo Box --- */\n    
+    .logo-box {\n    
+            
+flex-shrink: 0;\n    
+            
+text-decoration: 
+none;\n        }\n\n 
+       .logo-circle 
+{\n                
+display: flex;\n     
+           
+align-items: 
+center;\n            
+    justify-content: 
+center;\n            
+    /* background: ra
+dial-gradient(circle,
+ #D4AF37 0%, #B8860B 
+100%);  Removed Gold 
+Background */\n      
+          /* border: 
+2px solid #fff; 
+Removed Border */\n  
+              /* 
+box-shadow: 0 0 15px 
+rgba(212, 175, 55, 
+0.6); Removed Shadow 
+*/\n                
+position: 
+relative;\n          
+      max-height: 
+100px;\n             
+   /* Constrain 
+height */\n          
+      padding: 
+5px;\n        }\n\n  
+      .logo-circle 
+img {\n              
+  max-height: 
+150px;\n             
+   width: auto;\n    
+            
+mix-blend-mode: 
+screen;\n            
+    /* Helps remove 
+black background if 
+present */\n         
+       filter: 
+brightness(1.2);\n   
+             /* 
+Enhance visibility 
+*/\n        }\n\n    
+    .om-symbol {\n   
+             
+font-size: 36px;\n   
+             color: 
+#800000;\n           
+     font-weight: 
+bold;\n              
+  padding-top: 
+4px;\n        }\n\n  
+      /* --- 2. 
+Heading Box --- */\n 
+       .heading-box 
+{\n                
+flex-grow: 1;\n      
+          /* Takes 
+up available space 
+to push right 
+container? No, we 
+want gaps. */\n      
+          display: 
+flex;\n              
+  justify-content: 
+flex-start;\n        
+        /* Align 
+left near logo or 
+center? User said 
+"make a gap". */\n   
+             
+padding-left: 
+20px;\n        }\n\n 
+       
+.logo-text-link {\n  
+              
+text-decoration: 
+none;\n        }\n\n 
+       .logo-text 
+{\n                
+display: flex;\n     
+           
+flex-direction: 
+column;\n        
+}\n\n        
+.brand-name {\n      
+          font-size: 
+1.8rem;\n            
+    font-weight: 
+800;\n               
+ color: #fff;\n      
+          
+font-family: 
+\'Cinzel\', serif;\n 
+               
+letter-spacing: 
+1.5px;\n             
+   text-shadow: 1px 
+1px 3px rgba(0, 0, 
+0, 0.5);\n           
+     line-height: 
+1;\n        }\n\n    
+    .brand-tagline 
+{\n                
+font-size: 0.9rem;\n 
+               
+color: #FFD700;\n    
+            
+text-transform: 
+uppercase;\n         
+       
+letter-spacing: 
+2px;\n               
+ font-weight: 600;\n 
+       }\n\n        
+/* --- 3. Right 
+Container --- */\n   
+     
+.right-container {\n 
+               
+display: flex;\n     
+           
+align-items: 
+center;\n            
+    gap: 30px;\n     
+   }\n\n        /* 
+--- Navigation Links 
+--- */\n        /* 
+.nav-links-wrapper 
+styles are handled 
+in media queries or 
+default layout 
+*/\n\n        
+.nav-menu {\n        
+        display: 
+flex;\n              
+  list-style: 
+none;\n              
+  gap: 25px;\n       
+         margin: 
+0;\n                
+padding: 0;\n        
+}\n\n        
+.nav-link {\n        
+        color: 
+#F5E8BF;\n           
+     /* Pale 
+Gold/Cream */\n      
+          
+text-decoration: 
+none;\n              
+  font-weight: 
+500;\n               
+ font-family: 
+\'Inter\', 
+sans-serif;\n        
+        font-size: 
+0.95rem;\n           
+     text-transform: 
+uppercase;\n         
+       
+letter-spacing: 
+0.5px;\n             
+   transition: all 
+0.3s ease;\n         
+       position: 
+relative;\n          
+      
+padding-bottom: 
+5px;\n        }\n\n  
+      
+.nav-link:hover,\n   
+     
+.nav-link.active {\n 
+               
+color: #fff;\n       
+         
+text-shadow: 0 0 8px 
+rgba(255, 255, 255, 
+0.6);\n        }\n\n 
+       
+.nav-link::after {\n 
+               
+content: 
+\'\xe2\x9d\x96\';\n  
+              /* 
+Decorative symbol 
+instead of line */\n 
+               
+position: 
+absolute;\n          
+      bottom: 
+-15px;\n             
+   left: 50%;\n      
+          transform: 
+translateX(-50%) 
+scale(0);\n          
+      color: 
+#D4AF37;\n           
+     font-size: 
+12px;\n              
+  transition: 
+transform 0.3s 
+ease;\n        }\n\n 
+       .nav-link:hove
+r::after,\n        .n
+av-link.active::after
+ {\n                
+transform: 
+translateX(-50%) 
+scale(1);\n        
+}\n\n        /* --- 
+Action Buttons --- 
+*/\n        
+.nav-actions {\n     
+           display: 
+flex;\n              
+  align-items: 
+center;\n            
+    gap: 15px;\n     
+   }\n\n        /* 
+--- Priest Profile 
+Dropdown Styles --- 
+*/\n        .priest-p
+rofile-wrapper {\n   
+             
+position: 
+relative;\n        
+}\n\n        
+.profile-btn {\n     
+           display: 
+flex;\n              
+  align-items: 
+center;\n            
+    gap: 10px;\n     
+           
+background: 
+rgba(255, 255, 255, 
+0.1);\n              
+  border: 1px solid 
+rgba(212, 175, 55, 
+0.5);\n              
+  padding: 5px 15px 
+5px 5px;\n           
+     border-radius: 
+30px;\n              
+  cursor: pointer;\n 
+               
+transition: all 0.3s 
+ease;\n              
+  color: #fff;\n     
+   }\n\n        
+.profile-btn:hover 
+{\n                
+background: 
+rgba(255, 255, 255, 
+0.2);\n              
+  border-color: 
+#D4AF37;\n        
+}\n\n        
+.nav-profile-img {\n 
+               
+width: 35px;\n       
+         height: 
+35px;\n              
+  border-radius: 
+50%;\n               
+ object-fit: 
+cover;\n             
+   border: 2px solid 
+#D4AF37;\n        
+}\n\n        .nav-pro
+file-placeholder {\n 
+               
+width: 35px;\n       
+         height: 
+35px;\n              
+  border-radius: 
+50%;\n               
+ background: 
+#D4AF37;\n           
+     color: 
+#800000;\n           
+     display: 
+flex;\n              
+  align-items: 
+center;\n            
+    justify-content: 
+center;\n            
+    font-weight: 
+bold;\n              
+  font-size: 
+1.2rem;\n            
+    text-transform: 
+uppercase;\n        
+}\n\n        
+.nav-profile-name 
+{\n                
+font-family: 
+\'Cinzel\', serif;\n 
+               
+font-size: 0.9rem;\n 
+               
+font-weight: 600;\n  
+      }\n\n        
+.profile-chevron {\n 
+               
+font-size: 0.8rem;\n 
+               
+color: #D4AF37;\n    
+    }\n\n        
+.profile-dropdown 
+{\n                
+position: 
+absolute;\n          
+      top: calc(100% 
++ 15px);\n           
+     right: 0;\n     
+           
+background: #fff;\n  
+              
+border-radius: 
+12px;\n              
+  box-shadow: 0 10px 
+30px rgba(0, 0, 0, 
+0.2);\n              
+  min-width: 
+200px;\n             
+   opacity: 0;\n     
+           
+visibility: 
+hidden;\n            
+    transform: 
+translateY(-10px);\n 
+               
+transition: all 0.3s 
+ease;\n              
+  z-index: 1100;\n   
+             border: 
+2px solid #D4AF37;\n 
+               
+overflow: hidden;\n  
+      }\n\n        .p
+rofile-dropdown.show 
+{\n                
+opacity: 1;\n        
+        visibility: 
+visible;\n           
+     transform: 
+translateY(0);\n     
+   }\n\n        .prof
+ile-dropdown::before 
+{\n                
+content: \'\';\n     
+           position: 
+absolute;\n          
+      top: -8px;\n   
+             right: 
+20px;\n              
+  width: 0;\n        
+        height: 0;\n 
+               
+border-left: 8px 
+solid transparent;\n 
+               
+border-right: 8px 
+solid transparent;\n 
+               
+border-bottom: 8px 
+solid #D4AF37;\n     
+   }\n\n        
+.dropdown-item {\n   
+             
+display: flex;\n     
+           
+align-items: 
+center;\n            
+    gap: 12px;\n     
+           padding: 
+12px 20px;\n         
+       color: 
+#333;\n              
+  text-decoration: 
+none;\n              
+  transition: 
+background 0.2s;\n   
+             
+font-size: 
+0.95rem;\n           
+     font-weight: 
+500;\n        }\n\n  
+      
+.dropdown-item:hover 
+{\n                
+background: 
+#fdf5e6;\n           
+     color: 
+#8b4513;\n        
+}\n\n        
+.dropdown-item i {\n 
+               
+width: 20px;\n       
+         text-align: 
+center;\n            
+    color: 
+#d4af37;\n        
+}\n\n        
+.dropdown-divider 
+{\n                
+height: 1px;\n       
+         background: 
+#eee;\n              
+  margin: 5px 0;\n   
+     }\n\n        
+.logout-item {\n     
+           color: 
+#d9534f;\n        
+}\n\n        
+.logout-item:hover 
+{\n                
+background: 
+#fff5f5;\n           
+     color: 
+#c9302c;\n        
+}\n\n        
+.logout-item i {\n   
+             color: 
+#d9534f;\n        
+}\n\n        /* 
+Reusable Circle 
+Button Style */\n    
+    .circle-btn {\n  
+              width: 
+45px;\n              
+  height: 45px;\n    
+            
+background: #fff;\n  
+              
+border-radius: 
+50%;\n               
+ display: flex;\n    
+            
+align-items: 
+center;\n            
+    justify-content: 
+center;\n            
+    text-decoration: 
+none;\n              
+  color: #800000;\n  
+              /* 
+Default Icon Color 
+*/\n                
+font-size: 1.2rem;\n 
+               
+box-shadow: 0 4px 
+10px rgba(0, 0, 0, 
+0.2);\n              
+  transition: 
+transform 0.3s, 
+background 0.3s, 
+color 0.3s;\n        
+        border: 
+none;\n              
+  cursor: pointer;\n 
+       }\n\n        
+.circle-btn:hover 
+{\n                
+transform: 
+scale(1.1);\n        
+        background: 
+#FFD700;\n           
+     color: 
+#5a0000;\n        
+}\n\n        /* 
+Specific Icon Colors 
+if needed */\n       
+ .cart-btn {\n       
+         color: 
+#800000;\n        
+}\n\n        
+.lang-btn {\n        
+        color: 
+#004d4f;\n           
+     /* Peacock 
+Blueish */\n        
+}\n\n        /* 
+Language Translator 
+Dropdown */\n        
+.lang-translator-wrap
+per {\n              
+  position: 
+relative;\n        
+}\n\n        
+.lang-dropdown {\n   
+             
+position: 
+absolute;\n          
+      top: calc(100% 
++ 15px);\n           
+     right: 0;\n     
+           
+background: 
+#FFFFFF;\n           
+     border-radius: 
+12px;\n              
+  box-shadow: 0 8px 
+30px rgba(128, 0, 0, 
+0.2);\n              
+  min-width: 
+200px;\n             
+   opacity: 0;\n     
+           
+visibility: 
+hidden;\n            
+    transform: 
+translateY(-10px);\n 
+               
+transition: all 0.3s 
+ease;\n              
+  z-index: 1000;\n   
+             border: 
+2px solid #D4AF37;\n 
+               
+overflow: hidden;\n  
+      }\n\n        
+.lang-dropdown.show 
+{\n                
+opacity: 1;\n        
+        visibility: 
+visible;\n           
+     transform: 
+translateY(0);\n     
+   }\n\n        /* 
+Dropdown Arrow */\n  
+      .lang-dropdown:
+:before {\n          
+      content: 
+\'\';\n              
+  position: 
+absolute;\n          
+      top: -8px;\n   
+             right: 
+18px;\n              
+  width: 0;\n        
+        height: 0;\n 
+               
+border-left: 8px 
+solid transparent;\n 
+               
+border-right: 8px 
+solid transparent;\n 
+               
+border-bottom: 8px 
+solid #D4AF37;\n     
+   }\n\n        .lang
+-dropdown::after {\n 
+               
+content: \'\';\n     
+           position: 
+absolute;\n          
+      top: -6px;\n   
+             right: 
+19px;\n              
+  width: 0;\n        
+        height: 0;\n 
+               
+border-left: 7px 
+solid transparent;\n 
+               
+border-right: 7px 
+solid transparent;\n 
+               
+border-bottom: 7px 
+solid #FFFFFF;\n     
+   }\n\n        
+.lang-option {\n     
+           padding: 
+15px 20px;\n         
+       display: 
+flex;\n              
+  align-items: 
+center;\n            
+    gap: 12px;\n     
+           cursor: 
+pointer;\n           
+     transition: all 
+0.3s ease;\n         
+       position: 
+relative;\n        
+}\n\n        
+.lang-option:hover 
+{\n                
+background: linear-gr
+adient(135deg, 
+#FFF8DC, #FFFAF0);\n 
+       }\n\n        
+.lang-option.active 
+{\n                
+background: linear-gr
+adient(135deg, 
+#800000, #A52A2A);\n 
+               
+color: #FFFFFF;\n    
+    }\n\n        
+.lang-option.active 
+.lang-name,\n        
+.lang-option.active 
+.lang-code {\n       
+         color: 
+#FFFFFF;\n        
+}\n\n        
+.lang-check {\n      
+          font-size: 
+0.85rem;\n           
+     color: 
+#FFD700;\n           
+     opacity: 0;\n   
+             
+transition: opacity 
+0.3s ease;\n        
+}\n\n        
+.lang-option.active 
+.lang-check {\n      
+          opacity: 
+1;\n        }\n\n    
+    .lang-name {\n   
+             flex: 
+1;\n                
+font-family: 
+\'Cinzel\', serif;\n 
+               
+font-size: 
+0.95rem;\n           
+     color: 
+#2c1810;\n           
+     font-weight: 
+600;\n        }\n\n  
+      .lang-code {\n 
+               
+font-family: 
+\'Inter\', 
+sans-serif;\n        
+        font-size: 
+0.75rem;\n           
+     background: 
+#F5E8DC;\n           
+     color: 
+#800000;\n           
+     padding: 3px 
+8px;\n               
+ border-radius: 
+4px;\n               
+ font-weight: 700;\n 
+       }\n\n        
+.lang-option.active 
+.lang-code {\n       
+         background: 
+rgba(255, 255, 255, 
+0.3);\n              
+  color: #FFD700;\n  
+      }\n\n        
+.lang-divider {\n    
+            height: 
+1px;\n               
+ background: linear-g
+radient(90deg, 
+transparent, 
+#D4AF37, 
+transparent);\n      
+          margin: 0 
+10px;\n        
+}\n\n\n        
+.btn-book-puja {\n   
+             
+background: 
+linear-gradient(to 
+right, #FFD700, 
+#FDB913, #FFD700);\n 
+               
+background-size: 
+200% auto;\n         
+       color: 
+#800000;\n           
+     padding: 10px 
+25px;\n              
+  border-radius: 
+50px;\n              
+  text-decoration: 
+none;\n              
+  font-weight: 
+800;\n               
+ font-family: 
+\'Cinzel\', serif;\n 
+               
+border: 2px solid 
+rgba(255, 255, 255, 
+0.8);\n              
+  box-shadow: 0 4px 
+15px rgba(255, 215, 
+0, 0.4);\n           
+     position: 
+relative;\n          
+      overflow: 
+hidden;\n            
+    transition: all 
+0.4s ease;\n         
+       
+text-transform: 
+uppercase;\n         
+       font-size: 
+0.9rem;\n        
+}\n\n        
+.btn-book-puja:hover 
+{\n                
+background-position: 
+right center;\n      
+          transform: 
+translateY(-2px);\n  
+              
+box-shadow: 0 6px 
+20px rgba(255, 215, 
+0, 0.6);\n           
+     color: 
+#5a0000;\n        
+}\n\n        /* 
+Shine effect */\n    
+    .btn-shine {\n   
+             
+position: 
+absolute;\n          
+      top: 0;\n      
+          left: 
+-100%;\n             
+   width: 50%;\n     
+           height: 
+100%;\n              
+  background: 
+linear-gradient(to 
+right, rgba(255, 
+255, 255, 0) 0%, 
+rgba(255, 255, 255, 
+0.6) 50%, rgba(255, 
+255, 255, 0) 
+100%);\n             
+   transform: 
+skewX(-25deg);\n     
+           
+animation: 
+shine-anim 3s 
+infinite;\n        
+}\n\n        
+@keyframes 
+shine-anim {\n       
+         0% {\n      
+                  
+left: -100%;\n       
+         }\n\n       
+         20% {\n     
+                   
+left: 200%;\n        
+        }\n\n        
+        100% {\n     
+                   
+left: 200%;\n        
+        }\n        
+}\n\n        /* Glow 
+Pulse Animation */\n 
+       .glow-pulse 
+{\n                
+animation: 
+pulse-gold 3s 
+infinite;\n        
+}\n\n        
+@keyframes 
+pulse-gold {\n       
+         0% {\n      
+                  
+box-shadow: 0 0 0 0 
+rgba(212, 175, 55, 
+0.4);\n              
+  }\n\n              
+  70% {\n            
+            
+box-shadow: 0 0 0 
+10px rgba(212, 175, 
+55, 0);\n            
+    }\n\n            
+    100% {\n         
+               
+box-shadow: 0 0 0 0 
+rgba(212, 175, 55, 
+0);\n                
+}\n        }\n\n     
+   /* --- Mobile 
+Responsive --- */\n  
+      
+.mobile-toggle-btn 
+{\n                
+display: none;\n     
+           color: 
+#fff;\n              
+  font-size: 
+1.8rem;\n            
+    cursor: 
+pointer;\n           
+     margin-left: 
+10px;\n        }\n\n 
+       @media 
+(max-width: 1100px) 
+{\n\n                
+/* Compact Tablet 
+View */\n            
+    
+.navbar-container 
+{\n                  
+      gap: 10px;\n   
+             }\n\n   
+             
+.brand-name {\n      
+                  
+font-size: 1.4rem;\n 
+               }\n\n 
+               
+.nav-menu {\n        
+                gap: 
+15px;\n              
+  }\n\n              
+  .btn-book-puja {\n 
+                     
+  padding: 8px 
+15px;\n              
+          font-size: 
+0.8rem;\n            
+    }\n        }\n\n 
+       @media 
+(max-width: 900px) 
+{\n                
+.navbar-container 
+{\n                  
+      
+justify-content: 
+space-between;\n     
+           }\n\n     
+           /* Show 
+Toggle */\n          
+      
+.mobile-toggle-btn 
+{\n                  
+      display: 
+block;\n             
+   }\n\n             
+   /* Hide Desktop 
+Nav but keep actions 
+*/\n                
+.nav-links-wrapper 
+{\n                  
+      position: 
+absolute;\n          
+              top: 
+90px;\n              
+          left: 0;\n 
+                     
+  width: 100%;\n     
+                   
+background: 
+#800000;\n           
+             
+border-bottom: 2px 
+solid #D4AF37;\n     
+                   
+padding: 30px;\n     
+                   
+display: none;\n     
+                   
+/* Hidden */\n       
+                 
+flex-direction: 
+column;\n            
+            
+align-items: 
+center;\n            
+            
+box-shadow: 0 10px 
+20px rgba(0, 0, 0, 
+0.3);\n              
+  }\n\n              
+  .nav-links-wrapper.
+active {\n           
+             
+display: flex;\n     
+           }\n\n     
+           
+.right-container {\n 
+                     
+  /* Right container 
+still holds actions 
++ menu(hidden) */\n  
+                     
+ gap: 10px;\n        
+        }\n\n        
+        .nav-menu 
+{\n                  
+      
+flex-direction: 
+column;\n            
+            
+align-items: 
+center;\n            
+            gap: 
+25px;\n              
+          width: 
+100%;\n              
+  }\n\n              
+  .nav-link {\n      
+                  
+font-size: 1.1rem;\n 
+               }\n\n 
+               
+.nav-link::after {\n 
+                     
+  display: none;\n   
+             }\n     
+   }\n</style>\n\n<sc
+ript>\n        // 
+Language Translator 
+& Profile Dropdown 
+Functionality\n      
+  document.addEventLi
+stener(\'DOMContentLo
+aded\', function () 
+{\n                
+// --- Priest 
+Profile Dropdown 
+Setup ---\n          
+      const 
+profileBtn = document
+.getElementById(\'pro
+fileDropdownBtn\');\n
+                
+const 
+profileDropdown = doc
+ument.getElementById(
+\'profileDropdown\');
+\n\n                
+// --- Language 
+Translator Dropdown 
+Setup ---\n          
+      const 
+langToggleBtn = docum
+ent.getElementById(\'
+langToggleBtn\');\n  
+              const 
+langDropdown = docume
+nt.getElementById(\'l
+angDropdown\');\n    
+            const 
+langOptions = documen
+t.querySelectorAll(\'
+.lang-option\');\n\n 
+               // 
+--- Profile Dropdown 
+Logic ---\n          
+      if (profileBtn 
+&& profileDropdown) 
+{\n                  
+      profileBtn.addE
+ventListener(\'click\
+', function (e) {\n  
+                     
+         e.stopPropag
+ation();\n           
+                     
+profileDropdown.class
+List.toggle(\'show\')
+;\n                  
+              // 
+Close language 
+dropdown if open\n   
+                     
+        if 
+(langDropdown) langDr
+opdown.classList.remo
+ve(\'show\');\n      
+                  
+});\n\n              
+          document.ad
+dEventListener(\'clic
+k\', function (e) 
+{\n                  
+              if (!e.
+target.closest(\'.pri
+est-profile-wrapper\'
+)) {\n               
+                     
+    profileDropdown.c
+lassList.remove(\'sho
+w\');\n              
+                  
+}\n                  
+      });\n          
+      }\n\n          
+      // --- 
+Language Dropdown 
+Logic ---\n          
+      if 
+(langToggleBtn) {\n  
+                     
+ langToggleBtn.addEve
+ntListener(\'click\',
+ function (e) {\n    
+                     
+       e.stopPropagat
+ion();\n             
+                   la
+ngDropdown.classList.
+toggle(\'show\');\n  
+                     
+         // Close 
+profile dropdown if 
+open\n               
+                 if 
+(profileDropdown) pro
+fileDropdown.classLis
+t.remove(\'show\');\n
+                     
+   });\n             
+   }\n\n             
+   // Close language 
+dropdown when 
+clicking outside\n   
+             document
+.addEventListener(\'c
+lick\', function (e) 
+{\n                  
+      if (!e.target.c
+losest(\'.lang-transl
+ator-wrapper\')) {\n 
+                     
+          if 
+(langDropdown) langDr
+opdown.classList.remo
+ve(\'show\');\n      
+                  
+}\n                
+});\n\n              
+  // Handle language 
+selection\n          
+      langOptions.for
+Each(option => {\n   
+                     
+option.addEventListen
+er(\'click\', 
+function (e) {\n     
+                     
+      e.stopPropagati
+on();\n\n            
+                    l
+angOptions.forEach(op
+t => opt.classList.re
+move(\'active\'));\n 
+                     
+          this.classL
+ist.add(\'active\');\
+n\n                  
+              const 
+selectedLang = this.g
+etAttribute(\'data-la
+ng\');\n             
+                   lo
+calStorage.setItem(\'
+selectedLanguage\', 
+selectedLang);\n     
+                     
+      localStorage.se
+tItem(\'preferredLang
+\', 
+selectedLang);\n\n   
+                     
+        if 
+(langDropdown) langDr
+opdown.classList.remo
+ve(\'show\');\n\n    
+                     
+       if (typeof 
+changeLanguage === 
+\'function\') {\n    
+                     
+               change
+Language(selectedLang
+);\n                 
+               } 
+else {\n             
+                     
+      
+console.log(\'Google 
+Translate not ready. 
+Language 
+selected:\', 
+selectedLang);\n     
+                     
+              
+location.reload();\n 
+                     
+          }\n        
+                
+});\n                
+});\n\n              
+  // Load saved 
+language 
+preference\n         
+       const 
+savedLang = localStor
+age.getItem(\'selecte
+dLanguage\') || local
+Storage.getItem(\'pre
+ferredLang\') || 
+\'en\';\n            
+    if (savedLang) 
+{\n                  
+      langOptions.for
+Each(option => {\n   
+                     
+        if (option.ge
+tAttribute(\'data-lan
+g\') === savedLang) 
+{\n                  
+                     
+ langOptions.forEach(
+opt => opt.classList.
+remove(\'active\'));\
+n                    
+                    o
+ption.classList.add(\
+'active\');\n        
+                     
+   }\n               
+         });\n       
+         }\n        
+});\n</script>\n\n   
+ <!-- Main Content 
+-->\n    <main>\n    
+    \n\n<section 
+class="auth-section" 
+style="background-ima
+ge: url(\'/static/ima
+ges/rangoli.png\');">
+\n    <div 
+class="auth-card">\n 
+       <div class="au
+th-header">\n        
+    <h2>Join 
+Us</h2>\n            
+<p>Create your 
+spiritual journey 
+account</p>\n        
+</div>\n\n        
+\n\n        <form 
+class="auth-form" 
+method="POST">\n     
+       <input 
+type="hidden" name="c
+srfmiddlewaretoken" v
+alue="0bPrdZPb07X3FZL
+5s9ntlcTXP56pN2sHV0bg
+Mzox2Rw4dMX19i1iyMl8j
+cq40vAC">\n          
+  <div class="form-gr
+oup">\n              
+  <label 
+for="fullname">Full 
+Name</label>\n       
+         <input 
+type="text" 
+id="fullname" 
+name="fullname" 
+placeholder="Enter 
+your full name"\n    
+                
+value="Test Devotee" 
+required>\n          
+      \n            
+</div>\n\n           
+ <div class="form-gro
+up">\n               
+ <label 
+for="email">Email 
+Address</label>\n    
+            <input 
+type="email" 
+id="email" 
+name="email" 
+placeholder="Enter 
+your email"\n        
+            value="de
+votee@example.com" 
+required>\n          
+      \n            
+</div>\n            
+<div class="form-grou
+p">\n                
+<label 
+for="mobile">Mobile 
+Number</label>\n     
+           <input 
+type="text" 
+id="mobile" 
+name="mobile" 
+placeholder="Enter 
+your mobile number" 
+maxlength="10"\n     
+               
+value="123" 
+required>\n          
+      \n             
+   <div 
+class="field-error" 
+style="color: red; 
+font-size: 
+0.8rem;">{{\n        
+            error 
+}}</div>\n           
+     \n            
+</div>\n\n           
+ <div class="form-gro
+up">\n               
+ <label for="password
+">Create 
+Password</label>\n   
+             <input 
+type="password" 
+id="password" 
+name="password" 
+placeholder="Create 
+a password"\n        
+            pattern="
+^(?=.*[a-z])(?=.*[A-Z
+])(?=.*\\d)(?=.*[@$!%
+*?&])[A-Za-z\\d@$!%*?
+&]{8,}$"\n           
+         
+title="Password must 
+be at least 8 
+characters long and 
+include 1 uppercase, 
+1 lowercase, 1 
+number, and 1 
+special character"\n 
+                   
+required>\n          
+      \n            
+</div>\n\n           
+ <div class="form-gro
+up">\n               
+ <label for="confirm_
+password">Confirm 
+Password</label>\n   
+             <input 
+type="password" id="c
+onfirm_password" name
+="confirm_password" 
+placeholder="Confirm 
+your password"\n     
+               patter
+n="^(?=.*[a-z])(?=.*[
+A-Z])(?=.*\\d)(?=.*[@
+$!%*?&])[A-Za-z\\d@$!
+%*?&]{8,}$"\n        
+            
+title="Password must 
+be at least 8 
+characters long and 
+include 1 uppercase, 
+1 lowercase, 1 
+number, and 1 
+special character"\n 
+                   
+required>\n          
+      \n            
+</div>\n\n           
+ <button 
+type="submit" class="
+btn-auth">Sign 
+Up</button>\n        
+</form>\n\n        
+<div class="auth-foot
+er">\n            
+Already have an 
+account? <a 
+href="/login/">Sign 
+In</a>\n        
+</div>\n    </div>\n<
+/section>\n<script>\n
+    document.addEvent
+Listener("DOMContentL
+oaded", function () 
+{\n\n        // 
+Phone number digits 
+only\n        const 
+phoneInput = document
+.getElementById("mobi
+le"); // make sure 
+id="mobile" in 
+HTML\n        if 
+(phoneInput) {\n     
+       phoneInput.add
+EventListener("input"
+, function () {\n    
+            
+this.value = this.val
+ue.replace(/\\D/g, 
+\'\');\n            
+});\n        }\n\n   
+     // Password 
+match validation\n   
+     const password 
+= document.getElement
+ById("password");\n  
+      const 
+confirmPassword = doc
+ument.getElementById(
+"confirm_password");\
+n\n        function v
+alidatePasswordMatch(
+) {\n            if (
+confirmPassword.value
+ && password.value 
+!== confirmPassword.v
+alue) {\n            
+    confirmPassword.s
+etCustomValidity("Pas
+swords do not 
+match");\n           
+ } else {\n          
+      confirmPassword
+.setCustomValidity(""
+);\n            }\n  
+      }\n\n        
+if (password && 
+confirmPassword) {\n 
+           password.a
+ddEventListener("inpu
+t", validatePasswordM
+atch);\n            c
+onfirmPassword.addEve
+ntListener("input", v
+alidatePasswordMatch)
+;\n        }\n\n    
+});\n</script>\n\n   
+ </main>\n\n    
+<footer 
+class="site">\n      
+  <!-- ==============
+=====================
+== -->\n<!-- TEMPLE 
+FOUNDATION (FOOTER) 
+-->\n<!-- ===========
+=====================
+===== -->\n\n<footer 
+class="temple-footer"
+>\n    <div 
+class="container" 
+style="position: 
+relative; z-index: 
+0;">\n\n        <div 
+class="footer-grid">\
+n\n            <!-- 
+Column 1: Brand & 
+About -->\n          
+  <div 
+class="footer-col 
+brand-col">\n        
+        <div class="f
+ooter-logo">\n       
+             <div 
+class="logo-circle 
+glow-pulse">\n       
+                     
+    <img src="/static
+/images/logo.png">\n 
+                     
+  </div>\n           
+     </div>\n        
+        <p class="abo
+ut-text">\n          
+          Bridging 
+the physical and 
+spiritual worlds. We 
+bring authentic 
+Vedic rituals, 
+performed by 
+certified\n          
+          Pandits, 
+directly to your 
+home.\n              
+  </p>\n             
+   <div class="social
+-icons">\n           
+         <a href="#" 
+class="social-link"><
+i class="fab fa-faceb
+ook-f"></i></a>\n    
+                <a 
+href="#" class="socia
+l-link"><i 
+class="fab fa-instagr
+am"></i></a>\n       
+             <a 
+href="#" class="socia
+l-link"><i 
+class="fab fa-youtube
+"></i></a>\n         
+           <a 
+href="#" class="socia
+l-link"><i 
+class="fab fa-whatsap
+p"></i></a>\n        
+        </div>\n     
+       </div>\n\n    
+        <!-- Column 
+2: Quick Links 
+(Pillars) -->\n      
+      <div 
+class="footer-col 
+links-col">\n        
+        <h3 class="fo
+oter-heading">Quick 
+Links</h3>\n         
+       <ul class="foo
+ter-links">\n        
+            <li><a 
+href="#"><i 
+class="fas 
+fa-caret-right"></i> 
+Book a 
+Puja</a></li>\n      
+              <li><a 
+href="#"><i 
+class="fas 
+fa-caret-right"></i> 
+Find a 
+Pandit</a></li>\n    
+                
+<li><a href="#"><i 
+class="fas 
+fa-caret-right"></i> 
+Temple 
+Services</a></li>\n  
+                  
+<li><a href="#"><i 
+class="fas 
+fa-caret-right"></i> 
+Our Story</a></li>\n 
+                   
+<li><a href="#"><i 
+class="fas 
+fa-caret-right"></i> 
+Contact 
+Us</a></li>\n        
+        </ul>\n      
+      </div>\n\n     
+       <!-- Column 
+3: Upcoming Sevas 
+-->\n            
+<div 
+class="footer-col 
+sevas-col">\n        
+        <h3 class="fo
+oter-heading">Upcomin
+g Sevas</h3>\n\n     
+           <div 
+class="seva-item">\n 
+                   
+<div 
+class="seva-date">\n 
+                     
+  <span class="day">1
+5</span>\n           
+             <span cl
+ass="month">OCT</span
+>\n                  
+  </div>\n           
+         <div class="
+seva-details">\n     
+                   
+<h4>Satyanarayan 
+Vrat</h4>\n          
+              
+<p>Purnima 
+Special</p>\n        
+            </div>\n 
+               
+</div>\n\n           
+     <div 
+class="seva-item">\n 
+                   
+<div 
+class="seva-date">\n 
+                     
+  <span class="day">2
+2</span>\n           
+             <span cl
+ass="month">OCT</span
+>\n                  
+  </div>\n           
+         <div class="
+seva-details">\n     
+                   
+<h4>Sankashti 
+Chaturthi</h4>\n     
+                   
+<p>Ganapati 
+Homa</p>\n           
+         </div>\n    
+            
+</div>\n\n           
+ </div>\n\n          
+  <!-- Column 4: 
+Newsletter (Dharmic 
+Updates) -->\n       
+     <div 
+class="footer-col 
+newsletter-col">\n   
+             <h3 clas
+s="footer-heading">Dh
+armic Updates</h3>\n 
+               <p cla
+ss="newsletter-text">
+Join our spiritual 
+community for daily 
+panchang and ritual 
+updates.</p>\n       
+         <form class=
+"newsletter-form">\n 
+                   
+<div class="input-wra
+pper">\n             
+           <input 
+type="email" 
+placeholder="Your 
+Email Address" 
+required>\n          
+              
+<button 
+type="submit"><i 
+class="fas fa-paper-p
+lane"></i></button>\n
+                    
+</div>\n             
+   </form>\n         
+       <div class="se
+cure-badge">\n       
+             <i 
+class="fas 
+fa-shield-alt"></i> 
+100% Secure & 
+Private\n            
+    </div>\n         
+   </div>\n\n        
+</div>\n\n        
+<!-- Footer Bottom 
+-->\n        <div cla
+ss="footer-bottom">\n
+            <div clas
+s="bottom-divider"></
+div>\n            
+<div class="copyright
+-row">\n             
+   <p>&copy; 2026 
+KaryaSiddhi. All 
+Rights 
+Reserved.</p>\n      
+          <div class=
+"legal-links">\n     
+               <a 
+href="#">Privacy 
+Policy</a>\n         
+           <span clas
+s="separator">\xe2\x8
+0\xa2</span>\n       
+             <a 
+href="#">Terms of 
+Service</a>\n        
+        </div>\n     
+       </div>\n      
+      <p class="mantr
+a-footer">|| 
+\xe0\xa5\x90 \xe0\xa4
+\xb6\xe0\xa4\xbe\xe0\
+xa4\x82\xe0\xa4\xa4\x
+e0\xa4\xbf \xe0\xa4\x
+b6\xe0\xa4\xbe\xe0\xa
+4\x82\xe0\xa4\xa4\xe0
+\xa4\xbf \xe0\xa4\xb6
+\xe0\xa4\xbe\xe0\xa4\
+x82\xe0\xa4\xa4\xe0\x
+a4\xbf ||</p>\n      
+  </div>\n\n    </div
+>\n</footer>\n\n<styl
+e>\n    
+.temple-footer {\n   
+     position: 
+relative;\n        
+background-color: 
+#5a0000;\n        /* 
+Deepest Maroon/Black 
+*/\n        color: 
+#e0d0b0;\n        /* 
+Sandalwood text */\n 
+       padding: 
+100px 0 30px;\n      
+  overflow: 
+hidden;\n        
+border-top: 5px 
+solid #D4AF37;\n    
+}\n\n   \n\n    
+.footer-grid {\n     
+   display: grid;\n  
+      grid-template-c
+olumns: 
+repeat(auto-fit, 
+minmax(250px, 
+1fr));\n        gap: 
+50px;\n        
+margin-bottom: 
+60px;\n    }\n\n    
+/* Column 1: Brand 
+*/\n    .footer-logo 
+{\n        display: 
+flex;\n        
+align-items: 
+center;\n        
+gap: 15px;\n        
+margin-bottom: 
+20px;\n    }\n\n    
+.om-icon {\n        
+font-size: 2.5rem;\n 
+       color: 
+#D4AF37;\n        
+text-shadow: 0 0 
+10px rgba(212, 175, 
+55, 0.5);\n    }\n\n 
+   .brand-text {\n   
+     font-family: 
+\'Cinzel\', serif;\n 
+       font-size: 
+1.8rem;\n        
+color: #fff;\n       
+ font-weight: 700;\n 
+       margin: 0;\n  
+  }\n\n    
+.brand-highlight {\n 
+       color: 
+#D4AF37;\n    }\n\n  
+  .about-text {\n    
+    font-family: 
+\'Inter\', 
+sans-serif;\n        
+line-height: 1.6;\n  
+      color: #aaa;\n 
+       
+margin-bottom: 
+25px;\n        
+font-size: 
+0.95rem;\n    }\n\n  
+  .social-icons {\n  
+      display: 
+flex;\n        gap: 
+15px;\n    }\n\n    
+.social-link {\n     
+   width: 40px;\n    
+    height: 40px;\n  
+      border: 1px 
+solid #5a1a1a;\n     
+   display: flex;\n  
+      align-items: 
+center;\n        
+justify-content: 
+center;\n        
+border-radius: 
+50%;\n        color: 
+#D4AF37;\n        
+transition: all 
+0.3s;\n        
+background: 
+rgba(255, 255, 255, 
+0.05);\n    }\n\n    
+.social-link:hover 
+{\n        
+background: 
+#D4AF37;\n        
+color: #1a0505;\n    
+    transform: 
+translateY(-3px);\n  
+  }\n\n    /* Column 
+Headers */\n    
+.footer-heading {\n  
+      font-family: 
+\'Rozha One\', 
+serif;\n        
+color: #F5E8BF;\n    
+    /* Light Gold 
+*/\n        
+font-size: 1.4rem;\n 
+       
+margin-bottom: 
+25px;\n        
+border-bottom: 2px 
+solid #5a1a1a;\n     
+   padding-bottom: 
+10px;\n        
+display: 
+inline-block;\n    
+}\n\n    /* Links 
+*/\n    
+.footer-links {\n    
+    list-style: 
+none;\n        
+padding: 0;\n        
+margin: 0;\n    
+}\n\n    
+.footer-links li {\n 
+       
+margin-bottom: 
+12px;\n    }\n\n    
+.footer-links a {\n  
+      color: #aaa;\n 
+       
+text-decoration: 
+none;\n        
+transition: all 
+0.3s;\n        
+display: flex;\n     
+   align-items: 
+center;\n        
+gap: 10px;\n    
+}\n\n    
+.footer-links a i 
+{\n        color: 
+#5a1a1a;\n        
+font-size: 0.8rem;\n 
+       transition: 
+color 0.3s;\n    
+}\n\n    
+.footer-links 
+a:hover {\n        
+color: #D4AF37;\n    
+    padding-left: 
+5px;\n    }\n\n    
+.footer-links 
+a:hover i {\n        
+color: #D4AF37;\n    
+}\n\n    /* Seva 
+Items */\n    
+.seva-item {\n       
+ display: flex;\n    
+    gap: 15px;\n     
+   margin-bottom: 
+20px;\n        
+align-items: 
+center;\n        
+background: 
+rgba(255, 255, 255, 
+0.03);\n        
+padding: 10px;\n     
+   border-radius: 
+8px;\n        
+transition: 
+background 0.3s;\n   
+ }\n\n    
+.seva-item:hover {\n 
+       background: 
+rgba(255, 255, 255, 
+0.08);\n    }\n\n    
+.seva-date {\n       
+ background: 
+#2b0c0c;\n        
+border: 1px solid 
+#D4AF37;\n        
+padding: 5px 10px;\n 
+       text-align: 
+center;\n        
+border-radius: 
+5px;\n        
+min-width: 60px;\n   
+ }\n\n    .seva-date 
+.day {\n        
+display: block;\n    
+    font-size: 
+1.2rem;\n        
+font-weight: bold;\n 
+       color: 
+#fff;\n    }\n\n    
+.seva-date .month 
+{\n        display: 
+block;\n        
+font-size: 0.7rem;\n 
+       color: 
+#D4AF37;\n        
+text-transform: 
+uppercase;\n    
+}\n\n    
+.seva-details h4 {\n 
+       margin: 0 0 
+5px;\n        
+font-family: 
+\'Cinzel\', serif;\n 
+       color: 
+#fff;\n        
+font-size: 1rem;\n   
+ }\n\n    
+.seva-details p {\n  
+      margin: 0;\n   
+     font-size: 
+0.85rem;\n        
+color: #aaa;\n    
+}\n\n    /* 
+Newsletter */\n    
+.newsletter-text {\n 
+       color: 
+#aaa;\n        
+margin-bottom: 
+20px;\n        
+font-size: 
+0.95rem;\n    }\n\n  
+  .newsletter-form 
+.input-wrapper {\n   
+     display: 
+flex;\n        
+background: 
+rgba(255, 255, 255, 
+0.1);\n        /* 
+Glass effect */\n    
+    border: 1px 
+solid #5a1a1a;\n     
+   border-radius: 
+50px;\n        
+padding: 5px;\n    
+}\n\n    
+.newsletter-form 
+input {\n        
+background: 
+transparent;\n       
+ border: none;\n     
+   padding: 10px 
+15px;\n        
+color: #fff;\n       
+ width: 100%;\n      
+  outline: none;\n   
+ }\n\n    
+.newsletter-form 
+button {\n        
+background: 
+#D4AF37;\n        
+color: #1a0505;\n    
+    border: none;\n  
+      width: 40px;\n 
+       height: 
+40px;\n        
+border-radius: 
+50%;\n        
+cursor: pointer;\n   
+     transition: 
+transform 0.3s;\n    
+}\n\n    
+.newsletter-form 
+button:hover {\n     
+   transform: 
+scale(1.1);\n    
+}\n\n    
+.secure-badge {\n    
+    margin-top: 
+15px;\n        
+font-size: 0.8rem;\n 
+       color: 
+#666;\n        
+display: flex;\n     
+   align-items: 
+center;\n        
+gap: 5px;\n    }\n\n 
+   .secure-badge i 
+{\n        color: 
+#2ecc71;\n    }\n\n  
+  /* Bottom Bar */\n 
+   .footer-bottom 
+{\n        
+text-align: 
+center;\n        
+margin-top: 60px;\n  
+  }\n\n    
+.bottom-divider {\n  
+      height: 1px;\n 
+       background: li
+near-gradient(90deg, 
+transparent, 
+#5a1a1a, 
+transparent);\n      
+  margin-bottom: 
+30px;\n    }\n\n    
+.copyright-row {\n   
+     display: 
+flex;\n        
+justify-content: 
+space-between;\n     
+   /* Layout: left 
+copyright, right 
+links */\n        
+align-items: 
+center;\n        
+flex-wrap: wrap;\n   
+     gap: 20px;\n    
+    font-size: 
+0.9rem;\n        
+color: #888;\n       
+ max-width: 800px;\n 
+       margin: 0 
+auto 20px;\n    
+}\n\n    
+.legal-links a {\n   
+     color: #888;\n  
+      
+text-decoration: 
+none;\n        
+transition: color 
+0.3s;\n    }\n\n    
+.legal-links a:hover 
+{\n        color: 
+#D4AF37;\n    }\n\n  
+  .separator {\n     
+   margin: 0 10px;\n 
+       color: 
+#555;\n    }\n\n    
+.mantra-footer {\n   
+     font-family: 
+\'Noto Sans 
+Devanagari\', 
+serif;\n        
+color: #5a1a1a;\n    
+    /* Very subtle 
+text */\n        
+font-size: 1.5rem;\n 
+       margin-top: 
+20px;\n        
+letter-spacing: 
+2px;\n        
+text-shadow: 0 1px 0 
+rgba(255, 255, 255, 
+0.05);\n        /* 
+Engraved look */\n   
+ }\n\n    @media 
+(max-width: 768px) 
+{\n        
+.copyright-row {\n   
+         
+flex-direction: 
+column;\n            
+text-align: 
+center;\n        }\n 
+   }\n</style>\n    
+</footer>\n\n    
+<!-- Hidden Google 
+Translate Widget 
+-->\n    <div id="goo
+gle_translate_element
+" style="display:none
+"></div>\n\n    
+<script type="text/ja
+vascript">\n        
+// Inject Auth 
+Status for JS\n      
+  window.isUserAuthen
+ticated = "false" 
+=== "true";\n        
+window.signupUrl = 
+"/signup/";\n\n      
+  // Standard Google 
+Translate Init - 
+Hidden UI\n        
+function googleTransl
+ateElementInit() {\n 
+           new google
+.translate.TranslateE
+lement({\n           
+     pageLanguage: 
+\'en\',\n            
+    
+includedLanguages: 
+\'en,te\',\n         
+       layout: google
+.translate.TranslateE
+lement.InlineLayout.S
+IMPLE,\n             
+   autoDisplay: 
+false,\n             
+   
+multilanguagePage: 
+true\n            }, 
+\'google_translate_el
+ement\');\n        
+}\n\n        // 
+Bridge function to 
+connect custom 
+navbar buttons to 
+Google Translate\n   
+     function changeL
+anguage(langCode) 
+{\n            // 1. 
+Set the cookie which 
+Google Translate 
+uses to remember 
+language\n           
+ // For English, we 
+want to clear the 
+translation (reset 
+to original)\n       
+     if (langCode 
+=== \'en\') {\n      
+          
+document.cookie = 
+"googtrans=; 
+expires=Thu, 01 Jan 
+1970 00:00:00 UTC; 
+path=/";\n           
+     document.cookie 
+= "googtrans=; 
+expires=Thu, 01 Jan 
+1970 00:00:00 UTC; 
+path=/; domain=" + 
+location.hostname;\n 
+               // 
+Also handle the 
+legacy/alternate 
+format\n             
+   document.cookie = 
+"googtrans=/en/en; 
+path=/";\n           
+ } else {\n          
+      
+document.cookie = 
+"googtrans=/en/" + 
+langCode + "; 
+path=/";\n           
+     document.cookie 
+= "googtrans=/en/" + 
+langCode + "; 
+path=/; domain=" + 
+location.hostname;\n 
+           }\n\n     
+       // 2. Save to 
+local storage for 
+our UI consistency\n 
+           localStora
+ge.setItem(\'preferre
+dLang\', 
+langCode);\n\n       
+     // 3. Reload 
+page to ensure the 
+whole website 
+changes instantly 
+(most reliable)\n    
+        
+location.reload();\n 
+       }\n\n        
+// Maintain UI state 
+on page load\n       
+ document.addEventLis
+tener(\'DOMContentLoa
+ded\', function () 
+{\n            const 
+savedLang = localStor
+age.getItem(\'preferr
+edLang\') || 
+\'en\';\n            
+const 
+settingsToggleBtn = d
+ocument.getElementByI
+d(\'settings-toggle-b
+tn\');\n            
+const 
+settingsSelector = do
+cument.getElementById
+(\'settings-selector\
+');\n            
+const mobileToggle = 
+document.getElementBy
+Id(\'mobile-toggle\')
+;\n            const 
+navContent = document
+.getElementById(\'nav
+-content\');\n\n     
+       // Handle 
+Language selection 
+state highlighting\n 
+           const 
+langEn = document.get
+ElementById(\'lang-en
+\');\n            
+const langTe = docume
+nt.getElementById(\'l
+ang-te\');\n         
+   if (savedLang === 
+\'te\') {\n          
+      if (langTe) lan
+gTe.classList.add(\'a
+ctive\');\n          
+  } else {\n         
+       if (langEn) la
+ngEn.classList.add(\'
+active\');\n         
+   }\n\n            
+// Click Handler for 
+the Unified Dropdown 
+Toggle\n            
+if 
+(settingsToggleBtn 
+&& settingsSelector) 
+{\n                se
+ttingsToggleBtn.addEv
+entListener(\'click\'
+, function (e) {\n   
+                 e.st
+opPropagation();\n   
+                 sett
+ingsSelector.classLis
+t.toggle(\'active\');
+\n                
+});\n            
+}\n\n            // 
+Mobile Menu Toggle\n 
+           if 
+(mobileToggle && 
+navContent) {\n      
+          mobileToggl
+e.addEventListener(\'
+click\', function 
+(e) {\n              
+      e.stopPropagati
+on();\n              
+      navContent.clas
+sList.toggle(\'active
+\');\n               
+     // Change icon 
+when open\n          
+          const icon 
+= mobileToggle.queryS
+elector(\'i\');\n    
+                if (n
+avContent.classList.c
+ontains(\'active\')) 
+{\n                  
+      icon.classList.
+remove(\'fa-bars\');\
+n                    
+    icon.classList.ad
+d(\'fa-times\');\n   
+                 } 
+else {\n             
+           icon.class
+List.remove(\'fa-time
+s\');\n              
+          icon.classL
+ist.add(\'fa-bars\');
+\n                   
+ }\n                
+});\n\n              
+  // Close mobile 
+menu on clicking any 
+link inside\n        
+        const 
+navLinks = navContent
+.querySelectorAll(\'a
+\');\n               
+ navLinks.forEach(lin
+k => {\n             
+       link.addEventL
+istener(\'click\', 
+() => {\n            
+            navConten
+t.classList.remove(\'
+active\');\n         
+               const 
+icon = mobileToggle.q
+uerySelector(\'i\');\
+n                    
+    icon.classList.re
+move(\'fa-times\');\n
+                     
+   icon.classList.add
+(\'fa-bars\');\n     
+               });\n 
+               });\n 
+           }\n\n     
+       // Global 
+Click to close both 
+dropdown and mobile 
+menu\n            doc
+ument.addEventListene
+r(\'click\', 
+function (e) {\n     
+           if 
+(settingsSelector && 
+!settingsSelector.con
+tains(e.target)) {\n 
+                   se
+ttingsSelector.classL
+ist.remove(\'active\'
+);\n                
+}\n                
+if (navContent && !na
+vContent.contains(e.t
+arget) && !mobileTogg
+le.contains(e.target)
+) {\n                
+    navContent.classL
+ist.remove(\'active\'
+);\n                 
+   const icon = mobil
+eToggle.querySelector
+(\'i\');\n           
+         if (icon) 
+{\n                  
+      icon.classList.
+remove(\'fa-times\');
+\n                   
+     icon.classList.a
+dd(\'fa-bars\');\n   
+                 }\n 
+               }\n   
+         });\n\n     
+       // Update 
+cart count if cart 
+is already 
+initialized\n        
+    if (typeof 
+updateCartCount === 
+\'function\') {\n    
+            
+updateCartCount();\n 
+           }\n       
+ });\n\n    
+</script>\n    <!-- 
+15-Second Devotional 
+Audio -->\n    
+<audio id="site-welco
+me-audio" 
+preload="auto">\n    
+    <source src="/sta
+tic/videos/om-%5Bhind
+ugodsongs.in%5D.mp3.m
+peg" 
+type="audio/mpeg">\n 
+   </audio>\n\n    
+<script>\n        // 
+Audio Playback Logic 
+- Ultra Robust\n     
+   (function () {\n  
+          const 
+AUDIO_ID = \'site-wel
+come-audio\';\n      
+      const 
+SESSION_KEY = \'welco
+me_audio_done\';\n\n 
+           function 
+initAudio() {\n      
+          // If 
+already played in 
+this tab session, or 
+if video intro is 
+active, skip\n       
+         if (sessionS
+torage.getItem(SESSIO
+N_KEY) || !sessionSto
+rage.getItem(\'video_
+intro_played\')) {\n 
+                   
+console.log("Audio 
+skipped: Already 
+played or video 
+intro taking 
+precedence.");\n     
+               
+return;\n            
+    }\n\n            
+    const audio = doc
+ument.getElementById(
+AUDIO_ID);\n         
+       if (!audio) 
+return;\n\n          
+      // Ensure 
+audio is at start\n  
+              
+audio.currentTime = 
+0;\n\n               
+ let 
+isPlayingSequence = 
+false;\n\n           
+     const 
+startPlayback = () 
+=> {\n               
+     if 
+(isPlayingSequence 
+|| sessionStorage.get
+Item(SESSION_KEY)) 
+return;\n\n          
+          
+isPlayingSequence = 
+true;\n\n            
+        
+audio.play().then(() 
+=> {\n               
+         console.log(
+"Sequence started: 
+15s devotional 
+music.");\n          
+              // Set 
+flag IMMEDIATELY to 
+prevent overlap or 
+re-trigger\n         
+               sessio
+nStorage.setItem(SESS
+ION_KEY, 
+\'true\');\n\n       
+                 // 
+Robust 15s timer\n   
+                     
+const timerId = 
+setTimeout(() => {\n 
+                     
+      
+audio.pause();\n     
+                     
+  audio.currentTime 
+= 0;\n               
+             console.
+log("Sequence 
+completed: Audio 
+stopped after 
+15s.");\n            
+                
+isPlayingSequence = 
+false;\n             
+           }, 
+15000);\n\n          
+              // If 
+audio ends 
+prematurely for some 
+reason, clear flag 
+but don\'t 
+retrigger\n          
+              
+audio.onended = () 
+=> {\n               
+             clearTim
+eout(timerId);\n     
+                     
+  isPlayingSequence 
+= false;\n           
+                 
+console.log("Audio 
+ended naturally 
+before 15s.");\n     
+                   
+};\n\n               
+     }).catch(error 
+=> {\n               
+         
+isPlayingSequence = 
+false;\n             
+           
+console.log("User 
+interaction required 
+for audio.");\n      
+              });\n  
+              };\n\n 
+               // 
+Try playing on load 
+(very likely 
+blocked, but we 
+try)\n               
+ window.addEventListe
+ner(\'load\', () => 
+{\n                  
+  setTimeout(startPla
+yback, 1500); // 
+Wait for 
+preloader/page 
+load\n               
+ });\n\n             
+   // Listen for 
+first interaction - 
+standard way to 
+bypass autoplay 
+blocks\n             
+   const 
+triggerEvents = 
+[\'click\', 
+\'touchstart\', 
+\'mousedown\', 
+\'keydown\'];\n      
+          const 
+triggerPlay = () => 
+{\n                  
+  startPlayback();\n 
+                   
+// Clean up: remove 
+all listeners after 
+first execution\n    
+                trigg
+erEvents.forEach(e 
+=> document.removeEve
+ntListener(e, 
+triggerPlay));\n     
+           };\n\n    
+            triggerEv
+ents.forEach(e => doc
+ument.addEventListene
+r(e, 
+triggerPlay));\n     
+       }\n\n         
+   // Listen for the 
+custom event from 
+video_intro.js to 
+start background 
+audio\n            wi
+ndow.addEventListener
+(\'video-intro-finish
+ed\', () => {\n      
+          
+console.log("Video 
+intro finished event 
+received. 
+Initializing 
+background 
+audio...");\n        
+        
+initAudio();\n       
+     });\n\n         
+   // Initialize 
+safely\n            
+if 
+(document.readyState 
+=== \'loading\') {\n 
+               docume
+nt.addEventListener(\
+'DOMContentLoaded\', 
+initAudio);\n        
+    } else {\n       
+         
+initAudio();\n       
+     }\n        
+})();\n    
+</script>\n\n    \n  
+  <script src="//tran
+slate.google.com/tran
+slate_a/element.js?cb
+=googleTranslateEleme
+ntInit"></script>\n  
+  <script src="/stati
+c/js/cart.js"></scrip
+t>\n    <script src="
+/static/js/video_intr
+o.js"></script>\n\n  
+  \n    
+\n</body>\n\n</html>'
+
+---------------------
+---------------------
+---------------------
+-------
+Ran 14 tests in 
+107.752s
+
+FAILED (failures=2, 
+errors=1)
+Destroying test 
+database for alias 
+'default'...
+
+============================================
+DEBUG OTP for priest@example.com: 541124
+============================================

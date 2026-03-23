@@ -1,0 +1,192 @@
+﻿python : Creating 
+test database for 
+alias 'default'...
+At line:1 char:1
++ python manage.py 
+test core.tests_auth 
+> test_output_v4.txt 
+2>&1 ; Get ...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (Creatin   
+ g test d...as 'd    
+efault'...:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+
+Found 10 test(s).
+System check identified no issues (0 silenced).
+F....FF.F.
+=====================
+=====================
+=====================
+=======
+FAIL: test_priest_edi
+t_profile_success (co
+re.tests_auth.PriestA
+uthTest.test_priest_e
+dit_profile_success)
+---------------------
+---------------------
+---------------------
+-------
+Traceback (most 
+recent call last):
+  File "C:\Users\9170
+3\OneDrive\Desktop\ka
+ryasiddhi\core\tests_
+auth.py", line 115, 
+in test_priest_edit_p
+rofile_success
+    self.assertEqual(
+response.status_code,
+ 302)
+    ~~~~~~~~~~~~~~~~^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^
+AssertionError: 200 
+!= 302
+
+=====================
+=====================
+=====================
+=======
+FAIL: test_priest_reg
+istration_success (co
+re.tests_auth.PriestA
+uthTest.test_priest_r
+egistration_success)
+---------------------
+---------------------
+---------------------
+-------
+Traceback (most 
+recent call last):
+  File "C:\Users\9170
+3\OneDrive\Desktop\ka
+ryasiddhi\core\tests_
+auth.py", line 32, 
+in test_priest_regist
+ration_success
+    self.assertEqual(
+response.status_code,
+ 302)  # Redirect to 
+dashboard
+    ~~~~~~~~~~~~~~~~^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^
+AssertionError: 200 
+!= 302
+
+=====================
+=====================
+=====================
+=======
+FAIL: test_forgot_pas
+sword_flow_success (c
+ore.tests_auth.Priest
+ForgotPasswordTest.te
+st_forgot_password_fl
+ow_success)
+---------------------
+---------------------
+---------------------
+-------
+Traceback (most 
+recent call last):
+  File "C:\Users\9170
+3\OneDrive\Desktop\ka
+ryasiddhi\core\tests_
+auth.py", line 157, 
+in test_forgot_passwo
+rd_flow_success
+    self.assertRedire
+cts(response, 
+self.reset_url)
+    ~~~~~~~~~~~~~~~~~
+~~~^^^^^^^^^^^^^^^^^^
+^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\test\testcases.py
+", line 514, in 
+assertRedirects
+    self.assertEqual(
+    ~~~~~~~~~~~~~~~~^
+        redirect_resp
+onse.status_code,
+        ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        % (path, redi
+rect_response.status_
+code, 
+target_status_code),
+        ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^
+    )
+    ^
+AssertionError: 302 
+!= 200 : Couldn't 
+retrieve redirection 
+page '/purohit/reset-
+password/': response 
+code was 302 
+(expected 200)
+
+=====================
+=====================
+=====================
+=======
+FAIL: test_reset_pass
+word_mismatch (core.t
+ests_auth.PriestForgo
+tPasswordTest.test_re
+set_password_mismatch
+)
+---------------------
+---------------------
+---------------------
+-------
+Traceback (most 
+recent call last):
+  File "C:\Users\9170
+3\OneDrive\Desktop\ka
+ryasiddhi\core\tests_
+auth.py", line 210, 
+in test_reset_passwor
+d_mismatch
+    self.assertEqual(
+response.status_code,
+ 200)
+    ~~~~~~~~~~~~~~~~^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^
+AssertionError: 302 
+!= 200
+
+---------------------
+---------------------
+---------------------
+-------
+Ran 10 tests in 
+12.587s
+
+FAILED (failures=4)
+Destroying test 
+database for alias 
+'default'...
+
+============================================
+DEBUG OTP for priest@example.com: 520151
+============================================

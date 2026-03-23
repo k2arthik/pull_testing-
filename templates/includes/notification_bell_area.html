@@ -1,0 +1,11 @@
+{% load static %}
+{% load notification_extras %}
+<button class="circle-btn bell-btn bell-hover" id="notificationToggleBtn" hx-get="{% url 'get_notifications' %}"
+    hx-target="#notifications-list" hx-trigger="click">
+    <i class="fas fa-bell"></i>
+    {% with unread_count=user|unread_notifications_count %}
+    <span class="notification-badge" id="notification-count" {% if unread_count==0 %}style="display: none;" {% endif %}>
+        {{ unread_count }}
+    </span>
+    {% endwith %}
+</button>

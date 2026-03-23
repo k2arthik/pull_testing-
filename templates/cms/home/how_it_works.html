@@ -1,4 +1,5 @@
 <!-- ===================================== -->
+<<<<<<< HEAD
 <!-- HOW IT WORKS - ADMIN EDITABLE -->
 <!-- Pure HTML Only - No Django Tags -->
 <!-- ===================================== -->
@@ -44,3 +45,376 @@
         </div>
     </div>
 </section>
+=======
+<!-- HOW IT WORKS (THE SPIRITUAL JOURNEY) -->
+<!-- ===================================== -->
+
+<section class="spiritual-journey">
+    <!-- Decorative Background Layers -->
+    <div class="pattern-layer mandala-bg" style="opacity: 0.08;"></div>
+    <div class="vignette-overlay"
+        style="position: absolute; inset: 0; background: radial-gradient(circle, transparent 40%, rgba(255, 248, 225, 0.4) 100%); pointer-events: none; z-index: 1;">
+    </div>
+
+    <div class="journey-container">
+
+        <!-- Header -->
+        <div class="journey-header">
+            <h2 class="journey-title">Your Path to Divine</h2>
+            <p class="journey-subtitle">4 Simple Steps to Sacredness</p>
+        </div>
+
+        <!-- The Path Wrapper -->
+        <div class="journey-path">
+
+            <!-- Connecting Line (The Thread) -->
+            <div class="sacred-thread"></div>
+
+            {% for step in journey_steps %}
+            <!-- Step {{ step.step_number }} -->
+            <div class="step-card">
+                <div class="step-marker">
+                    <span class="step-number">{{ step.step_number }}</span>
+                    <div class="lotus-ring"></div>
+                </div>
+                <div class="step-content">
+                    <div class="step-icon-box">
+                        <i class="{{ step.icon_class }}"></i>
+                    </div>
+                    <h4>{{ step.title }}</h4>
+                    <p>{{ step.description }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <p>Divine journey steps are being prepared...</p>
+            {% endfor %}
+
+        </div>
+
+    </div>
+</section>
+
+<style>
+    .spiritual-journey {
+        padding: 120px 0;
+        background-image: linear-gradient(rgba(255, 248, 225, 0.9), rgba(255, 248, 225, 0.9)), url('/static/images/bgdesign4.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Decorative Background Elements */
+    .pattern-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .mandala-bg {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M50 50m-40 0a40 40 0 1 0 80 0a40 40 0 1 0 -80 0' fill='none' stroke='%23D4AF37' stroke-width='0.5'/%3E%3Ccircle cx='50' cy='50' r='10' fill='none' stroke='%23D4AF37' stroke-width='0.5'/%3E%3Cpath d='M50 10L50 90M10 50L90 50M22 22L78 78M22 78L78 22' stroke='%23D4AF37' stroke-width='0.2'/%3E%3C/svg%3E");
+        background-size: 250px 250px;
+    }
+
+    .journey-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* --- Header --- */
+    .journey-header {
+        text-align: center;
+        margin-bottom: 80px;
+    }
+
+    .journey-title {
+        font-family: 'Rozha One', serif;
+        font-size: 2.5rem;
+        color: #B71C1C;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .ornate-swirl {
+        display: inline-block;
+        width: 60px;
+        height: 20px;
+        background: url('https://www.transparenttextures.com/patterns/black-linen.png');
+        /* Placeholder for swirl SVG */
+        border-bottom: 2px solid #D4AF37;
+        border-radius: 50%;
+    }
+
+    .journey-subtitle {
+        font-family: 'Cinzel', serif;
+        color: #D4AF37;
+        letter-spacing: 2px;
+        margin-top: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    /* --- The Path Flow --- */
+    .journey-path {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        /* Align top to handle variable content height */
+        position: relative;
+        padding-top: 40px;
+    }
+
+    /* The Golden Thread connecting steps */
+    .sacred-thread {
+        position: absolute;
+        top: 90px;
+
+        /* Aligns with icons */
+        left: 40px;
+        right: 40px;
+        height: 2px;
+        background: linear-gradient(90deg, #D4AF37, #FFD700, #D4AF37);
+        z-index: 0;
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+    }
+
+    /* --- Step Card --- */
+    .step-card {
+        flex: 1;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        padding: 0 15px;
+        transition: transform 0.3s;
+    }
+
+    .step-card:hover {
+        transform: translateY(-10px);
+    }
+
+    /* Marker (Number) */
+    .step-marker {
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 40px;
+        background: #B71C1C;
+        color: #FFD700;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Cinzel', serif;
+        font-weight: bold;
+        border: 2px solid #FFD700;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Step Icon Box */
+    .step-icon-box {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 25px;
+        background: #fff;
+        border-radius: 50%;
+        /* Circle */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: #D32F2F;
+        border: 3px double #FFD700;
+        /* Double border for elegance */
+        box-shadow: 0 10px 30px rgba(183, 28, 28, 0.1);
+        position: relative;
+        background-clip: padding-box;
+        transition: all 0.5s ease;
+    }
+
+    /* Lotus Ring Animation around Icon */
+    .step-card:hover .step-icon-box {
+        background: #D4AF37;
+        color: #fff;
+        transform: scale(1.1);
+        box-shadow: 0 0 0 10px rgba(212, 175, 55, 0.2);
+        border-color: #fff;
+    }
+
+    /* Content */
+    .step-content h4 {
+        font-family: 'Rozha One', serif;
+        color: #2c0e0e;
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+    }
+
+    .step-content p {
+        font-family: 'Inter', sans-serif;
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    /* --- Connector Arrows (Desktop) --- */
+    .connector-icon {
+        padding-top: 40px;
+        /* Align with icon center */
+        color: #D4AF37;
+        font-size: 1.5rem;
+        animation: pulse-arrow 2s infinite;
+    }
+
+    @keyframes pulse-arrow {
+
+        0%,
+        100% {
+            transform: translateX(0);
+            opacity: 0.5;
+        }
+
+        50% {
+            transform: translateX(5px);
+            opacity: 1;
+        }
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 900px) {
+        .spiritual-journey {
+            padding: 60px 0;
+        }
+
+        .journey-header {
+            margin-bottom: 50px;
+        }
+
+        .journey-title {
+            font-size: 2rem;
+        }
+
+        .journey-path {
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            padding-top: 20px;
+        }
+
+        .sacred-thread {
+            display: none;
+        }
+
+        .step-marker {
+            position: absolute;
+            left: auto;
+            right: -10px;
+            top: -10px;
+            width: 35px;
+            height: 35px;
+            font-size: 0.8rem;
+        }
+
+        .connector-icon {
+            display: none;
+        }
+
+        .step-card {
+            width: 90%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            text-align: left;
+            padding: 25px 20px;
+            background: #fff;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 5px 20px rgba(128, 0, 0, 0.06);
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-icon-box {
+            margin: 0 20px 0 0;
+            width: 65px;
+            height: 65px;
+            min-width: 65px;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .step-content p {
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .spiritual-journey {
+            padding: 40px 0;
+        }
+
+        .journey-title {
+            font-size: 1.6rem;
+        }
+
+        .journey-subtitle {
+            font-size: 0.8rem;
+        }
+
+        .journey-header {
+            margin-bottom: 35px;
+        }
+
+        .journey-path {
+            gap: 18px;
+        }
+
+        .step-card {
+            width: 95%;
+            padding: 18px 15px;
+        }
+
+        .step-icon-box {
+            width: 55px;
+            height: 55px;
+            min-width: 55px;
+            font-size: 1.3rem;
+            margin-right: 15px;
+        }
+
+        .step-content h4 {
+            font-size: 1rem;
+        }
+
+        .step-content p {
+            font-size: 0.8rem;
+        }
+
+        .step-marker {
+            width: 30px;
+            height: 30px;
+            font-size: 0.7rem;
+        }
+    }
+</style>
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3

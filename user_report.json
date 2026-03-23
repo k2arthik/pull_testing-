@@ -1,0 +1,22 @@
+[
+    {
+        "username": "kgd363_3",
+        "is_staff": false,
+        "is_superuser": false
+    },
+    {
+        "username": "chinnaprashanth3033_1",
+        "is_staff": false,
+        "is_superuser": false
+    },
+    {
+        "username": "prashanthchakali5220_2",
+        "is_staff": false,
+        "is_superuser": false
+    },
+    {
+        "username": "admin",
+        "is_staff": true,
+        "is_superuser": true
+    }
+]

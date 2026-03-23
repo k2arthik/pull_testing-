@@ -1,0 +1,282 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/separators.css' %}">
+<style>
+    body {
+        background-color: var(--color-ivory);
+    }
+
+    .booking-priests-container {
+        padding-top: 20px;
+    }
+
+    .service-banner {
+        height: 300px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 40px;
+        border-bottom: 5px solid var(--color-gold-royal);
+    }
+
+    .service-banner .overlay {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle, transparent 20%, rgba(0, 0, 0, 0.7) 90%);
+    }
+
+    .service-banner h1 {
+        font-family: var(--font-heading-main);
+        color: var(--color-gold-light);
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        font-size: 3.5rem;
+    }
+
+    .section-title {
+        font-family: var(--font-heading-main);
+        color: var(--color-maroon);
+        text-align: center;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .filter-summary {
+        background: var(--color-gold-light);
+        border: 2px solid var(--color-gold-royal);
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 40px;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+    }
+
+    .filter-summary p {
+        color: var(--color-maroon);
+        font-family: var(--font-heading-sub);
+        font-size: 1.2rem;
+        margin-bottom: 0;
+    }
+
+    /* Priest Card - Shrine Theme */
+    .priest-card-shrine {
+        background: #fff;
+        border: 2px solid var(--color-gold-royal);
+        border-radius: 15px 15px 0 0;
+        overflow: hidden;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .priest-card-shrine::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        border: 1px dashed var(--color-gold-royal);
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .priest-card-shrine:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(128, 0, 0, 0.2);
+    }
+
+    .priest-avatar-container {
+        padding-top: 30px;
+        background: linear-gradient(to bottom, var(--color-gold-light), #fff);
+        border-bottom: 1px solid var(--color-gold-royal);
+    }
+
+    .priest-avatar-wrapper {
+        width: 130px;
+        height: 130px;
+        margin: 0 auto;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid #fff;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .priest-avatar {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .priest-placeholder-avatar {
+        width: 100%;
+        height: 100%;
+        background: var(--color-maroon);
+        color: var(--color-gold-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        font-family: var(--font-heading-sub);
+    }
+
+    .priest-details {
+        padding: 25px;
+        text-align: center;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .priest-details h3 {
+        font-family: var(--font-heading-sub);
+        color: var(--color-maroon);
+        margin-bottom: 15px;
+        font-weight: 800;
+    }
+
+    .priest-meta-item {
+        color: #555;
+        font-family: var(--font-body-modern);
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+    }
+
+    .priest-meta-item i {
+        color: var(--color-maroon);
+        width: 20px;
+    }
+
+    .btn-select-priest {
+        margin-top: auto;
+        background: var(--color-maroon);
+        color: var(--color-gold-light);
+        font-family: var(--font-heading-sub);
+        padding: 12px;
+        border: 2px solid var(--color-gold-royal);
+        border-radius: 5px;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: block;
+    }
+
+    .btn-select-priest:hover {
+        background: var(--color-gold-royal);
+        color: var(--color-maroon);
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        text-decoration: none;
+    }
+
+    .divider-gold-dots {
+        margin: 40px auto;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="booking-priests-container">
+    <div class="service-banner" style="background-image: url('{{ service.image }}');">
+        <div class="overlay"></div>
+        <div class="container text-center text-white position-relative">
+            <h1>{{ service.title }}</h1>
+            <p class="lead mb-0 text-gold-emboss">{{ service.short_description }}</p>
+        </div>
+    </div>
+
+    <div class="container pb-5">
+        {% if devotee_data.date and devotee_data.slot %}
+        <div class="filter-summary">
+            <p>Showing priests available on <strong>{{ devotee_data.date }}</strong> during <strong>
+                    {{ devotee_data.slot|title }}</strong>.</p>
+        </div>
+        {% endif %}
+
+        {% if priests %}
+        <h2 class="section-title title-underline">Select a Divine Priest</h2>
+
+        <div class="row">
+            {% for priest in priests %}
+            <div class="col-md-4 mb-5">
+                <div class="priest-card-shrine">
+                    <div class="priest-avatar-container text-center pb-3">
+                        <div class="priest-avatar-wrapper">
+                            {% if priest.photo %}
+                            <img src="{{ priest.photo.url }}" alt="{{ priest.fullname }}" class="priest-avatar">
+                            {% else %}
+                            <div class="priest-placeholder-avatar">{{ priest.fullname|slice:":1" }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="priest-details">
+                        <h3>{{ priest.fullname }}</h3>
+
+                        <div class="priest-meta mb-4">
+                            <div class="priest-meta-item">
+                                <i class="fas fa-map-marker-alt"></i> {{ priest.location }}
+                            </div>
+                            <div class="priest-meta-item">
+                                <i class="fas fa-award"></i> {{ priest.experience }} Years Experience
+                            </div>
+                            <div class="priest-meta-item">
+                                <i class="fas fa-scroll"></i> {{ priest.qualification }} ({{ priest.qualification_place }})
+                            </div>
+                            <div class="priest-meta-item">
+                                <i class="fas fa-om"></i> Gothram: {{ priest.gothram }}
+                            </div>
+                            <div class="priest-meta-item">
+                                <i class="fas fa-check-circle"></i> Scriptures: {% if priest.can_perform_rituals %}Yes{% else %}No{% endif %}
+                            </div>
+                            <div class="priest-meta-item">
+                                <i class="fas fa-language"></i> {{ priest.language|join:', ' }}
+                            </div>
+                        </div>
+
+                        <a href="{% url 'book_priest' priest.id %}?service={{ service_slug }}&devotee_name={{ devotee_data.name }}&gothram={{ devotee_data.gothram }}&nakshatram={{ devotee_data.nakshatram }}&date={{ devotee_data.date }}&slot={{ devotee_data.slot }}"
+                            class="btn-select-priest">
+                            Select & Continue <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-priests text-center py-5">
+            <div class="mb-4 text-muted">
+                <i class="fas fa-user-slash fa-4x" style="color: var(--color-maroon);"></i>
+            </div>
+            <h3 class="mb-3" style="font-family: var(--font-heading-main); color: var(--color-maroon);">No Priests
+                Available</h3>
+            {% if devotee_data.date %}
+            <p class="text-muted mb-4" style="font-family: var(--font-body);">No priests are available for the selected
+                date and time. Try another slot.</p>
+            <a href="{% url 'service_detail' service_slug %}" class="btn-temple">Change Date/Time</a>
+            {% else %}
+            <p class="text-muted mb-4" style="font-family: var(--font-body);">Currently, no priests are listed for this
+                service. Please check back later.</p>
+            <a href="{% url 'services' %}" class="btn-temple">Browse Other Services</a>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <hr class="divider-gold-dots">
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/lightbox.js' %}"></script>
+{% endblock %}

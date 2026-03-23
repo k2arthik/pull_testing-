@@ -1,0 +1,320 @@
+﻿python : Creating 
+test database for 
+alias 'default'...
+At line:1 char:1
++ python manage.py 
+test core.tests_auth 
+> test_output_v3.txt 
+2>&1 ; Get ...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (Creatin   
+ g test d...as 'd    
+efault'...:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+
+Found 10 test(s).
+Destroying test 
+database for alias 
+'default'...
+
+Traceback (most 
+recent call last):
+  File "C:\Users\9170
+3\OneDrive\Desktop\ka
+ryasiddhi\manage.py",
+ line 22, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\9170
+3\OneDrive\Desktop\ka
+ryasiddhi\manage.py",
+ line 18, in main
+    execute_from_comm
+and_line(sys.argv)
+    ~~~~~~~~~~~~~~~~~
+~~~~~~~~^^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\management\_
+_init__.py", line 
+442, in execute_from_
+command_line
+    utility.execute()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\management\_
+_init__.py", line 
+436, in execute
+    self.fetch_comman
+d(subcommand).run_fro
+m_argv(self.argv)
+    ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~^^^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\management\c
+ommands\test.py", 
+line 24, in 
+run_from_argv
+    super().run_from_
+argv(argv)
+    ~~~~~~~~~~~~~~~~~
+~~~~^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\management\b
+ase.py", line 413, 
+in run_from_argv
+    
+self.execute(*args, 
+**cmd_options)
+    ~~~~~~~~~~~~^^^^^
+^^^^^^^^^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\management\b
+ase.py", line 459, 
+in execute
+    output = 
+self.handle(*args, 
+**options)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\management\c
+ommands\test.py", 
+line 63, in handle
+    failures = test_r
+unner.run_tests(test_
+labels)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\test\runner.py", 
+line 1072, in 
+run_tests
+    self.run_checks(d
+atabases)
+    ~~~~~~~~~~~~~~~^^
+^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\test\runner.py", 
+line 994, in 
+run_checks
+    call_command("che
+ck", verbosity=self.v
+erbosity, 
+databases=databases)
+    ~~~~~~~~~~~~^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\management\_
+_init__.py", line 
+194, in call_command
+    return command.ex
+ecute(*args, 
+**defaults)
+           ~~~~~~~~~~
+~~~~~^^^^^^^^^^^^^^^^
+^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\management\b
+ase.py", line 459, 
+in execute
+    output = 
+self.handle(*args, 
+**options)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\management\c
+ommands\check.py", 
+line 81, in handle
+    self.check(
+    ~~~~~~~~~~^
+        app_configs=a
+pp_configs,
+        ^^^^^^^^^^^^^
+^^^^^^^^^^^
+    ...<4 lines>...
+        databases=opt
+ions["databases"],
+        ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\management\b
+ase.py", line 486, 
+in check
+    all_issues = 
+checks.run_checks(
+        app_configs=a
+pp_configs,
+    ...<2 lines>...
+        
+databases=databases,
+    )
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\checks\regis
+try.py", line 88, in 
+run_checks
+    new_errors = chec
+k(app_configs=app_con
+figs, 
+databases=databases)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\checks\urls.
+py", line 136, in che
+ck_custom_error_handl
+ers
+    handler = resolve
+r.resolve_error_handl
+er(status_code)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\urls\resolvers.py
+", line 732, in 
+resolve_error_handler
+    callback = getatt
+r(self.urlconf_module
+, "handler%s" % 
+view_type, None)
+                     
+  ^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\utils\functional.
+py", line 47, in 
+__get__
+    res = instance.__
+dict__[self.name] = 
+self.func(instance)
+                     
+                    
+~~~~~~~~~^^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\urls\resolvers.py
+", line 711, in 
+urlconf_module
+    return import_mod
+ule(self.urlconf_name
+)
+  File "C:\Python313\
+Lib\importlib\__init_
+_.py", line 88, in 
+import_module
+    return _bootstrap
+._gcd_import(name[lev
+el:], package, level)
+           ~~~~~~~~~~
+~~~~~~~~~~~~^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen impor
+tlib._bootstrap>", 
+line 1387, in 
+_gcd_import
+  File "<frozen impor
+tlib._bootstrap>", 
+line 1360, in 
+_find_and_load
+  File "<frozen impor
+tlib._bootstrap>", 
+line 1331, in _find_a
+nd_load_unlocked
+  File "<frozen impor
+tlib._bootstrap>", 
+line 935, in 
+_load_unlocked
+  File "<frozen impor
+tlib._bootstrap_exter
+nal>", line 1026, in 
+exec_module
+  File "<frozen impor
+tlib._bootstrap>", 
+line 488, in _call_wi
+th_frames_removed
+  File "C:\Users\9170
+3\OneDrive\Desktop\ka
+ryasiddhi\myproject\u
+rls.py", line 8, in 
+<module>
+    path('', include(
+'core.urls')),
+             
+~~~~~~~^^^^^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\urls\conf.py", 
+line 39, in include
+    urlconf_module = 
+import_module(urlconf
+_module)
+  File "C:\Python313\
+Lib\importlib\__init_
+_.py", line 88, in 
+import_module
+    return _bootstrap
+._gcd_import(name[lev
+el:], package, level)
+           ~~~~~~~~~~
+~~~~~~~~~~~~^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen impor
+tlib._bootstrap>", 
+line 1387, in 
+_gcd_import
+  File "<frozen impor
+tlib._bootstrap>", 
+line 1360, in 
+_find_and_load
+  File "<frozen impor
+tlib._bootstrap>", 
+line 1331, in _find_a
+nd_load_unlocked
+  File "<frozen impor
+tlib._bootstrap>", 
+line 935, in 
+_load_unlocked
+  File "<frozen impor
+tlib._bootstrap_exter
+nal>", line 1026, in 
+exec_module
+  File "<frozen impor
+tlib._bootstrap>", 
+line 488, in _call_wi
+th_frames_removed
+  File "C:\Users\9170
+3\OneDrive\Desktop\ka
+ryasiddhi\core\urls.p
+y", line 2, in 
+<module>
+    from . import 
+views
+  File "C:\Users\9170
+3\OneDrive\Desktop\ka
+ryasiddhi\core\views.
+py", line 599
+    print(f"=========
+=====================
+==============")
+IndentationError: 
+unexpected indent

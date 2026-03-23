@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+    .success-container {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+        background: linear-gradient(135deg, #FFF8DC 0%, #FFFFF0 50%, #FFF5E6 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .success-card {
+        background: #FFFFFF;
+        padding: 60px 40px;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(128, 0, 0, 0.12);
+        max-width: 600px;
+        width: 100%;
+        text-align: center;
+        border-top: 6px solid #800000;
+        position: relative;
+        z-index: 5;
+    }
+
+    .success-icon-wrapper {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(135deg, #800000, #A52A2A);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 30px;
+        box-shadow: 0 8px 25px rgba(128, 0, 0, 0.2);
+    }
+
+    .success-icon {
+        color: #FFFFFF;
+        font-size: 3rem;
+    }
+
+    .success-title {
+        font-family: 'Rozha One', serif;
+        color: #800000;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .success-msg {
+        font-family: 'Playfair Display', serif;
+        color: #5D4E37;
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .countdown-box {
+        background: #FDF5E6;
+        padding: 15px 25px;
+        border-radius: 50px;
+        display: inline-block;
+        margin-bottom: 40px;
+        border: 1px solid #E8D5C4;
+    }
+
+    .countdown-text {
+        font-family: 'Cinzel', serif;
+        color: #B8860B;
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    #timer {
+        color: #800000;
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 0 5px;
+    }
+
+    .success-actions {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .btn-sacred {
+        padding: 14px 30px;
+        border-radius: 50px;
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.95rem;
+        letter-spacing: 1px;
+    }
+
+    .btn-home {
+        background: linear-gradient(135deg, #800000, #A52A2A);
+        color: #FFFFFF;
+        box-shadow: 0 4px 15px rgba(128, 0, 0, 0.2);
+    }
+
+    .btn-home:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(128, 0, 0, 0.3);
+    }
+
+    .btn-about {
+        background: #FFFFFF;
+        color: #800000;
+        border: 2px solid #800000;
+    }
+
+    .btn-about:hover {
+        background: #800000;
+        color: #FFFFFF;
+        transform: translateY(-3px);
+    }
+
+    .temple-ornament {
+        position: absolute;
+        opacity: 0.05;
+        font-size: 20rem;
+        color: #800000;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .left-ornament {
+        top: -5%;
+        left: -5%;
+    }
+
+    .right-ornament {
+        bottom: -5%;
+        right: -5%;
+    }
+
+    @media (max-width: 576px) {
+        .success-title {
+            font-size: 2rem;
+        }
+
+        .success-actions {
+            flex-direction: column;
+        }
+
+        .btn-sacred {
+            justify-content: center;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="success-container">
+    <div class="temple-ornament left-ornament">ॐ</div>
+    <div class="temple-ornament right-ornament">🪷</div>
+
+    <div class="success-card">
+        <div class="success-icon-wrapper">
+            <i class="fas fa-check success-icon"></i>
+        </div>
+
+        <h1 class="success-title">Namaste! 🙏</h1>
+
+        <p class="success-msg">
+            Your sacred message has been received successfully.<br>
+            Our team will get in touch with you shortly.
+        </p>
+
+        <div class="countdown-box">
+            <span class="countdown-text">
+                Redirecting to home in <span id="timer">5</span> seconds...
+            </span>
+        </div>
+
+        <div class="success-actions">
+            <a href="{% url 'home' %}" class="btn-sacred btn-home">
+                <i class="fas fa-home"></i> Go to Home
+            </a>
+            <a href="{% url 'about' %}" class="btn-sacred btn-about">
+                <i class="fas fa-info-circle"></i> About Us
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let timeLeft = 5;
+        const timerSpan = document.getElementById('timer');
+
+        const countdown = setInterval(function () {
+            timeLeft -= 1;
+            if (timerSpan) timerSpan.textContent = timeLeft;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                window.location.href = "{% url 'home' %}";
+            }
+        }, 1000);
+    });
+</script>
+{% endblock %}

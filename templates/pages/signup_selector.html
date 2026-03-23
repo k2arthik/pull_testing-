@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% comment %}
+=========================================
+SIGNUP SELECTOR PAGE
+Choose between User and Purohit Registration
+=========================================
+{% endcomment %}
+
+{% block title %}Choose Your Path - Sign Up{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+{% include 'content/signup_selector_content.html' %}
+{% endblock %}

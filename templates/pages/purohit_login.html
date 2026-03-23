@@ -16,18 +16,36 @@
 {% endblock %}
 
 {% block content %}
+<<<<<<< HEAD
 <section class="auth-section">
+=======
+<section class="auth-section" style=" background: linear-gradient(rgba(255, 252, 245, 0.92), rgba(255, 252, 245, 0.92)), url('/static/images/bgdesign2.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;">
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
     <div class="auth-card">
         <div class="auth-header">
             <h2>Purohit Sign In</h2>
             <p>Access your priest dashboard</p>
         </div>
 
+<<<<<<< HEAD
         <form class="auth-form" method="POST">
             {% csrf_token %}
             <div class="form-group">
                 <label for="purohit_id">Purohit ID / Email</label>
                 <input type="text" id="purohit_id" name="purohit_id" placeholder="Enter ID or Email" required>
+=======
+
+
+        <form class="auth-form" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="login_id">Mobile Number or Email</label>
+                <input type="text" id="login_id" name="login_id" placeholder="Enter your 10-digit mobile number or registered email" required>
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
             </div>
 
             <div class="form-group">
@@ -35,6 +53,14 @@
                 <input type="password" id="password" name="password" placeholder="Enter password" required>
             </div>
 
+<<<<<<< HEAD
+=======
+            <div style="text-align: right; margin-bottom: 20px;">
+                <a href="{% url 'purohit_forgot_password' %}"
+                    style="color: #d4af37; text-decoration: none; font-size: 0.9rem;">Forgot Password?</a>
+            </div>
+
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
             <button type="submit" class="btn-auth">Sign In to Portal</button>
         </form>
 

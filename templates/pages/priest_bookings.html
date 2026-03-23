@@ -1,0 +1,1155 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load auth_extras %}
+
+{% block title %}Manage Bookings — Karya Siddhi{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* =========================================================
+     PRIEST BOOKINGS PAGE — SACRED TEMPLE THEME
+     Colors: Maroon + Gold + Saffron + Ivory
+  ========================================================= */
+
+    :root {
+        --maroon-dark: #5a0000;
+        --maroon: #800000;
+        --maroon-mid: #a00000;
+        --gold: #D4AF37;
+        --gold-light: #F5E8BF;
+        --gold-pale: #fdf6e0;
+        --saffron: #FF9933;
+        --ivory: #FFFFF0;
+        --ivory-warm: #fdf8f0;
+        --text-dark: #2c1810;
+        --text-muted: #7a5c4e;
+        --shadow-glow: rgba(212, 175, 55, 0.35);
+    }
+
+    /* ── Page Wrapper ── */
+    .bookings-page {
+        background: var(--ivory-warm);
+        min-height: 100vh;
+        padding-bottom: 80px;
+        font-family: "Times New Roman", Times, serif !important;
+    }
+
+    /* ── Hero Banner ── */
+    .bookings-hero {
+        background: linear-gradient(135deg, var(--maroon-dark) 0%, var(--maroon) 55%, #3e0000 100%);
+        padding: 130px 24px 60px;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .bookings-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.07'%3E%3Cpath d='M40 0L50 30H80L57 48.5L65 80L40 62L15 80L23 48.5L0 30H30Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        background-size: 80px;
+        pointer-events: none;
+    }
+
+    .bookings-hero::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 60Q360 0 720 40Q1080 80 1440 20V60H0Z' fill='%23fdf8f0'/%3E%3C/svg%3E");
+        background-size: cover;
+    }
+
+    .bookings-hero-om {
+        font-family: "Times New Roman", Times, serif !important;
+        font-size: 2.5rem;
+        color: var(--gold);
+        opacity: 0.85;
+        margin-bottom: 12px;
+        display: block;
+        animation: pulse-glow 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+
+        0%,
+        100% {
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        50% {
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.9), 0 0 60px rgba(255, 153, 51, 0.4);
+        }
+    }
+
+    .bookings-hero h1 {
+        font-family: "Times New Roman", Times, serif !important;
+        font-size: clamp(1.6rem, 4vw, 2.8rem);
+        font-weight: 800;
+        color: var(--gold-light);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin: 0 0 12px;
+        text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
+    }
+
+    .bookings-hero p {
+        font-style: italic;
+        color: rgba(245, 232, 191, 0.88);
+        font-size: 1.1rem;
+        margin: 0 auto;
+        max-width: 520px;
+    }
+
+    .bookings-hero-divider {
+        width: 120px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        margin: 20px auto;
+    }
+
+    /* ── Layout Grid ── */
+    .bookings-layout {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 48px 24px 0;
+        display: grid;
+        grid-template-columns: 310px 1fr;
+        gap: 32px;
+        align-items: start;
+    }
+
+    @media (max-width: 992px) {
+        .bookings-layout {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ── Sidebar ── */
+    .sidebar-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .panel-card {
+        background: #fff;
+        border-radius: 12px;
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+    }
+
+    .panel-card-header {
+        background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+        padding: 14px 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Times New Roman", Times, serif !important;
+    }
+
+    .panel-card-header i {
+        color: var(--gold);
+    }
+
+    .panel-card-header h3 {
+        font-family: 'Cinzel', serif;
+        color: var(--gold-light);
+        font-size: 0.95rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+    .panel-card-body {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .stat-value {
+        font-family: 'Cinzel', serif;
+        font-size: 2.5rem;
+        color: var(--maroon);
+        font-weight: 800;
+        line-height: 1;
+    }
+
+    .stat-label {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 5px;
+        display: block;
+    }
+
+    .back-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--maroon);
+        text-decoration: none;
+        font-family: 'Cinzel', serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 12px 20px;
+        border-radius: 10px;
+        border: 2px solid var(--gold);
+        background: var(--gold-pale);
+        transition: all 0.3s;
+        justify-content: center;
+    }
+
+    .back-btn:hover {
+        background: var(--maroon);
+        color: var(--gold-light);
+        border-color: var(--maroon);
+        text-decoration: none;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(128, 0, 0, 0.25);
+    }
+
+    /* ── Filter Bar ── */
+    .filter-bar {
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .filter-group {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        padding: 10px 20px;
+        border-radius: 50px;
+        border: 2px solid var(--gold);
+        background: transparent;
+        color: var(--maroon);
+        font-family: 'Cinzel', serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .filter-btn:hover {
+        background: var(--gold-pale);
+        transform: translateY(-2px);
+    }
+
+    .filter-btn.active {
+        background: var(--maroon);
+        color: var(--gold-light);
+        border-color: var(--maroon);
+        box-shadow: 0 4px 15px rgba(128, 0, 0, 0.2);
+    }
+
+    .date-filters {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .date-picker-custom,
+    .date-dropdown {
+        padding: 8px 15px;
+        border-radius: 50px;
+        border: 2px solid var(--gold);
+        font-family: 'Inter', sans-serif;
+        font-size: 0.85rem;
+        color: var(--text-dark);
+        background: #fff;
+        outline: none;
+        transition: all 0.3s;
+    }
+
+    .date-picker-custom:focus,
+    .date-dropdown:focus {
+        border-color: var(--maroon);
+        box-shadow: 0 0 10px rgba(128, 0, 0, 0.1);
+    }
+
+    /* ── List Area ── */
+    .bookings-list {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    /* ── Booking Card Redesign ── */
+    .booking-card {
+        background: #fff;
+        border-radius: 20px;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+    }
+
+    .booking-card.pending {
+        border: 2px solid var(--maroon);
+        box-shadow: 0 15px 45px rgba(128, 0, 0, 0.12);
+        animation: card-pulse 3s infinite;
+    }
+
+    @keyframes card-pulse {
+        0% {
+            box-shadow: 0 15px 45px rgba(128, 0, 0, 0.12);
+        }
+
+        50% {
+            box-shadow: 0 15px 45px rgba(128, 0, 0, 0.25);
+            border-color: var(--gold);
+        }
+
+        100% {
+            box-shadow: 0 15px 45px rgba(128, 0, 0, 0.12);
+        }
+    }
+
+    .booking-card.cancelled {
+        opacity: 0.7;
+        filter: grayscale(0.5);
+    }
+
+    /* ── NEW: Top Action Bar for Pending ── */
+    .card-action-bar-top {
+        background: linear-gradient(90deg, var(--maroon), var(--maroon-dark));
+        padding: 12px 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+    }
+
+    .action-label {
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        font-size: 0.9rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .action-label .badge {
+        background: var(--gold);
+        color: var(--maroon);
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+    }
+
+    .quick-actions-box {
+        display: flex;
+        gap: 15px;
+    }
+
+    /* ── Buttons ── */
+    .btn-sacred {
+        padding: 8px 24px;
+        border-radius: 50px;
+        font-family: 'Cinzel', serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .btn-accept-main {
+        background: var(--gold);
+        color: var(--maroon-dark);
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    }
+
+    .btn-accept-main:hover {
+        background: #fff;
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+    }
+
+    .btn-reject-main {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-reject-main:hover {
+        background: #c62828;
+        border-color: #c62828;
+    }
+
+    /* ── Card Grid ── */
+    .card-inner {
+        display: grid;
+        grid-template-columns: 140px 1fr 200px;
+        min-height: 160px;
+    }
+
+    @media (max-width: 768px) {
+        .card-inner {
+            grid-template-columns: 1fr;
+        }
+
+        .card-date {
+            border-right: none;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 15px;
+            flex-direction: row;
+            gap: 20px;
+        }
+
+        .date-day {
+            font-size: 1.5rem;
+        }
+
+        .time-slot-badge {
+            margin-top: 0;
+        }
+
+        .card-content {
+            border-right: none;
+        }
+    }
+
+    .card-date {
+        background: var(--ivory-warm);
+        border-right: 1px solid rgba(212, 175, 55, 0.1);
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .date-day {
+        font-family: 'Cinzel', serif;
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: var(--maroon);
+        line-height: 1;
+    }
+
+    .date-month {
+        font-family: 'Cinzel', serif;
+        font-size: 1rem;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        margin-top: 5px;
+        color: var(--maroon-mid);
+    }
+
+    .time-slot-badge {
+        margin-top: 15px;
+        background: var(--maroon);
+        color: var(--gold);
+        padding: 4px 12px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        border: 1px solid var(--gold);
+    }
+
+    .card-content {
+        padding: 25px;
+        border-right: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .service-title-main {
+        font-family: 'Cinzel', serif;
+        font-size: 1.5rem;
+        color: var(--maroon);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    @media (max-width: 480px) {
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .info-item {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    .info-icon {
+        color: var(--gold);
+        font-size: 1rem;
+        width: 20px;
+        text-align: center;
+    }
+
+    .info-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        letter-spacing: 1px;
+        display: block;
+        margin-bottom: 2px;
+    }
+
+    .info-value {
+        font-size: 0.95rem;
+        color: var(--text-dark);
+        font-weight: 600;
+    }
+
+    .info-value a {
+        color: var(--maroon);
+        text-decoration: none;
+    }
+
+    .card-actions-side {
+        padding: 25px;
+        background: #fafafa;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .status-indicator {
+        width: 100%;
+        text-align: center;
+        padding: 8px;
+        border-radius: 10px;
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .status-confirmed-pill {
+        background: #e8f5e9;
+        color: #2e7d32;
+    }
+
+    .status-pending-pill {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .status-completed-pill {
+        background: #f3e5f5;
+        color: #7b1fa2;
+    }
+
+    .status-cancelled-pill {
+        background: #ffebee;
+        color: #c62828;
+    }
+
+    .btn-action-small {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-align: center;
+        text-decoration: none;
+        transition: 0.3s;
+        border: 1px solid transparent;
+    }
+
+    .btn-receipt {
+        background: var(--gold-pale);
+        color: var(--maroon);
+        border-color: var(--gold);
+    }
+
+    .btn-receipt:hover {
+        background: var(--maroon);
+        color: #fff;
+    }
+
+    .btn-purohit-cancel {
+        color: #c62828;
+        border-color: #ffcdd2;
+    }
+
+    .btn-purohit-cancel:hover {
+        background: #ffebee;
+    }
+
+    .no-bookings {
+        text-align: center;
+        padding: 60px;
+        background: #fff;
+        border-radius: 20px;
+        border: 1px dashed var(--gold);
+    }
+
+    .no-bookings i {
+        font-size: 4rem;
+        color: var(--gold-light);
+        margin-bottom: 20px;
+    }
+
+    .no-bookings h3 {
+        font-family: 'Cinzel', serif;
+        color: var(--maroon);
+    }
+
+    /* =========================================================
+       MOBILE RESPONSIVENESS & MEDIA QUERIES
+    ========================================================= */
+
+    @media (max-width: 992px) {
+        .bookings-layout {
+            grid-template-columns: 1fr;
+            padding: 30px 15px 0;
+            gap: 25px;
+        }
+
+        .sidebar-panel {
+            order: -1;
+            /* Keep sidebar on top or move as needed, usually top for stats */
+        }
+    }
+
+    @media (max-width: 768px) {
+        .bookings-hero {
+            padding: 100px 15px 40px;
+        }
+
+        .filter-bar {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 20px;
+            padding: 15px;
+        }
+
+        .filter-group {
+            justify-content: center;
+        }
+
+        .date-filters {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .date-picker-custom,
+        .date-dropdown {
+            width: 100%;
+        }
+
+        .card-inner {
+            grid-template-columns: 1fr;
+            min-height: auto;
+        }
+
+        .card-date {
+            border-right: none;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 20px;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .date-day {
+            font-size: 1.8rem;
+        }
+
+        .time-slot-badge {
+            margin-top: 0;
+        }
+
+        .card-content {
+            padding: 20px;
+            border-right: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .card-actions-side {
+            padding: 20px;
+            background: #fff;
+        }
+
+        .card-action-bar-top {
+            flex-direction: column;
+            gap: 15px;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .quick-actions-box {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-sacred {
+            flex: 1;
+            justify-content: center;
+            padding: 10px 15px;
+            font-size: 0.8rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .service-title-main {
+            font-size: 1.2rem;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .quick-actions-box {
+            flex-direction: column;
+        }
+
+        .btn-sacred {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="bookings-page">
+
+    <!-- ── Hero Banner ── -->
+    <div class="bookings-hero">
+        <span class="bookings-hero-om">ॐ</span>
+        <h1>Service Bookings</h1>
+        <div class="bookings-hero-divider"></div>
+        <p>Manage your divine appointments and serve devotees with grace and wisdom.</p>
+    </div>
+
+    <!-- ── Main Layout ── -->
+    <div class="bookings-layout">
+
+        <!-- ════ SIDEBAR ════ -->
+        <aside class="sidebar-panel">
+
+            <!-- Stats -->
+            <div class="panel-card">
+                <div class="panel-card-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Overview</h3>
+                </div>
+                <div class="panel-card-body">
+                    <div class="stat-value">{{ pending_count }}</div>
+                    <span class="stat-label">Pending Requests</span>
+                </div>
+            </div>
+
+            <!-- Tips -->
+            <div class="panel-card">
+                <div class="panel-card-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Priest Tips</h3>
+                </div>
+                <div class="panel-card-body" style="text-align:left; font-size:0.85rem; color:var(--text-muted);">
+                    <ul style="padding-left:15px; margin:0;">
+                        <li style="margin-bottom:10px;">Confirm bookings promptly to help devotees plan.</li>
+                        <li style="margin-bottom:10px;">Be aware of the location before 24hrs itself.</li>
+                        <li>Download and keep a PDF copy for your records.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Back Link -->
+            <a href="{% url 'purohit_dashboard' %}" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+
+        </aside>
+
+        <!-- ════ MAIN BOOKINGS LIST ════ -->
+        <main class="bookings-main">
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <div class="filter-group" id="statusFilters">
+                    <button class="filter-btn active" data-status="all">All</button>
+                    <button class="filter-btn" data-status="pending">Pending</button>
+                    <button class="filter-btn" data-status="confirmed">Accepted</button>
+                    <button class="filter-btn" data-status="completed">Completed</button>
+                    <button class="filter-btn" data-status="cancelled">Rejected</button>
+                </div>
+
+                <div class="date-filters">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <i class="fas fa-calendar-day" style="color:var(--maroon); font-size:0.9rem;"></i>
+                        <select class="date-dropdown" id="dateQuickFilter">
+                            <option value="">Select Day</option>
+                            <option value="today">Today</option>
+                            <option value="yesterday">Yesterday</option>
+                            <option value="tomorrow">Tomorrow</option>
+                        </select>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <i class="fas fa-calendar-alt" style="color:var(--maroon); font-size:0.9rem;"></i>
+                        <input type="date" class="date-picker-custom" id="calendarFilter">
+                    </div>
+                </div>
+            </div>
+
+            {% if bookings or additional_assignments %}
+            <div class="bookings-list">
+
+                <!-- Primary & Old Secondary Bookings -->
+                {% for booking in bookings %}
+                <div class="booking-card {{ booking.status }} {% if booking.status == 'cancelled' %}cancelled{% endif %}"
+                    data-status="{{ booking.status }}" data-date="{{ booking.booking_date|date:'Y-m-d' }}"
+                    style="animation-delay: {{ forloop.counter0|add:1 }}s;">
+
+                    <!-- 1. Top Action Bar for Pending Requests -->
+                    {% if booking.status == 'pending' or booking.status == 'pending_payment' or booking.status == 'payment_completed' %}
+
+                    <div class="card-action-bar-top">
+                        <div class="action-label">
+                            <i class="fas fa-bell animate__animated animate__swing animate__infinite"></i>
+                            Action Required
+                            <span class="badge">Primary Priest</span>
+                        </div>
+                        <div class="quick-actions-box">
+                            <form method="POST" style="margin:0;">
+                                {% csrf_token %}
+                                <input type="hidden" name="booking_id" value="{{ booking.id }}">
+                                <input type="hidden" name="status" value="confirmed">
+                                <button type="submit" class="btn-sacred btn-accept-main">
+                                    <i class="fas fa-check-circle"></i> Accept
+                                </button>
+                            </form>
+                            <form method="POST" style="margin:0;">
+                                {% csrf_token %}
+                                <input type="hidden" name="booking_id" value="{{ booking.id }}">
+                                <input type="hidden" name="status" value="cancelled">
+                                <button type="submit" class="btn-sacred btn-reject-main">
+                                    <i class="fas fa-times-circle"></i> Reject
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <div class="card-inner">
+
+                        <!-- Date Header -->
+                        <div class="card-date">
+                            <span class="date-day">{{ booking.booking_date|date:"d" }}</span>
+                            <span class="date-month">{{ booking.booking_date|date:"M" }}</span>
+                            <div class="time-slot-badge">
+                                {{ booking.start_time|time:"gA" }} - {{ booking.end_time|time:"gA" }}
+                            </div>
+                        </div>
+
+                        <!-- Details Column -->
+                        <div class="card-content">
+                            <h2 class="service-title-main">
+                                {{ booking.service|get_service_name }}
+                                <span class="sacred-badge"
+                                    style="margin-top:0; font-size: 0.7rem; background: var(--maroon); color: var(--gold); border: 1px solid var(--gold);">
+                                    <i class="fas fa-user-tie"></i> LEAD
+                                </span>
+                            </h2>
+
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <i class="fas fa-user info-icon"></i>
+                                    <div>
+                                        <span class="info-label">Devotee</span>
+                                        <span class="info-value">{{ booking.devotee_name }}</span>
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-phone info-icon"></i>
+                                    <div>
+                                        <span class="info-label">Phone</span>
+                                        <span class="info-value"><a href="tel:{{ booking.devotee_phone }}">{{ booking.devotee_phone }}
+                                                
+                                            </a></span>
+                                    </div>
+                                </div>
+                                <div class="info-item" style="grid-column: span 2;">
+                                    <i class="fas fa-map-marker-alt info-icon"></i>
+                                    <div>
+                                        <span class="info-label">Location</span>
+                                        <span class="info-value">{{ booking.devotee_address }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Side Actions Column -->
+                        <div class="card-actions-side">
+                            <div class="status-indicator status-{{ booking.status }}-pill">
+                                {{ booking.get_status_display }}
+                            </div>
+
+                            {% if booking.status == 'confirmed' or booking.status == 'completed' %}
+                            <a href="{% url 'generate_booking_pdf' booking.id %}" class="btn-action-small btn-receipt"
+                                target="_blank">
+                                <i class="fas fa-file-pdf mr-1"></i> Receipt
+                            </a>
+                            {% endif %}
+
+                            {% if booking.can_cancel_self %}
+                            <form method="POST" style="width:100%;">
+                                {% csrf_token %}
+                                <input type="hidden" name="booking_id" value="{{ booking.id }}">
+                                <input type="hidden" name="action" value="purohit_cancel">
+                                <button type="submit" class="btn-action-small btn-purohit-cancel"
+                                    onclick="return confirm('Confirm cancellation? This cannot be undone.')">
+                                    <i class="fas fa-ban mr-1"></i> Cancel Puja
+                                </button>
+                            </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <!-- New System Additional Assignments -->
+                {% for assignment in additional_assignments %}
+                {% with booking=assignment.booking %}
+                <div class="booking-card {{ assignment.status }} {% if assignment.status == 'cancelled' %}cancelled{% endif %}"
+                    data-status="{{ assignment.status }}" data-date="{{ booking.booking_date|date:'Y-m-d' }}">
+
+                    {% if assignment.status == 'pending' %}
+                    <div class="card-action-bar-top" style="background: linear-gradient(90deg, #d4af37, #800000);">
+                        <div class="action-label" style="color: #fff;">
+                            <i class="fas fa-hands-helping animate__animated animate__pulse animate__infinite"></i>
+                            Assistant Request
+                        </div>
+                        <div class="quick-actions-box">
+                            <form method="POST" style="margin:0;">
+                                {% csrf_token %}
+                                <input type="hidden" name="booking_id" value="{{ booking.id }}">
+                                <input type="hidden" name="status" value="confirmed">
+                                <button type="submit" class="btn-sacred btn-accept-main">Accept Role</button>
+                            </form>
+                            <form method="POST" style="margin:0;">
+                                {% csrf_token %}
+                                <input type="hidden" name="booking_id" value="{{ booking.id }}">
+                                <input type="hidden" name="status" value="cancelled">
+                                <button type="submit" class="btn-sacred btn-reject-main">Decline</button>
+                            </form>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <div class="card-inner">
+                        <div class="card-date">
+                            <span class="date-day">{{ booking.booking_date|date:"d" }}</span>
+                            <span class="date-month">{{ booking.booking_date|date:"M" }}</span>
+                            <div class="time-slot-badge">{{ booking.start_time|time:"gA" }}</div>
+                        </div>
+
+                        <div class="card-content">
+                            <h2 class="service-title-main">
+                                {{ booking.service|get_service_name }}
+                                <span class="sacred-badge"
+                                    style="margin-top:0; font-size: 0.7rem; background: var(--gold); color: var(--maroon);">
+                                    <i class="fas fa-hands-helping"></i> ASSISTANT
+                                </span>
+                            </h2>
+                            <p style="font-size: 0.85rem; color: #666; margin-top: -10px; margin-bottom: 15px;">
+                                <i class="fas fa-user-tie mr-1"></i> Lead Priest: {{ booking.priest.fullname }}
+                            </p>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <i class="fas fa-user info-icon"></i>
+                                    <div>
+                                        <span class="info-label">Devotee</span>
+                                        <span class="info-value">{{ booking.devotee_name }}</span>
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-map-marker-alt info-icon"></i>
+                                    <div>
+                                        <span class="info-label">Location</span>
+                                        <span class="info-value">{{ booking.devotee_address|truncatechars:30 }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-actions-side">
+                            <div class="status-indicator status-{{ assignment.status }}-pill">
+                                {{ assignment.get_status_display }}
+                            </div>
+
+                            {% if assignment.status == 'confirmed' %}
+                            <a href="{% url 'generate_booking_pdf' booking.id %}" class="btn-action-small btn-receipt"
+                                target="_blank">
+                                <i class="fas fa-file-pdf mr-1"></i> Receipt
+                            </a>
+                            {% endif %}
+
+                            {% if assignment.can_cancel_self %}
+                            <form method="POST" style="width:100%;">
+                                {% csrf_token %}
+                                <input type="hidden" name="booking_id" value="{{ booking.id }}">
+                                <input type="hidden" name="action" value="purohit_cancel">
+                                <button type="submit" class="btn-action-small btn-purohit-cancel"
+                                    onclick="return confirm('Confirm cancellation? This cannot be undone.')">
+                                    <i class="fas fa-ban mr-1"></i> Withdrawal
+                                </button>
+                            </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endwith %}
+                {% endfor %}
+
+            </div>
+
+
+    </div>
+
+    {% else %}
+    <div class="no-bookings">
+        <i class="fas fa-om"></i>
+        <h3>No Bookings Yet</h3>
+        <p>Your inbox is peaceful. New booking requests will appear here.</p>
+    </div>
+    {% endif %}
+    </main>
+
+</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const filters = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.booking-card');
+        const dateQuickFilter = document.getElementById('dateQuickFilter');
+        const calendarFilter = document.getElementById('calendarFilter');
+
+        let currentStatus = 'all';
+        let currentDateFilter = '';
+
+        function formatDate(date) {
+            const y = date.getFullYear();
+            const m = String(date.getMonth() + 1).padStart(2, '0');
+            const d = String(date.getDate()).padStart(2, '0');
+            return `${y}-${m}-${d}`;
+        }
+
+        function applyFilters() {
+            let visibleCount = 0;
+            const list = document.querySelector('.bookings-list');
+            if (!list) return;
+
+            cards.forEach(card => {
+                const status = card.dataset.status;
+                const bDate = card.dataset.date;
+
+                let show = true;
+
+                // Status Filter
+                if (currentStatus !== 'all') {
+                    if (currentStatus === 'confirmed' && status !== 'confirmed' && status !== 'in_progress') show = false;
+                    else if (currentStatus === 'pending' && status !== 'pending') show = false;
+                    else if (currentStatus === 'completed' && status !== 'completed') show = false;
+                    else if (currentStatus === 'cancelled' && (status !== 'cancelled' && status !== 'cancelled_by_purohit')) show = false;
+                }
+
+                // Date Filter
+                if (show && currentDateFilter) {
+                    if (bDate !== currentDateFilter) {
+                        show = false;
+                    }
+                }
+
+                card.style.display = show ? 'block' : 'none';
+                if (show) visibleCount++;
+            });
+
+            // Show "No bookings" if everything is hidden
+            let noMsg = document.getElementById('noResultsMsg');
+
+            if (visibleCount === 0) {
+                if (!noMsg) {
+                    noMsg = document.createElement('div');
+                    noMsg.id = 'noResultsMsg';
+                    noMsg.className = 'no-bookings';
+                    noMsg.style.gridColumn = '1 / -1';
+                    noMsg.innerHTML = '<i class="fas fa-search"></i><h3>No matches found</h3><p>Try adjusting your filters.</p>';
+                    list.appendChild(noMsg);
+                }
+            } else {
+                if (noMsg) noMsg.remove();
+            }
+        }
+
+        filters.forEach(btn => {
+            btn.addEventListener('click', function () {
+                filters.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentStatus = this.dataset.status;
+                applyFilters();
+            });
+        });
+
+        dateQuickFilter.addEventListener('change', function () {
+            calendarFilter.value = '';
+            if (!this.value) {
+                currentDateFilter = '';
+            } else {
+                const d = new Date();
+                if (this.value === 'yesterday') d.setDate(d.getDate() - 1);
+                if (this.value === 'tomorrow') d.setDate(d.getDate() + 1);
+                currentDateFilter = formatDate(d);
+            }
+            applyFilters();
+        });
+
+        calendarFilter.addEventListener('change', function () {
+            dateQuickFilter.value = '';
+            cur = this.value; // HTML date input returns yyyy-mm-dd
+            applyFilters();
+        });
+    });
+</script>
+{% endblock %}

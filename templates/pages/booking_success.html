@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load auth_extras %}
+
+{% block extra_css %}
+<style>
+    .success-section {
+        padding: 80px 0;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        background: #fdfdfd;
+    }
+
+    .success-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 50px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+        border-top: 5px solid #d4af37;
+    }
+
+    .success-icon {
+        width: 100px;
+        height: 100px;
+        background: #f8f1e5;
+        color: #d4af37;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 50px;
+        margin: 0 auto 30px;
+        animation: scaleIn 0.5s ease-out;
+    }
+
+    @keyframes scaleIn {
+        from {
+            transform: scale(0);
+        }
+
+        to {
+            transform: scale(1);
+        }
+    }
+
+    .success-card h1 {
+        color: #333;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+
+    .success-card p {
+        color: #666;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .booking-details {
+        background: #f9f9f9;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 30px;
+        text-align: left;
+    }
+
+    .detail-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px dotted #ddd;
+    }
+
+    .detail-row:last-child {
+        border-bottom: none;
+    }
+
+    .detail-label {
+        color: #888;
+        font-weight: 500;
+    }
+
+    .detail-value {
+        color: #333;
+        font-weight: 600;
+    }
+
+    .btn-group {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .btn-success-page {
+        padding: 12px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary-success {
+        background: #d4af37;
+        color: #fff;
+    }
+
+    .btn-primary-success:hover {
+        background: #b8962d;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-secondary-success {
+        background: #f0f0f0;
+        color: #555;
+    }
+
+    .btn-secondary-success:hover {
+        background: #e5e5e5;
+        color: #333;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="success-section">
+    <div class="container">
+        <div class="success-card">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1>Booking Submitted!</h1>
+            <p>Your puja booking request has been successfully sent to the priest. You will receive a confirmation email
+                shortly.</p>
+
+            {% if booking %}
+            <div class="booking-details">
+                <div class="detail-row">
+                    <span class="detail-label">Service:</span>
+                    <span class="detail-value">{{ booking.service|get_service_name }}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Priest:</span>
+                    <span class="detail-value">{{ booking.priest.fullname }}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Date:</span>
+                    <span class="detail-value">{{ booking.booking_date }}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Time:</span>
+                    <span class="detail-value">{{ booking.start_time|time:"h:i A" }} - {{ booking.end_time|time:"h:i A" }}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Status:</span>
+                    <span class="detail-value" style="color: #d4af37;">{{ booking.get_status_display }}</span>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="btn-group">
+                <a href="{% url 'my_bookings' %}" class="btn-success-page btn-primary-success">View My Bookings</a>
+                <a href="{% url 'home' %}" class="btn-success-page btn-secondary-success">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

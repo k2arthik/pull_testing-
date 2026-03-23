@@ -1,0 +1,22 @@
+INFO 2026-03-15 11:12:22,387 autoreload 6924 8312 Watching for file changes with StatReloader
+INFO 2026-03-15 11:12:52,119 autoreload 6924 8312 C:\Users\91703\Downloads\karya13\core\views\dashboards.py changed, reloading.
+INFO 2026-03-15 11:12:53,673 autoreload 14716 8076 Watching for file changes with StatReloader
+INFO 2026-03-15 11:13:01,564 autoreload 14716 8076 C:\Users\91703\Downloads\karya13\core\views\dashboards.py changed, reloading.
+INFO 2026-03-15 11:13:04,387 autoreload 37748 34096 Watching for file changes with StatReloader
+INFO 2026-03-15 11:13:18,255 autoreload 37748 34096 C:\Users\91703\Downloads\karya13\core\views\__init__.py changed, reloading.
+INFO 2026-03-15 11:13:19,554 autoreload 26692 30152 Watching for file changes with StatReloader
+INFO 2026-03-15 11:41:04,649 autoreload 16256 26144 Watching for file changes with StatReloader
+INFO 2026-03-15 11:42:08,157 autoreload 16256 26144 C:\Users\91703\Downloads\karya13\core\views\dashboards.py changed, reloading.
+INFO 2026-03-15 11:42:10,171 autoreload 47068 29440 Watching for file changes with StatReloader
+INFO 2026-03-15 11:42:35,027 basehttp 47068 40768 "GET /login/ HTTP/1.1" 200 14699
+INFO 2026-03-15 11:42:35,324 basehttp 47068 40768 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-03-15 11:42:35,421 basehttp 47068 40768 "GET /static/css/auth.css HTTP/1.1" 304 0
+INFO 2026-03-15 11:42:35,426 basehttp 47068 22080 "GET /static/css/video_intro.css HTTP/1.1" 304 0
+INFO 2026-03-15 11:42:35,503 basehttp 47068 22080 "GET /static/images/logo.png HTTP/1.1" 304 0
+WARNING 2026-03-15 11:42:35,589 basehttp 47068 40768 "GET /static/images/WhatsApp%20Image%202026-03-13%20at%202.44.05%20PM.jpeg HTTP/1.1" 404 1977
+INFO 2026-03-15 11:42:35,722 basehttp 47068 22080 "GET /static/js/cart.js HTTP/1.1" 304 0
+INFO 2026-03-15 11:42:36,418 basehttp 47068 22080 "GET /static/js/video_intro.js HTTP/1.1" 304 0
+INFO 2026-03-15 11:42:37,570 basehttp 47068 22080 "GET /static/images/bgdesign2.jpeg HTTP/1.1" 304 0
+INFO 2026-03-15 11:42:37,767 basehttp 47068 22080 "GET /static/images/footer2.jpeg HTTP/1.1" 304 0
+INFO 2026-03-15 11:42:39,672 basehttp 47068 22080 - Broken pipe from ('127.0.0.1', 55198)
+INFO 2026-03-15 11:43:25,135 autoreload 47068 29440 C:\Users\91703\Downloads\karya13\core\urls.py changed, reloading.

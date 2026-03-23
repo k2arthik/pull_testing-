@@ -1,0 +1,131 @@
+{% extends 'dashboard/base_dash.html' %}
+{% load static %}
+
+{% block dash_title %}Admin Overview{% endblock %}
+{% block page_title %}Dashboard Overview{% endblock %}
+
+{% block dash_content %}
+<!-- Stats Grid -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-info">
+            <h4>Total Bookings</h4>
+            <span class="value">{{ total_bookings }}</span>
+        </div>
+        <div class="stat-icon" style="background: #e3f2fd; color: #1e88e5;">
+            <i class="fas fa-calendar-check"></i>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-info">
+            <h4>Total Devotees</h4>
+            <span class="value">{{ total_devotees }}</span>
+        </div>
+        <div class="stat-icon" style="background: #e8f5e9; color: #43a047;">
+            <i class="fas fa-users"></i>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-info">
+            <h4>Total Revenue</h4>
+            <span class="value">₹{{ total_revenue }}</span>
+        </div>
+        <div class="stat-icon" style="background: #fff3e0; color: #fb8c00;">
+            <i class="fas fa-indian-rupee-sign"></i>
+        </div>
+    </div>
+
+    <div class="stat-card" style="border-left-color: #e53935;">
+        <div class="stat-info">
+            <h4>Pending Inquiries</h4>
+            <span class="value">{{ pending_enquiries }}</span>
+        </div>
+        <div class="stat-icon" style="background: #ffebee; color: #e53935;">
+            <i class="fas fa-question-circle"></i>
+        </div>
+    </div>
+</div>
+
+<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 25px;">
+    <!-- Recent Bookings -->
+    <div class="card">
+        <div class="card-header">
+            <h3>Recent Bookings</h3>
+            <a href="#" class="btn-text" style="color: var(--gold); font-size: 0.8rem; text-decoration: none;">View
+                All</a>
+        </div>
+        <div class="card-body" style="padding: 0;">
+            <div class="table-responsive">
+                <table class="dash-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Puja</th>
+                            <th>Devotee</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for booking in recent_bookings %}
+                        <tr>
+                            <td>#{{ booking.id }}</td>
+                            <td style="font-weight: 500;">{{ booking.service.name }}</td>
+                            <td>{{ booking.devotee_name }}</td>
+                            <td>{{ booking.booking_date }}</td>
+                            <td>
+                                {% if booking.status == 'completed' %}
+                                <span class="badge badge-success">COMPLETED</span>
+                                {% elif booking.status == 'pending' %}
+                                <span class="badge badge-warning">PENDING</span>
+                                {% else %}
+                                <span class="badge badge-secondary">{{ booking.status|upper }}</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5" style="text-align: center; padding: 30px; color: #999;">No recent bookings
+                                found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Rated Priests -->
+    <div class="card">
+        <div class="card-header">
+            <h3>Top Rated Purohits</h3>
+        </div>
+        <div class="card-body">
+            <div class="top-priests-list">
+                {% for perf in top_priests %}
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div class="user-avatar"
+                            style="width: 40px; height: 40px; background: var(--gold-light); color: var(--maroon);">
+                            {{ perf.priest.fullname|first|upper }}
+                        </div>
+                        <div>
+                            <div style="font-weight: 600; font-size: 0.9rem;">{{ perf.priest.fullname }}</div>
+                            <div style="font-size: 0.75rem; color: #888;">{{ perf.completed_successful }} Completions
+                            </div>
+                        </div>
+                    </div>
+                    <div style="color: var(--gold); font-weight: bold;">
+                        <i class="fas fa-star"></i> {{ perf.rating|floatformat:1 }}
+                    </div>
+                </div>
+                {% empty %}
+                <p style="text-align: center; color: #999; font-size: 0.9rem;">No performance data available.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

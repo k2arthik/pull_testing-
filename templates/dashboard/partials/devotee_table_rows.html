@@ -1,0 +1,33 @@
+{% for devotee in devotees %}
+<tr>
+    <td style="display: flex; align-items: center; gap: 10px;">
+        <div class="user-avatar"
+            style="width: 30px; height: 30px; font-size: 0.7rem; background: #e3f2fd; color: #1e88e5;">
+            {{ devotee.fullname|first|upper }}
+        </div>
+        <span>{{ devotee.fullname }}</span>
+    </td>
+    <td>{{ devotee.user.email }}</td>
+    <td>{{ devotee.mobile }}</td>
+    <td>{{ devotee.user.date_joined|date:"M d, Y" }}</td>
+    <td>
+        {% with booking_count=devotee.user.devotee_bookings.count %}
+        <span class="badge" style="background: #f0f0f0; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">
+            {{ booking_count }} Bookings
+        </span>
+        {% endwith %}
+    </td>
+    <td>
+        <div style="display: flex; gap: 5px;">
+            <a href="{% url 'admin_devotee_edit' devotee.user.id %}" class="btn-icon" title="Edit Profile"><i
+                    class="fas fa-edit"></i></a>
+            <a href="{% url 'admin_devotee_delete' devotee.user.id %}" class="btn-icon" title="Delete"
+                style="color: #c62828;"><i class="fas fa-trash-alt"></i></a>
+        </div>
+    </td>
+</tr>
+{% empty %}
+<tr>
+    <td colspan="6" style="text-align: center; padding: 30px; color: #999;">No devotees found matching your search.</td>
+</tr>
+{% endfor %}

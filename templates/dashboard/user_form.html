@@ -1,0 +1,148 @@
+{% extends 'dashboard/base_dash.html' %}
+{% load static %}
+
+{% block dash_title %}{{ user_type }} Edit Form{% endblock %}
+{% block page_title %}{{ user_type }} Management{% endblock %}
+
+{% block extra_css %}
+<style>
+    .sacred-form-container {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        border: 1px solid #eee;
+        overflow: hidden;
+    }
+
+    .sacred-form-header {
+        background: linear-gradient(135deg, #fdfaf3, #FFF8DC);
+        padding: 20px 30px;
+        border-bottom: 2px solid #D4AF37;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .sacred-form-header h3 {
+        color: #800000;
+        margin: 0;
+        font-family: 'Cinzel', serif;
+    }
+
+    .sacred-form-body {
+        padding: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-weight: 600;
+        color: #4a332d;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .sacred-input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.3s;
+    }
+
+    .sacred-input:focus {
+        border-color: #D4AF37;
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        outline: none;
+    }
+
+    .form-actions {
+        margin-top: 30px;
+        display: flex;
+        gap: 15px;
+        padding-top: 20px;
+        border-top: 1px dashed #ddd;
+    }
+
+    .btn-sacred-save {
+        background: var(--maroon);
+        color: var(--gold);
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-family: 'Cinzel', serif;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .btn-sacred-save:hover {
+        background: #600000;
+        color: #fff;
+        transform: translateY(-2px);
+    }
+
+    .btn-sacred-secondary {
+        background: #f8f9fa;
+        color: #333;
+        padding: 12px 25px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+    .btn-sacred-secondary:hover {
+        background: #e9ecef;
+        color: #000;
+    }
+</style>
+{% endblock %}
+
+{% block dash_content %}
+<div class="sacred-form-container">
+    <div class="sacred-form-header">
+        <i class="fas fa-user-edit fa-2x" style="color: #D4AF37;"></i>
+        <h3>Edit {{ user_type }}: {{ user_obj.fullname }}</h3>
+    </div>
+
+    <div class="sacred-form-body">
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            <strong>Please correct the errors below:</strong>
+            {{ form.errors }}
+        </div>
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="row">
+                {% for field in form %}
+                <div class="col-md-6 form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-sacred-save">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+                <a href="{% if user_type == 'Devotee' %}{% url 'admin_devotee_list' %}{% else %}{% url 'admin_purohit_list' %}{% endif %}"
+                    class="btn-sacred-secondary">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

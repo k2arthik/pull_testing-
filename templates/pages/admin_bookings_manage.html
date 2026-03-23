@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load auth_extras %}
+
+{% block extra_css %}
+<style>
+    .admin-manage-container {
+        background: #f9f4e6;
+        min-height: 80vh;
+    }
+
+    .status-badge-cancelled {
+        background: #f8d7da;
+        color: #721c24;
+        border-radius: 20px;
+    }
+
+    .status-badge-pending {
+        background: #fff3cd;
+        color: #856404;
+        border-radius: 20px;
+    }
+
+    .status-badge-confirmed {
+        background: #d4edda;
+        color: #155724;
+        border-radius: 20px;
+    }
+
+    .status-badge-completed {
+        background: #d1ecf1;
+        color: #0c5460;
+        border-radius: 20px;
+    }
+
+    .status-badge-in_progress {
+        background: #cce5ff;
+        color: #004085;
+        border-radius: 20px;
+    }
+
+    .status-badge-cancelled_by_purohit {
+        background: #ffe5d0;
+        color: #7c3a00;
+        border-radius: 20px;
+        font-weight: 700;
+    }
+
+    /* Reassign button colours per status */
+    .reassign-btn-cancelled {
+        background: #d4af37;
+        color: white;
+        border-radius: 8px;
+        font-weight: bold;
+        border: none;
+    }
+
+    .reassign-btn-cancelled_by_purohit {
+        background: #ff7043;
+        color: white;
+        border-radius: 8px;
+        font-weight: bold;
+        border: none;
+    }
+
+    .reassign-btn-cancelled_by_purohit:hover {
+        background: #e64a19;
+        color: white;
+    }
+
+    .reassign-btn-pending {
+        background: #6c757d;
+        color: white;
+        border-radius: 8px;
+        font-weight: bold;
+        border: none;
+    }
+
+    .reassign-btn-confirmed {
+        background: #28a745;
+        color: white;
+        border-radius: 8px;
+        font-weight: bold;
+        border: none;
+    }
+
+    .reassign-btn-cancelled:hover {
+        background: #b8972f;
+        color: white;
+    }
+
+    .reassign-btn-pending:hover {
+        background: #545b62;
+        color: white;
+    }
+
+    .reassign-btn-confirmed:hover {
+        background: #1e7e34;
+        color: white;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="admin-manage-container py-5">
+    <div class="container">
+        <h1 class="text-center mb-4"
+            style="font-family: 'Cinzel', serif; color: #8b4513; border-bottom: 3px solid #d4af37; display: inline-block; left: 50%; transform: translateX(-50%); position: relative; padding-bottom: 10px;">
+            Booking Management
+        </h1>
+
+        <!-- Django Messages -->
+        {% if messages %}
+        <div class="mb-4">
+            {% for message in messages %}
+            <div class="alert alert-{% if message.tags == 'error' %}danger{% elif message.tags == 'success' %}success{% elif message.tags == 'info' %}info{% else %}warning{% endif %} alert-dismissible fade show shadow-sm"
+                style="border-radius: 12px; border: none;" role="alert">
+                {% if message.tags == 'success' %}<i class="fas fa-check-circle mr-2"></i>{% endif %}
+                {% if message.tags == 'error' %}<i class="fas fa-exclamation-circle mr-2"></i>{% endif %}
+                {% if message.tags == 'info' %}<i class="fas fa-info-circle mr-2"></i>{% endif %}
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Filter Bar -->
+        <div class="card shadow-sm mb-4 border-0" style="border-radius: 15px;">
+            <div class="card-body p-4">
+                <form method="GET" class="form-inline justify-content-center">
+                    <label class="mr-3 font-weight-bold" style="color: #8b4513;">Filter by Status:</label>
+                    <select name="status" class="form-control mr-3" onchange="this.form.submit()"
+                        style="border: 2px solid #d4af37; border-radius: 8px; background: #fffcf5; font-weight: 600;">
+                        <option value="needs_attention" {% if status_filter == 'needs_attention' %}selected{% endif %}>⚠️
+                            Needs Attention (Cancelled)</option>
+                        <option value="">All Statuses</option>
+                        {% for value, label in status_choices %}
+                        <option value="{{ value }}" {% if status_filter == value %}selected{% endif %}>
+                            {{ label }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        {% if bookings %}
+        <div class="table-responsive shadow-sm" style="border-radius: 15px; background: white; overflow: hidden;">
+            <table class="table table-hover mb-0">
+                <thead style="background: #8b4513; color: white;">
+                    <tr>
+                        <th class="border-0 px-4">ID</th>
+                        <th class="border-0">Date &amp; Slot</th>
+                        <th class="border-0">Service</th>
+                        <th class="border-0">Devotee</th>
+                        <th class="border-0">Current Priest</th>
+                        <th class="border-0">Status</th>
+                        <th class="border-0 px-4 text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                    <tr>
+                        <td class="px-4 font-weight-bold">#{{ booking.id }}</td>
+                        <td>
+                            <div class="small">{{ booking.booking_date }}</div>
+                            <div class="badge badge-light border">{{ booking.get_slot_type_display }}</div>
+                        </td>
+                        <td>{{ booking.service|get_service_name }}</td>
+                        <td>
+                            <div class="font-weight-bold">{{ booking.devotee_name }}</div>
+                            <div class="small text-muted">{{ booking.devotee_phone }}</div>
+                        </td>
+                        <td>
+                            <div class="text-primary font-weight-bold">{{ booking.priest.fullname }}</div>
+                        </td>
+                        <td>
+                            <span class="badge px-3 py-2 status-badge-{{ booking.status }}">
+                                {{ booking.get_status_display }}
+                            </span>
+                        </td>
+                        <td class="px-4 text-center">
+                            {% if booking.status == 'cancelled' or booking.status == 'cancelled_by_purohit' %}
+                            <a href="{% url 'admin_reassign_booking' booking.id %}"
+                                class="btn btn-sm shadow-sm reassign-btn-{{ booking.status }}">
+                                <i class="fas fa-user-edit mr-1"></i>
+                                {% if booking.status == 'cancelled_by_purohit' %}Re-assign Purohit{% else %}Re-assign{% endif %}
+                            </a>
+                            {% elif booking.status != 'completed' %}
+                            <a href="{% url 'admin_reassign_booking' booking.id %}"
+                                class="btn btn-sm shadow-sm reassign-btn-{{ booking.status }}">
+                                <i class="fas fa-user-edit mr-1"></i> Reassign
+                            </a>
+                            {% else %}
+                            <span class="text-muted small">&#10003; Completed</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center py-5 bg-white shadow-sm rounded">
+            <i class="fas fa-clipboard-list fa-4x mb-3 text-muted"></i>
+            <h3 class="text-muted">No bookings found for this filter.</h3>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

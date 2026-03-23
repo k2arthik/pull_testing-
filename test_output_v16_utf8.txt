@@ -1,0 +1,434 @@
+﻿python : Creating 
+test database for 
+alias 'default'...
+At line:1 char:1
++ python manage.py 
+test core.tests_auth 
+core.tests_devotee_au
+th > test_ ...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (Creatin   
+ g test d...as 'd    
+efault'...:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+
+Found 14 test(s).
+System check identified no issues (0 silenced).
+E....F........
+=====================
+=====================
+=====================
+=======
+ERROR: test_priest_ed
+it_profile_success (c
+ore.tests_auth.Priest
+AuthTest.test_priest_
+edit_profile_success)
+---------------------
+---------------------
+---------------------
+-------
+Traceback (most 
+recent call last):
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\smartif.
+py", line 180, in 
+translate_token
+    op = 
+OPERATORS[token]
+         
+~~~~~~~~~^^^^^^^
+KeyError: 'form.langu
+age.value=="Telugu"'
+
+During handling of 
+the above exception, 
+another exception 
+occurred:
+
+Traceback (most 
+recent call last):
+  File "C:\Users\9170
+3\OneDrive\Desktop\ka
+ryasiddhi\core\tests_
+auth.py", line 107, 
+in test_priest_edit_p
+rofile_success
+    response = self.c
+lient.post(self.edit_
+url, {
+        'fullname': 
+'New Name',
+    ...<5 lines>...
+        'services': [
+'santana-gopala-homa'
+]
+    })
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\test\client.py", 
+line 1158, in post
+    response = 
+super().post(
+        path,
+    ...<5 lines>...
+        **extra,
+    )
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\test\client.py", 
+line 503, in post
+    return 
+self.generic(
+           
+~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+    ...<6 lines>...
+        **extra,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\test\client.py", 
+line 676, in generic
+    return 
+self.request(**r)
+           
+~~~~~~~~~~~~^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\test\client.py", 
+line 1092, in request
+    self.check_except
+ion(response)
+    ~~~~~~~~~~~~~~~~~
+~~~^^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\test\client.py", 
+line 805, in 
+check_exception
+    raise exc_value
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\handlers\exc
+eption.py", line 55, 
+in inner
+    response = 
+get_response(request)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\core\handlers\bas
+e.py", line 197, in 
+_get_response
+    response = wrappe
+d_callback(request, 
+*callback_args, 
+**callback_kwargs)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\contrib\auth\deco
+rators.py", line 60, 
+in _view_wrapper
+    return 
+view_func(request, 
+*args, **kwargs)
+  File "C:\Users\9170
+3\OneDrive\Desktop\ka
+ryasiddhi\core\views.
+py", line 575, in 
+purohit_edit_profile
+    return 
+render(request, 'page
+s/purohit_edit_profil
+e.html', {
+        'form': form,
+        'profile': 
+profile,
+        
+'services_data': 
+services_data
+    })
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\shortcuts.py", 
+line 25, in render
+    content = loader.
+render_to_string(temp
+late_name, context, 
+request, using=using)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\loader.p
+y", line 61, in 
+render_to_string
+    template = get_te
+mplate(template_name,
+ using=using)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\loader.p
+y", line 15, in 
+get_template
+    return engine.get
+_template(template_na
+me)
+           ~~~~~~~~~~
+~~~~~~~~~^^^^^^^^^^^^
+^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\backends
+\django.py", line 
+79, in get_template
+    return Template(s
+elf.engine.get_templa
+te(template_name), 
+self)
+                    ~
+~~~~~~~~~~~~~~~~~~~~~
+~~^^^^^^^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\engine.p
+y", line 177, in 
+get_template
+    template, origin 
+= self.find_template(
+template_name)
+                     
+  ~~~~~~~~~~~~~~~~~~^
+^^^^^^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\engine.p
+y", line 159, in 
+find_template
+    template = loader
+.get_template(name, 
+skip=skip)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\loaders\
+cached.py", line 57, 
+in get_template
+    template = super(
+).get_template(templa
+te_name, skip)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\loaders\
+base.py", line 28, 
+in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 154, in 
+__init__
+    self.nodelist = s
+elf.compile_nodelist(
+)
+                    ~
+~~~~~~~~~~~~~~~~~~~~^
+^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 196, in 
+compile_nodelist
+    nodelist = 
+parser.parse()
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 518, in parse
+    raise 
+self.error(token, e)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 516, in parse
+    compiled_result 
+= compile_func(self, 
+token)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\loader_t
+ags.py", line 295, 
+in do_extends
+    nodelist = 
+parser.parse()
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 518, in parse
+    raise 
+self.error(token, e)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 516, in parse
+    compiled_result 
+= compile_func(self, 
+token)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\loader_t
+ags.py", line 234, 
+in do_block
+    nodelist = parser
+.parse(("endblock",))
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 518, in parse
+    raise 
+self.error(token, e)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 516, in parse
+    compiled_result 
+= compile_func(self, 
+token)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\defaultt
+ags.py", line 961, 
+in do_if
+    condition = Templ
+ateIfParser(parser, 
+bits).parse()
+                ~~~~~
+~~~~~~~~~~~^^^^^^^^^^
+^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\defaultt
+ags.py", line 894, 
+in __init__
+    super().__init__(
+*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^
+^^^^^^^^^^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\smartif.
+py", line 171, in 
+__init__
+    mapped_tokens.app
+end(self.translate_to
+ken(token))
+                     
+    ~~~~~~~~~~~~~~~~~
+~~~^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\smartif.
+py", line 182, in 
+translate_token
+    return self.creat
+e_var(token)
+           ~~~~~~~~~~
+~~~~~^^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\defaultt
+ags.py", line 897, 
+in create_var
+    return TemplateLi
+teral(self.template_p
+arser.compile_filter(
+value), value)
+                     
+      ~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~^
+^^^^^^
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 605, in 
+compile_filter
+    return FilterExpr
+ession(token, self)
+  File "C:\Python313\
+Lib\site-packages\dja
+ngo\template\base.py"
+, line 706, in 
+__init__
+    raise 
+TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.excep
+tions.TemplateSyntaxE
+rror: Could not 
+parse the remainder: 
+'=="Telugu"' from 'fo
+rm.language.value=="T
+elugu"'
+
+=====================
+=====================
+=====================
+=======
+FAIL: test_priest_reg
+istration_success (co
+re.tests_auth.PriestA
+uthTest.test_priest_r
+egistration_success)
+---------------------
+---------------------
+---------------------
+-------
+Traceback (most 
+recent call last):
+  File "C:\Users\9170
+3\OneDrive\Desktop\ka
+ryasiddhi\core\tests_
+auth.py", line 32, 
+in test_priest_regist
+ration_success
+    self.assertEqual(
+response.status_code,
+ 302)
+    ~~~~~~~~~~~~~~~~^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^
+AssertionError: 200 
+!= 302
+============================================
+DEBUG OTP for priest@example.com: 743770
+============================================
+
+---------------------
+---------------------
+---------------------
+-------
+Ran 14 tests in 
+38.803s
+
+FAILED (failures=1, 
+errors=1)
+Destroying test 
+database for alias 
+'default'...
+

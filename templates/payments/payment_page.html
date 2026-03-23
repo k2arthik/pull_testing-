@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Redirecting to PhonePe — Karya Siddhi{% endblock %}
+
+{% block extra_css %}
+<style>
+    .redirect-container {
+        max-width: 520px;
+        margin: 130px auto 60px;
+        padding: 0 20px;
+        text-align: center;
+    }
+
+    .redirect-card {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 55%, #0f3460 100%);
+        border-radius: 22px;
+        padding: 44px 36px;
+        color: #fff;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .brand-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 22px;
+        background: linear-gradient(135deg, #5f259f, #3d1569);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 36px;
+        box-shadow: 0 8px 28px rgba(95, 37, 159, 0.4);
+    }
+
+    .redirect-title {
+        font-family: 'Cinzel', serif;
+        font-size: 1.5rem;
+        color: #ffd700;
+        margin-bottom: 8px;
+    }
+
+    .redirect-sub {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 0.88rem;
+        margin-bottom: 28px;
+        line-height: 1.5;
+    }
+
+    .booking-summary {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 215, 0, 0.15);
+        border-radius: 14px;
+        padding: 18px 20px;
+        margin-bottom: 24px;
+        text-align: left;
+    }
+
+    .summary-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 7px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        font-size: 0.88rem;
+    }
+
+    .summary-row:last-child {
+        border-bottom: none;
+    }
+
+    .summary-label {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .summary-value {
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .amount-row .summary-value {
+        color: #ffd700;
+        font-size: 1.25rem;
+        font-family: 'Cinzel', serif;
+    }
+
+    .spinner-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        padding: 18px;
+        background: rgba(95, 37, 159, 0.12);
+        border: 1px solid rgba(95, 37, 159, 0.3);
+        border-radius: 14px;
+        margin-bottom: 20px;
+    }
+
+    .spinner {
+        width: 36px;
+        height: 36px;
+        border: 3px solid rgba(255, 215, 0, 0.2);
+        border-top: 3px solid #ffd700;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    .spinner-text {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .secure-note {
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 0.75rem;
+        margin-top: 14px;
+    }
+
+    .secure-note i {
+        color: #4caf50;
+        margin-right: 4px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+{# This template is shown only briefly before the server issues a redirect to PhonePe.
+If a user sees this page for more than a few seconds, something went wrong. #}
+<div class="redirect-container">
+    <div class="redirect-card">
+
+        <div class="brand-icon">
+            <span>&#9670;</span>
+        </div>
+
+        <h2 class="redirect-title">Redirecting to PhonePe</h2>
+        <p class="redirect-sub">
+            You are being securely redirected to PhonePe to complete your UPI payment.<br>
+            Please do not press back or refresh.
+        </p>
+
+        <div class="booking-summary">
+            <div class="summary-row">
+                <span class="summary-label">Ritual</span>
+                <span class="summary-value">{{ booking.service|title }}</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">Purohit</span>
+                <span class="summary-value">{{ booking.priest.fullname }}</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">Date</span>
+                <span class="summary-value">{{ booking.booking_date }}</span>
+            </div>
+            <div class="summary-row amount-row">
+                <span class="summary-label">Amount</span>
+                <span class="summary-value">&#8377;{{ booking.amount }}</span>
+            </div>
+        </div>
+
+        <div class="spinner-box">
+            <div class="spinner"></div>
+            <span class="spinner-text">Opening PhonePe payment page…</span>
+        </div>
+
+        <p class="secure-note">
+            <i class="fas fa-lock"></i>
+            Secured by PhonePe • UPI payments only
+        </p>
+    </div>
+</div>
+{% endblock %}

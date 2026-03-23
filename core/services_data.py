@@ -1,9 +1,20 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
 services = {
     "pradosha-kala-abhishekam": {
         "title": "Pradosha Kala Abhishekam",
         "image": "https://www.india.com/wp-content/uploads/2024/10/Patna-The-Heart-of-Chhath-Puja-Celebrations-1.jpg",
+<<<<<<< HEAD
         "duration": "120 min",
+=======
+        "gallery": [
+            "https://www.india.com/wp-content/uploads/2024/10/Patna-The-Heart-of-Chhath-Puja-Celebrations-1.jpg",
+            "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180"
+        ],
+        "duration": "180 min",
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
         "price": "₹3,000 - ₹10,000",
         "pandits": "2 Pandits",
         "location": "Temple / Home",
@@ -14,6 +25,13 @@ services = {
     "ganesh-homa": {
         "title": "Ganesh Homa",
         "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+<<<<<<< HEAD
+=======
+        "gallery": [
+            "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+            "https://tse1.mm.bing.net/th/id/OIP.tYxNXsdm22tbR5Usv4UAvgHaFj?pid=Api&P=0&h=180"
+        ],
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
         "duration": "90 min",
         "price": "₹5,000 - ₹15,000",
         "pandits": "1-2 Pandits",
@@ -36,6 +54,13 @@ services = {
     "satyanarayan-pooja": {
         "title": "Satyanarayan Pooja",
         "image": "https://tse1.mm.bing.net/th/id/OIP.tYxNXsdm22tbR5Usv4UAvgHaFj?pid=Api&P=0&h=180",
+<<<<<<< HEAD
+=======
+        "gallery": [
+            "https://tse1.mm.bing.net/th/id/OIP.tYxNXsdm22tbR5Usv4UAvgHaFj?pid=Api&P=0&h=180",
+            "https://tse3.mm.bing.net/th/id/OIP.zGFQVBENhgNj-dllfVYVHwHaEE?pid=Api&P=0&h=180"
+        ],
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
         "duration": "150 min",
         "price": "₹4,000 - ₹12,000",
         "pandits": "1 Pandit",
@@ -58,6 +83,13 @@ services = {
     "rudrabhishekam-pooja": {
         "title": "Rudrabhishekam Pooja",
         "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+<<<<<<< HEAD
+=======
+        "gallery": [
+            "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+            "https://tse2.mm.bing.net/th/id/OIP.fvSE50CuPqMmC0i8wvP4JAHaDp?pid=Api&P=0&h=180"
+        ],
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3
         "duration": "150 min",
         "price": "₹6,000 - ₹18,000",
         "pandits": "2-3 Pandits",
@@ -164,5 +196,318 @@ services = {
         "deity": "Santana Gopala (Krishna)",
         "short_description": "Pray to Lord Krishna in the form of a child for blessings of progeny and the well-being of children.",
         "full_description": "Pray to Lord Krishna in the form of a child (Santana Gopala) for blessings of progeny and the well-being of children. This Homa is beneficial for couples seeking to conceive or for the health and intelligence of their existing children."
+<<<<<<< HEAD
     }
 }
+=======
+    },
+    "rushi-panchami-pooja": {
+        "title": "Rushi Panchami Pooja",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "120 min",
+        "price": "₹3,000 - ₹10,000",
+        "pandits": "2 Pandits",
+        "location": "Temple / Home",
+        "deity": "Divine Deity",
+        "short_description": "Divine wealth & prosperity",
+        "full_description": "Rushi Panchami Pooja is a highly revered Vedic ritual to seek divine blessings. Experience the ultimate purification and protection through this sacred Vedic ritual."
+    },
+    "sri-satyanarayan-vratam": {
+        "title": "Sri Satyanarayan Vratam",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "3 hrs",
+        "price": "₹3,000 - ₹10,000",
+        "pandits": "1 Pandits",
+        "location": "Temple / Home",
+        "deity": "Divine Deity",
+        "short_description": "Truth & abundance ritual",
+        "full_description": "Sri Satyanarayan Vratam is a highly revered Vedic ritual to seek divine blessings. Experience the ultimate purification and protection through this sacred Vedic ritual."
+    },
+    "chandi-homam": {
+        "title": "Chandi Homam",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "5 hrs",
+        "price": "₹3,000 - ₹10,000",
+        "pandits": "2 Pandits",
+        "location": "Temple / Home",
+        "deity": "Divine Deity",
+        "short_description": "Home harmony & balance",
+        "full_description": "Chandi Homam is a highly revered Vedic ritual to seek divine blessings. Experience the ultimate purification and protection through this sacred Vedic ritual."
+    },
+    "maha-vidhya-pooja": {
+        "title": "Maha Vidhya Pooja",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "120 min",
+        "price": "₹3,000 - ₹10,000",
+        "pandits": "2 Pandits",
+        "location": "Temple / Home",
+        "deity": "Divine Deity",
+        "short_description": "Divine purification",
+        "full_description": "Maha Vidhya Pooja is a highly revered Vedic ritual to seek divine blessings. Experience the ultimate purification and protection through this sacred Vedic ritual."
+    },
+    "lakshmi-ganapathi-pooja": {
+        "title": "Lakshmi Ganapathi pooja",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "5 hrs",
+        "price": "₹3,000 - ₹10,000",
+        "pandits": "2 Pandits",
+        "location": "Temple / Home",
+        "deity": "Divine Deity",
+        "short_description": "Divine purification",
+        "full_description": "Lakshmi Ganapathi pooja is a highly revered Vedic ritual to seek divine blessings. Experience the ultimate purification and protection through this sacred Vedic ritual."
+    },
+    "surya-namaskaralu": {
+        "title": "Surya Namaskaralu",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "3 hrs",
+        "price": "₹3,000 - ₹10,000",
+        "pandits": "1 Pandits",
+        "location": "Temple / Home",
+        "deity": "Divine Deity",
+        "short_description": "Divine physician's blessings",
+        "full_description": "Surya Namaskaralu is a highly revered Vedic ritual to seek divine blessings. Experience the ultimate purification and protection through this sacred Vedic ritual."
+    },
+    "navagraha-shanthi-pooja": {
+        "title": "Navagraha Shanthi pooja",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "6 hrs",
+        "price": "₹3,000 - ₹10,000",
+        "pandits": "3 Pandits",
+        "location": "Temple / Home",
+        "deity": "Divine Deity",
+        "short_description": "Divine physician's blessings",
+        "full_description": "Navagraha Shanthi pooja is a highly revered Vedic ritual to seek divine blessings. Experience the ultimate purification and protection through this sacred Vedic ritual."
+    },
+    "ayushya-homa": {
+        "title": "Ayushya Homa",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "2 hrs",
+        "price": "₹3,000 - ₹10,000",
+        "pandits": "1 Pandits",
+        "location": "Temple / Home",
+        "deity": "Divine Deity",
+        "short_description": "Long life & wellbeing",
+        "full_description": "Ayushya Homa is a highly revered Vedic ritual to seek divine blessings. Experience the ultimate purification and protection through this sacred Vedic ritual."
+    },
+    "rudrabhishekam": {
+        "title": "Rudrabhishekam",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "4 hrs",
+        "price": "₹3,000 - ₹10,000",
+        "pandits": "2 Pandits",
+        "location": "Temple / Home",
+        "deity": "Divine Deity",
+        "short_description": "Divine purification",
+        "full_description": "Rudrabhishekam is a highly revered Vedic ritual to seek divine blessings. Experience the ultimate purification and protection through this sacred Vedic ritual."
+    },
+    "dhanvantari-homam": {
+        "title": "Dhanvantari Homam",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "3 hrs",
+        "price": "₹3,000 - ₹10,000",
+        "pandits": "2 Pandits",
+        "location": "Temple / Home",
+        "deity": "Divine Deity",
+        "short_description": "Divine purification",
+        "full_description": "Dhanvantari Homam is a highly revered Vedic ritual to seek divine blessings. Experience the ultimate purification and protection through this sacred Vedic ritual."
+    },
+    "pradoshakala-pooja": {
+        "title": "Pradoshakala Pooja",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "120 min",
+        "price": "₹3,000 - ₹10,000",
+        "pandits": "2 Pandits",
+        "location": "Temple / Home",
+        "deity": "Divine Deity",
+        "short_description": "Power & fearlessness",
+        "full_description": "Pradoshakala Pooja is a highly revered Vedic ritual to seek divine blessings. Experience the ultimate purification and protection through this sacred Vedic ritual."
+    },
+    "maha-vidhya-parayanam": {
+        "title": "Maha Vidhya Parayanam",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "120 min",
+        "price": "₹3,000 - ₹10,000",
+        "pandits": "2 Pandits",
+        "location": "Temple / Home",
+        "deity": "Divine Deity",
+        "short_description": "Blessings for children",
+        "full_description": "Maha Vidhya Parayanam is a highly revered Vedic ritual to seek divine blessings. Experience the ultimate purification and protection through this sacred Vedic ritual."
+    },
+    "rushi-panchami-vratam": {
+        "title": "Rushi Panchami Vratam",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "120 min",
+        "price": "₹3,000 - ₹10,000",
+        "pandits": "2 Pandits",
+        "location": "Temple / Home",
+        "deity": "Divine Deity",
+        "short_description": "Divine purification",
+        "full_description": "Rushi Panchami Vratam is a highly revered Vedic ritual to seek divine blessings. Experience the ultimate purification and protection through this sacred Vedic ritual."
+    },
+    "asirvachanam": {
+        "title": "Asirvachanam",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "120 min",
+        "price": "₹3,000 - ₹10,000",
+        "pandits": "2 Pandits",
+        "location": "Temple / Home",
+        "deity": "Divine Deity",
+        "short_description": "Wisdom & knowledge",
+        "full_description": "Asirvachanam is a highly revered Vedic ritual to seek divine blessings. Experience the ultimate purification and protection through this sacred Vedic ritual."
+    },
+    "shashti-poorthi": {
+        "title": "Shashti Poorthi",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "120 min",
+        "price": "₹3,000 - ₹10,000",
+        "pandits": "2 Pandits",
+        "location": "Temple / Home",
+        "deity": "Divine Deity",
+        "short_description": "Blessings for children",
+        "full_description": "Shashti Poorthi is a highly revered Vedic ritual to seek divine blessings. Experience the ultimate purification and protection through this sacred Vedic ritual."
+    },
+    "bheema-ratha-shanti": {
+        "title": "Bheema Ratha Shanti",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "120 min",
+        "price": "₹3,000 - ₹10,000",
+        "pandits": "2 Pandits",
+        "location": "Temple / Home",
+        "deity": "Divine Deity",
+        "short_description": "Divine purification",
+        "full_description": "Bheema Ratha Shanti is a highly revered Vedic ritual to seek divine blessings. Experience the ultimate purification and protection through this sacred Vedic ritual."
+    },
+    "marriage": {
+    "title": "Marriage",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.8sQm3h1i8kq2ZyR8Jg3y2AHaE8?pid=Api&P=0&h=180",
+    "duration": "180 min",
+    "price": "₹10,000 - ₹50,000",
+    "pandits": "3-5 Pandits",
+    "location": "Temple / Home / Marriage Hall",
+    "deity": "Lord Vishnu & Goddess Lakshmi",
+    "short_description": "Sacred union of two souls",
+    "full_description": "Marriage (Vivaham) is a sacred Hindu ceremony that unites two individuals in a lifelong bond of love, commitment, and responsibility. The ritual is performed with Vedic chants and traditional customs in the presence of family and divine blessings. It symbolizes the union of two families and the beginning of a new spiritual and social journey together."
+},
+   "rukmini-kalyanam": {
+    "title": "Rukmini Kalyanam",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+    "duration": "4 hrs",
+    "price": "₹3,000 - ₹10,000",
+    "pandits": "2 Pandits",
+    "location": "Temple / Home",
+    "deity": "Lord Krishna & Goddess Rukmini",
+    "short_description": "Sacred divine wedding ritual",
+    "full_description": "Rukmini Kalyanam is the sacred wedding ceremony of Lord Krishna and Goddess Rukmini. This divine ritual symbolizes pure devotion, love, and the union of the soul with the Supreme. Performing this pooja is believed to bring blessings for a happy married life, prosperity, and family harmony."
+    },
+    "udaka-santhulu": {
+        "title": "Udaka Santhulu",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "3 hrs",
+        "price": "₹2,000 - ₹6,000",
+        "pandits": "2 Pandits",
+        "location": "Home / River / Holy Site",
+        "deity": "Ancestral Souls (Pitru Devatas)",
+        "short_description": "Sacred water offering ritual to honour and seek blessings from departed ancestors.",
+        "full_description": "Udaka Santhulu is a sacred Vedic ritual in which water is offered to departed ancestors (Pitru Devatas) as a mark of respect and devotion. This ritual is performed to seek the blessings of the ancestors for the prosperity, health, and happiness of the family. It is believed that performing Udaka Santhulu regularly pacifies the departed souls, removes ancestral debts (Pitru Dosha), and ensures peace and harmony in the family lineage. The ritual involves pouring water with sesame seeds (til) and chanting of Vedic mantras in the name of the ancestors."
+    },
+    "laksha-ottulu-nomu": {
+        "title": "Laksha Ottulu Nomu",
+        "image": "https://tse4.mm.bing.net/th/id/OIP.G6wW6kY8X4qWc2g1c3h3gAHaE8?pid=Api&P=0&h=180",
+        "duration": "2 Days",
+        "price": "₹3,000 - ₹9,000",
+        "pandits": "As per the requirement",
+        "location": "Home / Temple",
+        "deity": "Goddess Lakshmi / Ishta Devata",
+        "short_description": "A deeply devotional vow and penance ritual performed for the fulfilment of desires and divine blessings.",
+        "full_description": "Laksha Ottulu Nomu is a traditional Telugu ritual vow (Nomu) involving the offering of one lakh (laksha) bows or prostrations to the presiding deity. This act of complete surrender and devotion is performed as a fulfillment of a vow taken during a time of need or difficulty. It is a powerful expression of faith and gratitude, inviting the deity's grace, blessings, and protection into the devotee's life. The ritual is performed by family members together, reinforcing bonds of faith and collective devotion. It is especially auspicious when performed on festival days or auspicious Tithi-s."
+    },
+    "aksharabhyasam": {
+        "title": "Aksharabhyasam",
+        "image": "https://tse1.mm.bing.net/th/id/OIP.tYxNXsdm22tbR5Usv4UAvgHaFj?pid=Api&P=0&h=180",
+        "duration": "1 hr 30 min",
+        "price": "₹2,000 - ₹7,000",
+        "pandits": "1 Pandit",
+        "location": "Home / School / Temple",
+        "deity": "Goddess Saraswati & Lord Ganesha",
+        "short_description": "The sacred initiation of a child into the world of learning — writing the first letters under divine blessings.",
+        "full_description": "Aksharabhyasam, also known as Vidyarambham, is the auspicious ceremony that marks a child's formal initiation into the world of education and learning. During this ritual, a learned Pandit guides the child's hand to write the first letters — typically 'OM' or 'Sri' — on a plate of rice or sand, invoking the blessings of Goddess Saraswati (the goddess of wisdom and learning) and Lord Ganesha (the remover of obstacles). This ceremony is traditionally performed when the child is around 3 years of age and is considered one of the sixteen sacred Samskaras (rites of passage). It is believed to kindle the light of knowledge in the child, ensuring a sharp intellect, good memory, and success in education throughout life."
+    },
+    "gruhapravesam": {
+        "title": "Gruhapravesam",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.9i8u7y6t5r4e3w2q1a0s9dHaE8?pid=Api&P=0&h=180",
+        "duration": "6 hrs",
+        "price": "₹5,000 - ₹15,000",
+        "pandits": "2 Pandits",
+        "location": "New Home",
+        "deity": "Lord Ganesha, Vastu Purusha & Goddess Lakshmi",
+        "short_description": "Sanctify your new home with Vedic rituals to invite prosperity, peace, and divine blessings.",
+        "full_description": "Gruhapravesam is the sacred housewarming ceremony performed when a family enters their new home for the first time. This elaborate Vedic ritual is designed to purify the new dwelling, ward off negative energies, and invite divine blessings of prosperity, health, and happiness. The ceremony begins with a Ganesh Pooja to remove obstacles, followed by Vastu Pooja to appease the Vastu Purusha (the guardian deity of the home structure) and Lakshmi Pooja to invite wealth and abundance into the home. The ritual includes the symbolic boiling of milk until it overflows, representing prosperity that overflows into every corner of the new home. Gruhapravesam is one of the most important rites of passage in Hindu tradition and ensures that the home becomes a space of divine grace, peace, and familial harmony."
+    },
+    "japalu": {
+        "title": "Japalu",
+        "image": "https://tse3.mm.bing.net/th/id/OIP.5y8r7u9i1o0p2l3k4j5h6gHaE8?pid=Api&P=0&h=180",
+        "duration": "8- 10 hrs",
+        "price": "₹1,500 - ₹8,000",
+        "pandits": " As per the requirement",
+        "location": "Home / Temple",
+        "deity": "Ishta Devata (Chosen Deity)",
+        "short_description": "Sacred repetitive chanting of divine mantras for spiritual purification, mental peace, and fulfillment of desires.",
+        "full_description": "Japalu refers to the sacred practice of repetitive chanting (Japa) of divine mantras dedicated to a chosen deity (Ishta Devata). It is one of the most powerful spiritual disciplines in Sanatana Dharma, capable of purifying the mind, awakening inner consciousness, and connecting the devotee directly with the divine. Depending on the intent, different mantras are chanted — such as the Gayatri Mantra for wisdom and spiritual protection, the Mahamrityunjaya Mantra for health and longevity, or specific deity mantras for wealth, children, or peace. The practice is typically performed with a Rudraksha or Tulasi mala (prayer beads) and is accompanied by specific rituals and offerings. A set number of repetitions (typically 108, 1008, or more) is completed per session. Japalu performed by experienced Pandits on behalf of a devotee carries immense spiritual merit and can fulfil worldly desires while advancing the devotee on the spiritual path."
+    },
+    "upanayanam": {
+        "title": "Upanayanam",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "6 hrs",
+        "price": "₹8,000 - ₹25,000",
+        "pandits": "2 Pandits",
+        "location": "Home / Temple",
+        "deity": "Lord Brahma, Gayatri Devi & Guru",
+        "short_description": "The sacred thread ceremony — a transformative initiation into Vedic learning and spiritual life.",
+        "full_description": "Upanayanam, also known as the 'sacred thread ceremony' or 'Munja', is one of the most significant of the sixteen Samskaras (rites of passage) in Hindu tradition. This transformative ritual marks the transition of a young boy into the life of a student (Brahmacharya Ashrama) and his formal initiation into Vedic knowledge and spiritual living. During the ceremony, the boy receives the Yajnopavita — the sacred triple-stranded thread — which he will wear throughout his life as a reminder of his duties towards the divine, his ancestors, and his teachers. The highlight of Upanayanam is the initiation into the Gayatri Mantra by the family's Guru or the presiding Pandit. The mantra is whispered directly into the ear of the initiate, marking his spiritual second birth. This ceremony underscores the values of disciplined living, learning, and devotion, setting the foundation for a life of purpose and righteousness."
+    },
+    "vastu-pooja": {
+        "title": "Vastu Pooja",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.9i8u7y6t5r4e3w2q1a0s9dHaE8?pid=Api&P=0&h=180",
+        "duration": "3 hrs",
+        "price": "₹4,000 - ₹12,000",
+        "pandits": "1Pandit",
+        "location": "Home / Office / Plot",
+        "deity": "Vastu Purusha",
+        "short_description": "Consecrate your land or property and align it with cosmic energies for peace, prosperity, and well-being.",
+        "full_description": "Vastu Pooja is a sacred Vedic ritual performed to consecrate a plot of land, a home, or a commercial establishment and align it with the natural and cosmic energies as per the principles of Vastu Shastra. According to Vedic tradition, the Vastu Purusha — the cosmic being who presides over every piece of land — must be appeased before any construction begins or before occupying a space. This pooja involves performing rituals in all eight directions of the property, chanting specific mantras, and making offerings to the Vastu Purusha. It clears any negative energies embedded in the land due to history or structural defects, ensuring a harmonious flow of positive energy throughout the space. Vastu Pooja is recommended before breaking ground for construction, before entering a rented space, or when experiencing disturbances in an existing property."
+    },
+    "vastu-santhi-pooja": {
+        "title": "Vastu Santhi Pooja",
+        "image": "https://tse3.mm.bing.net/th/id/OIP.5l4k3j2h1g0f9d8s7a6z5xHaE8?pid=Api&P=0&h=180",
+        "duration": "3 hrs",
+        "price": "₹7,000 - ₹18,000",
+        "pandits": "1 Pandit",
+        "location": "Home / Office",
+        "deity": "Vastu Purusha & Pancha Bhutas",
+        "short_description": "A powerful ritual to rectify Vastu doshas and restore peace, harmony, and positive energy in your living space.",
+        "full_description": "Vastu Santhi Pooja is a comprehensive Vedic ritual specifically designed to identify and rectify Vastu doshas (architectural or structural defects) in an existing home or workplace. Unlike a basic Vastu Pooja, Vastu Santhi involves a deeper and more elaborate set of rituals to pacify the Vastu Purusha and rebalance the five elements (Pancha Bhutas — Earth, Water, Fire, Air, and Space) within the dwelling. It is especially recommended when a household is experiencing unexplained disturbances, financial setbacks, health issues, or relationship conflicts believed to be caused by Vastu imbalances. The ritual includes a thorough Pooja at all corners and the central point (Brahmasthana) of the property, Homa, and the installation of protective Vastu Yantra or herbs. Regular performance of Vastu Santhi Pooja ensures sustained peace, prosperity, and positive vibrations in the environment."
+    },
+    "santana-gopala-swami-pooja": {
+        "title": "Santana Gopala Swami Pooja",
+        "image": "https://tse4.mm.bing.net/th/id/OIP.2m1n0b3v4c5x6z7l8k9j0hHaE8?pid=Api&P=0&h=180",
+        "duration": "3 hrs",
+        "price": "₹5,000 - ₹14,000",
+        "pandits": "1 Pandit",
+        "location": "Home / Temple",
+        "deity": "Santana Gopala (Baby Krishna)",
+        "short_description": "Seek the blessings of Lord Krishna in his child form for the gift of progeny, and the health and happiness of children.",
+        "full_description": "Santana Gopala Swami Pooja is a deeply beloved and powerful ritual dedicated to Lord Krishna in his divine child form — Santana Gopala (the protector of children and granter of progeny). This pooja is primarily performed by couples who wish to be blessed with children, or by parents seeking the divine protection, good health, intelligence, and long life of their existing children. The ritual involves elaborate worship of the Santana Gopala Yantra or idol with flowers, fruits, milk, and sweet offerings, accompanied by the recitation of the Santana Gopala Ashtottara (108 names) and dedicated mantras from the Vishnu Purana. It is believed that sincere performance of this pooja removes barriers to conception, blesses the womb, and ensures healthy and virtuous children. The ritual is particularly recommended during auspicious occasions and on the birth anniversaries of children."
+    },
+    "maha-ganesha-pooja": {
+        "title": "Maha Ganesha Pooja",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.Zf1wtnc2MXGYW1ONpO-_HQHaE8?pid=Api&P=0&h=180",
+        "duration": "5 hrs",
+        "price": "₹3,500 - ₹11,000",
+        "pandits": "2 Pandits",
+        "location": "Home / Office / Temple",
+        "deity": "Lord Ganesha (Maha Ganapathi)",
+        "short_description": "Invoke the supreme blessings of Lord Ganesha to remove all obstacles and ensure success in every endeavour.",
+        "full_description": "Maha Ganesha Pooja is an elaborate and complete worship of Lord Ganesha — the first deity invoked in all Vedic rituals and the supreme remover of obstacles (Vighnaharta). Unlike a regular Ganesh Pooja, the 'Maha' version includes the full Shodashopachara (16 steps of worship), chanting of the Ganesha Ashtottara Shatanamavali (108 names), and the recitation of Atharva Sheersha — the most sacred Upanishad dedicated to Lord Ganesha. This pooja is performed to ensure success before starting a new venture, business, construction, or any major life event. It clears negative energies and karmic obstacles from the devotee's path, blesses with wisdom, clarity of thought, and divine grace. Maha Ganesha Pooja is especially auspicious on Ganesh Chaturthi, Sankashti Chaturthi, and on Tuesdays and Wednesdays."
+    }
+}
+>>>>>>> 2efb7cacf3c38ae4a19cba1052ea6b35cd3fd4d3

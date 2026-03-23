@@ -1,0 +1,363 @@
+/* =========================================
+   DIVINE TEMPLE THEME - HOME.CSS
+   Author: Antigravity
+   Theme: Temple Entrance -> Mandap -> Garbha Griha
+   ========================================= */
+
+:root {
+    /* --- Sacred Color Palette --- */
+    --color-maroon-dark: #5a0000;
+    /* Garbha Griha Dark */
+    --color-maroon: #800000;
+    /* Kumkum */
+    --color-red-temple: #b30000;
+    /* Temple Red */
+
+    --color-saffron: #FF9933;
+    /* Saffron Flags */
+    --color-saffron-light: #ffcc80;
+
+    --color-gold-royal: #D4AF37;
+    /* Brass/Gold */
+    --color-gold-light: #F5E8BF;
+    /* Pale Gold */
+
+    --color-emerald: #006400;
+    /* Sacred Green (Leaves) */
+    --color-peacock: #004d4f;
+    /* Peacock Blue/Green */
+
+    --color-ivory: #FFFFF0;
+    /* Marble */
+    --color-beige: #F5F5DC;
+    /* Sandalwood */
+    --color-stone: #E5E4E2;
+    /* Grey Stone */
+
+    /* --- Gradients --- */
+    --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f9eeb8 50%, #b8860b 100%);
+    --gradient-deep-shrine: radial-gradient(circle at center, #800000 0%, #3e0000 100%);
+
+    /* --- Typography --- */
+    --font-heading-main: 'Rozha One', serif;
+    /* Thick, carved look */
+    --font-heading-sub: 'Cinzel', serif;
+    /* Classical, inscribed look */
+    --font-body: 'Playfair Display', serif;
+    /* Elegant, readable serif */
+    --font-body-modern: 'Inter', sans-serif;
+    /* For small UI text */
+}
+
+/* =========================================
+   GLOBAL RESET & BASE
+   ========================================= */
+
+body {
+    background-color: var(--color-ivory);
+    color: #2c1810;
+    /* Dark brown text */
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading-main);
+    color: var(--color-maroon);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+p {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+}
+
+a {
+    transition: all 0.3s ease;
+}
+
+/* =========================================
+   UTILITIES & DECORATIONS
+   ========================================= */
+
+/* Stone Texture Background */
+.bg-stone {
+    background-color: var(--color-stone);
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+}
+
+/* Gold Emboss Text */
+.text-gold-emboss {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+}
+
+/* Red Temple Underline */
+.title-underline {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.title-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--color-maroon);
+    border-radius: 2px;
+}
+
+.title-underline::before {
+    content: '❖';
+    /* Simple decorative symbol */
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-ivory);
+    padding: 0 5px;
+    color: var(--color-gold-royal);
+    font-size: 14px;
+}
+
+/* Gold Dotted Divider (Advanced) */
+.divider-gold-dots {
+    border: none;
+    height: 10px;
+    background-image: radial-gradient(circle, var(--color-gold-royal) 2px, transparent 2.5px);
+    background-size: 15px 10px;
+    background-repeat: repeat-x;
+    background-position: center;
+    width: 80%;
+    margin: 60px auto;
+    opacity: 0.8;
+    position: relative;
+}
+
+.divider-gold-dots::after {
+    content: 'ॐ';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--color-ivory);
+    padding: 0 10px;
+    /* Reduced side padding slightly to fit better */
+    padding-bottom: 8px;
+    /* Added visual offset to counter font baseline */
+    font-size: 2.2rem;
+    /* Sligthly larger for presence */
+    color: var(--color-maroon);
+    font-family: var(--font-heading-main);
+    border: 3px solid var(--color-gold-royal);
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    line-height: 1;
+}
+
+/* =========================================
+   SCROLLING PARALLAX & EFFECTS
+   ========================================= */
+
+.parallax-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= 
+
+@keyframes diya-flicker {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+        box-shadow: 0 0 20px rgba(255, 165, 0, 0.6);
+    }
+
+    25% {
+        transform: scale(1.1);
+        opacity: 1;
+        box-shadow: 0 0 30px rgba(255, 69, 0, 0.8);
+    }
+
+    50% {
+        transform: scale(0.9);
+        opacity: 0.9;
+        box-shadow: 0 0 25px rgba(255, 140, 0, 0.7);
+    }
+
+    75% {
+        transform: scale(1.05);
+        opacity: 1;
+        box-shadow: 0 0 35px rgba(255, 215, 0, 0.9);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+        box-shadow: 0 0 20px rgba(255, 165, 0, 0.6);
+    }
+}
+
+@keyframes float-idol {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}*/
+
+/* =========================================
+   COMPONENT STYLES
+   ========================================= */
+
+/* Button Styles - Temple Signboard */
+.btn-temple {
+    background: var(--color-maroon);
+    color: var(--color-gold-light);
+    font-family: var(--font-heading-sub);
+    padding: 12px 30px;
+    border: 2px solid var(--color-gold-royal);
+    border-radius: 5px;
+    /* Slight round, looks like a wooden board */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-temple:hover {
+    background: var(--color-gold-royal);
+    color: var(--color-maroon);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+}
+
+/* Card Style - Shrine Panel */
+.card-shrine {
+    background: #fff;
+    border: 1px solid var(--color-gold-royal);
+    border-radius: 10px 10px 0 0;
+    /* Arch shape top hint */
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card-shrine::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px dashed var(--color-gold-royal);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.card-shrine:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(128, 0, 0, 0.15);
+}
+
+/* =========================================
+   NAVBAR (Temple Entrance Arch)
+   ========================================= */
+
+.navbar-temple {
+    background: var(--color-maroon-dark);
+    border-bottom: 5px solid var(--color-gold-royal);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 1000;
+}
+
+.navbar-temple .nav-link {
+    font-family: var(--font-heading-sub);
+    color: var(--color-gold-light) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 15px;
+    position: relative;
+}
+
+.navbar-temple .nav-link::after {
+    content: '♦';
+    /* Decorative dot */
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    color: var(--color-saffron);
+    transition: transform 0.3s;
+}
+
+.navbar-temple .nav-link:hover::after,
+.navbar-temple .nav-link.active::after {
+    transform: translateX(-50%) scale(1);
+}
+
+/* =========================================
+   HERO (Garbha Griha)
+   ========================================= */
+
+.hero-sanctum {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: var(--color-maroon-dark);
+}
+
+.hero-overlay-darkness {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, transparent 20%, rgba(0, 0, 0, 0.8) 90%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* =========================================
+   FOOTER (Temple Foundation)
+   ========================================= */
+
+.footer-temple {
+    background: #1a0f0f;
+    /* Very dark brown */
+    color: var(--color-beige);
+    border-top: 5px solid var(--color-gold-royal);
+    padding: 60px 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232c1810' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}

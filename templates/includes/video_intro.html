@@ -1,0 +1,24 @@
+{% load static %}
+<div id="video-intro-overlay" class="video-intro-overlay">
+    <div class="video-container">
+        <!-- Unified Audio/Interaction Overlay -->
+        <div id="intro-interaction-overlay" class="sound-toggle-overlay">
+            <i class="fas fa-volume-up"></i>
+            <span>TAP FOR SOUND</span>
+        </div>
+
+        <div id="video-loading-text"
+            style="color: #D4AF37; font-family: 'Cinzel', serif; position: absolute; z-index: 10; display: none;">
+            Loading...
+        </div>
+
+        <video id="intro-video" playsinline autoplay muted>
+            <source src="{% static 'videos/snipping.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <button id="skip-intro" class="skip-btn">
+            Skip To Site <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+</div>

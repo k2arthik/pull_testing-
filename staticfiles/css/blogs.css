@@ -1,0 +1,171 @@
+/* =====================================
+   BLOGS PAGE - SIMPLE DIVINE THEME
+   ===================================== */
+
+/* Hero Styles */
+.hero-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.float-animation {
+    animation: floatAnim 5s ease-in-out infinite;
+}
+
+@keyframes floatAnim {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.text-gold-shiny {
+    color: #D4AF37;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* 2. Main content area */
+.sacred-blogs-section {
+    padding: 80px 0;
+    background-color: #fefcf5;
+}
+
+.journey-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+/* Simple Blog Card Styles */
+.simple-blog-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+    border: 1px solid rgba(128, 0, 0, 0.05);
+}
+
+.simple-blog-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(128, 0, 0, 0.1);
+}
+
+.blog-img-box {
+    position: relative;
+    height: 200px;
+    /* Decreased photo size */
+    overflow: hidden;
+}
+
+.blog-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blog-cat-tag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #800000;
+    color: #D4AF37;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    font-family: 'Cinzel', serif;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.blog-text-box {
+    padding: 25px;
+    /* Decreased content padding */
+}
+
+.blog-post-date {
+    display: block;
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 10px;
+    font-family: 'Inter', sans-serif;
+}
+
+.blog-text-box h3 {
+    font-family: 'Rozha One', serif;
+    color: #800000;
+    font-size: 1.4rem;
+    /* Decreased title size */
+    margin-bottom: 12px;
+}
+
+.blog-text-box p {
+    font-family: 'Inter', sans-serif;
+    color: #666;
+    font-size: 0.95rem;
+    /* Decreased content size */
+    line-height: 1.6;
+    margin-bottom: 20px;
+    height: 4.8em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.btn-blog-read {
+    color: #D4AF37;
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    font-size: 0.85rem;
+    transition: gap 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-blog-read:hover {
+    gap: 12px;
+    color: #800000;
+}
+
+/* 3. Newsletter Section */
+.subscribe-form-simple {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.subscribe-form-simple input {
+    flex: 1;
+    min-width: 250px;
+    padding: 12px 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.subscribe-form-simple button {
+    padding: 12px 30px;
+    background: #D4AF37;
+    color: #800000;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.subscribe-form-simple button:hover {
+    background: #fff;
+}

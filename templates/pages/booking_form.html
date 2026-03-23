@@ -1,0 +1,1028 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<style>
+    :root {
+        --primary-maroon: #800000;
+        --dark-maroon: #5a0000;
+        --accent-gold: #d4af37;
+        --bright-gold: #fcc200;
+        --cream-bg: #fdfaf0;
+        --glass-white: rgba(255, 255, 255, 0.98);
+        --text-dark: #1a1a1a;
+        --text-muted: #666;
+    }
+
+    .booking-pro-wrapper {
+        background-color: var(--cream-bg);
+        min-height: 100vh;
+        padding: 40px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Decorative Home-Page Pattern */
+    .booking-pro-wrapper::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M50 50c10-10 10-20 0-30-10 10-10 20 0 30zm0 0c-10-10-20-10-30 0 10 10 20 10 30 0zm0 0c10 10 10 20 0 30-10-10-10-20 0-30zm0 0c10-10 20-10 30 0-10 10-20 10-30 0z' fill='%23d4af37' fill-opacity='0.03'/%3E%3C/svg%3E");
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    .pro-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 380px;
+        gap: 30px;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Wizard Card */
+    .wizard-card {
+        background: var(--glass-white);
+        border-radius: 30px;
+        box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.15);
+        border: 1px solid rgba(212, 175, 55, 0.15);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Step Indicators */
+    .wizard-header {
+        background: linear-gradient(to right, var(--dark-maroon), var(--primary-maroon));
+        padding: 40px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    .step-track {
+        position: absolute;
+        top: 50%;
+        left: 100px;
+        right: 100px;
+        height: 2px;
+        background: rgba(212, 175, 55, 0.2);
+        z-index: 1;
+        transform: translateY(-50%);
+    }
+
+    .step-progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: var(--accent-gold);
+        width: 0%;
+        transition: width 0.4s ease;
+    }
+
+    .step-item {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .step-circle {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: var(--dark-maroon);
+        border: 2px solid rgba(212, 175, 55, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        transition: all 0.3s ease;
+    }
+
+    .step-item.active .step-circle {
+        background: var(--accent-gold);
+        border-color: white;
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        transform: scale(1.1);
+    }
+
+    .step-item.completed .step-circle {
+        background: #27ae60;
+        border-color: white;
+    }
+
+    .step-label {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .step-item.active .step-label {
+        color: var(--accent-gold);
+    }
+
+    /* Wizard Content */
+    .wizard-body {
+        padding: 50px 60px;
+        min-height: 500px;
+    }
+
+    .wizard-step {
+        display: none;
+    }
+
+    .wizard-step.active {
+        display: block;
+    }
+
+    .step-title {
+        font-family: 'Cinzel', serif;
+        color: var(--primary-maroon);
+        font-size: 2rem;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .step-title i {
+        font-size: 1.5rem;
+        color: var(--accent-gold);
+    }
+
+    /* Form Fields */
+    .pro-label {
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 12px;
+        display: block;
+        font-size: 0.9rem;
+    }
+
+    .pro-input {
+        width: 100%;
+        padding: 15px 20px;
+        border: 2px solid #eee;
+        border-radius: 12px;
+        background: #fcfcfc;
+        font-size: 1rem;
+        transition: all 0.3s;
+    }
+
+    .pro-input:focus {
+        border-color: var(--accent-gold);
+        background: white;
+        box-shadow: 0 10px 20px rgba(212, 175, 55, 0.05);
+        outline: none;
+    }
+
+    /* Slots Grid */
+    .pro-slots-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .pro-slot-card {
+        background: white;
+        border: 1.5px solid #eee;
+        border-radius: 12px;
+        padding: 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 90px;
+    }
+
+    .pro-slot-card:hover {
+        border-color: var(--accent-gold);
+        background: #fffcf5;
+        transform: translateY(-2px);
+    }
+
+    .pro-slot-card.active {
+        border-color: var(--accent-gold);
+        background: #fff9e6;
+        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+    }
+
+    .pro-slot-card.disabled {
+        background: #f8f9fa;
+        border-color: #eee;
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+
+    .pro-slot-card.near-term {
+        border-style: dashed;
+        border-color: #f0a500;
+        background: #fffbea;
+    }
+
+    /* Summary Sidebar */
+    .summary-sidebar {
+        background: white;
+        border-radius: 30px;
+        padding: 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(212, 175, 55, 0.1);
+        height: min-content;
+        position: sticky;
+        top: 20px;
+    }
+
+    .summary-header {
+        font-family: 'Cinzel', serif;
+        color: var(--primary-maroon);
+        font-size: 1.4rem;
+        border-bottom: 2px solid var(--accent-gold);
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+    }
+
+    .summary-item {
+        margin-bottom: 20px;
+        display: flex;
+        gap: 15px;
+    }
+
+    .summary-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--cream-bg);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent-gold);
+        flex-shrink: 0;
+    }
+
+    .summary-info .label {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .summary-info .value {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-dark);
+    }
+
+    /* Footer Buttons */
+    .wizard-footer {
+        padding: 30px 60px;
+        background: #fcfcfc;
+        border-top: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn-pro {
+        padding: 15px 35px;
+        border-radius: 50px;
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s;
+        border: none;
+    }
+
+    .btn-next {
+        background: linear-gradient(135deg, var(--accent-gold), #b8860b);
+        color: white;
+        box-shadow: 0 10px 20px rgba(184, 134, 11, 0.2);
+    }
+
+    .btn-next:hover {
+        transform: scale(1.05);
+        box-shadow: 0 15px 30px rgba(184, 134, 11, 0.3);
+    }
+
+    .btn-prev {
+        background: transparent;
+        color: var(--primary-maroon);
+        border: 2px solid var(--primary-maroon);
+    }
+
+    .btn-prev:hover {
+        background: var(--primary-maroon);
+        color: white;
+    }
+
+    .btn-submit {
+        background: linear-gradient(135deg, var(--primary-maroon), var(--dark-maroon));
+        color: white;
+        box-shadow: 0 10px 20px rgba(128, 0, 0, 0.2);
+    }
+
+    /* Priest Modal Pro */
+    .priest-list-item {
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 16px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-bottom: 15px;
+    }
+
+    .priest-list-item:hover {
+        border-color: var(--accent-gold);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    @media (max-width: 991px) {
+        .pro-container {
+            grid-template-columns: 1fr;
+        }
+
+        .summary-sidebar {
+            order: -1;
+            position: relative;
+            top: 0;
+        }
+
+
+        .wizard-header {
+            padding: 30px 20px;
+        }
+
+        .wizard-body {
+            padding: 30px 20px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="booking-pro-wrapper">
+    <div class="pro-container">
+        <!-- Main Wizard Card -->
+        <div class="wizard-card animate__animated animate__fadeInLeft">
+            <div class="wizard-header">
+                <div class="step-track">
+                    <div class="step-progress" id="stepProgress"></div>
+                </div>
+
+                <div class="step-item active" id="stepIndicator1">
+                    <div class="step-circle">1</div>
+                    <span class="step-label">Timing</span>
+                </div>
+
+                <div class="step-item" id="stepIndicator2">
+                    <div class="step-circle">2</div>
+                    <span class="step-label">Details & Ritual</span>
+                </div>
+            </div>
+
+            <form method="POST" id="bookingForm">
+                {% csrf_token %}
+                <div class="wizard-body">
+                    <!-- STEP 1: Sacred Timing -->
+                    <div class="wizard-step active animate__animated animate__fadeIn" id="step1">
+                        <h3 class="step-title"><i class="fas fa-dharmachakra"></i> Sacred Timing</h3>
+
+                        <div class="form-group mb-5">
+                            <label class="pro-label">Choose an Auspicious Date</label>
+                            <input type="date" name="booking_date" id="bookingDate" class="pro-input" required
+                                min="{{ today_date }}" value="{{ prefill_data.date }}">
+                        </div>
+
+                        <div class="form-group mb-5">
+                            <label class="pro-label">
+                                Select Available Slot
+                                <span id="loadingSlots" style="display:none;" class="ml-2">
+                                    <i class="fas fa-spinner fa-spin text-warning"></i>
+                                </span>
+                            </label>
+                            <div id="slotsGrid" class="pro-slots-grid">
+                                <p class="text-muted">Please select a date above to view available sacred timings...</p>
+                            </div>
+                            <input type="hidden" name="slot_type" id="selectedSlotType" required
+                                value="{{ prefill_data.slot }}">
+                            <input type="hidden" name="start_time" id="selectedStartTime" required>
+                            <input type="hidden" name="end_time" id="selectedEndTime" required>
+                        </div>
+
+                        <!-- Extra Priests Section (multi-select) -->
+                        <div id="extraPriestZone" style="display:none;" class="animate__animated animate__fadeInUp">
+                            <label class="pro-label">
+                                Additional Spiritual Support
+                                <span class="badge badge-pill badge-warning ml-2" id="requiredBadge"
+                                    style="display:none;">
+                                    Requires at least {{ required_purohits }} Total
+                                </span>
+                            </label>
+                            <div
+                                style="background: #fffaf0; border: 2px dashed var(--accent-gold); border-radius: 20px; padding: 16px 20px;">
+                                <!-- Selected priests list -->
+                                <div id="selectedPriestsList" style="margin-bottom:10px;"></div>
+                                <!-- Add button -->
+                                <button type="button" class="btn btn-sm btn-prev" id="callPriestModal"
+                                    style="padding: 8px 20px; font-family: 'Inter'; border-radius: 10px;">
+                                    <i class="fas fa-plus-circle mr-1"></i> Add Additional Purohit
+                                </button>
+                                <div style="margin-top:8px;">
+                                    <small class="text-muted" id="requirementText">
+                                        This puja requires at least {{ required_purohits }} purohits.
+                                        Please select at least {{ required_purohits|add:"-1" }} more.
+                                    </small>
+                                </div>
+                            </div>
+                            <!-- Hidden inputs are injected by JS -->
+                            <div id="extraPriestInputs"></div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Devotee & Ritual Details -->
+                    <div class="wizard-step animate__animated animate__fadeIn" id="step2">
+                        <h3 class="step-title"><i class="fas fa-om"></i> Devotee & Ritual Details</h3>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label class="pro-label">Full Name</label>
+                                <input type="text" name="devotee_name" class="pro-input"
+                                    value="{{ prefill_data.name|default:user.get_full_name|default:user.username }}"
+                                    placeholder="Enter your full name" required oninput="updateLiveSummary()">
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label class="pro-label">Auspicious Phone</label>
+                                <input type="tel" name="phone" class="pro-input" required placeholder="Contact number"
+                                    oninput="updateLiveSummary()">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label class="pro-label">Gothram (Optional)</label>
+                                <input type="text" name="gothram" class="pro-input" value="{{ prefill_data.gothram }}"
+                                    placeholder="Your Gothram" oninput="updateLiveSummary()">
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label class="pro-label">Purpose (Optional)</label>
+                                <input type="text" name="nakshatram" class="pro-input"
+                                    value="{{ prefill_data.nakshatram }}" placeholder="Purpose of Puja"
+                                    oninput="updateLiveSummary()">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label class="pro-label">Service Address (Hyderabad Only)</label>
+                            <textarea name="address" class="pro-input" rows="2" required
+                                placeholder="Address for sacred ritual..."
+                                oninput="updateLiveSummary()">{{ prefill_data.address }}</textarea>
+                        </div>
+                    </div>
+                    <!-- Service Fee Amount -->
+                    <div class="form-group mb-4">
+                        <label class="pro-label">
+                            <i class="fas fa-rupee-sign mr-1" style="color:var(--accent-gold)"></i>
+                            Service Fee (Agreed Amount in ₹)
+                            {% if service.price %}
+                            <small class="ml-2" style="color:#FFC107; display:flex; font-weight:400;">
+                                Suggested: {{ service.price }}
+                            </small>
+                            {% endif %}
+                        </label>
+                        <div class="amount-wrapper">
+                            {% if service_slug and service_slug != 'custom' %}
+                            <input type="number" name="amount" id="amountInput" class="pro-input"
+                                min="{{ service_min_price|default:1 }}" required
+                                value="{{ service_min_price|default:'' }}" readonly oninput="updateAmountSummary()"
+                                style="background-color: var(--bright-gold); display: flex; text-align: center; font-weight: bold; font-size: 20px; color:whitesmoke; border-radius: 50px; width: 40%; margin: 0 auto; min-height: 45px;">
+                            {% else %}
+                            <input type="number" name="amount" id="amountInput" class="pro-input"
+                                min="{{ service_min_price|default:1 }}" required
+                                value="{{ service_min_price|default:'' }}" oninput="updateAmountSummary()"
+                                style="background-color: var(--bright-gold); display: flex; text-align: center; font-weight: bold; font-size: 20px; color:whitesmoke; border-radius: 50px; width: 40%; margin: 0 auto; min-height: 45px;">
+                            {% endif %}
+                            <small style="color:var(--text-muted); font-size:0.8rem;">
+                                <i class="fas fa-info-circle mr-1"></i>
+                                You will be redirected to secure UPI payment after submitting.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wizard-footer">
+                    <button type="button" class="btn-pro btn-prev" id="prevBtn"
+                        style="visibility: hidden;">BACK</button>
+                    <button type="button" class="btn-pro btn-next" id="nextBtn">NEXT</button>
+                    <button type="submit" class="btn-pro btn-submit" id="submitBtn" style="display: none;">PROCEED
+                        TO
+                        PAYMENT
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Sidebar Summary -->
+        <aside class="summary-sidebar animate__animated animate__fadeInRight">
+            <h4 class="summary-header">Sacred Overview</h4>
+
+            <div class="summary-item">
+                <div class="summary-icon"><i class="fas fa-om"></i></div>
+                <div class="summary-info">
+                    <div class="label">Main Purohit</div>
+                    <div class="value" style="color:var(--primary-maroon)">{{ priest.fullname }}</div>
+                </div>
+            </div>
+
+            <div class="summary-item">
+                <div class="summary-icon"><i class="fas fa-scroll"></i></div>
+                <div class="summary-info">
+                    <div class="label">Ritual</div>
+                    <div class="value">{{ service.title|default:"Sacred Puja" }}</div>
+                </div>
+            </div>
+
+            <div class="summary-item">
+                <div class="summary-icon"><i class="fas fa-calendar-alt"></i></div>
+                <div class="summary-info">
+                    <div class="label">Muhurtham</div>
+                    <div class="value" id="summaryDateTime">--</div>
+                </div>
+            </div>
+
+            <div class="gold-dotted-divider my-4"></div>
+
+            <div id="liveDevoteeSection" style="display:none;" class="animate__animated animate__fadeIn">
+                <div class="summary-item">
+                    <div class="summary-icon"><i class="fas fa-user"></i></div>
+                    <div class="summary-info">
+                        <div class="label">Devotee</div>
+                        <div class="value" id="summaryName">--</div>
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="summary-info">
+                        <div class="label">Kshetram (Location)</div>
+                        <div class="value" id="summaryAddress" style="font-size:0.85rem">--</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="summary-item" id="amountSummaryBox"
+                style="display:none; border-top: 1px solid rgba(212,175,55,0.2); padding-top: 20px; margin-top: 20px;">
+                <div class="summary-icon" style="background:var(--accent-gold); color:white;"><i
+                        class="fas fa-rupee-sign"></i></div>
+                <div class="summary-info">
+                    <div class="label">Dakshina (Agreed)</div>
+                    <div class="value" id="amountSummaryDisplay"
+                        style="font-size:1.4rem; color:var(--dark-maroon); font-family:Cinzel,serif; font-weight:700;">
+                        --</div>
+                </div>
+            </div>
+
+            <div style="margin-top:40px; text-align:center; opacity:0.1; pointer-events:none;">
+                <i class="fas fa-peace fa-3x"></i>
+                <div style="font-family:Cinzel,serif; font-size:0.8rem; margin-top:5px;">KARYA SIDDHI</div>
+            </div>
+
+            <div class="mt-4 p-4 rounded-xl" style="background:#fdfcf0; border: 1px solid #eee;">
+                <p class="small text-muted mb-0">
+                    <i class="fas fa-shield-alt mr-1 text-success"></i> All bookings are secure and verified.
+                </p>
+            </div>
+            <!-- Amount Summary -->
+            <div id="amountSummaryBox" style="display:none; margin-top:16px;" class="animate__animated animate__fadeIn">
+                <div class="p-3 rounded-xl"
+                    style="background: linear-gradient(135deg,#800000,#5a0000); color:#fff; border-radius: 50px; text-align: center;">
+                    <div
+                        style="font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; opacity:0.7; margin-bottom:4px;">
+                        Payable Amount</div>
+                    <div style="font-family:'Cinzel',serif; font-size:1.6rem; color:#fcc200;" id="amountSummaryDisplay">
+                        ₹0</div>
+                    <div style="font-size:0.75rem; opacity:0.6; margin-top:4px;">via Razorpay UPI</div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<!-- Extra Priest Selection Modal -->
+<div id="priestModalOverlay" class="modal-overlay">
+    <div class="modal-content-box">
+        <div class="p-4 d-flex justify-content-between align-items-center"
+            style="background:var(--primary-maroon); color:white;">
+            <h4 class="mb-0" style="font-family:'Cinzel'">Select Purohit</h4>
+            <i class="fas fa-times cursor-pointer" onclick="closePriestModal()"></i>
+        </div>
+        <div class="p-4">
+            <div id="modalLoading" class="text-center py-5">
+                <i class="fas fa-spinner fa-spin fa-2x text-warning"></i>
+                <p class="mt-3 text-muted">Checking purohit availability...</p>
+            </div>
+            <div id="noPriestsMatch" class="text-center py-5" style="display:none;">
+
+                <p>No other purohits available for this slot.</p>
+            </div>
+            <div id="priestGridList" style="max-height: 450px; overflow-y: auto;"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let currentStep = 1;
+        const totalSteps = 2;
+        const requiredPurohits = parseInt("{{ required_purohits|default:1 }}");
+
+        const dateInput = document.getElementById('bookingDate');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Step Navigation
+        nextBtn.onclick = () => {
+            if (currentStep < totalSteps && validateStep(currentStep)) {
+                goToStep(currentStep + 1);
+            }
+        };
+
+        prevBtn.onclick = () => {
+            goToStep(currentStep - 1);
+        };
+
+        function goToStep(step) {
+            document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
+            document.getElementById(`step${step}`).classList.add('active');
+
+            // Indicators
+            document.querySelectorAll('.step-item').forEach((item, idx) => {
+                if (idx + 1 < step) item.classList.add('completed');
+                else item.classList.remove('completed');
+
+                if (idx + 1 === step) item.classList.add('active');
+                else item.classList.remove('active');
+            });
+
+            // Progress Bar
+            const progress = ((step - 1) / (totalSteps - 1)) * 100;
+            document.getElementById('stepProgress').style.width = progress + '%';
+
+            currentStep = step;
+            updateButtons();
+
+            if (step >= 2) document.getElementById('liveDevoteeSection').style.display = 'block';
+        }
+
+        function updateButtons() {
+            prevBtn.style.visibility = currentStep === 1 ? 'hidden' : 'visible';
+            if (currentStep === totalSteps) {
+                nextBtn.style.display = 'none';
+                submitBtn.style.display = 'block';
+            } else {
+                nextBtn.style.display = 'block';
+                submitBtn.style.display = 'none';
+            }
+        }
+
+        function validateStep(step) {
+            if (step === 1) {
+                if (!document.getElementById('selectedStartTime').value) {
+                    alert('Please select a sacred timing slot.');
+                    return false;
+                }
+                const totalSelected = 1 + selectedExtraPriests.length;
+                if (requiredPurohits > 1 && totalSelected < requiredPurohits) {
+                    alert(`This puja requires at least ${requiredPurohits} purohits. You have only selected ${totalSelected}.`);
+                    return false;
+                }
+            }
+            if (step === 2) {
+                const name = document.querySelector('[name="devotee_name"]').value;
+                const phone = document.querySelector('[name="phone"]').value;
+                const addr = document.querySelector('[name="address"]').value;
+                if (!name || !phone || !addr) {
+                    alert('Please provide your name, phone number, and puja address.');
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // --- Slot Logic ---
+        dateInput.onchange = fetchSlots;
+        if (dateInput.value) fetchSlots();
+
+        async function fetchSlots() {
+            const grid = document.getElementById('slotsGrid');
+            const loader = document.getElementById('loadingSlots');
+            grid.innerHTML = '';
+
+            // Re-hide extra zone on date change
+            document.getElementById('extraPriestZone').style.display = 'none';
+            document.getElementById('selectedStartTime').value = '';
+
+            loader.style.display = 'inline-block';
+
+            try {
+                // 1. Fetch priest-specific availability
+                const res = await fetch(`{% url 'api_public_priest_availability' priest.id %}?date=${dateInput.value}`);
+                const data = await res.json();
+
+                // 2. Fetch overall service availability for pool counts
+                const sRes = await fetch(`{% url 'api_service_availability' service_slug|default:'custom' %}?date=${dateInput.value}`);
+                const sData = await sRes.json();
+
+                loader.style.display = 'none';
+                grid.innerHTML = '';
+
+                if (!data.exists) {
+                    grid.innerHTML = '<p class="text-danger w-100" style="font-family:Cinzel,serif;"><i class="fas fa-exclamation-circle mr-2"></i>No availability record found for this date.</p>';
+                    return;
+                }
+
+                const render = (title, slot, type) => {
+                    // Check availability based on new API format (slot is now data.morning_slot, etc.)
+                    if (!slot || (!slot.available && !slot.forty_eight_blocked && !slot.booked)) return;
+
+                    let poolCount = 0;
+                    if (type === 'morning') poolCount = sData.morning_count;
+                    else if (type === 'afternoon') poolCount = sData.afternoon_count;
+                    else if (type === 'evening') poolCount = sData.evening_count;
+                    else if (type === 'custom') poolCount = sData.custom_slots?.[slot.label || 'Special'] || 0;
+
+                    const div = document.createElement('div');
+
+                    if (slot.booked) {
+                        div.className = 'pro-slot-card disabled';
+                        div.style.opacity = '0.4';
+                        div.style.cursor = 'not-allowed';
+                        div.title = 'This slot is already booked.';
+                        div.innerHTML = `
+                            <div style="font-size:0.7rem;color:#c62828;font-weight:700;"><i class="fas fa-lock mr-1"></i>TAKEN</div>
+                            <div class="font-bold h5 mb-0 text-muted" style="font-family:Cinzel,serif;">${formatT(slot.start)}</div>
+                        `;
+                    } else if (slot.forty_eight_blocked) {
+                        div.className = 'pro-slot-card near-term';
+                        div.title = 'Near-term booking (within 48h). Requires quick confirmation.';
+                        div.innerHTML = `
+                            <div style="font-size:0.65rem;color:#e65100;font-weight:700;"><i class="fas fa-bolt mr-1"></i>NEAR TERM</div>
+                            <div class="font-bold h5 mb-0" style="font-family:Cinzel,serif;">${formatT(slot.start)}</div>
+                            <div style="font-size:0.6rem;color:#999;margin-top:2px;">Select anyway</div>
+                        `;
+                        div.onclick = () => selectSlot(div, type, slot.start, slot.end);
+                    } else if (!slot.available) {
+                        div.className = 'pro-slot-card disabled';
+                        div.style.opacity = '0.5';
+                        div.style.cursor = 'not-allowed';
+                        div.innerHTML = `
+                            <div class="text-xs text-danger"><i class="fas fa-times mr-1"></i>BUSY</div>
+                            <div class="font-bold h5 mb-0 text-muted" style="font-family:Cinzel,serif;">${formatT(slot.start)}</div>
+                        `;
+                    } else {
+                        div.className = 'pro-slot-card';
+                        div.innerHTML = `
+                            <div style="font-size:0.75rem;font-weight:700;color:var(--accent-gold); letter-spacing:1px;">${title}</div>
+                            <div class="font-bold h5 mb-0" style="font-family:Cinzel,serif; color:var(--primary-maroon);">${formatT(slot.start)}</div>
+                        `;
+
+                        // Show warning if service requires more priests than currently available globally
+                        if (poolCount < requiredPurohits) {
+                            div.innerHTML += `<div style="font-size:0.6rem;color:#e65100;margin-top:2px;font-weight:600;"><i class="fas fa-info-circle"></i> Needs ${requiredPurohits} Purohits</div>`;
+                        } else {
+                            div.innerHTML += `<div style="font-size:0.6rem;color:#27ae60;margin-top:2px;"><i class="fas fa-check-circle"></i> Available</div>`;
+                        }
+                        div.onclick = () => selectSlot(div, type, slot.start, slot.end);
+                    }
+                    grid.appendChild(div);
+                };
+
+                // Use the new _slot mapping from API
+                render('MORNING', data.morning_slot, 'morning');
+                render('AFTERNOON', data.afternoon_slot, 'afternoon');
+                render('EVENING', data.evening_slot, 'evening');
+
+                if (data.custom_slots) {
+                    data.custom_slots.forEach(s => {
+                        render(s.label || 'SPECIAL', s, 'custom');
+                    });
+                }
+
+                if (grid.children.length === 0) {
+                    grid.innerHTML = '<div class="alert w-100" style="background:rgba(128,0,0,0.05); color:var(--primary-maroon); border:1px dashed var(--primary-maroon); padding:20px; text-align:center;">' +
+                        '<i class="fas fa-calendar-times mb-2 d-block fa-2x"></i>' +
+                        '<div class="font-bold">No slots available for this date.</div>' +
+                        '<div class="small">Try selecting a different date or different Purohit.</div></div>';
+                }
+            } catch (e) {
+                loader.style.display = 'none';
+                grid.innerHTML = '<p class="text-danger">Error fetching timings.</p>';
+            }
+        }
+
+        function selectSlot(el, type, start, end) {
+            document.querySelectorAll('.pro-slot-card').forEach(c => c.classList.remove('active'));
+            el.classList.add('active');
+            document.getElementById('selectedSlotType').value = type;
+            document.getElementById('selectedStartTime').value = start;
+            document.getElementById('selectedEndTime').value = end;
+
+            // Hide any lingering loaders
+            document.getElementById('loadingSlots').style.display = 'none';
+
+            // Always show extra priest zone to allow optional additional support
+            document.getElementById('extraPriestZone').style.display = 'block';
+            renderSelectedPriests();
+            updateLiveSummary();
+        }
+
+        // --- Live Summary ---
+        window.updateLiveSummary = () => {
+            const start = document.getElementById('selectedStartTime').value;
+            const date = dateInput.value;
+            const name = document.querySelector('[name="devotee_name"]').value;
+            const addr = document.querySelector('[name="address"]').value;
+
+            if (date && start) {
+                const dateObj = new Date(date);
+                const options = { weekday: 'short', month: 'short', day: 'numeric' };
+                const formattedDate = dateObj.toLocaleDateString('en-IN', options);
+                document.getElementById('summaryDateTime').innerHTML = `${formattedDate} <br/> <small style="color:var(--accent-gold)">Expected at ${formatT(start)}</small>`;
+            }
+            document.getElementById('summaryName').textContent = name || '--';
+            document.getElementById('summaryAddress').textContent = addr ? (addr.substring(0, 40) + (addr.length > 40 ? '...' : '')) : '--';
+        };
+
+        // --- Extra Priest Modal ---
+        const modal = document.getElementById('priestModalOverlay');
+        window.closePriestModal = () => modal.style.display = 'none';
+
+        document.getElementById('callPriestModal').onclick = async () => {
+            modal.style.display = 'flex';
+            const list = document.getElementById('priestGridList');
+            const load = document.getElementById('modalLoading');
+            const none = document.getElementById('noPriestsMatch');
+
+            list.innerHTML = '';
+            load.style.display = 'block';
+            none.style.display = 'none';
+
+            try {
+                const slotType = document.getElementById('selectedSlotType').value;
+                const startTime = document.getElementById('selectedStartTime').value;
+                const endTime = document.getElementById('selectedEndTime').value;
+
+                const url = `{% url 'api_service_availability' service_slug|default:'custom' %}?date=${dateInput.value}&slot_type=${slotType}&start_time=${startTime}&end_time=${endTime}`;
+                const res = await fetch(url);
+                const data = await res.json();
+                load.style.display = 'none';
+
+                const others = data.available_priests.filter(p => p.id != "{{ priest.id }}");
+                if (others.length === 0) none.style.display = 'block';
+                else {
+                    others
+                        .filter(p => !selectedExtraPriests.find(s => s.id == p.id))
+                        .forEach(p => {
+                            const item = document.createElement('div');
+                            item.className = 'priest-list-item';
+                            item.innerHTML = `
+                            <div style="width:60px; height:60px; border-radius:12px; overflow:hidden; border:2px solid var(--accent-gold);">
+                                <img src="${p.photo || '#'}" style="width:100%; height:100%; object-fit:cover" onerror="this.src='https://ui-avatars.com/api/?name=${p.fullname}'">
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="font-bold text-lg" style="color:var(--primary-maroon)">${p.fullname}</div>
+                                <div class="text-sm text-muted">${p.experience} yrs exp • ${p.location}</div>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-submit" style="border-radius:50px;padding:6px 14px;"><i class="fas fa-plus"></i> Select</button>
+                        `;
+                            item.onclick = () => addExtraPriest({ id: p.id, fullname: p.fullname });
+                            list.appendChild(item);
+                        });
+                    // If all are already selected, show "no more" message
+                    if (list.innerHTML === '') none.style.display = 'block';
+                }
+            } catch (e) { load.style.display = 'none'; }
+        };
+
+        window.clearExtraPriest = () => {
+            // Legacy: kept for any external calls, now replaced by removeExtraPriest(id)
+        };
+
+        // Multi-priest state
+        let selectedExtraPriests = []; // [{id, fullname}]
+
+        window.addExtraPriest = (p) => {
+            if (selectedExtraPriests.find(x => x.id == p.id)) return;
+            // Allow selecting more than the minimum required priests
+            selectedExtraPriests.push(p);
+            renderSelectedPriests();
+            updateExtraPriestInputs();
+            closePriestModal();
+        };
+
+        window.removeExtraPriest = (id) => {
+            selectedExtraPriests = selectedExtraPriests.filter(p => p.id != id);
+            renderSelectedPriests();
+            updateExtraPriestInputs();
+        };
+
+        function renderSelectedPriests() {
+            const list = document.getElementById('selectedPriestsList');
+            const reqText = document.getElementById('requirementText');
+            const badge = document.getElementById('requiredBadge');
+
+            if (!list) return;
+            list.innerHTML = '';
+            selectedExtraPriests.forEach(p => {
+                const chip = document.createElement('div');
+                chip.style.cssText = 'display:inline-flex;align-items:center;gap:8px;background:var(--primary-maroon);color:white;padding:6px 14px;border-radius:50px;margin:4px;font-size:0.88rem;';
+                chip.innerHTML = `<i class="fas fa-user-circle"></i> ${p.fullname} <i class="fas fa-times" style="cursor:pointer;opacity:0.8;" onclick="removeExtraPriest('${p.id}')"></i>`;
+                list.appendChild(chip);
+            });
+
+            const total = 1 + selectedExtraPriests.length;
+
+            // Handle display for both required and optional scenarios
+            badge.style.display = (requiredPurohits > 1) ? 'inline-block' : 'none';
+
+            const remaining = requiredPurohits - total;
+            if (remaining > 0) {
+                reqText.innerHTML = `<span class="text-danger font-bold">Incomplete:</span> Please select at least ${remaining} more additional purohit(s).`;
+                reqText.className = "small text-danger font-weight-bold";
+            } else if (requiredPurohits > 1) {
+                const extra = total - requiredPurohits;
+                const extraText = extra > 0 ? ` (with ${extra} extra)` : "";
+                reqText.innerHTML = `<span class="text-success"><i class="fas fa-check-circle"></i> Perfect:</span> ${total} purohits selected${extraText}.`;
+                reqText.className = "small text-success font-weight-bold";
+            } else {
+                // Completely optional case
+                if (selectedExtraPriests.length > 0) {
+                    reqText.innerHTML = `<span class="text-success"><i class="fas fa-plus-circle"></i> Extra:</span> You have added ${selectedExtraPriests.length} additional purohit(s).`;
+                    reqText.className = "small text-success font-weight-bold";
+                } else {
+                    reqText.innerHTML = `This puja is usually performed by 1 purohit. You can add more if you wish.`;
+                    reqText.className = "small text-muted";
+                }
+            }
+        }
+
+        function updateExtraPriestInputs() {
+            const container = document.getElementById('extraPriestInputs');
+            if (!container) return;
+            container.innerHTML = '';
+            selectedExtraPriests.forEach(p => {
+                const inp = document.createElement('input');
+                inp.type = 'hidden';
+                inp.name = 'additional_priest_id';
+                inp.value = p.id;
+                container.appendChild(inp);
+            });
+        }
+
+        function formatT(t) {
+            if (!t) return '';
+            const [h, m] = t.split(':');
+            const hh = parseInt(h);
+            return `${hh % 12 || 12}:${m} ${hh >= 12 ? 'PM' : 'AM'}`;
+        }
+        // Amount summary live update
+        window.updateAmountSummary = () => {
+            const val = document.getElementById('amountInput').value;
+            const box = document.getElementById('amountSummaryBox');
+            const display = document.getElementById('amountSummaryDisplay');
+            if (val && parseFloat(val) > 0) {
+                display.textContent = '₹' + parseFloat(val).toLocaleString('en-IN');
+                box.style.display = 'block';
+            } else {
+                box.style.display = 'none';
+            }
+        };
+        // Run once on load to show pre-filled amount summary
+        updateAmountSummary();
+    });
+</script>
+{% endblock %}
